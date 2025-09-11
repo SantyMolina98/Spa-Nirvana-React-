@@ -1,0 +1,243 @@
+
+* {
+    --color-sixth: #f1eada;
+    --color-input: rgb(82, 58, 11);
+    --color-background: #f1eada;
+    --color-card: #fff;
+    --color-sixth: #eec58c;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background: var(--color-background);
+    color: #fdfdfd;
+    font-family: 'Poppins', sans-serif;
+    padding: 5%;
+    gap: 50px;
+}
+
+
+main h1, h3 {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    color: rgb(82, 58, 11);
+    margin: 30px;
+}
+
+main h1 {
+    font-size: clamp(30px, 6vw, 50px);
+    margin-bottom: 20px;
+    font-style:oblique;
+}
+
+main .card-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+
+}
+
+main .card-section .card {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    padding-top: 0px;
+    background: var(--color-card);
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+}
+
+main .card-section .card img {
+    max-width: 180px;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+}
+
+
+main .card h2 {
+    font-size: clamp(18px, 4vw, 30px);
+    font-weight: 600;
+    color:  rgb(82, 58, 11);
+    margin-top: 5px;
+}
+
+
+main .card {
+    height: 32em;
+}
+
+main .card p {
+    font-size: clamp(12px, 2vw, 14px);
+    font-weight: 200;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 0.7;
+    max-width: none;
+    line-height: 1.5;
+    color: black;
+}
+
+
+main .card-section .card:hover img {
+
+    transform: scale(1.05) translateX(-20%) scale(1.05);
+}
+
+main .card ul { 
+    margin-top: 20px; 
+    display: flex; 
+    flex-direction: row; 
+    padding: 0; 
+    list-style: none;
+}
+
+main .card ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    ;
+    
+}
+
+main .card ul li a {
+    text-decoration: none;
+    color: white;
+    background:  rgb(82, 58, 11);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;;
+    line-height: 30px !important;
+    border-radius: 50%;
+    transition: all .3s ease-in-out;
+    font-size: 20px;
+}
+
+main .card ul li a:hover {
+    transform: scale(1.2);
+    color: white;
+    background: rgb(82, 58, 11);
+}
+
+
+@media (max-width: 992px) {
+    main {
+        padding: 30px 15px;
+        gap: 30px;
+    }
+
+    main .card-section .card {
+
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+        padding-top: 90px;
+        align-items: center;
+    }
+
+    main .card-section .card img {
+
+        margin: -80px auto 20px auto;
+        width: 150px;
+        height: 150px;
+        transform: none;
+    }
+
+    main .card-section .card p {
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    main .card-section .card:hover img {
+        transform: scale(1.05) translateX(-20%);
+    }
+
+}
+
+/* Para pantallas pequeñas (ej. celulares) */
+@media (max-width: 600px) {
+    main {
+        padding: 20px 10px;
+        gap: 20px;
+    }
+
+    main .card-section .card {
+
+        max-width: 400px;
+        padding-top: 110px
+    }
+
+    main .card-section .card img {
+        width: 120px;
+        height: 120px;
+        margin: -60px auto 15px auto;
+    }
+
+    main .card-section .card h2 {
+        font-size: 20px;
+    }
+
+
+    main .card-section .card p {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+}
+
+/* Para pantallas pequeñas (ej. celulares) */
+@media (max-width: 600px) {
+    main {
+        padding: 20px 10px;
+        gap: 20px;
+    }
+
+    main .card-section .card {
+        padding: 15px;
+        padding-top: 90px;
+
+    }
+
+    main .card-section .card img {
+
+        width: 120px;
+        height: 120px;
+        margin: -60px auto 15px auto;
+
+    }
+
+    main .card-section .card h2 {
+        font-size: 20px;
+    }
+
+
+    main .card-section .card p {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+}

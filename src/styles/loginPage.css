@@ -1,0 +1,313 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+  --color-principal: #584738;
+  --color-principal2: #3f3228;
+  --color-secondary: #4c583e;
+  --color-terciary: #b59e7d;
+  --color-fourth: #959581;
+  --color-fifth: #f1eada;
+  --color-sixth: #eec58c;
+  --color-seventh: #aa6d3b;
+}
+
+/* HEADER */
+
+.d-flex{
+  display: flex;
+  justify-content: end;
+}
+.form-control, .me-2{
+  width: 50%;
+}
+/* MAIN */
+main .CardIS a{
+  color: var(--color-seventh);
+}
+main .CardIS p{
+  width: 100%;
+  text-align: center;
+}
+main .CardIS .TextSecLOGIN a{
+  margin-left: 0;
+}
+.TextSecLOGIN a:hover{
+  color: var(--color-secondary);
+  border-radius: 0.2em;
+}
+.FormInicioSesion .ForgivePassword a:hover{
+  background-color: var(--color-seventh);
+  color: var(--color-fifth);
+  padding: 0.3em;
+  border-radius: 1em;
+}
+main{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  text-align: center; 
+}
+main{
+  background-image: url(../Assets/Img/Fondo-login-turnos1.png);
+  background-position: left;
+  background-repeat:no-repeat;
+  background-size: 100% 100% ;
+}
+form{
+  width: 100%;
+}
+.CardIS{
+  background-color: var(--color-sixth);
+  padding: 1em;
+  border-radius: 1em;
+  margin: 1em;
+  margin-top: 2em;
+  margin-bottom: 5em;
+  width: 30%;
+}
+.TextCard{
+  margin: 10px 0px;
+  font-weight: 600;
+}
+.TextSecLOGIN{
+  margin-top:15px;
+}
+#usuario, #contraseña{
+  padding: 0.2em;
+  border-radius: 0.5em;
+  border: 1px solid black;
+  width: 100%;
+}
+#recuerdame:hover{
+  cursor: pointer;
+}
+.FormInicioSesion .ForgivePassword{
+  width: 100%;
+  margin-top: 1em;
+  text-align: center;
+}
+.FormInicioSesion{
+  width: 100%;
+  display: flex;
+  text-align: start;
+}
+/* Botones de Ingresar y Continuar con Google */
+.SectorBTN{
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 6em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.SectorBTN a{
+  color: var(--color-fifth);
+}
+.SectorBTN a:visited{
+  color: var(--color-fifth);
+}
+
+.BotonL{
+  width: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: var(--color-secondary);
+  color: var(--color-fifth);
+  padding: 0.2em;
+  border-radius: 0.5em;
+  border: 1px solid #4c583e;
+}
+.SectorBTN a{
+  width: 100%;
+}
+.BotonL a{
+  width: 100%;
+  margin: 0;  
+  
+}
+.BotonL:hover, .BotonL a:hover, .SectorBTN a:hover{
+  background-color: var(--color-principal);
+  color: var(--color-sixth);
+}
+.logoG{
+  width: 10px;
+}
+/* FOOTER */
+footer .card{
+  color: var(--color-fifth);
+}
+.bi-facebook, .bi-instagram, .bi-tiktok, .bi-twitter-x{
+  color: var(--color-sixth);
+}
+
+.columna2, .columna3{
+  width: auto;
+}
+.columna2 h5, .columna3 h5{
+  color: var(--color-fifth);
+}
+.columna2 .textofootercol ul li a {
+  width: 100%;
+}
+.columna2 .textofootercol ul li a p{
+  width: 65%;
+  text-align: start;
+  margin-bottom: -1em;
+  color: var(--color-sixth);
+}
+
+.columna3 .textofootercol ul li a p{
+  text-align: start;
+  margin-bottom: -1em;
+  color: var(--color-sixth);
+}
+.bi-paypal, .bi-linkedin{
+  color: var(--color-fifth);
+}
+.DownText{
+  color: var(--color-fourth);
+}
+@media (min-width:320px) and (max-width:425px){
+  
+  main .CardIS{
+    width: 100%;
+  }
+  main .CardIS .SectorBTN{
+    width: 100%;
+  }
+  main .CardIS .SectorBTN .BotonL{
+    width: 100%;
+  }
+  footer{
+    width: 100%;
+  }
+  .CardIS .SectorBTN .logoG{
+    left: 45px;
+  }
+  footer .columna2{
+    width: 100%;
+  }
+  footer .columna2 .textofootercol ul li a{
+    margin-left: 0;
+  }
+  footer .columna2 .textofootercol ul li p{
+    width: 100%;
+    text-align: center;
+  }
+  footer .columna3{
+    width: 100%;
+  }
+   footer .columna3 .textofootercol ul li a{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  footer .columna3 .textofootercol ul li p{
+    width: 100%;
+    text-align: center;
+  }
+} 
+@media (min-width:600px) and (max-width:768px){
+  main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  main .CardIS{
+    width: 70%;
+  }
+  main .CardIS .SectorBTN{
+    width: 100%;
+  }
+  main .CardIS .SectorBTN .BotonL{
+    width: 80%;
+  }
+  main .CardIS .SectorBTN .logoG{
+    left: 120px;
+  }
+  footer{
+    width: 100%;
+  }
+  footer .card{
+    width: 50%;
+  }
+  footer .columna2{
+    width: 50%;
+  }
+  footer .columna2 .textofootercol ul li a{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  footer .columna2 .textofootercol ul li p{
+    width: 100%;
+    text-align: center;
+  }
+  footer .columna3{
+    width: 100%;
+  }
+   footer .columna3 .textofootercol ul li a{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  footer .columna3 .textofootercol ul li p{
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (min-width:800px) and (max-width:1024px){
+  main{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+  .CardIS{
+    width: 60%;
+  }
+  .SectorBTN{
+    width: 100%;
+  }
+  .SectorBTN .BotonL{
+    width: 100%;
+  }
+  .SectorBTN .BotonL{
+    width: 300px;
+  }
+  .logoG{
+    left: 180px;
+  }
+  footer{
+    width: 100%;
+  }
+  footer .card{
+    width: 50%;
+  }
+  footer .columna2{
+    width: 50%;
+  }
+  footer .columna2 .textofootercol ul li a{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  footer .columna2 .textofootercol ul li p{
+    width: 100%;
+    text-align: center;
+  }
+  footer .columna3{
+    width: 100%;
+  }
+   footer .columna3 .textofootercol ul li a{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  footer .columna3 .textofootercol ul li p{
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+  --color-principal: #584738;
+  --color-secondary: #4c583e;
+  --color-terciary: #b59e7d;
+  --color-fourth: #959581;
+  --color-fourth2: #95958170;
+  --color-fifth: #f1eada;
+   --color-sixth: #eec58c;
+  
+    --color-input:rgb(82, 58, 11);
+}
+
+main{
+    background-color: var(--color-fifth);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-family: "Montserrat", sans-serif;
+}
+
+
+main .error_container{
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0 10px;
+}
+
+.error_code{
+    width: 100%;
+    margin: 0 auto;
+    font-size: 6rem;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.error_code p:first-of-type{
+    animation: fall 1s linear;
+    transform: rotateZ(-20deg);
+}
+
+.error_code P:last-of-type{
+    animation: fall 1.8s linear;
+    transform: rotateZ(8deg);
+}
+
+.error_code p:nth-of-type(2){
+    color: var(--color-input);
+    animation: bounce 1.2s 1.8s linear forwards;
+    opacity: 0;
+}
+
+.error_title{
+    font-size: 1.5rem;
+    font-weight: 700;
+    pad: 0 3%;
+    
+}
+
+
+.action{
+    font: inherit;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: var(--color-input);
+    color: var(--color-sixth);
+}
+
+.action:hover{
+    opacity: 0.8;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (min-width: 48rem) {
+    .error_description{
+        padding: 0;
+    }
+    
+}
+@keyframes fall{
+    0%{
+        transform: translateY(-100vh);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce{
+    0%,40%,75%,95%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    15%{
+        transform: translateY(-25px);
+    }
+    65%{
+        transform: translateY(-15px);
+    }
+    85%{
+        transform: translateY(-5px);
+    }
+    100%{
+        transform: rotateZ(45deg);
+        opacity: 1;
+    }
+} 

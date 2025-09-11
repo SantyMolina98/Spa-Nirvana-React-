@@ -1,0 +1,332 @@
+*{
+  --color-principal:#584738;
+  --color-secondary:#4c583e;
+  --color-terciary:#B59E7D;
+  --color-terciary2:#ebd5b6;
+  --color-fourth:#959581;
+  --color-fifth:#f1eada;
+  --color-sixth: #eec58c;
+  --color-btn:#cea878;
+  --color-input2:#745c3d;
+  --color-a:#c59143;
+}
+
+main{
+  width: 100%;
+  height: auto;
+  display:flex ;
+  flex-wrap: wrap;
+  background-color: var(--color-terciary2);
+}
+main h2{
+  width: 100%;
+  font-weight: 700;
+  color: var(--color-principal);
+}
+.CardRegistro{
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: start;
+  justify-content: center;
+  margin-bottom: 3em;
+}
+.ContainerRegistro h4{
+  width: 100%;
+  text-align: center;
+  font-weight: 550;
+}
+.ContainerRegistro{
+  width: auto;
+  padding: 1em;
+  margin-top: 0;
+  background-color: var(--color-a);
+  border-radius: 1em;
+  
+}
+#Nombre, #Apellido, #newuser, #E-mail, #domicilio, #selectciudad, #cp, #contraseña2{
+  padding: 0.2em;
+  border-radius: 0.5em;
+  border: 0.15em solid var(--color-input2);
+  margin-bottom: 0.4em;
+  width: 90%;
+}
+.TelefonoF{
+  width: 100%;
+  display: flex;
+}
+#firsttelefono{
+  padding: 0.2em;
+  border-radius: 0.5em;
+  border: 0.15em solid var(--color-input2);
+  margin-bottom: 0.4em;
+  width: 13%;
+}
+
+#telefono{
+  padding: 0.2em;
+  border-radius: 0.5em;
+  border: 0.15em solid var(--color-input2);
+  margin-bottom: 0.4em;
+  width: 77%;
+}
+.TextReg{
+  font-size:large ;
+  font-weight: 500;
+}
+.BtnRegistro{
+  width: 100%;
+}
+.BotonR{
+  width: 200px;
+  margin-left: -3.5em;
+  margin-top: 1em;
+  background-color: var(--color-btn);
+  padding: 0.2em;
+  border-radius: 0.5em;
+  border:0.1em solid var(--color-principal);
+}
+.BotonR:hover{
+  margin-top: 1em;
+  background-color: var(--color-principal);
+  color: var(--color-fourth);
+  padding: 0.2em;
+  border-radius: 0.5em;
+  border:0.1em solid var(--color-principal);
+}
+/* FOOTER */
+footer .card{
+  color: var(--color-sixth);
+}
+.bi-facebook, .bi-instagram, .bi-tiktok, .bi-twitter-x{
+  color: var(--color-sixth);
+}
+.columna2, .columna3{
+  width: auto;
+}
+.columna2 h5, .columna3 h5{
+  color: var(--color-fifth);
+}
+.columna2 .textofootercol ul li a {
+  width: 100%;
+}
+.columna2 .textofootercol ul li a p{
+  width: 100%;
+  text-align: start;
+  margin-bottom: -1em;
+  color: var(--color-sixth);
+}
+.columna3 .textofootercol ul li a p{
+  
+  text-align: start;
+  margin-bottom: -1em;
+  color: var(--color-sixth);
+}
+.bi-paypal, .bi-linkedin{
+  color: var(--color-fifth);
+}
+.DownText{
+  color: var(--color-fourth);
+}
+@media (min-width:320px) and (max-width:425px){
+  main h2{
+    font-size: 1.4em;
+  }
+  main{
+    margin-left: 0;
+    margin-right: 0;
+    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  main .CardRegistro{
+    width: 80%;
+  }
+  .ContainerRegistro{
+    width: 100%;
+  }
+  .ContainerRegistro h4{
+    font-size: 1.2em;
+    width: 100%;
+    margin-left:0 ;
+    text-align: center;
+  }
+  .TextReg, #Recordar{
+    font-size: 0.9em;
+  }
+  #Nombre, #Apellido, #newuser, #E-mail, #domicilio, #selectciudad, #cp, #contraseña2{
+    width: 100%;
+    font-size: 0.8em;
+  }
+  #firsttelefono, #telefono{
+    font-size: 0.8em;
+  }
+  #firsttelefono{
+    width: 15%;
+  }
+  #telefono{
+    width: 85%;
+  }
+  .BtnRegistro{
+    width: 100%;
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    
+  }
+  .BotonR{
+    width: 300px;
+    margin: 0;
+    background-color: var(--color-input2);
+    color: var(--color-btn);
+  }
+  footer .columna2{
+    width: 100%;
+  }
+  footer .columna2 .textofootercol ul li a{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  footer .columna2 .textofootercol ul li p{
+    
+    text-align: center;
+  }
+  footer .columna3{
+    width: 100%;
+  }
+   footer .columna3 .textofootercol ul li a{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  footer .columna3 .textofootercol ul li p{
+    
+    text-align: center;
+  }
+}
+@media (min-width:600px) and (max-width:768px){
+  main h2{
+    font-size: 1.5em;
+  }
+  .ContainerRegistro h4{
+    font-size: 1.2em;
+    width: 100%;
+    margin-left:0 ;
+    text-align: center;
+  }
+  .TextReg, #Recordar{
+    font-size: 1em;
+  }
+  #Nombre, #Apellido, #newuser, #E-mail, #domicilio, #selectciudad, #cp, #contraseña2{
+    width: 100%;
+    font-size: 0.9em;
+  }
+  #firsttelefono, #telefono{
+    font-size: 0.9em;
+  }
+  #firsttelefono{
+    width: 15%;
+  }
+  #telefono{
+    width: 85%;
+  }
+  .BtnRegistro{
+    width: 100%;
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    
+  }
+  .BotonR{
+    width: 300px;
+    margin: 0;
+    background-color: var(--color-input2);
+    color: var(--color-btn);
+  }
+  footer .columna2{
+    width: 50%;
+  }
+  footer .columna2 .textofootercol ul li a{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  footer .columna2 .textofootercol ul li p{
+    
+    text-align: center;
+  }
+  footer .columna3{
+    width: 100%;
+  }
+   footer .columna3 .textofootercol ul li a{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  footer .columna3 .textofootercol ul li p{
+  
+    text-align: center;
+  }
+}
+@media (min-width:900px) and (max-width:1024px){
+  main h2{
+    font-size: 1.6em;
+  }
+  .ContainerRegistro h4{
+    font-size: 1.3em;
+    width: 100%;
+    margin-left:0 ;
+    text-align: center;
+  }
+  .TextReg, #Recordar{
+    font-size: 1.1em;
+  }
+  #Nombre, #Apellido, #newuser, #E-mail, #domicilio, #selectciudad, #cp, #contraseña2{
+    width: 90%;
+    font-size: 1em;
+  }
+  #firsttelefono, #telefono{
+    font-size: 1em;
+  }
+  #firsttelefono{
+    width: 13%;
+  }
+  #telefono{
+    width: 77%;
+  }
+  .BtnRegistro{
+    width: 100%;
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    
+  }
+  .BotonR{
+    width: 300px;
+    margin: 0;
+    background-color: var(--color-input2);
+    color: var(--color-btn);
+  }
+  footer .columna2{
+    width: 50%;
+  }
+  footer .columna2 .textofootercol ul li a{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  footer .columna2 .textofootercol ul li p{
+    width: 100%;
+    text-align: center;
+  }
+  footer .columna3{
+    width: 100%;
+  }
+   footer .columna3 .textofootercol ul li a{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  footer .columna3 .textofootercol ul li p{
+    width: 100%;
+    text-align: center;
+  }
+}

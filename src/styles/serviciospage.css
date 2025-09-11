@@ -1,0 +1,55 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --color-principal:#584738;
+  --color-secondary:#4c583e;
+  --color-terciary:#B59E7D;
+  --color-fourth:#959581;
+  --color-fifth:#f1eada;
+}
+body{
+
+  background-color:#f1eada;
+}
+
+.Cajaflexible{
+    display: flex;
+    justify-content: space-around;
+}
+
+.Flexreseña{
+    justify-content: center;
+    align-items:first baseline; 
+    color: #f1eada; 
+}
+
+#Titulotesti{
+font-style:oblique;/*  */
+font-family:fantasy
+}
+ 
+.bi-star-fill{
+    color: yellow;
+}
+
+
+.Testimonio{
+    font-style: oblique;
+    color: black;
+}
+
+.card-title2{
+font-style: oblique;
+color: black;
+}
+
+.col-md-8{
+  background-color: #584738;
+}
+
+.card-text{
+  color: #f1eada;
+}
+
+

@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --color-principal: #584738;
+  --color-secondary: #4c583e;
+  --color-terciary: #B59E7D;
+  --color-fourth: #959581;
+  --color-fifth: #f1eada;
+}
+
+
+#ContainerMapa{
+display: flex;
+color: rgb(82, 58, 11);
+}
+
+#ContainerMapa {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10%;
+  padding: 2%;
+}
+
+
+#Containerformulario {
+  display: flex;
+  flex-direction: column;
+}
+
+#FormContacto {
+  color: rgb(82, 58, 11);
+}
+
+#Bordercaja {
+  border: #4c583e solid 1px;
+  padding: 5px;
+  border-radius: 3%;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+
+}
+
+.form-label {
+  font-weight: 700;
+}
+
+.form-control {
+  width: 95%;
+}
+
+#exampleFormControlInput1 {
+  border: #584738 solid 1.5px;
+  margin: 10px;
+}
+
+.UbicacionMapa {
+  border-radius: 50%;
+}
+
+.Mapa {
+  display: flex;
+  flex-direction: column;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+#enviarboton {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+#Contacto {
+  font-size: xx-large;
+  font-style: oblique;
+}
+
+.Contactoicon {
+  font-size: x-large;
+  font-style: oblique;
+}
+
+.bi-telephone {
+  color: black;
+}
+
+.bi-geo-alt-fill {
+  color: black;
+
+}
+
+#direccion {
+  font-style: oblique;
+  font-size: x-large;
+  justify-content: center;
+
+}
+
+@media (max-width:425px) {
+  .mapa {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  iframe {
+    width: 80%;
+  } */
+
+  */ #direccion {
+    margin-top: 10px;
+    padding: auto;
+  }
+
+  */ #ContainerMapa {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width:768px) {
+  .mapa {
+    width: 100%;
+    border: 10%;
+    align-content: center;
+    align-items: center;
+  }
+
+  iframe {
+    width: 100%;
+  }
+
+  #direccion {
+    margin-top: 10px;
+  }
+
+  #ContainerMapa {
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  #direccion {
+    width: 100%;
+  }
+
+  #Bordercaja {
+    padding-left: 5%;
+    border-radius: 7%;
+  }
+}
+
