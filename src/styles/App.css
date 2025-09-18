@@ -26,14 +26,14 @@ a {
 }
 
 /* NAV */
-header {
+/* header {
   width: 100%;
   margin: 0;
   padding: 0;
   position: sticky;
   top: 0px;
   z-index: 2;
-}
+} */
 .navbar,
 .navbar-expand-lg,
 .bg-body-tertiary {
