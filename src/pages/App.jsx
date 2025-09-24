@@ -3,7 +3,7 @@ import '../styles/App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import HeaderComponent from '../components/headerComponents';
 import HomePage from './HomePage';
-import { Turnos } from './turnos';
+import { Turnos } from './turnos.jsx';
 import { Categorias } from './categorias';
 import { Contacto } from './contacto';
 import { Nosotros } from './nosotros';
