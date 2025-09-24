@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Categorias = () => {
+export function Categorias () {
   return (
     <div>Categorias</div>
   )

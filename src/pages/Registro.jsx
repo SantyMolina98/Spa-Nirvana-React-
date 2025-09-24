@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Registro = () => {
+export function Registro () {
   return (
     <div>Registro</div>
   )

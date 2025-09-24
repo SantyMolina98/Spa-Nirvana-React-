@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Nosotros = () => {
+export function Nosotros  ()  {
   return (
     <div>Nosotros</div>
   )

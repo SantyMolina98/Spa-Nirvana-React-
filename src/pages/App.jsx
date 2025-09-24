@@ -2,12 +2,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import HeaderComponent from '../components/headerComponents';
-import { HomePage } from './HomePage';
-import { Turnos } from './Turnos';
-import { Categorias } from './Categorias';
-import { Contacto } from './Contacto';
-import { Nosotros } from './Nosotros';
-import { Login } from './Login';
+import HomePage from './HomePage';
+import { Turnos } from './turnos.jsx';
+import { Categorias } from './categorias.jsx';
+import { Contacto } from './contacto.jsx';
+import { Nosotros } from './nosotros.jsx';
+import { Login } from './login.jsx';
+import { PaginaError} from './PaginaError.jsx';
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
         <Route path='/contacto' element={<Contacto/>}/>
         <Route path='/nosotros' element={<Nosotros/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='*' element={<PaginaError/>}/>
       </Routes>
     </BrowserRouter>
   )
