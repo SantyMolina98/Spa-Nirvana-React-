@@ -43,14 +43,14 @@ main .CardIS .TextSecLOGIN a{
   padding: 0.3em;
   border-radius: 1em;
 }
-main{
+.main{
   width: 100%;
   display: flex;
   justify-content: end;
   text-align: center; 
 }
-main{
-  background-image: url(../Assets/Img/Fondo-login-turnos1.png);
+.main{
+  background-image: url(../assets/Img/Fondologinturnos1.png);
   background-position: left;
   background-repeat:no-repeat;
   background-size: 100% 100% ;

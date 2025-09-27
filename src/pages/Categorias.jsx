@@ -46,7 +46,7 @@ export default function Categorias () {
                 tu rostro de forma profunda pero suave. Ideal para todo tipo de
                 piel.
               </p>
-              <Link to="/servicios">
+              <Link to="/categorias/serviciosmasajes">
                 <button type="button" className='btn'>Ver más</button>
               </Link>
             </div>
@@ -59,7 +59,7 @@ export default function Categorias () {
                 unificar el tono de tu rostro, gracias al poder antioxidante de
                 la vitamina C.
               </p>
-              <Link to="/servicios">
+              <Link to="/categorias/serviciosfacial">
                 <button type="button" className='btn'>Ver más</button>
               </Link>
             </div>
@@ -72,7 +72,7 @@ export default function Categorias () {
                 equilibrio natural del rostro, regulando la producción de sebo,
                 purificando los poros y calmando las zonas sensibles.
               </p>
-                <Link to="/servicios">
+                <Link to="/categorias/serviciosfacial">
                 <button type="button" className='btn'>Ver más</button>
               </Link>
             </div>
@@ -84,7 +84,7 @@ export default function Categorias () {
                 radiante, suave y fresca con el poder hidratante y calmante de
                 las rosas.
               </p>
-              <Link to="/servicios">
+              <Link to="/categorias/serviciosfacial">
                 <button type="button" className='btn'>Ver más</button>
               </Link>
             </div>
@@ -141,7 +141,7 @@ export default function Categorias () {
                 Con movimientos suaves y firmes, mejora la circulación, reduce
                 el estrés y libera tensiones.
               </p>
-              <Link to="/servicios">
+              <Link to="/categorias/serviciosmasajes">
                 <button type="button" className='btn'>Ver más</button>
               </Link>              
             </div>
@@ -153,7 +153,7 @@ export default function Categorias () {
                 <br />Alivia el dolor muscular, estimula el metabolismo y relaja
                 los tejidos.
               </p>
-              <Link to="/servicios">
+              <Link to="/categorias/serviciosmasajes">
                 <button type="button" className='btn'>Ver más</button>
               </Link> 
             </div>
@@ -165,7 +165,7 @@ export default function Categorias () {
                 aliviar contracturas crónicas, liberar tensiones profundas y
                 mejorar la movilidad.
               </p>
-              <Link to="*">
+              <Link to="/categorias/serviciosmasajes">
                 <button type="button" className='btn'>Ver más</button>
               </Link>
             </div>
@@ -179,7 +179,7 @@ export default function Categorias () {
                 ><br />Experiencia sensorial y nutritiva que combina lo mejor de
                 la aromaterapia y la cosmética natural.
               </p>
-              <Link to="/servicios">
+              <Link to="/categorias/serviciosmasajes">
                 <button type="button" className='btn'>Ver más</button>
               </Link> 
             </div>
