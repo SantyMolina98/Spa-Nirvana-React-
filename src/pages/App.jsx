@@ -1,7 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/App.css';
+
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import HeaderComponent from '../components/headerComponents';
+import HeaderComponent from '../components/headerComponents.jsx';
+import '../styles/headerComponent.css';
 import HomePage from './HomePage';
 import Turnos from './turnos.jsx';
 import Categorias from './categorias.jsx';
@@ -12,10 +14,12 @@ import Nosotros from './nosotros.jsx';
 import Login from './login.jsx';
 import Registro from './registro.jsx';
 import PaginaError from './PaginaError.jsx';
+import FooterComponent from '../components/footerComponents.jsx';
 
 function App() {
   
   return (
+    <>
     <BrowserRouter>
       <HeaderComponent/>
       <Routes>
@@ -30,7 +34,10 @@ function App() {
         <Route path='/login/registro' element={<Registro/>}/>
         <Route path='*' element={<PaginaError/>}/>
       </Routes>
+      <FooterComponent/>
     </BrowserRouter>
+    
+    </>
   )
 }
 

@@ -31,7 +31,7 @@ function ServiciosMasajes  () {
                         </div>
                     </div>
                     <div className="carousel-item">
-                      <img src={SM1} className="d-block w-100" alt="STF2" height="750vh" />
+                      <img src={SM2} className="d-block w-100" alt="STF2" height="750vh" />
                       <div className="carousel-caption d-none d-md-block">
                          <h5 style="color: black;">Masaje Hot Stones</h5>
                       </div>

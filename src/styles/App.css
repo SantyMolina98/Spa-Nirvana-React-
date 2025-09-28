@@ -34,13 +34,13 @@ a {
   top: 0px;
   z-index: 2;
 } */
-.navbar,
+/* .navbar,
 .navbar-expand-lg,
 .bg-body-tertiary {
   width: 100%;
   margin: 0;
   padding: 0;
-}
+} */
 
 .cajaflexible {
   background-color: var(--color-fourth);
@@ -51,10 +51,10 @@ a {
   margin: 0;
 }
 
-.bg-body-tertiary,
+/* .bg-body-tertiary,
 .container-fluid {
   padding: 0px;
-}
+} */
 
 .Logo {
   width: 3em;
