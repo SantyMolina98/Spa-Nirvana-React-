@@ -1,7 +1,10 @@
-import React, { Fragment } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap';
 import '../styles/App.css';
+import '../styles/headerComponent.css';
 import { NavLink } from 'react-router-dom';
 import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import logospaheader from '../assets/Img/logospaheader.png';
 
 function HeaderComponent () {
   return (
@@ -69,11 +72,10 @@ function HeaderComponent () {
       {/* El resto de tu código que sigue al navbar */
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="/">Imagen de Inicio</Navbar.Brand>
+          <Navbar.Brand href="/" className='logoheader'><img src={logospaheader} alt="logo-nirvana-deluxe-header" width="100%" height="100%" /></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <NavLink to="/">Inicio</NavLink>
               <NavLink to="/turnos">Turnos</NavLink>
               <NavDropdown title="Categorías" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/categorias">Tratamientos Faciales</NavDropdown.Item>
