@@ -1,20 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/App.css';
-
+import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import HeaderComponent from '../components/headerComponents.jsx';
-import '../styles/headerComponent.css';
-import HomePage from './HomePage';
-import Turnos from './turnos.jsx';
-import Categorias from './categorias.jsx';
-import ServiciosMasajes from './serviciosmasaje.jsx';
-import ServiciosFacial from './serviciosfacial.jsx';
-import Contacto from './contacto.jsx';
-import Nosotros from './nosotros.jsx';
-import Login from './login.jsx';
-import Registro from './registro.jsx';
-import PaginaError from './PaginaError.jsx';
-import FooterComponent from '../components/footerComponents.jsx';
+import HeaderComponent from './components/headerComponents.jsx';
+import './styles/headerComponent.css';
+import HomePage from './pages/HomePage.jsx';
+import Turnos from './pages/turnos.jsx';
+import Categorias from './pages/categorias.jsx';
+import ServiciosMasajes from './pages/serviciosmasaje.jsx';
+import ServiciosFacial from './pages/serviciosfacial.jsx';
+import Contacto from './pages/contacto.jsx';
+import Nosotros from './pages/nosotros.jsx';
+import Login from './pages/login.jsx';
+import Registro from './pages/registro.jsx';
+import PaginaError from './pages/PaginaError.jsx';
+import FooterComponent from './components/footerComponents.jsx';
 
 function App() {
   

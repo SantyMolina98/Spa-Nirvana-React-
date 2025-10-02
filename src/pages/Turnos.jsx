@@ -1,4 +1,4 @@
-import '../styles/App.css';
+import '../App.css';
 import '../styles/turnosPages.css';
 import 'bootstrap';
 import { Link } from 'react-router-dom';

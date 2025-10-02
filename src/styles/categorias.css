@@ -12,12 +12,12 @@
    --color-seventh: #aa6d3b;
 }
 
-body {
+.maincategoria {
   background-color: var(--color-fifth);
   font-family: 'Poppins', sans-serif;
 }
 
-a {
+.links {
   text-decoration: none;
   margin: 0px 60px;
   border-radius: 10px;
@@ -33,16 +33,17 @@ a {
     height: 20em;
 }
 
-#imgbanner:hover {
-  filter: grayscale(0%);
-  transform: scale(1.2);
-}
-
-#imgbanner {
+.imgbanner {
   width: 100%;
   filter: grayscale(60%);
   transition: 600ms;
 }
+.imgbanner:hover {
+  filter: grayscale(0%);
+  transform: scale(1.2);
+}
+
+
 
 .titulo {
     position: absolute;

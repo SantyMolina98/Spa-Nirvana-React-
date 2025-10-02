@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import '../App.css';
 import '../styles/index.css';
 import banner1 from '../assets/Img/banner1.jpg';
 import banner2 from '../assets/Img/banner2.jpg';
