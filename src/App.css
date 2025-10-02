@@ -12,12 +12,11 @@
   --color-fifth: #f1eada;
   --color-sixth: #eec58c;
   --color-seventh: #aa6d3b;
-}
-
-body {
+  
   background-color: var(--color-fifth);
   font-family: "Poppins", sans-serif;
 }
+
 
 a {
   text-decoration: none;
