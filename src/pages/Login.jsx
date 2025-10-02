@@ -1,9 +1,9 @@
-import '../styles/App.css';
+import '../App.css';
 import '../styles/loginPage.css';
 import 'bootstrap';
 import { Link } from 'react-router-dom';
 
-function Login ()  {
+function Login () {
   return (
     <main className='main'>
     <div className="CardIS">
@@ -28,7 +28,7 @@ function Login ()  {
       </div>
     </div>
   </main>
-  )
-}
+  );
+};
 
 export default Login;

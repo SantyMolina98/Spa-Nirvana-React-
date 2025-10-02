@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap';
-import '../styles/App.css';
+import '../App.css';
 import '../styles/headerComponent.css';
 import { NavLink } from 'react-router-dom';
 import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
