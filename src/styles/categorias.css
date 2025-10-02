@@ -16,11 +16,32 @@
   background-color: var(--color-fifth);
   font-family: 'Poppins', sans-serif;
 }
-
-.links {
+.row{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.cardcategoria{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.bodycard{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  background-color: var(--color-principal);
   text-decoration: none;
-  margin: 0px 60px;
+  border-color: var(--color-principal);
   border-radius: 10px;
+}
+.btn:hover{
+  background-color: var(--color-terciary);
+  border-color: var(--color-terciary);
 }
 
 /* MAIN BANNER*/
