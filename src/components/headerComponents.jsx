@@ -4,13 +4,12 @@ import '../App.css';
 import '../styles/headerComponent.css';
 import { NavLink } from 'react-router-dom';
 import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
-// import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import logospaheader from '../assets/Img/logospaheader.png';
 
 function HeaderComponent () {
   return (
     <>
-      <Navbar key='lg' expand='lg' className="bg-body-tertiary mb-3">
+      <Navbar key='lg' expand='lg'>
         <Container fluid>
           <Navbar.Brand to="/">
             <img src={logospaheader} className='logoSPA' alt="LogoSPA"/>
@@ -65,7 +64,7 @@ function HeaderComponent () {
                   className="me-2"
                   aria-label="Search"
                 />
-                <Button variant="outline-success">Buscar</Button>
+                <Button>Buscar</Button>
               </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
