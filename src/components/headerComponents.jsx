@@ -52,6 +52,10 @@ function HeaderComponent () {
                   <NavDropdown.Item href="#action7">
                     Rituales
                   </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action7">
+                    Fix
+                  </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="#action2">Contáctanos</Nav.Link>
                 <Nav.Link href="#action2">Nosotros</Nav.Link>
