@@ -22,7 +22,7 @@ function HeaderComponent () {
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
               <Container>
-              <Navbar.Brand href="#home">
+              <Navbar.Brand to="/">
               <img src={logospaheader} className='logoSPA' alt="LogoSPA"/>
              </Navbar.Brand>
             </Container>
@@ -30,36 +30,36 @@ function HeaderComponent () {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="#action1">Inicio</Nav.Link>
-                <Nav.Link href="#action2">Turnos</Nav.Link>
+                <Nav.Link href="/">Inicio</Nav.Link>
+                <Nav.Link href="/turnos">Turnos</Nav.Link>
                 <NavDropdown
                   title="Categorías"
                   id={`offcanvasNavbarDropdown-expand-lg`}>
-                  <NavDropdown.Item href="#action3">Tratamientos Faciales</NavDropdown.Item>
+                  <NavDropdown.Item href="/categorias">Tratamientos Faciales</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action4">
+                  <NavDropdown.Item href="/categorias">
                     Tratamientos Corporales
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action5">
+                  <NavDropdown.Item href="/categorias">
                     Masajes
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action6">
+                  <NavDropdown.Item href="/categorias">
                     Masajes con Aromaterapia
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action7">
+                  <NavDropdown.Item href="/categorias">
                     Rituales
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action7">
+                  <NavDropdown.Item href="/categorias">
                     Fix
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="#action2">Contáctanos</Nav.Link>
-                <Nav.Link href="#action2">Nosotros</Nav.Link>
-                <Nav.Link href="#action2">Login</Nav.Link>
+                <Nav.Link href="/contacto">Contáctanos</Nav.Link>
+                <Nav.Link href="/nosotros">Nosotros</Nav.Link>
+                <Nav.Link href="/login">Login</Nav.Link>
               </Nav>
               <Form className="d-flex">
                 <Form.Control
