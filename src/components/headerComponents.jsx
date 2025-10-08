@@ -1,5 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-bootstrap';
 import '../App.css';
 import '../styles/headerComponent.css';
 import { NavLink } from 'react-router-dom';
@@ -30,36 +28,32 @@ function HeaderComponent () {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="/">Inicio</Nav.Link>
-                <Nav.Link href="/turnos">Turnos</Nav.Link>
+                <NavLink to='/'>Inicio</NavLink>
                 <NavDropdown
                   title="Categorías"
                   id={`offcanvasNavbarDropdown-expand-lg`}>
-                  <NavDropdown.Item href="/categorias">Tratamientos Faciales</NavDropdown.Item>
+                  <NavDropdown.Item to='/categorias'>Tratamientos Faciales</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/categorias">
+                  <NavDropdown.Item to='/categorias'>
                     Tratamientos Corporales
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/categorias">
+                  <NavDropdown.Item to='/categorias'>
                     Masajes
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/categorias">
+                  <NavDropdown.Item to='/categorias'>
                     Masajes con Aromaterapia
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/categorias">
+                  <NavDropdown.Item to='/categorias'>
                     Rituales
                   </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="/categorias">
-                    Fix
-                  </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="/contacto">Contáctanos</Nav.Link>
-                <Nav.Link href="/nosotros">Nosotros</Nav.Link>
-                <Nav.Link href="/login">Login</Nav.Link>
+                <NavLink to='/turnos'>Turnos</NavLink>
+                <NavLink to='/contacto'>Contáctanos</NavLink>
+                <NavLink to='/nosotros'>Nosotros</NavLink>
+                <NavLink to='/login'>Login</NavLink>
               </Nav>
               <Form className="d-flex">
                 <Form.Control
