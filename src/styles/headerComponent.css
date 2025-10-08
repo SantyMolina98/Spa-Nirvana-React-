@@ -8,3 +8,10 @@
   width: 2.5em;
 }
 
+.navbar a {
+  text-decoration: none;
+  color: #302620;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+}
