@@ -5,7 +5,7 @@ import logospafooter from '../assets/Img/logospafooter.png';
 import logomastercard from '../assets/Img/logomastercard.png';
 
 function FooterComponent (){
-  <footer className="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 py-3 border-top"> 
+  <div className="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 py-3 border-top"> 
     <div className="card mb-3" >
       <div className="row g-0">
         <div className="col-md-4">
@@ -98,7 +98,7 @@ function FooterComponent (){
           <div className="wp cajawp">
             <a href="https://web.whatsapp.com/" className="visitado" target="_blank"><i className="bi bi-whatsapp"></i></a>
           </div>
-  </footer>
+  </div>
 }
 
 export default FooterComponent;

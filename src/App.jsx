@@ -3,14 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import HeaderComponents from './components/headerComponents';
 import HomePage from './pages/HomePage';
-import Turnos from './pages/Turnos';
-import { Categorias } from './pages/Categorias';
-import Contacto from './pages/Contacto';
-import Nosotros from './pages/Nosotros';
-import Login from './pages/Login';
-import Registro from './pages/Registro';
-import PaginaError from './pages/PaginaError';
-import FooterComponents from './components/FooterComponents';
+import Turnos from './pages/turnos.jsx';
+import { Categorias } from './pages/Categorias.jsx';
+import Contacto from './pages/contacto.jsx';
+import Nosotros from './pages/nosotros.jsx';
+import Login from './pages/login.jsx';
+import Registro from './pages/registro.jsx';
+import PaginaError from './pages/PaginaError.jsx';
+import FooterComponents from './components/footerComponents.jsx';
 
 
 function App() {
