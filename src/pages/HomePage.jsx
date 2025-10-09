@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom';
 import '../App.css';
-import '../styles/index.css';
+import '../styles/HomePage.css';
+import {Carousel, Image, Card, Button} from 'react-bootstrap';
 import banner1 from '../assets/Img/banner1.jpg';
 import banner2 from '../assets/Img/banner2.jpg';
 import banner3 from '../assets/Img/banner3.jpg';
@@ -18,41 +19,20 @@ function HomePage () {
   return (
     <main>
       <section>
-        <div id="carouselExampleCaptions" className="carousel slide">
-          <div className="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img src={banner1} className="d-block w-100" alt="banner1"/>
-              <div className="carousel-caption d-none d-md-block">
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img src={banner2} className="d-block w-100" alt="banner2"/>
-              <div className="carousel-caption d-none d-md-block">
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img src={banner3} className="d-block w-100" alt="banner3"/>
-              <div className="carousel-caption d-none d-md-block">
-              </div>
-            </div>
-          </div>
-          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
+      <Carousel fade>
+      <Carousel.Item>
+        <Image src={banner1} rounded className='carrusel'/>
+      </Carousel.Item>
+      <Carousel.Item>
+        <Image src={banner2} rounded className='carrusel'/>
+      </Carousel.Item>
+      <Carousel.Item>
+        <Image src={banner3} rounded className='carrusel'/>
+        </Carousel.Item>
+      </Carousel>
       </section>
       <section>
-        <article className="centrado">
+          <article className="centrado">
           <h1>NIRVANA Spa & Beauty</h1>
           <h3>Un viaje sensorial de bienestar</h3>
           <img src={logospaheader} alt="logo" className="logoarticle"/>
@@ -60,45 +40,71 @@ function HomePage () {
             Sumérjase en un viaje sensorial de bienestar en el spa más exclusivo de Tucumán. Disfrute relajantes masajes corporales y rituales cuidadosamente diseñados en un ambiente de lujo que irradia tranquilidad.</p>
             <p>*Los masajes, propuestas y tratamientos no incluyen instalaciones: sauna, jacuzzi, piscina y gimnasio se encuentran habilitados solamente para huéspedes.</p>
         </article>
-      </section>
-      <section>
-        <h2>Promociones Destacadas</h2>
-        <div className="container text-center">
-          <div className="row">
-            <div className="col contenedor">
-              <img src={promo1} alt="prom1" className="img"/>
-              <h4>Massage Relax</h4>
-              <p><strong>Masajes Full Body + Coffee Pause</strong> <br/> Este paquete está diseñado para brindarle una experiencia integral de relajación, bienestar y renovación. </p>
-              <Link to="*">
-                <button type="button" className="btn">Ver más</button>
-              </Link> 
-            </div>
-            <div className="col contenedor">
-              <img src={promo2} alt="prom2" className="img"/>
-              <h4>Spa Revitalizante</h4>
-              <p><strong>Blend de masaje a elección</strong><br/>Incluye máscara facial, descanso y restauración en sala de relax acompañado de merienda saludable.</p>
-              <Link to="*">
-                <button type="button" className="btn">Ver más</button>
-              </Link> 
-            </div>
-            <div className="col contenedor">
-              <img src={promo3} alt="prom3" className="img"/>
-              <h4>Día de Spa Relax</h4>
-              <p><strong>Hidroterapia, Masajes, Facial. Para 2 personas</strong><br/>Una tarde diferente para relajarse, descansar y compartir.</p>
-              <Link to="*">
-                <button type="button" className="btn">Ver más</button>
-              </Link> 
-            </div>
-            <div className="col contenedor">
-              <img src={promo4} alt="prom4" className="img"/>
-              <h4>Mini Day Spa</h4>
-              <p><strong>Masajes + Limpieza Facial</strong><br/>Este paquete incluye un masaje descontracturante y limpieza facial para relajar el cuerpo y renovar la piel.</p>
-              <Link to="*">
-                <button type="button" className="btn">Ver más</button>
-              </Link>
-            </div>
-          </div>
-        </div>  
+      <h2>Promociones Destacadas</h2>
+      <div className='flex'>
+      <Card className="text-center">
+      <Card.Header>PROMO MASAJES</Card.Header>
+      <Card.Body>
+        <Card.Title>Massage Relax</Card.Title>
+        <Card.Img variant="top" src={promo1} className='img' />
+        <Card.Text>
+          Masajes Full Body + Coffee Pause<br/> Este paquete está diseñado para brindarle una experiencia integral de relajación, bienestar y renovación.
+        </Card.Text>
+        <Link to="*">
+        <Button variant="primary">Ver más</Button>
+        </Link>
+      </Card.Body>
+      <Card.Footer className="text-muted">Válida hasta el 15 de noviembre o hasta agotar cupos.</Card.Footer>
+      </Card>
+      </div>
+    <div className='flex'>
+        <Card className="text-center">
+      <Card.Header>PROMO SPA</Card.Header>
+      <Card.Body>
+        <Card.Title>Spa Revitalizante</Card.Title>
+        <Card.Img variant="top" src={promo2} className='img' />
+        <Card.Text>
+          Blend de masaje a elección<br/>Incluye máscara facial, descanso y restauración en sala de relax acompañado de merienda saludable.
+        </Card.Text>
+        <Link to="*">
+        <Button variant="primary">Ver más</Button>
+        </Link>
+      </Card.Body>
+      <Card.Footer className="text-muted">Promo disponible hasta el 15/11 inclusive.</Card.Footer>
+    </Card>
+    </div>
+        <div className='flex'>
+        <Card className="text-center">
+      <Card.Header>PROMO SPA</Card.Header>
+      <Card.Body>
+        <Card.Title>Día de Spa Relax</Card.Title>
+        <Card.Img variant="top" src={promo3} className='img' />
+        <Card.Text>
+          Hidroterapia, Masajes, Facial. Para 2 personas<br/>Una tarde diferente para relajarse, descansar y compartir.
+        </Card.Text>
+        <Link to="*">
+        <Button variant="primary">Ver más</Button>
+        </Link>
+      </Card.Body>
+      <Card.Footer className="text-muted">Promo vigente hasta el 15/11 — ¡no te la pierdas!</Card.Footer>
+    </Card>
+    </div>
+        <div className='flex'>
+        <Card className="text-center">
+      <Card.Header>PROMO DIA DE SPA</Card.Header>
+      <Card.Body>
+        <Card.Title>Mini Day Spa</Card.Title>
+        <Card.Img variant="top" src={promo4} className='img' />
+        <Card.Text>
+          Masajes + Limpieza Facial<br/>Este paquete incluye un masaje descontracturante y limpieza facial para relajar el cuerpo y renovar la piel.
+        </Card.Text>
+        <Link to="*">
+        <Button variant="primary">Ver más</Button>
+        </Link>
+      </Card.Body>
+      <Card.Footer className="text-muted">Promo disponible hasta el 15/11 inclusive.</Card.Footer>
+    </Card>
+    </div>
       </section>
       <section className="publicidad">
       <img src={publicidad50off} alt="publicidad-50-%" id="imgpublicidad"/>
