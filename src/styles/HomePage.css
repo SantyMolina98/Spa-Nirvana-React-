@@ -1,0 +1,21 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.carrusel{
+    width: 100%;
+}
+
+.img{
+    width: 17%;
+    height: 68%;
+    border-radius: 20px;
+}
+
+.flex{
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+}
