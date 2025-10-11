@@ -19,7 +19,7 @@ function Login() {
       e.stopPropagation();
     } else {
       
-      if (user.trim().length >= 3 && user.trim().length <= 18 && password.trim().length >= 6) {
+      if (user.trim().length >= 3 && user.trim().length <= 18 && password.trim().length >= 6 && password.trim().length <= 20)  {
         alert(`Bienvenido/a ${user} a Nirvana Spa & Beauty!`);
         navigate('/'); 
       }
@@ -30,22 +30,21 @@ function Login() {
 
   return (
     <div className="mainLogin">
-        <Card className="cardlogin colorcard">
+        <Card className="cardLogin colorcard">
           <h3 className="colorcard">INICIAR SESIÓN</h3>
           <Card.Body className="bodyCard colorcard">
-            <p className="colorcard">¿Sos nuevo/a? <Link to="/login/registro" className="linklogin colorcard">REGISTRATE</Link></p>
+            <p className="colorcard">¿Sos nuevo/a? <Link to="/login/registro" className="linkLogin colorcard">REGISTRATE</Link></p>
             <Form noValidate validated={validated} className="FormInicioSesion colorcard" onSubmit={ingreso}>
               <Form.Group className="mb-3 colorcard" controlId="formBasicUser">
                 <Form.Label id='usuario' className='textlogin colorcard'>Usuario</Form.Label>
                 <Form.Control aria-label="Username"  aria-describedby="basic-addon1" required type="text" placeholder="Ingrese su usuario"
                   value={user}
                   onChange={(e) => setUser(e.target.value)}
-                  minLength={3}
-                  maxLength={18}
+                  minLength={3} maxLength={18}
                   isInvalid={validated && (user.trim().length < 3 || user.trim().length > 18)}
                   isValid={validated && user.trim().length >= 3 && user.trim().length <= 18}
                 />
-                <Form.Control.Feedback type="invalid">
+                <Form.Control.Feedback type="invalid" className='alerterror'>
                   El usuario debe tener entre 3 y 18 caracteres.
                 </Form.Control.Feedback>
               </Form.Group>
@@ -55,16 +54,16 @@ function Login() {
                 <Form.Control  name='contrasenia' required type="password" placeholder="Ingrese su contraseña"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  minLength={6}
-                  isInvalid={validated && password.trim().length < 6}
-                  isValid={validated && password.trim().length >= 6}
+                  minLength={6} maxLength={20}
+                  isInvalid={validated && (password.trim().length < 6 || password.trim().length > 20)}
+                  isValid={validated && password.trim().length >= 6 && password.trim().length <= 20}
                 />
-                <Form.Control.Feedback type="invalid">
-                  La contraseña debe tener al menos 6 caracteres.
+                <Form.Control.Feedback type="invalid" className='alerterror'>
+                  La contraseña debe tener entre 6 y 20 caracteres.
                 </Form.Control.Feedback>
               </Form.Group>
 
-              <div className="seccionBotones colorcard">
+              <div className="sectorBotones colorcard">
                 <Button variant="primary" type="submit" size="lg" className="botonesLogin">Iniciar Sesión</Button>
                 <Button variant="secondary" size="lg" className="botonesLogin">
                   Continuar con Google

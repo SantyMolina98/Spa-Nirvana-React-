@@ -5,12 +5,13 @@
 
   --color-principallogin: #584738;
   --color-principal2login: #3f3228;
-  --color-secondarylogin: #4c583e;
+  --color-secondarylogin: #be721c;
   --color-terciarylogin: #b59e7d;
-  --color-fourthlogin: #959581;
+  --color-fourthlogin: #f4e8cb;
   --color-fifthlogin: #f1eada;
   --color-sixthlogin: #eec58c;
   --color-seventhlogin: #aa6d3b;
+  --color-eigthlogin: #be1b1b;
 }
 
 .mainLogin{
@@ -38,7 +39,8 @@
 }
 .linkLogin{
   text-decoration: none;
-  color: var(--color-principallogin);
+  font-weight: 600;
+  color: var(--color-secondarylogin);
   margin-left: 0;
 }
 .FormInicioSesion{
@@ -53,6 +55,13 @@ h3{
 }
 .form-check .form-check-label {
   background-color: transparent !important;
+}
+.alerterror{
+  width: auto;
+  border-radius: 10px;
+  padding: 0.2em;
+  background-color: var(--color-fourthlogin);
+  color: var(--color-eigthlogin);
 }
 .sectorBotones{
   width: auto;

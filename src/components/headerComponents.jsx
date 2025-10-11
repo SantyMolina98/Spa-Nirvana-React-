@@ -1,6 +1,7 @@
 import '../App.css';
+import 'bootstrap';
 import '../styles/headerComponent.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import logospaheader from '../assets/Img/logospaheader.png';
 
@@ -53,7 +54,13 @@ function HeaderComponent () {
                 <NavLink to='/turnos'>Turnos</NavLink>
                 <NavLink to='/contacto'>Contáctanos</NavLink>
                 <NavLink to='/nosotros'>Nosotros</NavLink>
-                <NavLink to='/login'>Login</NavLink>
+                <NavDropdown title={<i className="bi bi-person-circle"></i>} id='offcanvasNavbarDropdown-expand-login'>
+                  
+                  <NavDropdown.Item as={Link} to='/login'>Iniciar Sesión</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item as={Link} to='/login/registro'>Registrarme</NavDropdown.Item>
+
+                </NavDropdown>
               </Nav>
               <Form className="d-flex">
                 <Form.Control
