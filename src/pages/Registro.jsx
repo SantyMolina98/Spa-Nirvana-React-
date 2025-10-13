@@ -4,8 +4,9 @@ import 'bootstrap';
 import { Link } from 'react-router-dom';
 
 function Registro () {
+  
   return (
-    <main>
+    <div className='mainRegistro'>
       <h2>CREAR NUEVO USUARIO</h2>
       <div className="CardRegistro">   
         <div className="ContainerRegistro">
@@ -67,7 +68,7 @@ function Registro () {
           </form>
         </div>
       </div>
-  </main>
+  </div>
   )
 }
 

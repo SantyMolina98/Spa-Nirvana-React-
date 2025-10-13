@@ -11,14 +11,14 @@
   --color-a:#c59143;
 }
 
-main{
+.mainRegistro{
   width: 100%;
   height: auto;
   display:flex ;
   flex-wrap: wrap;
   background-color: var(--color-terciary2);
 }
-main h2{
+.mainRegistro h2{
   width: 100%;
   font-weight: 700;
   color: var(--color-principal);
@@ -95,40 +95,7 @@ main h2{
   border-radius: 0.5em;
   border:0.1em solid var(--color-principal);
 }
-/* FOOTER */
-footer .card{
-  color: var(--color-sixth);
-}
-.bi-facebook, .bi-instagram, .bi-tiktok, .bi-twitter-x{
-  color: var(--color-sixth);
-}
-.columna2, .columna3{
-  width: auto;
-}
-.columna2 h5, .columna3 h5{
-  color: var(--color-fifth);
-}
-.columna2 .textofootercol ul li a {
-  width: 100%;
-}
-.columna2 .textofootercol ul li a p{
-  width: 100%;
-  text-align: start;
-  margin-bottom: -1em;
-  color: var(--color-sixth);
-}
-.columna3 .textofootercol ul li a p{
-  
-  text-align: start;
-  margin-bottom: -1em;
-  color: var(--color-sixth);
-}
-.bi-paypal, .bi-linkedin{
-  color: var(--color-fifth);
-}
-.DownText{
-  color: var(--color-fourth);
-}
+
 @media (min-width:320px) and (max-width:425px){
   main h2{
     font-size: 1.4em;
