@@ -3,7 +3,7 @@ import './App.css';
 import HeaderComponents from './components/headerComponents';
 import HomePage from './pages/HomePage';
 import Turnos from './pages/turnos.jsx';
-import { Categorias } from './pages/Categorias.jsx';
+import { Categorias } from './pages/categorias.jsx';
 import Contacto from './pages/contacto.jsx';
 import Nosotros from './pages/nosotros.jsx';
 import Login from './pages/login.jsx';
