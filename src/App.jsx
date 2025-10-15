@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import HeaderComponents from './components/headerComponents';
-import HomePage from './pages/HomePage';
+import HeaderComponents from './components/headerComponents.jsx';
+import HomePage from './pages/HomePage.jsx';
 import Turnos from './pages/turnos.jsx';
 import { Categorias } from './pages/categorias.jsx';
 import Contacto from './pages/contacto.jsx';
