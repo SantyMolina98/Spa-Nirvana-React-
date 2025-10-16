@@ -2,7 +2,11 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-
+  
+ 
+  font-family: "Poppins", sans-serif;
+}
+:root{
   --color-principal: #584738;
   --color-principal2: #3f3228;
   --color-secondary: #4c583e;
@@ -12,10 +16,22 @@
   --color-fifth: #f1eada;
   --color-sixth: #eec58c;
   --color-seventh: #aa6d3b;
-  
-  background-color: var(--color-fifth);
-  font-family: "Poppins", sans-serif;
 }
+/* html, body, #root { 
+  height: 100%; 
+}
+body{
+  background-color: var(--color-fifth);
+}
+.body-page{
+  min-height: 100vh;
+    display: flex;
+  flex-direction: column;
+}
+.main-content{
+  min-height: 100%;
+  flex: 1;
+} */
 
 a {
   text-decoration: none;
@@ -80,20 +96,7 @@ a {
   margin-right: 0;
 }
 
-.login{
-  border: 1px rgba(0, 0, 0, 0) ridge;
-  border-radius: 15em; 
-  padding: 0;
-  margin-left: 2em;
-  width: 60px;
-}
 
-.btnlogin{
-  margin-left: 0.7em;
-}
-.btnloginhover:hover{
-  color: #342d27;
-}
 .navtext:hover{
   background-color: #ffffff4f;
   color: #342d27;
@@ -253,18 +256,7 @@ p {
 }
 
 /* MAIN CARDS */
-.img {
-  width: 20rem;
-  border-radius: 3rem;
-}
 
-.flex {
-  display: flex;
-}
-
-.contenedor {
-  margin: 15px 0px;
-}
 
 /* MAIN ICONOS */
 .wp {
@@ -332,98 +324,11 @@ p {
   object-fit: cover;
 }
 
-/* FOOTER */
-footer {
-  width: 100%;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  background-color: var(--color-principal);
-}
-.img-fluid,
-.rounded-start {
-  width: 400px;
-  height: 230px;
-}
-
-.row,
-.row-cols-1,
-.row-cols-sm-2,
-.row-cols-md-5,
-.py-5,
-.border-top {
-  width: auto;
-  margin: 0;
-}
-footer .card {
-  width: 540px;
-  background-color: var(--color-principal);
-  color: var(--color-fifth);
-  border-style: none;
-}
-.bi-facebook:hover, .bi-instagram:hover, .bi-tiktok:hover, .bi-twitter-x:hover{
-  background-color: var(--color-principal2);
-  border-radius: 1em;
-  padding: 0.1em;
-}
-
-footer .card .RedesIMG{
-  width: 230px;
-  display: flex;
-  justify-content: space-between;
-}
-.RedesIMG .redes{
-  margin:0;
-}
-.bi-facebook, .bi-instagram, .bi-tiktok, .bi-twitter-x{
-  width: 50px;
-  height: 30px;
-  color: var(--color-sixth);
-}
-.columna2 .textofootercol ul li a p:hover, .columna3 .textofootercol ul li a p:hover{
-  background-color: var(--color-principal2);
-  border-radius: 0.5em;
-}
-.nav,
-.justify-content-center,
-.border-bottom,
-.pb-3,
-.mb-3 {
-  width: auto;
-  height: auto;
-  color: var(--color-fifth);
-}
-.text-center,
-.text-body-secondary {
-  width: auto;
-}
-.mb-2 .nav-link {
-  color: var(--color-fifth);
-}
-#dr {
-  margin-top: 4em;
-}
-.columna2,
-.columna3 {
-  width: auto;
-}
-.textofootercol ul li p {
-  margin-left: 0;
-  margin-bottom: -1em;
-  text-align: start;
-  color: var(--color-sixth);
-}
-.DownText {
-  width: 100%;
-  color: var(--color-fourth);
-  margin-bottom: -3em;
-}
-
  @media (min-width:375px) and (max-width:425px){
-  header .cajaflexible{
+  .cajaflexible{
     display: none;
   }
-  header .cajaflexible .navbar-toggler{
+  .cajaflexible .navbar-toggler{
     margin-left: -5em;
   }
   .nav-item .dropdown-menu  {
@@ -440,166 +345,16 @@ footer .card .RedesIMG{
 .login .btnlogin{
   margin-left: 2em;
 }
-  footer .card {
-    width: 100%;
-  }
-  footer .card .row {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 50% 50%;
-  }
-  .card h5 {
-    font-size: 1em;
-  }
-  .col-md-4 .img-fluid,
-  .col-md-4 .rounded-start {
-    width: 120px;
-    height: 120px;
-  }
-  footer .card .RedesIMG{
-    width: 160px;
-  }
-  .bi-facebook,
-  .bi-instagram,
-  .bi-tiktok,
-  .bi-twitter-x {
-    width: 20px;
-    height: 20px;
-  }
-  .columna2 {
-    width: 100%;
-    text-align: center;
-    font-size: 0.8em;
-  }
-  .columna2 h5 {
-    font-size: 1em;
-  }
-  .columna3 {
-    width: 100%;
-    text-align: center;
-    font-size: 0.8em;
-  }
-  .columna3 h5 {
-    font-size: 1em;
-  }
-  .textofootercol ul li p {
-    text-align: center;
-  }
-  .mediopago,
-  .bi-paypal {
-    width: 20px;
-  }
-  .DownText {
-    font-size: 0.8em;
-  }
 }
 @media (min-width: 600px) and (max-width: 768px) {
   .navbar-toggler, .btndesplegable{
     margin-left: -5em;
   }
-  .row,
-  .row-cols-1,
-  .row-cols-sm-2,
-  .row-cols-md-5,
-  .py-5,
-  .py-3,
-  .border-top {
-    margin-top: 0;
-    display: flex;
-  }
-  footer .card {
-    width: 50%;
-    text-align: center;
-  }
-  .card h5 {
-    font-size: 1.1em;
-  }
-  .col-md-4 .img-fluid,
-  .col-md-4 .rounded-start {
-    width: 120px;
-    height: 120px;
-  }
   
-  .bi-facebook,
-  .bi-instagram,
-  .bi-tiktok,
-  .bi-twitter-x {
-    width: 30px;
-    height: 20px;
-  }
-  .columna2 {
-    text-align: center;
-    font-size: 0.9em;
-    width: 50%;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .columna2 h5 {
-    font-size: 1em;
-  }
-  .columna3 {
-    text-align: center;
-    width: 100%;
-    font-size: 0.9em;
-  }
-  .columna3 h5 {
-    font-size: 1em;
-  }
-  .textofootercol ul li p {
-    text-align: center;
-  }
-  .mediopago,
-  .bi-paypal {
-    width: 20px;
-  }
 }
 
 @media (min-width: 800px) and (max-width: 1024px) {
   .navbar-nav .nav-item .nav-link{
     margin-right: -1.2em;
-  }
-  footer .card {
-    width: 50%;
-    text-align: center;
-  }
-  .card h5 {
-    font-size: 1.2em;
-  }
-  .col-md-4 .img-fluid,
-  .col-md-4 .rounded-start {
-    width: 130px;
-    height: 130px;
-  }
-  .bi-facebook,
-  .bi-instagram,
-  .bi-tiktok,
-  .bi-twitter-x {
-    width: 20px;
-    height: 20px;
-  }
-  .columna2 {
-    text-align: center;
-    font-size: 0.9em;
-  }
-  .columna2 h5 {
-    font-size: 1.1em;
-  }
-  .columna3 {
-    width: 100%;
-    text-align: center;
-    font-size: 0.8em;
-  }
-  .columna3 h5 {
-    font-size: 1.1em;
-  }
-  .textofootercol ul li p {
-    text-align: center;
-  }
-  .mediopago,
-  .bi-paypal {
-    width: 20px;
-  }
-  .DownText {
-    font-size: 0.9em;
   }
 }

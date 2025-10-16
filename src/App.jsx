@@ -9,7 +9,7 @@ import Nosotros from './pages/nosotros.jsx';
 import Login from './pages/login.jsx';
 import Registro from './pages/registro.jsx';
 import PaginaError from './pages/PaginaError.jsx';
-import Footer from './components/footer.jsx';
+import FooterComponent from './components/footer.jsx';
 
 
 
@@ -18,8 +18,9 @@ function App() {
   return (
     <>
     <BrowserRouter>
+    <div className="body-page">
       <HeaderComponents/>
-      
+      <main className='main-content'>
         <Routes>
           <Route path='/' element={<HomePage/>}/>
           <Route path='/turnos' element={<Turnos/>}/>
@@ -30,8 +31,9 @@ function App() {
           <Route path='/login/registro' element={<Registro/>}/>
           <Route path='*' element={<PaginaError/>}/>
         </Routes>
-    
-      <Footer/>
+        </main>
+      <FooterComponent/>
+      </div>
     </BrowserRouter>
     </>
   )

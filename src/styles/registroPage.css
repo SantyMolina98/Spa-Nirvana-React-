@@ -1,14 +1,10 @@
 *{
-  --color-principal:#584738;
-  --color-secondary:#4c583e;
-  --color-terciary:#B59E7D;
-  --color-terciary2:#ebd5b6;
-  --color-fourth:#959581;
-  --color-fifth:#f1eada;
-  --color-sixth: #eec58c;
-  --color-btn:#cea878;
-  --color-input2:#745c3d;
-  --color-a:#c59143;
+  --color-principalReg:#584738;
+  --color-terciaryReg:#ebd5b6;
+  --color-fourthReg:#959581;
+  --color-btnReg:#cea878;
+  --color-inputReg:#745c3d;
+  --color-aReg:#c59143;
 }
 
 .mainRegistro{
@@ -16,23 +12,23 @@
   height: auto;
   display:flex ;
   flex-wrap: wrap;
-  background-color: var(--color-terciary2);
+  background-color: var(--color-terciaryReg);
 }
-.mainRegistro h2{
+.h2Reg{
   width: 100%;
   font-weight: 700;
-  color: var(--color-principal);
+  color: var(--color-principalReg);
 }
 .CardRegistro{
   width: 100%;
-  margin: 0;
+
   display: flex;
   flex-wrap: wrap;
   text-align: start;
   justify-content: center;
-  margin-bottom: 3em;
+  
 }
-.ContainerRegistro h4{
+.h4Reg{
   width: 100%;
   text-align: center;
   font-weight: 550;
@@ -41,14 +37,14 @@
   width: auto;
   padding: 1em;
   margin-top: 0;
-  background-color: var(--color-a);
+  background-color: var(--color-aReg);
   border-radius: 1em;
   
 }
 #Nombre, #Apellido, #newuser, #E-mail, #domicilio, #selectciudad, #cp, #contraseña2{
   padding: 0.2em;
   border-radius: 0.5em;
-  border: 0.15em solid var(--color-input2);
+  border: 0.15em solid var(--color-inputReg);
   margin-bottom: 0.4em;
   width: 90%;
 }
@@ -59,17 +55,17 @@
 #firsttelefono{
   padding: 0.2em;
   border-radius: 0.5em;
-  border: 0.15em solid var(--color-input2);
+  
   margin-bottom: 0.4em;
-  width: 13%;
+  width: auto;
 }
 
 #telefono{
   padding: 0.2em;
   border-radius: 0.5em;
-  border: 0.15em solid var(--color-input2);
+  border: 0.15em solid var(--color-inputReg);
   margin-bottom: 0.4em;
-  width: 77%;
+  width:auto;
 }
 .TextReg{
   font-size:large ;
@@ -80,45 +76,44 @@
 }
 .BotonR{
   width: 200px;
-  margin-left: -3.5em;
+ 
   margin-top: 1em;
-  background-color: var(--color-btn);
+  background-color: var(--color-btnReg);
   padding: 0.2em;
   border-radius: 0.5em;
-  border:0.1em solid var(--color-principal);
+  border:0.1em solid var(--color-principalReg);
 }
 .BotonR:hover{
   margin-top: 1em;
-  background-color: var(--color-principal);
+  background-color: var(--color-principalReg);
   color: var(--color-fourth);
   padding: 0.2em;
   border-radius: 0.5em;
-  border:0.1em solid var(--color-principal);
+  border:0.1em solid var(--color-principalReg);
 }
 
 @media (min-width:320px) and (max-width:425px){
-  main h2{
+   .h2Reg{
     font-size: 1.4em;
   }
-  main{
-    margin-left: 0;
-    margin-right: 0;
+  .mainRegistro{
+   
     
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  main .CardRegistro{
+   .CardRegistro{
     width: 80%;
   }
   .ContainerRegistro{
     width: 100%;
   }
-  .ContainerRegistro h4{
+  .h4Reg{
     font-size: 1.2em;
     width: 100%;
-    margin-left:0 ;
+    
     text-align: center;
   }
   .TextReg, #Recordar{
@@ -147,40 +142,18 @@
   .BotonR{
     width: 300px;
     margin: 0;
-    background-color: var(--color-input2);
-    color: var(--color-btn);
+    background-color: var(--color-inputReg);
+    color: var(--color-btnReg);
   }
-  footer .columna2{
-    width: 100%;
-  }
-  footer .columna2 .textofootercol ul li a{
-    margin-left: 0;
-    margin-right: 0;
-  }
-  footer .columna2 .textofootercol ul li p{
-    
-    text-align: center;
-  }
-  footer .columna3{
-    width: 100%;
-  }
-   footer .columna3 .textofootercol ul li a{
-    margin-left: 0;
-    margin-right: 0;
-  }
-  footer .columna3 .textofootercol ul li p{
-    
-    text-align: center;
-  }
+  
 }
 @media (min-width:600px) and (max-width:768px){
-  main h2{
+   .h2Reg{
     font-size: 1.5em;
   }
-  .ContainerRegistro h4{
+  .h4Reg{
     font-size: 1.2em;
     width: 100%;
-    margin-left:0 ;
     text-align: center;
   }
   .TextReg, #Recordar{
@@ -209,40 +182,18 @@
   .BotonR{
     width: 300px;
     margin: 0;
-    background-color: var(--color-input2);
-    color: var(--color-btn);
+    background-color: var(--color-inputReg);
+    color: var(--color-btnReg);
   }
-  footer .columna2{
-    width: 50%;
-  }
-  footer .columna2 .textofootercol ul li a{
-    margin-left: 0;
-    margin-right: 0;
-  }
-  footer .columna2 .textofootercol ul li p{
-    
-    text-align: center;
-  }
-  footer .columna3{
-    width: 100%;
-  }
-   footer .columna3 .textofootercol ul li a{
-    margin-left: 0;
-    margin-right: 0;
-  }
-  footer .columna3 .textofootercol ul li p{
   
-    text-align: center;
-  }
 }
 @media (min-width:900px) and (max-width:1024px){
-  main h2{
+   .h2Reg{
     font-size: 1.6em;
   }
-  .ContainerRegistro h4{
+  .h4Reg{
     font-size: 1.3em;
     width: 100%;
-    margin-left:0 ;
     text-align: center;
   }
   .TextReg, #Recordar{
@@ -270,30 +221,8 @@
   }
   .BotonR{
     width: 300px;
-    margin: 0;
-    background-color: var(--color-input2);
-    color: var(--color-btn);
-  }
-  footer .columna2{
-    width: 50%;
-  }
-  footer .columna2 .textofootercol ul li a{
-    margin-left: 0;
-    margin-right: 0;
-  }
-  footer .columna2 .textofootercol ul li p{
-    width: 100%;
-    text-align: center;
-  }
-  footer .columna3{
-    width: 100%;
-  }
-   footer .columna3 .textofootercol ul li a{
-    margin-left: 0;
-    margin-right: 0;
-  }
-  footer .columna3 .textofootercol ul li p{
-    width: 100%;
-    text-align: center;
+  
+    background-color: var(--color-inputReg);
+    color: var(--color-btnReg);
   }
 }

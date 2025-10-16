@@ -46,10 +46,10 @@ function Registro () {
   
   return (
     <div className='mainRegistro'>
-      <h2>CREAR NUEVO USUARIO</h2>
+      <h2 className='h2Reg'>CREAR NUEVO USUARIO</h2>
       <Card className="CardRegistro">   
         <Card.Body className="ContainerRegistro">
-          <h4>Ahora ingrese sus datos</h4> 
+          <h4  className='h4Reg'>Ahora ingrese sus datos</h4> 
           <Form noValidate validated={validatedReg} className="FormRegistro" onSubmit={registrar}>
             <Form.Group>
               <Form.Label for="Nombre" name="Nombre" className="TextReg">Nombre:</Form.Label>

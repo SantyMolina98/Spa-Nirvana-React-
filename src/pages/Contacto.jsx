@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function Contacto () {
   return (
-     <main>
+     <>
         <section id="ContainerMapa">
           <div className="Mapa">
             <h2 id="Contacto"> Vias de acceso para llegar a <br/> Nirvana Spa</h2>
@@ -49,7 +49,7 @@ function Contacto () {
               </article>
           </div>
         </section>   
-     </main>
+     </>
   )
 }
 export default Contacto;
