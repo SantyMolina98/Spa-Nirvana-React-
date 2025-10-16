@@ -15,8 +15,10 @@ import grid1tratamientos from '../assets/Img/grid1tratamientos.jpg';
 import grid2masajes from '../assets/Img/grid2masajes.jpg';
 import grid3rituales from '../assets/Img/grid3rituales.jpg';
 
+
 function HomePage () {
   return (
+    <>
     <main>
       <section>
       <Carousel fade>
@@ -133,6 +135,8 @@ function HomePage () {
         </div>
       </section>
     </main>
+    
+    </>
   )
 }
 export default HomePage;
