@@ -1,13 +1,12 @@
 import '../App.css';
 import '../styles/turnosPages.css';
-import 'bootstrap';
 import { Link } from 'react-router-dom';
 import Fondologinturnos1 from '../assets/Img/Fondologinturnos1.png';
 import TI1 from '../assets/Img/TI1.jpg';
 
 function Turnos () {
   return (
-    <main>
+    <div className='MainT'>
     <section className="sectioncombos">
         <h2 id="Texturno">Reserva tu turno</h2>
         <form id="formuselec">
@@ -22,7 +21,7 @@ function Turnos () {
           </div>
           <div className="input-group">
             <label className="input-group-text" for="inputGroupSelect01">DIA</label>
-            <select className="form-select" id="servicio">
+            <select className="form-select" id="dia">
               <option selected>SELECCIONAR</option>
               <option value="1">LUNES</option>
               <option value="2">JUEVES</option>
@@ -31,7 +30,7 @@ function Turnos () {
           </div>
           <div className="input-group mb-3">
             <label className="input-group-text" for="inputGroupSelect01">HORARIO</label>
-            <select className="form-select" id="servicio">
+            <select className="form-select" id="horario">
               <option selected>SELECCIONAR</option>
               <option value="1">10 AM</option>
               <option value="2">15 PM</option>
@@ -39,8 +38,8 @@ function Turnos () {
             </select>
             </div>
         <div className="input-group">
-           <span className="input-group-text" id="tamaño">Total a Pagar:</span>
-          <span className="input-group-text" id="tamaño">$ 105.000</span>
+           <span className="input-group-text" id="total-pagar">Total a Pagar:</span>
+          <span className="input-group-text" id="precio-total">$ 105.000</span>
         </div>
       </form>
     </section>
@@ -75,15 +74,15 @@ function Turnos () {
     <section id="reserva">
       <article>
         <div className="actions">
-          <p id="texsoli">Resumen de solicitud:</p>
+          <p id="resumen-solicitud">Resumen de solicitud:</p>
           <p id="texsoli">Masajes corporales; duración de sesion 60 min.
             Profesional asignado: Liliana Rodriguez</p>
           <Link to="*" className="btn btn-confirm" id="confboton"> Confirmar </Link>
-          <Link to="*" className="btn btn-back" id="confboton">Volver</Link>
+          <Link to="*" className="btn btn-back" id="volver-btn">Volver</Link>
         </div>
       </article>
     </section>
-  </main>
+  </div>
   )
 }
 export default Turnos;
