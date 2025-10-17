@@ -108,18 +108,7 @@ color: rgb(82, 58, 11);
 
   iframe {
     width: 80%;
-  } */
-
-  */ #direccion {
-    margin-top: 10px;
-    padding: auto;
-  }
-
-  */ #ContainerMapa {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
+  } 
 }
 
 @media (max-width:768px) {

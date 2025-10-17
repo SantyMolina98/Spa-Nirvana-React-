@@ -1,5 +1,8 @@
 
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     --color-sixth: #f1eada;
     --color-input: rgb(82, 58, 11);
     --color-background: #f1eada;
@@ -7,15 +10,7 @@
     --color-sixth: #eec58c;
 }
 
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-main {
+.mainNos {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -29,7 +24,7 @@ main {
 }
 
 
-main h1, h3 {
+.h1Nos , .mainh {
     width: 100%;
     text-align: center;
     font-weight: 600;
@@ -37,13 +32,17 @@ main h1, h3 {
     margin: 30px;
 }
 
-main h1 {
+.h1Nos {
     font-size: clamp(30px, 6vw, 50px);
     margin-bottom: 20px;
     font-style:oblique;
 }
 
-main .card-section {
+.logoarticle {
+  width: 10%;
+}
+
+.card-section {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -51,7 +50,8 @@ main .card-section {
 
 }
 
-main .card-section .card {
+.cardNos {
+     height: 32em;
     display: flex;
     align-items: center;
     width: 100%;
@@ -66,7 +66,7 @@ main .card-section .card {
     overflow: hidden;
 }
 
-main .card-section .card img {
+.fotoNos {
     max-width: 180px;
     width: 180px;
     height: 180px;
@@ -78,19 +78,14 @@ main .card-section .card img {
 }
 
 
-main .card h2 {
+.h2Nos {
     font-size: clamp(18px, 4vw, 30px);
     font-weight: 600;
     color:  rgb(82, 58, 11);
     margin-top: 5px;
 }
 
-
-main .card {
-    height: 32em;
-}
-
-main .card p {
+.descripcionNos {
     font-size: clamp(12px, 2vw, 14px);
     font-weight: 200;
     margin-top: 10px;
@@ -102,12 +97,11 @@ main .card p {
 }
 
 
-main .card-section .card:hover img {
-
-    transform: scale(1.05) translateX(-20%) scale(1.05);
+.cardNos:hover .fotoNos {
+  transform: scale(1.05) translateX(-20%) scale(1.05);
 }
 
-main .card ul { 
+.ulNos { 
     margin-top: 20px; 
     display: flex; 
     flex-direction: row; 
@@ -115,7 +109,7 @@ main .card ul {
     list-style: none;
 }
 
-main .card ul li {
+.liNos {
     list-style: none;
     display: inline-block;
     margin: 0;
@@ -123,7 +117,7 @@ main .card ul li {
     
 }
 
-main .card ul li a {
+.fa {
     text-decoration: none;
     color: white;
     background:  rgb(82, 58, 11);
@@ -137,7 +131,7 @@ main .card ul li a {
     font-size: 20px;
 }
 
-main .card ul li a:hover {
+.fa:hover {
     transform: scale(1.2);
     color: white;
     background: rgb(82, 58, 11);
@@ -145,12 +139,12 @@ main .card ul li a:hover {
 
 
 @media (max-width: 992px) {
-    main {
+    .mainNos {
         padding: 30px 15px;
         gap: 30px;
     }
 
-    main .card-section .card {
+    .cardNos {
 
         flex-direction: column;
         text-align: center;
@@ -159,7 +153,7 @@ main .card ul li a:hover {
         align-items: center;
     }
 
-    main .card-section .card img {
+    .fotoNos {
 
         margin: -80px auto 20px auto;
         width: 150px;
@@ -167,13 +161,13 @@ main .card ul li a:hover {
         transform: none;
     }
 
-    main .card-section .card p {
+    .descripcionNos {
         max-width: 80%;
         margin-left: auto;
         margin-right: auto;
     }
 
-    main .card-section .card:hover img {
+   .cardNos:hover .fotoNos {
         transform: scale(1.05) translateX(-20%);
     }
 
@@ -181,29 +175,29 @@ main .card ul li a:hover {
 
 /* Para pantallas pequeñas (ej. celulares) */
 @media (max-width: 600px) {
-    main {
+    .mainNos {
         padding: 20px 10px;
         gap: 20px;
     }
 
-    main .card-section .card {
+    .cardNos {
 
         max-width: 400px;
         padding-top: 110px
     }
 
-    main .card-section .card img {
+    .fotoNos {
         width: 120px;
         height: 120px;
         margin: -60px auto 15px auto;
     }
 
-    main .card-section .card h2 {
+    .h2Nos {
         font-size: 20px;
     }
 
 
-    main .card-section .card p {
+    .descripcionNos {
         font-size: 12px;
         margin-bottom: 15px;
     }
@@ -212,18 +206,18 @@ main .card ul li a:hover {
 
 /* Para pantallas pequeñas (ej. celulares) */
 @media (max-width: 600px) {
-    main {
+    .mainNos {
         padding: 20px 10px;
         gap: 20px;
     }
 
-    main .card-section .card {
+    .cardNos {
         padding: 15px;
         padding-top: 90px;
 
     }
 
-    main .card-section .card img {
+    .fotoNos {
 
         width: 120px;
         height: 120px;
@@ -231,12 +225,12 @@ main .card ul li a:hover {
 
     }
 
-    main .card-section .card h2 {
+    .h2Nos {
         font-size: 20px;
     }
 
 
-    main .card-section .card p {
+    .descripcionNos {
         font-size: 12px;
         margin-bottom: 15px;
     }

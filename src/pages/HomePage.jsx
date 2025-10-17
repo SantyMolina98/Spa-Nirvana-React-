@@ -1,6 +1,6 @@
-import {Link} from 'react-router-dom';
 import '../App.css';
 import '../styles/HomePage.css';
+import {Link} from 'react-router-dom';
 import {Carousel, Image, Card, Button} from 'react-bootstrap';
 import banner1 from '../assets/Img/banner1.jpg';
 import banner2 from '../assets/Img/banner2.jpg';
