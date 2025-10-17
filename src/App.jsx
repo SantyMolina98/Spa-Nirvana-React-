@@ -18,9 +18,9 @@ function App() {
   return (
     <>
     <BrowserRouter>
-    <div className="body-page">
+    
       <HeaderComponents/>
-      <main className='main-content'>
+     
         <Routes>
           <Route path='/' element={<HomePage/>}/>
           <Route path='/turnos' element={<Turnos/>}/>
@@ -30,10 +30,9 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/login/registro' element={<Registro/>}/>
           <Route path='*' element={<PaginaError/>}/>
-        </Routes>
-        </main>
-      <FooterComponent/>
-      </div>
+        </Routes> 
+        <FooterComponent/>
+       
     </BrowserRouter>
     </>
   )

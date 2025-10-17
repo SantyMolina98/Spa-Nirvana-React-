@@ -1,17 +1,17 @@
 import '../App.css';
 import '../styles/turnosPages.css';
-/* import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Fondologinturnos1 from '../assets/Img/Fondologinturnos1.png';
-import TI1 from '../assets/Img/TI1.jpg'; */
+import TI1 from '../assets/Img/TI1.jpg';
 
 function Turnos () {
   return (
-    {/* <div className='MainT'>
+    <div className='MainT'>
     <section className="sectioncombos">
         <h2 id="Texturno">Reserva tu turno</h2>
         <form id="formuselec">
           <div className="input-group">
-            <label className="input-group-text" for="servicio">SERVICIO</label>
+            <label className="input-group-text" htmlFor="servicio">SERVICIO</label>
             <select className="form-select" id="servicio">
               <option defaultValue={'SELECCIONAR SERVICIO'}> SELECCIONAR</option>
               <option value="1">SERVICIO DE MASAJES </option>
@@ -20,7 +20,7 @@ function Turnos () {
             </select>
           </div>
           <div className="input-group">
-            <label className="input-group-text" for="dia">DIA</label>
+            <label className="input-group-text" htmlFor="dia">DIA</label>
             <select className="form-select" id="dia">
               <option defaultValue={'SELECCIONAR DIA'}>SELECCIONAR</option>
               <option value="1">LUNES</option>
@@ -29,7 +29,7 @@ function Turnos () {
             </select>
           </div>
           <div className="input-group mb-3">
-            <label className="input-group-text" for="horario">HORARIO</label>
+            <label className="input-group-text" htmlFor="horario">HORARIO</label>
             <select className="form-select" id="horario">
               <option defaultValue={'SELECCIONAR HORARIO'}>SELECCIONAR</option>
               <option value="1">10 AM</option>
@@ -82,7 +82,7 @@ function Turnos () {
         </div>
       </article>
     </section>
-  </div> */}
+  </div>
   )
 }
 export default Turnos;
