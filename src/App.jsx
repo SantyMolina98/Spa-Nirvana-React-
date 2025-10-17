@@ -9,7 +9,7 @@ import Nosotros from './pages/nosotros.jsx';
 import Login from './pages/login.jsx';
 import Registro from './pages/registro.jsx';
 import PaginaError from './pages/PaginaError.jsx';
-import FooterComponent from './components/footer.jsx';
+import FooterComponent from './components/FooterComponent.jsx';
 
 
 
@@ -31,8 +31,9 @@ function App() {
           <Route path='/login/registro' element={<Registro/>}/>
           <Route path='*' element={<PaginaError/>}/>
         </Routes> 
-        <FooterComponent/>
-       
+    
+    <FooterComponent/>     
+    
     </BrowserRouter>
     </>
   )

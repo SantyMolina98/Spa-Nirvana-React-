@@ -1,4 +1,4 @@
-
+import '../App.css';
 import '../styles/footer.css';
 /*  import { Link } from 'react-router-dom';
 import logospafooter from '../assets/Img/logospafooter.png';
