@@ -101,7 +101,7 @@ function FooterComponent (){
           <a href="https://web.whatsapp.com/" className="visitado" target="_blank"><i className="bi bi-whatsapp"></i></a>
         </div>
       </footer>  */}
-      <footer className='footer-content'>
+      <footer className='d-flex align-content-start flex-wrap footer-content'>
         <p>este es el footer</p>
       </footer>
     </>
