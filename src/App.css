@@ -17,6 +17,15 @@
   --color-sixth: #eec58c;
   --color-seventh: #aa6d3b;
 }
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100vw;
+}
 /* html, body, #root { 
   height: 100%; 
 }
