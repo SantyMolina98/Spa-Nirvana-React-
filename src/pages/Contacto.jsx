@@ -41,7 +41,7 @@ function Contacto () {
                     <textarea className="form-control" id="textarea-contacto" rows="3"></textarea>       
                 </div>
                 <div>
-                  <Link to="*"><Button type='button' className='btn'>Enviar</Button></Link>
+                  <Link to="*"><Button type='button' className='btnContacto'>Enviar</Button></Link>
                 </div>
               </article>
           </div>

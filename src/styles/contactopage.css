@@ -98,6 +98,18 @@ color: rgb(82, 58, 11);
   justify-content: center;
 
 }
+.btnContacto {
+  background-color: var(--color-principal);
+  color: var(--color-fifth);
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.btnContacto:hover {
+  background-color: var(--color-terciary);
+  color: var(--color-fifth);
+  transform: scale(1.05);
+}
 
 @media (max-width:425px) {
   .mapa {

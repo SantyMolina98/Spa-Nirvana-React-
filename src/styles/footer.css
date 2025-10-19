@@ -9,7 +9,8 @@
 .footer-content {
   width: 100%;
   height: auto;
-
+  position: sticky;
+  top: 100vh;
   background-color: var(--color-principalfooter);
 }
 

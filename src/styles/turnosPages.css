@@ -8,6 +8,13 @@
   --color-fourth: #959581;
   --color-fifth: #f1eada;
 }
+.MainT{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
 .sectioncombos {
   margin: 2px;
@@ -88,6 +95,19 @@
   flex-direction: column;
   width: 100%;
   padding: 12px;
+}
+
+.btnTurnos {
+  background-color: var(--color-principal);
+  color: var(--color-fifth);
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.btnTurnos:hover {
+  background-color: var(--color-terciary);
+  color: var(--color-fifth);
+  transform: scale(1.05);
 }
 
 @media (max-width: 425px){

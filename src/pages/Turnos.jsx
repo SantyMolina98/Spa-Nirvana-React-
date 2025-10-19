@@ -53,7 +53,7 @@ function Turnos () {
                 <h5 className="card-title">Servicio de Masajes</h5>
                 <p className="card-text">Sumérgete en un oasis de calma y renueva tu energía con nuestros masajes
                   terapéuticos reparadores. Renovacion completa garantizada </p>
-                <Link to="*" className="btn">Eliminar turno</Link>
+                <Link to="*" className="btnTurnos">Eliminar turno</Link>
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@ function Turnos () {
                 <h5 className="card-title">Servicio Faciales</h5>
                 <p className="card-text">Experimenta la revitalización profunda de tu piel con nuestros tratamientos
                   faciales exclusivos. Diseñados para cada tipo de piel.</p>
-                <Link to="*" className="btn">Eliminar turno</Link>
+                <Link to="*" className="btnTurnos">Eliminar turno</Link>
               </div>
             </div>
         </div>
@@ -77,8 +77,8 @@ function Turnos () {
           <p id="resumen-solicitud">Resumen de solicitud:</p>
           <p id="texsoli">Masajes corporales; duración de sesion 60 min.
             Profesional asignado: Liliana Rodriguez</p>
-          <Link to="*" className="btn btn-confirm" id="confboton"> Confirmar </Link>
-          <Link to="*" className="btn btn-back" id="volver-btn">Volver</Link>
+          <Link to="*" className="btnTurnos btn-confirm" id="confboton"> Confirmar </Link>
+          <Link to="*" className="btnTurnos btn-back" id="volver-btn">Volver</Link>
         </div>
       </article>
     </section>
