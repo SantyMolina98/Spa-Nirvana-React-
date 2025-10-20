@@ -6,7 +6,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import logospaheader from '../assets/Img/logospaheader.png';
 
-function HeaderComponent () {
+function HeaderComponent (logIn, logOut, auth) {
   return (
     <>
       <Navbar key='lg' expand='lg'>
@@ -57,9 +57,13 @@ function HeaderComponent () {
                 <NavLink to='/nosotros'>Nosotros</NavLink>
                 <NavDropdown title={<i className="bi bi-person-circle"></i>} id='offcanvasNavbarDropdown-expand-login'>
                   
-                  <NavDropdown.Item as={Link} to='/login'>Iniciar Sesión</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/login'>
+                    <Button onClick={() => auth ? logOut() : logIn()}
+                      {...auth ? 'Cerrar Sesión' : 'Iniciar Sesión'}
+                    ></Button> 
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item as={Link} to='/login/registro'>Registrarme</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/login/registro'><Button>Registrarme</Button></NavDropdown.Item>
 
                 </NavDropdown>
               </Nav>

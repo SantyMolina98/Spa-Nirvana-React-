@@ -8,7 +8,7 @@ import Gene from '../assets/Img/Gene.png';
 
 function Nosotros  ()  {
   return (
-    <main className='mainNos'>
+    <div className='mainNos'>
       <div className="centrado">
         <h1 className='h1Nos'>NIRVANA Spa & Beauty</h1>
         <img src={logospaheader} alt="logo" className="logoarticle" />
@@ -86,7 +86,7 @@ function Nosotros  ()  {
       </div>
       </div>
     </section>
-  </main>
+  </div>
   )
 }
 

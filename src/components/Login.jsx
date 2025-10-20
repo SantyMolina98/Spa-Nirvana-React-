@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import '../App.css';
 import '../styles/loginpage.css';
 import { Button, Card, Form } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 function Login() {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [validated, setValidated] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { login } = useContext(UserContext);
 
-  const ingreso = (e) => {
+  const ingreso = async (e) => {
     e.preventDefault();
 
     const form = e.currentTarget;
@@ -18,10 +21,15 @@ function Login() {
     if (form.checkValidity() === false) {
       e.stopPropagation();
     } else {
-      
       if (user.trim().length >= 3 && user.trim().length <= 18 && password.trim().length >= 6 && password.trim().length <= 20)  {
-        alert(`Bienvenido/a ${user} a Nirvana Spa & Beauty!`);
-        navigate('/'); 
+        try {
+          setError(null);
+          await login({ username: user.trim(), password: password.trim() });
+          navigate('/');
+        } catch (err) {
+          console.error(err);
+          setError(err.message || 'Error al iniciar sesión');
+        }
       }
     }
 
@@ -29,6 +37,7 @@ function Login() {
   };
 
   return (
+    <>
     <div className="mainLogin">
         <Card className="cardLogin colorcard">
           <h3 className="colorcard">INICIAR SESIÓN</h3>
@@ -74,6 +83,8 @@ function Login() {
         </Card>
       
     </div>
+    </>
+    
   );
 }
 
