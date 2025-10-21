@@ -3,10 +3,16 @@ import '../App.css';
 import 'bootstrap';
 import '../styles/headerComponent.css';
 import { NavLink, Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
+import { UserContext } from '../context/UserContext';
 import logospaheader from '../assets/Img/logospaheader.png';
 
-function HeaderComponent (logIn, logOut, auth) {
+function HeaderComponent () {
+  const { user, logout, isAuthenticated } = useContext(UserContext);
+  const navigate = useNavigate();
+
   return (
     <>
       <Navbar key='lg' expand='lg'>
@@ -56,15 +62,19 @@ function HeaderComponent (logIn, logOut, auth) {
                 <NavLink to='/contacto'>Contáctanos</NavLink>
                 <NavLink to='/nosotros'>Nosotros</NavLink>
                 <NavDropdown title={<i className="bi bi-person-circle"></i>} id='offcanvasNavbarDropdown-expand-login'>
-                  
-                  <NavDropdown.Item as={Link} to='/login'>
-                    <Button onClick={() => auth ? logOut() : logIn()}
-                      {...auth ? 'Cerrar Sesión' : 'Iniciar Sesión'}
-                    ></Button> 
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item as={Link} to='/login/registro'><Button>Registrarme</Button></NavDropdown.Item>
-
+                  {!isAuthenticated ? (
+                    <>
+                      <NavDropdown.Item as={Link} to='/login'>Iniciar Sesión</NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item as={Link} to='/login/registro'>Registrarme</NavDropdown.Item>
+                    </>
+                  ) : (
+                    <>
+                      <NavDropdown.ItemText>Hola, {user?.username || 'Usuario'}</NavDropdown.ItemText>
+                      
+                      <NavDropdown.Item as="button" onClick={() => { logout(); navigate('/'); }}>Cerrar Sesión</NavDropdown.Item>
+                    </>
+                  )}
                 </NavDropdown>
               </Nav>
               <Form className="d-flex">

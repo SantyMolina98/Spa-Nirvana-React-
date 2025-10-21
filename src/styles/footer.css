@@ -14,7 +14,7 @@
   background-color: var(--color-principalfooter);
 }
 
-/* .img-fluid,
+ .img-fluid,
 .rounded-start {
   width: 400px;
   height: 230px;
@@ -24,7 +24,6 @@
 .row-cols-1,
 .row-cols-sm-2,
 .row-cols-md-5,
-.py-5,
 .border-top {
   width: auto;
   margin: 0;
@@ -81,9 +80,8 @@
 .columna3 {
   width: auto;
 }
-.textofootercol ul li p {
-  margin-left: 0;
-  
+.items-footer {
+  margin-left: 0; 
   text-align: start;
   color: var(--color-fourthfooter);
 }
@@ -91,4 +89,4 @@
   width: 100%;
   color: var(--color-fifthfooter);
   
-} */
+}

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 export const UserContext = createContext();
 
@@ -40,10 +40,10 @@ export function UserProvider({ children }) {
     }
 
     // Simular delay
-    await new Promise((r) => setTimeout(r, 400));
+    await new Promise((r) => setTimeout(r, 2000));
 
     // En una app real, verificarías con la API y obtendrías un token
-    const fakeToken = btoa(username + ':' + password + ':' + Date.now());
+    const fakeToken = btoa(username + ': ' + password + ': ' + Date.now());
     const userData = { username };
 
     setUser(userData);
@@ -57,16 +57,9 @@ export function UserProvider({ children }) {
     setToken(null);
   };
 
-  const register = async ({ username, password }) => {
-    // Simula registro — en producción harías POST a /register
-    if (!username || !password) throw new Error('Invalid data');
-    await new Promise((r) => setTimeout(r, 400));
-    // devolver mismo resultado que login para autologin
-    return login({ username, password });
-  };
 
   return (
-    <UserContext.Provider value={{ user, token, loading, login, logout, register, isAuthenticated: !!token }}>
+    <UserContext.Provider value={{ user, token, loading, login, logout, isAuthenticated: !!token }}>
       {children}
     </UserContext.Provider>
   );

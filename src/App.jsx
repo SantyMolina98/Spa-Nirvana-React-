@@ -28,22 +28,18 @@ function App() {
       <HeaderComponents/>
         <main className='main-content'>
         <Routes>
-          {isAuthenticated ? (
-            <>
+          
               <Route path='/' element={<HomePage/>}/>
               <Route path='/turnos' element={<Turnos/>}/>
               <Route path='/categorias' element={<Categorias/>}/>
               <Route path='/contacto' element={<Contacto/>}/>
               <Route path='/nosotros' element={<Nosotros/>}/>
-              <Route path='*' element={<PaginaError/>}/>
-            </>
-          ) : (
-            <>
+               
               <Route path='/login' element={<Login/>}/>
               <Route path='/login/registro' element={<Registro/>}/>
-              <Route path='*' element={<Login/>}/>
-            </>
-          )}
+              <Route path='*' element={<PaginaError/>}/>
+            
+          
         </Routes> 
         </main>
     <FooterComponent/>     

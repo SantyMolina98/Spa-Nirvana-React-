@@ -1,13 +1,13 @@
 import '../App.css';
 import '../styles/footer.css';
-/*  import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logospafooter from '../assets/Img/logospafooter.png';
-import logomastercard from '../assets/Img/logomastercard.png';  */
+import logomastercard from '../assets/Img/logomastercard.png';  
 
 function FooterComponent (){
   return (
     <>
-      {/* <footer className="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 py-3 border-top"> 
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-5  py-3 border-top"> 
         <div className="card mb-3" >
           <div className="row g-0">
             <div className="col-md-4">
@@ -33,21 +33,21 @@ function FooterComponent (){
               <div className="textofootercol">
                 <ul className="nav flex-column"> 
                   <li className="nav-item mb-2">
-                    <Link to="*" className="nav-link p-0 text-body-secondary"><p>Atención al Cliente - 0381 5783 030</p></Link>
+                    <Link to="*" className="nav-link p-0 text-body-secondary"><p className='items-footer'>Atención al Cliente - 0381 5783 030</p></Link>
                   </li> 
                   <li className="nav-item mb-2">
-                    <Link to="*" className="nav-link p-0 text-body-secondary"><p>Trabaja con Nosotros 
+                    <Link to="*" className="nav-link p-0 text-body-secondary"><p className='items-footer'>Trabaja con Nosotros 
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-linkedin" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg></p>
                     </Link>
                   </li> 
                   <li className="nav-item mb-2">
-                    <Link to="/contacto" className="nav-link p-0 text-body-secondary"><p>Contáctanos</p></Link>
+                    <Link to="/contacto" className="nav-link p-0 text-body-secondary"><p className='items-footer'>Contáctanos</p></Link>
                   </li> 
                   <li className="nav-item mb-2">
-                    <Link to="/nosotros" className="nav-link p-0 text-body-secondary"><p>Nosotros</p></Link>
+                    <Link to="/nosotros" className="nav-link p-0 text-body-secondary"><p className='items-footer'>Nosotros</p></Link>
                   </li>
                   <li className="nav-item mb-2">
-                    <Link href="*" className="nav-link p-0 text-body-secondary"><p>ChatBot</p></Link>
+                    <Link href="*" className="nav-link p-0 text-body-secondary"><p className='items-footer'>ChatBot</p></Link>
                   </li>
                   <li className="nav-item mb-2">
                     <a href="https://maps.app.goo.gl/LiMqUe2PFhkN5obY9" target="_blank" className="nav-link p-0 text-body-secondary">
@@ -66,7 +66,7 @@ function FooterComponent (){
                 <h5>INFORMACIÓN DE LA EMPRESA</h5> 
                 <div className="textofootercol">
                   <ul className="nav flex-column"> 
-                    <li className="nav-item mb-2"><Link href="*" className="nav-link p-0 text-body-secondary"><p>Medios de Pago:</p></Link>
+                    <li className="nav-item mb-2"><Link href="*" className="nav-link p-0 text-body-secondary"><p className='items-footer'>Medios de Pago:</p></Link>
                     </li>
                     <li className="nav-item mb-2">
                       <Link href="./Pages/PaginaError.html" className="nav-link p-0 text-body-secondary">
@@ -81,29 +81,27 @@ function FooterComponent (){
                       </Link>
                     </li>         
                     <li className="nav-item mb-2">
-                      <Link to="*" className="nav-link p-0 text-body-secondary"><p>Centro de Ayuda</p></Link>
+                      <Link to="*" className="nav-link p-0 text-body-secondary"><p className='items-footer'>Centro de Ayuda</p></Link>
                     </li> 
                     <li class="nav-item mb-2">
-                      <Link to="*" className="nav-link p-0 text-body-secondary"><p>Cancelar un turno</p></Link>
+                      <Link to="*" className="nav-link p-0 text-body-secondary"><p className='items-footer'>Cancelar un turno</p></Link>
                     </li> 
                     <li class="nav-item mb-2">
-                      <Link to="*" className="nav-link p-0 text-body-secondary"><p>Política de Privacidad</p></Link>
+                      <Link to="*" className="nav-link p-0 text-body-secondary"><p className='items-footer'>Política de Privacidad</p></Link>
                     </li>  
                   </ul>
               </div>        
             </div> 
         </div>
         <div className="DownText">
-          <p> Todos los derechos reservados   |   ® Nirvana Spa & Beauty Company 2025</p>      
+          <p className='textofinal'> Todos los derechos reservados   |   ® Nirvana Spa & Beauty Company 2025</p>      
         </div>
         
         <div className="wp cajawp">
           <a href="https://web.whatsapp.com/" className="visitado" target="_blank"><i className="bi bi-whatsapp"></i></a>
         </div>
-      </footer>  */}
-      <footer className='footer-content'>
-        <p>este es el footer</p>
-      </footer>
+      </div>  
+      
     </>
   )  
 }

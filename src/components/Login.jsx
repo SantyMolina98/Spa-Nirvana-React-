@@ -1,7 +1,7 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import '../App.css';
 import '../styles/loginpage.css';
-import { Button, Card, Form } from 'react-bootstrap';
+import { Button, Card, Form, Alert } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 
@@ -10,8 +10,19 @@ function Login() {
   const [password, setPassword] = useState('');
   const [validated, setValidated] = useState(false);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
   const navigate = useNavigate();
   const { login } = useContext(UserContext);
+
+  // cuando haya un mensaje de éxito, lo mostramos y redirigimos después
+  useEffect(() => {
+    if (!success) return;
+    const t = setTimeout(() => {
+      setSuccess(null);
+      navigate('/');
+    }, 3000);
+    return () => clearTimeout(t);
+  }, [success, navigate]);
 
   const ingreso = async (e) => {
     e.preventDefault();
@@ -25,10 +36,10 @@ function Login() {
         try {
           setError(null);
           await login({ username: user.trim(), password: password.trim() });
-          navigate('/');
+          setSuccess(`¡Bienvenido/a, ${user.trim()}! Has iniciado sesión con éxito.`);
         } catch (err) {
           console.error(err);
-          setError(err.message || 'Error al iniciar sesión');
+          setError('Credenciales inválidas. Por favor, verifica tu usuario y contraseña.');
         }
       }
     }
@@ -43,7 +54,17 @@ function Login() {
           <h3 className="colorcard">INICIAR SESIÓN</h3>
           <Card.Body className="bodyCard colorcard">
             <p className="colorcard">¿Sos nuevo/a? <Link to="/login/registro" className="linkLogin colorcard">REGISTRATE</Link></p>
-            <Form noValidate validated={validated} className="FormInicioSesion colorcard" onSubmit={ingreso}>
+              {error && (
+                <Alert variant="danger"  onClose={() => setError(null)} dismissible>
+                  {error}
+                </Alert>
+              )}
+              {success && (
+                <Alert variant="success" onClose={() => setSuccess(null)} dismissible>
+                  {success}
+                </Alert>
+              )}
+              <Form noValidate validated={validated} className="FormInicioSesion colorcard" onSubmit={ingreso}>
               <Form.Group className="mb-3 colorcard" controlId="formBasicUser">
                 <Form.Label id='usuario' className='textlogin colorcard'>Usuario</Form.Label>
                 <Form.Control aria-label="Username"  aria-describedby="basic-addon1" required type="text" placeholder="Ingrese su usuario"
