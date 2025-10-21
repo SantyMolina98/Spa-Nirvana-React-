@@ -1,7 +1,6 @@
 import { Button, Card, Form } from 'react-bootstrap';
 import '../App.css';
 import '../styles/registroPage.css';
-import 'bootstrap';
 import {  useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -45,6 +44,7 @@ function Registro () {
   }
   
   return (
+    <>
     <div className='mainRegistro'>
       <h2 className='h2Reg'>CREAR NUEVO USUARIO</h2>
       <Card className="CardRegistro">   
@@ -209,6 +209,8 @@ function Registro () {
         </Card.Body>
       </Card>
   </div>
+  </>
+    
   )
 }
 
