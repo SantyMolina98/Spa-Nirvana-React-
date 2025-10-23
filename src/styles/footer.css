@@ -1,61 +1,80 @@
 *{
 
   --color-principalfooter :#584738 ;
-  --color-secondaryfooter : #eec58c;
-  --color-terciaryfooter : #ede9e3;
-  --color-fourthfooter : #da6628;
+  --color-secondaryfooter : #846d4e;
+  --color-terciaryfooter : #efc78c;
+  --color-fourthfooter : #d8ab39;
   --color-fifthfooter : #e4ce0d;
+   --color-sixthfooter : #3d321b;
+}
+.back-footer-color{
+  background-color: var(--color-principalfooter);
 }
 .footer-content {
   width: 100%;
   height: auto;
   position: sticky;
-  top: 100vh;
+ 
   background-color: var(--color-principalfooter);
 }
-
- .img-fluid,
-.rounded-start {
-  width: 400px;
-  height: 230px;
-}
-
-.row,
-.row-cols-1,
-.row-cols-sm-2,
-.row-cols-md-5,
-.border-top {
-  width: auto;
-  margin: 0;
-}
-.card {
-  width: 540px;
+.card-img-footer {
+  width:40%;
   background-color: var(--color-principalfooter);
   color: var(--color-terciaryfooter);
   border-style: none;
 }
-.bi-facebook:hover, .bi-instagram:hover, .bi-tiktok:hover, .bi-twitter-x:hover{
-  background-color: var(--color-secondaryfooter); 
-  border-radius: 1em;
-  padding: 0.1em;
+.col-md-4{
+  height: auto;
+  width: 220px;
+}
+ .img-fluid {
+  width: 100%;
+  height: 230px;
+}
+.col-md-8{
+  width: 250px;
+}
+.card-body-img-footer{
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;  
 }
 
- .card .RedesIMG{
-  width: 230px;
+.RedesIMG{
+  width: 90%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
 }
-.RedesIMG .redes{
+
+ .redes{
   margin:0;
+  width: auto;
+  height: auto;
 }
 .bi-facebook, .bi-instagram, .bi-tiktok, .bi-twitter-x{
   width: 50px;
-  height: 30px;
+  height: 50px;
   color: var(--color-fourthfooter);
+}
+.size-redes{
+  width: 60px;
+  height: 30px;
+}
+.bi-facebook:hover, .bi-instagram:hover, .bi-tiktok:hover, .bi-twitter-x:hover{
+  background-color: var(--color-secondaryfooter); 
+  border-radius: 1em;
+  
 }
 .columna2 .textofootercol ul li a p:hover, .columna3 .textofootercol ul li a p:hover{
   background-color: var(--color-secondaryfooter);
   border-radius: 0.5em;
+}
+.bi-geo-alt-fill{
+  color: #5c0303;
 }
 .nav,
 .justify-content-center,
@@ -87,6 +106,7 @@
 }
 .DownText {
   width: 100%;
-  color: var(--color-fifthfooter);
+  text-align: center;
+  color: var(--color-sixthfooter);
   
 }

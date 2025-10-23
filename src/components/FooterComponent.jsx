@@ -7,23 +7,23 @@ import logomastercard from '../assets/Img/logomastercard.png';
 function FooterComponent (){
   return (
     <>
-      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-5  py-3 border-top"> 
-        <div className="card mb-3" >
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-5  py-3 border-top back-footer-color"> 
+        <div className="card-img-footer" >
           <div className="row g-0">
             <div className="col-md-4">
-              <img src={logospafooter} className="img-fluid rounded-start" alt="Logo-Nirvana-Spa-&-Beauty-footer" />
+              <img src={logospafooter} className="img-fluid" alt="Logo-Nirvana-Spa-&-Beauty-footer" />
             </div>
             <div className="col-md-8">
-              <div className="card-body">
+              <div className="card-body-img-footer">
                 <h5 className="card-title">SÍGUENOS</h5>
                 <div className="RedesIMG">
-                  <Link to="*" className="redes"><i className="bi bi-facebook"></i></Link>
+                  <Link to="*" className="redes"><i className="bi bi-facebook "></i></Link>
 
-                  <Link to="*" className="redes"><i className="bi bi-instagram"></i></Link>
+                  <Link to="*" className="redes"><i className="bi bi-instagram "></i></Link>
 
-                  <Link to="*" className="redes"><i className="bi bi-tiktok"></i></Link>
+                  <Link to="*" className="redes"><i className="bi bi-tiktok "></i></Link>
 
-                  <Link to="*" className="redes"><i className="bi bi-twitter-x"></i></Link>
+                  <Link to="*" className="redes"><i className="bi bi-twitter-x "></i></Link>
                 </div>
               </div>
               
@@ -49,12 +49,13 @@ function FooterComponent (){
                   <li className="nav-item mb-2">
                     <Link to="/nosotros" className="nav-link p-0 text-body-secondary"><p className='p-footer'>Nosotros</p></Link>
                   </li>
+                  {/* Todavía no implementaremos el chatbot
                   <li className="nav-item mb-2">
                     <Link to="*" className="nav-link p-0 text-body-secondary"><p className='p-footer'>ChatBot</p></Link>
-                  </li>
+                  </li> */}
                   <li className="nav-item mb-2">
-                    <a href="https://maps.app.goo.gl/LiMqUe2PFhkN5obY9" target="_blank" className="nav-link p-0 text-body-secondary">
-                      <p><i className="bi bi-geo-alt-fill"></i>Gral. José María Paz 576, <br/>
+                    <a href="https://maps.app.goo.gl/LiMqUe2PFhkN5obY9" target="_blank" className="nav-link p-0 text-body-secondary ">
+                      <p className='p-footer'><i className="bi bi-geo-alt-fill"></i>Gral. José María Paz 576, <br/>
                       San Miguel de Tucumán, Tucumán</p>
                     </a>
                   </li>
