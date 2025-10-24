@@ -33,8 +33,6 @@ export function UserProvider({ children }) {
 
   // Simula una llamada a una API que devuelve un token y datos de usuario
   const login = async ({ username, password }) => {
-    // aquí iría la llamada real a tu API (fetch / axios)
-    // validación simple simulada
     if (!username || !password) {
       throw new Error('Credenciales inválidas');
     }
@@ -42,7 +40,7 @@ export function UserProvider({ children }) {
     // Simular delay
     await new Promise((r) => setTimeout(r, 2000));
 
-    // En una app real, verificarías con la API y obtendrías un token
+    // Simular token y datos de usuario
     const fakeToken = btoa(username + ': ' + password + ': ' + Date.now());
     const userData = { username };
 

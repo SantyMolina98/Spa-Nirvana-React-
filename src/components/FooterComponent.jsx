@@ -85,10 +85,10 @@ function FooterComponent (){
                     <li className="nav-item mb-2">
                       <Link to="*" className="nav-link p-0 text-body-secondary"><p className='p-footer'>Centro de Ayuda</p></Link>
                     </li> 
-                    <li class="nav-item mb-2">
+                    <li className="nav-item mb-2">
                       <Link to="*" className="nav-link p-0 text-body-secondary"><p className='p-footer'>Cancelar un turno</p></Link>
                     </li> 
-                    <li class="nav-item mb-2">
+                    <li className="nav-item mb-2">
                       <Link to="*" className="nav-link p-0 text-body-secondary"><p className='p-footer'>Política de Privacidad</p></Link>
                     </li>  
                   </ul>

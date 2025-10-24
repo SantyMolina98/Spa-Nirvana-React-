@@ -1,13 +1,7 @@
 import '../App.css';
-import '../styles/PaginaError.css';
 import 'bootstrap';
 import { Link } from 'react-router-dom';
-import STF1 from '../assets/Img/STF1.jpg';
-import STF2 from '../assets/Img/STF2.JPG';
-import STF3 from '../assets/Img/STF3.JPG';
-import RT1 from '../assets/Img/RT1.jpg';
-import RT2 from '../assets/Img/RT2.jpg';
-import RT3 from '../assets/Img/RT3.jpg';
+import imagenMap from '../assets/imagenMap.js';
 
 function ServiciosFacial() {
   return (
@@ -25,19 +19,19 @@ function ServiciosFacial() {
                   </div>
                   <div className="carousel-inner">
                     <div className="carousel-item active">
-                      <img src={STF1} className="d-block w-100" alt="STF1" height="750vh" />
+                      <img src={imagenMap.STF1} className="d-block w-100" alt="STF1" height="750vh" />
                       <div className="carousel-caption d-none d-md-block">
                         <h5 style="color: black;">Essential Face Care</h5>
                       </div>
                     </div>
                     <div className="carousel-item">
-                      <img src={STF2} className="d-block w-100" alt="STF2" height="750vh" />
+                      <img src={imagenMap.STF2} className="d-block w-100" alt="STF2" height="750vh" />
                       <div className="carousel-caption d-none d-md-block">
                       <h5 style="color: black;">Rebalancing Face Care</h5>
                     </div>
                   </div>
                   <div className="carousel-item">
-                    <img src={STF3} className="d-block w-100" alt="stf3" height="750vh" />
+                    <img src={imagenMap.STF3} className="d-block w-100" alt="stf3" height="750vh" />
                     <div className="carousel-caption d-none d-md-block">
                       <h5 style="color: black;">Glowing Roses</h5>
                     </div>
@@ -117,7 +111,7 @@ function ServiciosFacial() {
             <div className="card border-dark mb-3" style="max-width: 18rem;">
               <div className="card-header">
                 <div className="Flexreseña">
-                  <img src={RT1} alt="Spa" width="50vw" height="50vh" />
+                  <img src={imagenMap.RT1} alt="Spa" width="50vw" height="50vh" />
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
                       <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                     </svg>
@@ -146,7 +140,7 @@ function ServiciosFacial() {
             <div className="card border-dark mb-3" style="max-width: 18rem;">
               <div className="card-header">
                 <div className="Flexreseña">
-                  <img src={RT2} alt="Spa" width="50vw" height="50vh" />
+                  <img src={imagenMap.RT2} alt="Spa" width="50vw" height="50vh" />
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                   </svg>
@@ -172,7 +166,7 @@ function ServiciosFacial() {
             <div className="card border-dark mb-3" style="max-width: 18rem;">
               <div className="card-header">
                 <div className="Flexreseña">
-                  <img src={RT3} alt="Spa" width="50vw" height="50vh" />
+                  <img src={imagenMap.RT3} alt="Spa" width="50vw" height="50vh" />
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                   </svg>
