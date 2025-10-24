@@ -3,7 +3,10 @@ import './App.css';
 import HeaderComponents from './components/headerComponents.jsx';
 import HomePage from './pages/HomePage.jsx';
 import Turnos from './pages/turnos.jsx';
-import { Categorias } from './pages/Categorias.jsx';
+import Categorias from './pages/Categorias.jsx';
+import ServiciosFacial from './pages/serviciosfacial.jsx';
+import ServiciosMasajes from './pages/serviciosmasaje.jsx';
+
 import Contacto from './pages/contacto.jsx';
 import Nosotros from './pages/nosotros.jsx';
 import Login from './components/Login.jsx';
@@ -16,10 +19,9 @@ import { UserContext } from './context/UserContext';
 
 
 function App() {
-  const { isAuthenticated, loading } = useContext(UserContext);
+  /* const { isAuthenticated, loading } = useContext(UserContext);
 
-  // while loading, you might want to show a spinner; here we'll just return null
-  if (loading) return null;
+  if (loading) return null; */
 
   return (
     <>
@@ -32,9 +34,10 @@ function App() {
               <Route path='/' element={<HomePage/>}/>
               <Route path='/turnos' element={<Turnos/>}/>
               <Route path='/categorias' element={<Categorias/>}/>
+              <Route path='/categorias/serviciosfacial' element={<ServiciosFacial/>}/>
+              <Route path='/categorias/serviciosmasaje' element={<ServiciosMasajes/>}/>
               <Route path='/contacto' element={<Contacto/>}/>
-              <Route path='/nosotros' element={<Nosotros/>}/>
-               
+              <Route path='/nosotros' element={<Nosotros/>}/>    
               <Route path='/login' element={<Login/>}/>
               <Route path='/login/registro' element={<Registro/>}/>
               <Route path='*' element={<PaginaError/>}/>

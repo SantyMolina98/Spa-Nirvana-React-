@@ -1,8 +1,7 @@
 import '../App.css';
 import '../styles/turnosPages.css';
 import { Link } from 'react-router-dom';
-import Fondologinturnos1 from '../assets/Img/Fondologinturnos1.png';
-import TI1 from '../assets/Img/TI1.jpg';
+import imagenMap from '../assets/imagenMap.js';
 
 function Turnos () {
   return (
@@ -48,7 +47,7 @@ function Turnos () {
         <div className="row row-cols-1 row-cols-md-2 g-4">
           <div>
             <div className="card">
-              <img src={Fondologinturnos1} className="card-img-top" alt="Masajes" height="250px"/>
+              <img src={imagenMap.Fondologinturnos1} className="card-img-top" alt="Masajes" height="250px"/>
               <div className="card-body">
                 <h5 className="card-title">Servicio de Masajes</h5>
                 <p className="card-text">Sumérgete en un oasis de calma y renueva tu energía con nuestros masajes
@@ -59,7 +58,7 @@ function Turnos () {
           </div>
           <div>
             <div className="card">
-              <img src={TI1} className="card-img-top" alt="SPA" height="250px"/>
+              <img src={imagenMap.TI1} className="card-img-top" alt="SPA" height="250px"/>
               <div className="card-body">
                 <h5 className="card-title">Servicio Faciales</h5>
                 <p className="card-text">Experimenta la revitalización profunda de tu piel con nuestros tratamientos

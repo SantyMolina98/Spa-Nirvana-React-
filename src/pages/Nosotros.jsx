@@ -1,22 +1,19 @@
 import '../App.css';
 import '../styles/Nosotros.css';
-import logospaheader from '../assets/Img/logospaheader.png';
-import Naza from '../assets/Img/Naza.png';
-import Anahi from '../assets/Img/Anahi.png';
-import Santy from '../assets/Img/Santy.png';
-import Gene from '../assets/Img/Gene.png';
+import imagenMap from '../assets/imagenMap.js';
+
 
 function Nosotros  ()  {
   return (
     <div className='mainNos'>
       <div className="centrado">
         <h1 className='h1Nos'>NIRVANA Spa & Beauty</h1>
-        <img src={logospaheader} alt="logo" className="logoarticle" />
+        <img src={imagenMap.logospaheader} alt="logo" className="logoarticle" />
         <h3 className="mainh">Trabajamos con dedicación y creatividad para convertir ideas en soluciones funcionales y bien pensadas.</h3>
       </div>
     <section className="card-section">
       <div className="cardNos">
-        <img src={Naza} alt="naza" className='fotoNos' />
+        <img src={imagenMap.Naza} alt="naza" className='fotoNos' />
         <div>
           <h2 className='h2Nos'>Nazarena Molina</h2>
           <p className='descripcionNos'>Soy estudiante de Biotecnología, estoy inmersa en el fascinante mundo de la ciencia, y actualmente estoy
@@ -33,7 +30,7 @@ function Nosotros  ()  {
     </section>
     <section className="card-section">
       <div className="cardNos">
-        <img src={Anahi} alt="anahi" className='fotoNos' />
+        <img src={imagenMap.Anahi} alt="anahi" className='fotoNos' />
         <div>
           <h2 className='h2Nos'>Anahí Tellier</h2>
           <p className='descripcionNos'>Soy Bioterapeuta y miembro del equipo de Bioterapia El Despertar, me dedico a guiar a individuos en su
@@ -52,7 +49,7 @@ function Nosotros  ()  {
     </section>
     <section className="card-section">
       <div className="cardNos">
-        <img src={Santy} alt="santy" className='fotoNos' />
+        <img src={imagenMap.Santy} alt="santy" className='fotoNos' />
         <div>
           <h2 className='h2Nos'>Santiago Martín Molina</h2>
           <p className='descripcionNos'>Trabajo en la heladería Grido, donde he desarrollado una sólida capacidad para la atención al cliente
@@ -70,7 +67,7 @@ function Nosotros  ()  {
     </section>
     <section className="card-section">
       <div className="cardNos">
-        <img src={Gene} alt="gene" className='fotoNos' />
+        <img src={imagenMap.Gene} alt="gene" className='fotoNos' />
         <div>
           <h2 className='h2Nos'>Genesis Bolaño</h2>
           <p className='descripcionNos'>Trabajo en Red Link como Auditor de Sistemas. Me encuentro estudiando la Licenciatura en Gestión en
