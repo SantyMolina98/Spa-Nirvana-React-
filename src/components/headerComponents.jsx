@@ -64,15 +64,15 @@ function HeaderComponent () {
                 <NavDropdown title={<i className="bi bi-person-circle"></i>} id='offcanvasNavbarDropdown-expand-login'>
                   {!isAuthenticated ? (
                     <>
-                      <NavDropdown.Item as={Link} to='/login'>Iniciar Sesión</NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to='/login' className='dropdownn-login-header'>Iniciar Sesión</NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item as={Link} to='/login/registro'>Registrarme</NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to='/login/registro' className='dropdownn-login-header'>Registrarme</NavDropdown.Item>
                     </>
                   ) : (
                     <>
-                      <NavDropdown.ItemText>Hola, {user?.username || 'Usuario'}</NavDropdown.ItemText>
-                      
-                      <NavDropdown.Item as="button" onClick={() => { logout(); navigate('/'); }}>Cerrar Sesión</NavDropdown.Item>
+                      <NavDropdown.ItemText className='dropdownn-login-saludo-header'>Hola, {user?.username || 'Usuario'}</NavDropdown.ItemText>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item as="button" onClick={() => { logout(); navigate('/'); }} className='dropdownn-login-header'>Cerrar Sesión</NavDropdown.Item>
                     </>
                   )}
                 </NavDropdown>

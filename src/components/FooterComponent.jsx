@@ -96,7 +96,7 @@ function FooterComponent (){
             </div> 
         </div>
         <div className="DownText">
-          <p className='textofinal'> Todos los derechos reservados   |   ® Nirvana Spa & Beauty Company 2025</p>      
+          <p className='textofinal'>© Todos los derechos reservados   |   ® Nirvana Spa & Beauty Company 2025</p>      
         </div>
         
         <div className="wp cajawp">
