@@ -2,12 +2,35 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  --color-principalHeader: #584738;
+  --color-principal2Header: #3f3228;
+  --color-secondaryHeader: #4c583e;
+  --color-terciaryHeader: #b59e7d;
+  --color-fourthHeader: #959581;
+  --color-fourth2Header: #95958170;
+  --color-fifthHeader: #f1eada;
+  --color-sixthHeader: #eec58c;
+  --color-seventhHeader: #aa6d3b;
 }
 
 .logoSPA{
   width: 2.5em;
 }
-
+.dropdownn-login-header{
+  width: 100%;
+  margin-left: 0;
+  padding: 0.2em;
+}
+.dropdownn-login-header:hover{
+  background-color: var(--color-seventhHeader);
+  width: 100%;
+  color: var(--color-fifthHeader);
+  font-weight: 600;
+}
+.dropdownn-login-saludo-header{
+  background-color: var(--color-fourth2Header);
+  font-weight: 550;
+}
 .navbar a {
   text-decoration: none;
   color: #302620;

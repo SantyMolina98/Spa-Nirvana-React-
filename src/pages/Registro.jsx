@@ -52,7 +52,7 @@ function Registro () {
           <h4  className='h4Reg'>Ahora ingrese sus datos</h4> 
           <Form noValidate validated={validatedReg} className="FormRegistro" onSubmit={registrar}>
             <Form.Group>
-              <Form.Label for="Nombre" name="Nombre" className="TextReg">Nombre:</Form.Label>
+              <Form.Label htmlFor="Nombre" name="Nombre" className="TextReg">Nombre:</Form.Label>
               <br/>
               <Form.Control aria-label='Nombre' type="text" name="Nombre" id="Nombre" placeholder="Ingrese su nombre" 
                 minlength={3} maxlength={18} size="25" 
@@ -66,7 +66,7 @@ function Registro () {
                 </Form.Control.Feedback>
             </Form.Group> <br/>
             <Form.Group>
-              <Form.Label for="Apellido" name="Apellido" className="TextReg">Apellido:</Form.Label><br/>
+              <Form.Label htmlFor="Apellido" name="Apellido" className="TextReg">Apellido:</Form.Label><br/>
               <Form.Control type="text" name="Apellido" id="Apellido" placeholder="Ingrese su primer apellido" 
               minlength={2} maxlength={20} size="25" 
               value={apellido}
@@ -80,7 +80,7 @@ function Registro () {
             </Form.Group>
             <br/>
             <Form.Group>
-              <Form.Label for="newuser" name="newuser" className="TextReg">Ingrese su nombre de usuario:</Form.Label><br/>
+              <Form.Label htmlFor="newuser" name="newuser" className="TextReg">Ingrese su nombre de usuario:</Form.Label><br/>
             <Form.Control type="text" name="newuser" id="newuser" placeholder="ej: Usuario123" 
               minLength={3} maxlength={18} size="20" 
               value={usuario}
@@ -94,7 +94,7 @@ function Registro () {
             </Form.Group>
             <br/>
             <Form.Group>
-              <Form.Label for="E-mail" name="E-mail" className="TextReg">Ingrese su e-mail:</Form.Label><br/>
+              <Form.Label htmlFor="E-mail" name="E-mail" className="TextReg">Ingrese su e-mail:</Form.Label><br/>
               <Form.Control type="E-mail" id="E-mail" placeholder="ej: usuario123@gmail.com" 
               minLength={11} maxLength={35} size="50"  
               value={email}
@@ -108,7 +108,7 @@ function Registro () {
             </Form.Group>
             <br/>
             <Form.Group>
-              <Form.Label for="telefono"  className="TextReg">Telefono:</Form.Label><br/>
+              <Form.Label htmlFor="telefono" className="TextReg">Telefono:</Form.Label><br/>
             <div className="TelefonoF">
               <Form.Label name="firsttelefono" id="firsttelefono" size="2" >+54</Form.Label>
               <Form.Control type="number" name="telefono" id="telefono"  placeholder="Ingrese su N° de Teléfono"
@@ -125,7 +125,7 @@ function Registro () {
             </Form.Group>
             
             <Form.Group>
-              <Form.Label for="domicilio" className="TextReg">Domicilio:</Form.Label> <br/>
+              <Form.Label htmlFor="domicilio" className="TextReg">Domicilio:</Form.Label> <br/>
               <Form.Control type="text" name="domicilio" id="domicilio" placeholder="Ingrese su domicilio actual" 
               minLength={5} maxLength={40} size="50" 
               value={domicilio}
@@ -139,40 +139,41 @@ function Registro () {
             </Form.Group>
             <br/>
             <Form.Group>
-              <Form.Label for="provincia" className="TextReg">Provincia:</Form.Label><br/>
-            <select name="provincia" id="selectprovincia" defaultValue={'------'} required>
-              <option value="Buenos-Aires">Buenos Aires</option>
-              <option value="Catamarca">Catamarca</option>
-              <option value="Chaco">Chaco</option>
-              <option value="Chubut">Chubut</option>
-              <option value="CABA">Ciudad Autónoma de Buenos Aires</option>
-              <option value="Cordoba">Córdoba</option>
-              <option value="Corrientes">Corrientes</option>
-              <option value="Entre-Rios">Entre Ríos</option>
-              <option value="Formosa">Formosa</option>
-              <option value="Jujuy">Jujuy</option>
-              <option value="La-Pampa">La Pampa</option>
-              <option value="La-Rioja">La Rioja</option>
-              <option value="Mendoza">Mendoza</option>
-              <option value="Misiones">Misiones</option>
-              <option value="Neuquen">Neuquén</option>
-              <option value="Rio-Negro">Río Negro</option>
-              <option value="Salta">Salta</option>
-              <option value="San-Juan">San Juan</option>
-              <option value="San-Luis">San Luis</option>
-              <option value="Santa-Cruz">Santa Cruz</option>
-              <option value="Santa-Fe">Santa Fé</option>
-              <option value="Santiago-del-Estero">Santiago del Estero</option>
-              <option value="Tierra-del-Fuego">Tierra del Fuego</option>
-              <option value="Tucuman">Tucumán</option>
-            </select>
+              <Form.Label htmlFor="provincia" className="TextReg">Provincia:</Form.Label><br/>
+            <Form.Select name="provincia" id="selectprovincia" defaultValue={'------'} required>
+              <option className='option-prov'>------</option>
+              <option value="Buenos-Aires" className='option-prov'>Buenos Aires</option>
+              <option value="Catamarca" className='option-prov'>Catamarca</option>
+              <option value="Chaco" className='option-prov'>Chaco</option>
+              <option value="Chubut" className='option-prov'>Chubut</option>
+              <option value="CABA" className='option-prov'>Ciudad Autónoma de Buenos Aires</option>
+              <option value="Cordoba" className='option-prov'>Córdoba</option>
+              <option value="Corrientes" className='option-prov'>Corrientes</option>
+              <option value="Entre-Rios" className='option-prov'>Entre Ríos</option>
+              <option value="Formosa" className='option-prov'>Formosa</option>
+              <option value="Jujuy" className='option-prov'>Jujuy</option>
+              <option value="La-Pampa" className='option-prov'>La Pampa</option>
+              <option value="La-Rioja" className='option-prov'>La Rioja</option>
+              <option value="Mendoza" className='option-prov'>Mendoza</option>
+              <option value="Misiones" className='option-prov'>Misiones</option>
+              <option value="Neuquen" className='option-prov'>Neuquén</option>
+              <option value="Rio-Negro" className='option-prov'>Río Negro</option>
+              <option value="Salta" className='option-prov'>Salta</option>
+              <option value="San-Juan" className='option-prov'>San Juan</option>
+              <option value="San-Luis" className='option-prov'>San Luis</option>
+              <option value="Santa-Cruz" className='option-prov'>Santa Cruz</option>
+              <option value="Santa-Fe" className='option-prov'>Santa Fé</option>
+              <option value="Santiago-del-Estero" className='option-prov'>Santiago del Estero</option>
+              <option value="Tierra-del-Fuego" className='option-prov'>Tierra del Fuego</option>
+              <option value="Tucuman" className='option-prov'>Tucumán</option>
+            </Form.Select>
             <Form.Control.Feedback type="invalid" className='alerterrorReg'>
              Debe seleccionar una provincia
             </Form.Control.Feedback>
             </Form.Group>
             <br/>
             <Form.Group>
-              <Form.Label for="cp" className="TextReg">Código Postal:</Form.Label> <br/>
+              <Form.Label htmlFor="cp" className="TextReg">Código Postal:</Form.Label> <br/>
               <Form.Control type='text' name="cp" id="cp" placeholder="----" 
               maxlength={4} size="4" 
               value={cpostal}
@@ -186,7 +187,7 @@ function Registro () {
             </Form.Group>
             <br/>
             <Form.Group>
-              <Form.Label for="contraseña2" className="TextReg">Escriba una contraseña:</Form.Label> <br/>
+              <Form.Label htmlFor="contraseña2" className="TextReg">Escriba una contraseña:</Form.Label> <br/>
               <Form.Control type="password" name="contraseña2" id="contraseña2" placeholder="Escriba aquí su contraseña" 
               minLength={6} maxlength={25} size='25'
               value={contrasena}
@@ -199,7 +200,9 @@ function Registro () {
               </Form.Control.Feedback>
             </Form.Group>
             <br/>
-            <Form.Group><input type="checkbox" name="Recordar" id="Recordar" /><label id="Recordar" for="Recordar" >Guardar contraseña</label></Form.Group>
+            <Form.Group>
+              <Form.Check type="checkbox" name="Recordar" id="Recordar" htmlFor="Recordar" label="Guardar contraseña" />
+            </Form.Group>
             
             <div className="BtnRegistro">
               <Button type='submit' className='BotonR'>REGISTRARME</Button>
