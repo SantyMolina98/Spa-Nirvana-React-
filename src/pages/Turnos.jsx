@@ -70,7 +70,7 @@ function Turnos () {
       </div>
       </article>
     </section>
-    <section id="reserva">
+    {/* <section id="reserva">
       <article>
         <div className="actions">
           <p id="resumen-solicitud">Resumen de solicitud:</p>
@@ -80,7 +80,7 @@ function Turnos () {
           <Link to="*" className="btnTurnos btn-back" id="volver-btn">Volver</Link>
         </div>
       </article>
-    </section>
+    </section> */}
   </div>
   )
 }
