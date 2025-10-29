@@ -6,22 +6,14 @@ import Turnos from './pages/turnos.jsx';
 import Categorias from './pages/Categorias.jsx';
 import ServiciosFacial from './pages/serviciosfacial.jsx';
 import ServiciosMasajes from './pages/serviciosmasaje.jsx';
-
 import Contacto from './pages/contacto.jsx';
 import Nosotros from './pages/nosotros.jsx';
 import Login from './components/Login.jsx';
 import Registro from './pages/Registro.jsx';
 import PaginaError from './pages/PaginaError.jsx';
 import FooterComponent from './components/FooterComponent.jsx';
-import { useContext } from 'react';
-import { UserContext } from './context/UserContext';
-
-
 
 function App() {
-  /* const { isAuthenticated, loading } = useContext(UserContext);
-
-  if (loading) return null; */
 
   return (
     <>

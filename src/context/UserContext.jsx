@@ -4,7 +4,8 @@ export const UserContext = createContext();
 
 export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const [register, setRegister] = useState(null);
+  
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +15,8 @@ export function UserProvider({ children }) {
       try {
         const parsed = JSON.parse(stored);
         setUser(parsed.user || null);
-        setToken(parsed.token || null);
+        
+        setRegister(parsed.register || null);
       } catch (e) {
         console.error('Error parsing stored user', e);
       }
@@ -24,12 +26,12 @@ export function UserProvider({ children }) {
 
   useEffect(() => {
     // persistir cambios
-    if (user || token) {
-      localStorage.setItem('spa_user', JSON.stringify({ user, token }));
+    if (user || register) {
+      localStorage.setItem('spa_user', JSON.stringify({ user, register }));
     } else {
       localStorage.removeItem('spa_user');
     }
-  }, [user, token]);
+  }, [user, register]);
 
   // Simula una llamada a una API que devuelve un token y datos de usuario
   const login = async ({ username, password }) => {
@@ -41,23 +43,34 @@ export function UserProvider({ children }) {
     await new Promise((r) => setTimeout(r, 2000));
 
     // Simular token y datos de usuario
-    const fakeToken = btoa(username + ': ' + password + ': ' + Date.now());
+    
     const userData = { username };
 
     setUser(userData);
-    setToken(fakeToken);
+    
 
-    return { user: userData, token: fakeToken };
+    return { user: userData };
   };
 
   const logout = () => {
     setUser(null);
-    setToken(null);
+    
   };
+
+  const registro = async (userInfo) => {
+    if(!userInfo){
+      throw new Error('Información de registro inválida');
+    }
+    await new Promise((r) => setTimeout(r, 2000));
+      const inforegistro = {nombre: userInfo.nombre, apellido: userInfo.apellido, usuario: userInfo.usuario, email: userInfo.email, telefono: userInfo.telefono, domicilio: userInfo.domicilio, provincia: userInfo.provincia, cpostal: userInfo.cpostal, contrasena: userInfo.contrasena};
+    setRegister(inforegistro);
+
+    return inforegistro;
+  }
 
 
   return (
-    <UserContext.Provider value={{ user, token, loading, login, logout, isAuthenticated: !!token }}>
+    <UserContext.Provider value={{ user, loading, login, logout, registro, isAuthenticated: !!user }}>
       {children}
     </UserContext.Provider>
   );
