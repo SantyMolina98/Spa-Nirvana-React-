@@ -8,7 +8,7 @@ function HomePage () {
   return (
     <>
     <main className='MainHomeP'>
-      <section className='CarruselHP'>
+      <section>
       <Carousel fade>
       <Carousel.Item>
         <Image src={imagenMap.banner1} rounded className='carrusel'/>

@@ -21,19 +21,19 @@ function ServiciosMasajes  () {
                     <div className="carousel-item active">
                       <img src={imagenMap.SM1} className="d-block w-100" alt="STF1" height="750vh" />
                         <div className="carousel-caption d-none d-md-block">
-                          <h5 style="color: black;">Masaje Sueco</h5>
+                          <h5>Masaje Sueco</h5>
                         </div>
                     </div>
                     <div className="carousel-item">
                       <img src={imagenMap.SM2} className="d-block w-100" alt="STF2" height="750vh" />
                       <div className="carousel-caption d-none d-md-block">
-                         <h5 style="color: black;">Masaje Hot Stones</h5>
+                         <h5>Masaje Hot Stones</h5>
                       </div>
                     </div>
                     <div className="carousel-item">
                        <img src={imagenMap.SM3} className="d-block w-100" alt="stf3" height="750vh" />
                        <div className="carousel-caption d-none d-md-block">
-                         <h5 style="color: black;">Masaje Signature</h5>
+                         <h5>Masaje Signature</h5>
                        </div>
                     </div>
                   </div>
