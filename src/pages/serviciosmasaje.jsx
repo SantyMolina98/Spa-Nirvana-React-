@@ -21,7 +21,7 @@ function ServiciosMasajes  () {
                     <div className="carousel-item active">
                       <img src={imagenMap.SM1} className="d-block w-100" alt="STF1"  />
                         <div className="carousel-caption d-none d-md-block">
-                          <h5>Masaje Sueco</h5>
+                          <h5 >Masaje Sueco</h5>
                         </div>
                     </div>
                     <div className="carousel-item">
