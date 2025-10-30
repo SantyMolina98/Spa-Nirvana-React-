@@ -21,9 +21,7 @@ function ServiciosMasajes  () {
                     <div className="carousel-item active">
                       <img src={imagenMap.SM1} className="d-block w-100" alt="STF1"  />
                         <div className="carousel-caption d-none d-md-block">
-
                           <h5 >Masaje Sueco</h5>
-
                         </div>
                     </div>
                     <div className="carousel-item">
@@ -93,10 +91,10 @@ function ServiciosMasajes  () {
     <section>
       <h2 className="Titulotesti">~ CONOCE LAS OPINIONES DE NUESTROS CLIENTES ~</h2>
       <div className="Cajaflexible reseñasflex">
-        <div className="card border-dark mb-3" style="max-width: 18rem;">
+        <div className="card border-dark mb-3" >
           <div className="card-header">
             <div className="Flexreseña">
-              <img src={imagenMap.RT1} alt="Spa" width="50vw" height="50vh" />
+              <img src={imagenMap.RT1} alt="Spa"  />
               <i className="bi-star-fill"></i>
               <i className="bi-star-fill"></i>
               <i className="bi-star-fill"></i>
@@ -106,7 +104,7 @@ function ServiciosMasajes  () {
           </div>
           <div className="card-body">
             <h5 className="card-title2">Camila T. (38 años)</h5>
-              <p className="Testimonio">Cada visita a este spa es un verdadero escape. El masaje relajante con aceites esenciales es mi favorito: salgo como nueva, sin tensiones y completamente renovada. El ambiente es sereno y elegante, y el personal tiene manos mágicas. Un lujo que vale cada centavo."</p>
+              <p className="Testimonio"> Cada visita a este spa es un verdadero escape. El masaje relajante con aceites esenciales es mi favorito: salgo como nueva, sin tensiones y completamente renovada. El ambiente es sereno y elegante, y el personal tiene manos mágicas. Un lujo que vale cada centavo."</p>
           </div>
         </div>
         <div className="card border-dark mb-3" >

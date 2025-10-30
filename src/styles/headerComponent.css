@@ -13,9 +13,9 @@
   --color-sixthHeader: #eec58c;
   --color-seventhHeader: #aa6d3b;
 }
-.header-overflow{
+/* .header-overflow{
 /*   overflow-x: hidden;
- */}
+}*/ 
 .logoSPA{
   width: 2.5em;
 }
