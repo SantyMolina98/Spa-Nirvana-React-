@@ -17,7 +17,7 @@ import cattfacialglowvitc from './Img/cattfacialglowvitc.JPG';
 import cattfacialrebfaca from './Img/cattfacialrebfaca.jpg';
 import categoriatcorporal from './Img/categoriatcorporal.JPG';
 import cattcorporalliwen from './Img/cattcorporalliwen.jpg';
-import cattcorporalragiantu from './Img/cattcorporalragiantu.JGP';
+import cattcorporalragiantu from './Img/cattcorporalragiantu.JPG';
 import categoriamasaje from './Img/categoriamasaje.JPG';
 import catmasajedtissue from './Img/catmasajedtissue.JPG';
 import catmasajehots from './Img/catmasajehots.JPG';
