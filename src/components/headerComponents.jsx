@@ -5,6 +5,7 @@ import '../styles/headerComponent.css';
 import { NavLink, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import { UserContext } from '../context/UserContext';
 import logospaheader from '../assets/Img/logospaheader.png';
@@ -40,21 +41,23 @@ function HeaderComponent () {
                 <NavDropdown
                   title="Categorías"
                   id={`offcanvasNavbarDropdown-expand-lg`}>
-                  <NavDropdown.Item to='/categorias'>Tratamientos Faciales</NavDropdown.Item>
+                  <NavDropdown.Item as={HashLink} to='/categorias#scrollspyHeading1'>
+                    Tratamientos Faciales
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item to='/categorias'>
+                  <NavDropdown.Item as={HashLink} to='/categorias#scrollspyHeading2'>
                     Tratamientos Corporales
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item to='/categorias'>
+                  <NavDropdown.Item as={HashLink} to='/categorias#scrollspyHeading3'>
                     Masajes
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item to='/categorias'>
+                  <NavDropdown.Item as={HashLink} to='/categorias#scrollspyHeading4'>
                     Masajes con Aromaterapia
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item to='/categorias'>
+                  <NavDropdown.Item as={HashLink} to='/categorias#scrollspyHeading5'>
                     Rituales
                   </NavDropdown.Item>
                 </NavDropdown>

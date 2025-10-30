@@ -2,7 +2,8 @@ import { Button, Card, Form } from 'react-bootstrap';
 import '../App.css';
 import '../styles/registroPage.css';
 import {  useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
 function Registro () {
   const [nombre, setNombre] = useState('');
@@ -15,32 +16,63 @@ function Registro () {
   const [cpostal, setCpostal] = useState('----');
   const [contrasena, setContrasena] = useState('');
   const [validatedReg, setValidatedReg] = useState(false);
-  const navigateReg = useNavigate('')
+  const navigateReg = useNavigate();
 
-  function registrar(e){
+  const { registro } = useContext(UserContext);
+
+ async function registrar(e){
     e.preventDefault();
-
+    
     const formReg = e.target;
+    setValidatedReg(true);
 
+    // Constantes para rechazar entradas inválidas
+    const nameRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s'-]{3,18}$/;
+    const apellidoRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s'-]{2,20}$/;
+    const usuarioLen = usuario.trim().length;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+com[^\s@]+$/;
+    const telefonoDigits = /^\d{9,15}$/;
+    const cpostalDigits = /^\d{4}$/;
+
+     // Validaciones
+    const validNombre = nameRegex.test(nombre.trim());
+    const validApellido = apellidoRegex.test(apellido.trim());
+    const validUsuario = usuarioLen >= 3 && usuarioLen <= 18;
+    const validEmail = email.trim().length >= 11 && email.trim().length <= 35 && emailRegex.test(email.trim());
+    const validTelefono = telefonoDigits.test(telefono.trim());
+    const validDomicilio = domicilio.trim().length >= 8 && domicilio.trim().length <= 40;
+    const validProvincia = provincia !== '------';
+    const validCpostal = cpostalDigits.test(cpostal.trim());
+    const validContrasena = contrasena.trim().length >= 6 && contrasena.trim().length <= 25;
+
+    // Si alguna validación falla, detenemos el proceso
     if (formReg.checkValidity() === false) {
       e.stopPropagation();
+      return;
     } else {
-      
-      if (isNaN(nombre) && nombre.trim().length >= 3 && nombre.trim().length <= 18 && 
-        isNaN(apellido) && apellido.trim().length >= 2 && apellido.trim().length <= 20 &&
-        usuario.trim().length >= 3 && usuario.trim().length <= 18 && 
-        email.trim().length >= 11 && email.trim().length <= 30 && 
-        !isNaN(telefono) && telefono.trim().length >= 9 && telefono.trim().length <= 15 && 
-        domicilio.trim().length >= 8 && domicilio.trim().length <= 40 && 
-        !isNaN(cpostal) && cpostal.trim().length === 4  &&
-        contrasena.trim().length >= 6 && contrasena.trim().length <= 25) 
-      {
-        alert(`Usuario registrado con éxito. ¡Bienvenido/a ${usuario}!`);
-        navigateReg('/'); 
-      }
-    }
+      //Condicional para registrar usuario si todas las validaciones son correctas
+      if ( validNombre &&
+        validApellido &&
+        validUsuario &&
+        validEmail &&
+        validTelefono &&
+        validDomicilio &&
+        validProvincia &&
+        validCpostal &&
+        validContrasena) 
+        {
+          try {
 
-    setValidatedReg(true);
+        await registro({userInfo: {nombre, apellido, usuario, email, telefono, domicilio, provincia, cpostal, contrasena}});
+
+        navigateReg('/');
+      } catch (err) {
+        
+        alert('No se pudo crear la sesión: ' + (err?.message || 'error desconocido'));
+      }
+          
+        }
+      }    
   }
   
   return (
@@ -55,11 +87,11 @@ function Registro () {
               <Form.Label htmlFor="Nombre" name="Nombre" className="TextReg">Nombre:</Form.Label>
               <br/>
               <Form.Control aria-label='Nombre' type="text" name="Nombre" id="Nombre" placeholder="Ingrese su nombre" 
-                minlength={3} maxlength={18} size="25" 
+                minLength={3} maxLength={18} size="25" 
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
-                isInvalid={validatedReg && (nombre.trim().length < 3 || nombre.trim().length > 18)}
-                isValid={validatedReg && nombre.trim().length >= 3 && nombre.trim().length <= 18}
+                isInvalid={validatedReg && !/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s'-]{3,18}$/.test(nombre.trim())}
+                isValid={validatedReg && /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s'-]{3,18}$/.test(nombre.trim())}
                 required />
                 <Form.Control.Feedback type="invalid" className='alerterrorReg'>
                     Debe ingresar su nombre (sin números, entre 3 y 18 caracteres).
@@ -68,12 +100,12 @@ function Registro () {
             <Form.Group>
               <Form.Label htmlFor="Apellido" name="Apellido" className="TextReg">Apellido:</Form.Label><br/>
               <Form.Control type="text" name="Apellido" id="Apellido" placeholder="Ingrese su primer apellido" 
-              minlength={2} maxlength={20} size="25" 
-              value={apellido}
-              onChange={(e) => setApellido(e.target.value)}
-              isInvalid={validatedReg && (apellido.trim().length < 2 || apellido.trim().length > 20)}
-              isValid={validatedReg && apellido.trim().length >= 2 && apellido.trim().length <= 20}
-              required /> 
+                minLength={2} maxLength={20} size="25" 
+                value={apellido}
+                onChange={(e) => setApellido(e.target.value)}
+                isInvalid={validatedReg && !/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s'-]{2,20}$/.test(apellido.trim())}
+                isValid={validatedReg && /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s'-]{2,20}$/.test(apellido.trim())}
+                required /> 
               <Form.Control.Feedback type="invalid" className='alerterrorReg'>
                 Debe ingresar su apellido(sin números, entre 2 y 20 caracteres).
               </Form.Control.Feedback>
@@ -82,7 +114,7 @@ function Registro () {
             <Form.Group>
               <Form.Label htmlFor="newuser" name="newuser" className="TextReg">Ingrese su nombre de usuario:</Form.Label><br/>
             <Form.Control type="text" name="newuser" id="newuser" placeholder="ej: Usuario123" 
-              minLength={3} maxlength={18} size="20" 
+              minLength={3} maxLength={18} size="20" 
               value={usuario}
               onChange={(e) => setUsuario(e.target.value)}
               isInvalid={validatedReg && (usuario.trim().length < 3 || usuario.trim().length > 18)}
@@ -96,12 +128,12 @@ function Registro () {
             <Form.Group>
               <Form.Label htmlFor="E-mail" name="E-mail" className="TextReg">Ingrese su e-mail:</Form.Label><br/>
               <Form.Control type="E-mail" id="E-mail" placeholder="ej: usuario123@gmail.com" 
-              minLength={11} maxLength={35} size="50"  
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              isInvalid={validatedReg && (email.trim().length < 11 || email.trim().length > 35)}
-              isValid={validatedReg && email.trim().length >= 11 && email.trim().length <= 35}
-              required /> 
+                minLength={11} maxLength={45} size="50"  
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                isInvalid={validatedReg && !(email.trim().length >= 11 && email.trim().length <= 45 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))}
+                isValid={validatedReg && (email.trim().length >= 11 && email.trim().length <= 45 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))}
+                required /> 
               <Form.Control.Feedback type="invalid" className='alerterrorReg'>
                 Ingrese un email válido(al menos 11 caracteres, @ y .com).
               </Form.Control.Feedback>
@@ -111,13 +143,13 @@ function Registro () {
               <Form.Label htmlFor="telefono" className="TextReg">Telefono:</Form.Label><br/>
             <div className="TelefonoF">
               <Form.Label name="firsttelefono" id="firsttelefono" size="2" >+54</Form.Label>
-              <Form.Control type="number" name="telefono" id="telefono"  placeholder="Ingrese su N° de Teléfono"
-              minLength={9} maxlength={15} size="25" 
-              value={telefono}
-              onChange={(e) => setTelefono(e.target.value)}
-              isInvalid={validatedReg && (telefono.trim().length < 9 || telefono.trim().length > 15)}
-              isValid={validatedReg && telefono.trim().length >= 9 && telefono.trim().length <= 15}
-              required />
+              <Form.Control type="tel" name="telefono" id="telefono"  placeholder="Ingrese su N° de Teléfono"
+                minLength={9} maxLength={15} size="25" 
+                value={telefono}
+                onChange={(e) => setTelefono(e.target.value)}
+                isInvalid={validatedReg && !/^\d{9,15}$/.test(telefono.trim())}
+                isValid={validatedReg && /^\d{9,15}$/.test(telefono.trim())}
+                required />
               <Form.Control.Feedback type="invalid" className='alerterrorReg'>
                 Debe ingresar solo números (entre 9 y 15 dígitos).
               </Form.Control.Feedback>
@@ -140,7 +172,10 @@ function Registro () {
             <br/>
             <Form.Group>
               <Form.Label htmlFor="provincia" className="TextReg">Provincia:</Form.Label><br/>
-            <Form.Select name="provincia" id="selectprovincia" defaultValue={'------'} required>
+            <Form.Select name="provincia" id="selectprovincia" 
+              value={provincia}
+              onChange={(e) => setProvincia(e.target.value)} 
+              required>
               <option className='option-prov'>------</option>
               <option value="Buenos-Aires" className='option-prov'>Buenos Aires</option>
               <option value="Catamarca" className='option-prov'>Catamarca</option>
@@ -175,21 +210,21 @@ function Registro () {
             <Form.Group>
               <Form.Label htmlFor="cp" className="TextReg">Código Postal:</Form.Label> <br/>
               <Form.Control type='text' name="cp" id="cp" placeholder="----" 
-              maxlength={4} size="4" 
-              value={cpostal}
-              onChange={(e) => setCpostal(e.target.value)}
-              isInvalid={validatedReg && (cpostal.trim().length !== 4)}
-              isValid={validatedReg && cpostal.trim().length === 4}
-              required/> 
+                minLength={4} maxLength={4} size="4" 
+                value={cpostal}
+                onChange={(e) => setCpostal(e.target.value)}
+                isInvalid={validatedReg && !/^\d{4}$/.test(cpostal.trim())}
+                isValid={validatedReg && /^\d{4}$/.test(cpostal.trim())}
+                required/> 
               <Form.Control.Feedback type="invalid" className='alerterrorReg'>
-                Debe ingresar el Código Postal de su ciudad.
+                Debe ingresar el Código Postal de su ciudad (4 dígitos).
               </Form.Control.Feedback>
             </Form.Group>
             <br/>
             <Form.Group>
               <Form.Label htmlFor="contraseña2" className="TextReg">Escriba una contraseña:</Form.Label> <br/>
               <Form.Control type="password" name="contraseña2" id="contraseña2" placeholder="Escriba aquí su contraseña" 
-              minLength={6} maxlength={25} size='25'
+              minLength={6} maxLength={25} size='25'
               value={contrasena}
               onChange={(e) => setContrasena(e.target.value)}
               isInvalid={validatedReg && (contrasena.trim().length < 6 || contrasena.trim().length > 25)}
