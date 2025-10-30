@@ -19,17 +19,17 @@
 .logoSPA{
   width: 2.5em;
 }
-.dropdownn-login-header{
+/* .dropdownn-login-header{
   width: 100%;
   margin-left: 0;
   padding: 0.2em;
-}
-.dropdownn-login-header:hover{
+} */
+/* .dropdownn-login-header:hover{
   background-color: var(--color-seventhHeader);
   width: 100%;
   color: var(--color-fifthHeader);
   font-weight: 600;
-}
+} */
 .dropdownn-login-saludo-header{
   background-color: var(--color-fourth2Header);
   font-weight: 550;
