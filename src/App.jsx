@@ -12,15 +12,8 @@ import Login from './components/Login.jsx';
 import Registro from './pages/Registro.jsx';
 import PaginaError from './pages/PaginaError.jsx';
 import FooterComponent from './components/FooterComponent.jsx';
-import { useContext } from 'react';
-import { UserContext } from './context/UserContext';
-
-
 
 function App() {
-  /* const { isAuthenticated, loading } = useContext(UserContext);
-
-  if (loading) return null; */
 
   return (
     <>

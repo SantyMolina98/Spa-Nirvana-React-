@@ -20,7 +20,7 @@ function Login() {
     const t = setTimeout(() => {
       setSuccess(null);
       navigate('/');
-    }, 3000);
+    }, 2000);
     return () => clearTimeout(t);
   }, [success, navigate]);
 
