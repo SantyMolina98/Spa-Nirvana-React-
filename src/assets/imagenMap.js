@@ -49,6 +49,8 @@ import Naza from './Img/Naza.png';
 import Anahi from './Img/Anahi.png';
 import Santy from './Img/Santy.png';
 import Gene from './Img/Gene.png';
+import logomastercard from './Img/logomastercard.png';
+import logospafooter from './Img/logospafooter.png';
 
 const imagenMap = {
   //HomePage
@@ -93,7 +95,9 @@ const imagenMap = {
   //Servicio Masajes
   SM1, SM2,  SM3,
   //Nosotros
-  Naza, Anahi, Santy, Gene
+  Naza, Anahi, Santy, Gene,
+  //Footer
+  logospafooter, logomastercard,
 }
 
 export default imagenMap;
