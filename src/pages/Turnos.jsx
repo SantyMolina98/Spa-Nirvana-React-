@@ -12,28 +12,29 @@ function Turnos () {
           <div className="input-group">
             <label className="input-group-text" htmlFor="servicio">SERVICIO</label>
             <select className="form-select" id="servicio">
-              <option defaultValue={'SELECCIONAR SERVICIO'}> SELECCIONAR</option>
-              <option value="1">SERVICIO DE MASAJES </option>
-              <option value="2">TRATAMIENTOS FACIALES</option>
-              <option value="3">NUESTROS RITUALES</option>
+              <option defaultValue={'SELECCIONAR SERVICIO'}> SELECCIONAR SERVICIO</option>
+              <option value="servicio-masaje">SERVICIO DE MASAJES </option>
+              <option value="servicio-trat-facial">TRATAMIENTOS FACIALES</option>
+              <option value="servicio-rituales">NUESTROS RITUALES</option>
             </select>
           </div>
           <div className="input-group">
             <label className="input-group-text" htmlFor="dia">DIA</label>
             <select className="form-select" id="dia">
-              <option defaultValue={'SELECCIONAR DIA'}>SELECCIONAR</option>
-              <option value="1">LUNES</option>
-              <option value="2">JUEVES</option>
-              <option value="3">SABADOS</option>
+              <option defaultValue={'SELECCIONAR DIA'}>SELECCIONAR DIA</option>
+              <input type="datetime" name="" id="" />
+              <option value="lunes">LUNES</option>
+              <option value="jueves">JUEVES</option>
+              <option value="sabado">SABADOS</option>
             </select>
           </div>
           <div className="input-group mb-3">
             <label className="input-group-text" htmlFor="horario">HORARIO</label>
             <select className="form-select" id="horario">
-              <option defaultValue={'SELECCIONAR HORARIO'}>SELECCIONAR</option>
-              <option value="1">10 AM</option>
-              <option value="2">15 PM</option>
-              <option value="3">18 PM</option>
+              <option defaultValue={'SELECCIONAR HORARIO'}>SELECCIONAR HORARIO</option>
+              <option value="horario-1">10 AM</option>
+              <option value="horario-2">15 PM</option>
+              <option value="horario-3">18 PM</option>
             </select>
             </div>
         <div className="input-group">

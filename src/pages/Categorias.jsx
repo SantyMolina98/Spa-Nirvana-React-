@@ -24,7 +24,7 @@ function Categorias() {
                 tu rostro de forma profunda pero suave. Ideal para todo tipo de
                 piel.
               </p>
-              <Link to="/categorias/serviciosfacial">
+              <Link to="/serviciosfacial">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -37,7 +37,7 @@ function Categorias() {
                 unificar el tono de tu rostro, gracias al poder antioxidante de
                 la vitamina C.
               </p>
-              <Link to="/categorias/serviciosfacial">
+              <Link to="/serviciosfacial">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -49,7 +49,7 @@ function Categorias() {
                 equilibrio natural del rostro, regulando la producción de sebo,
                 purificando los poros y calmando las zonas sensibles.
               </p>
-              <Link to="/categorias/serviciosfacial">
+              <Link to="/serviciosfacial">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -61,7 +61,7 @@ function Categorias() {
                 radiante, suave y fresca con el poder hidratante y calmante de
                 las rosas.
               </p>
-              <Link to="/categorias/serviciosfacial">
+              <Link to="/serviciosfacial">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -115,7 +115,7 @@ function Categorias() {
                 Con movimientos suaves y firmes, mejora la circulación, reduce
                 el estrés y libera tensiones.
               </p>
-              <Link to="/categorias/serviciosmasaje">
+              <Link to="/serviciosmasaje">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -127,7 +127,7 @@ function Categorias() {
                 <br />Alivia el dolor muscular, estimula el metabolismo y relaja
                 los tejidos.
               </p>
-              <Link to="/categorias/serviciosmasaje">
+              <Link to="/serviciosmasaje">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -139,7 +139,7 @@ function Categorias() {
                 aliviar contracturas crónicas, liberar tensiones profundas y
                 mejorar la movilidad.
               </p>
-              <Link to="/categorias/serviciosmasaje">
+              <Link to="/serviciosmasaje">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -153,7 +153,7 @@ function Categorias() {
                 ><br />Experiencia sensorial y nutritiva que combina lo mejor de
                 la aromaterapia y la cosmética natural.
               </p>
-              <Link to="/categorias/serviciosmasaje">
+              <Link to="/serviciosmasaje">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>

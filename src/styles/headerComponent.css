@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   --color-principalHeader: #584738;
   --color-principal2Header: #3f3228;
   --color-secondaryHeader: #4c583e;
@@ -12,7 +13,9 @@
   --color-sixthHeader: #eec58c;
   --color-seventhHeader: #aa6d3b;
 }
-
+/* .header-overflow{
+/*   overflow-x: hidden;
+}*/ 
 .logoSPA{
   width: 2.5em;
 }
