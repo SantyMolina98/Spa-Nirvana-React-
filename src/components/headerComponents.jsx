@@ -16,7 +16,7 @@ function HeaderComponent () {
 
   return (
     <>
-      <Navbar key='lg' expand='lg'>
+      <Navbar key='lg' expand='lg' className='header-overflow'>
         <Container fluid>
           <Navbar.Brand to="/">
             <img src={logospaheader} className='logoSPA' alt="LogoSPA"/>

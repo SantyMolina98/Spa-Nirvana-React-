@@ -81,9 +81,9 @@
   margin-bottom: 10px;
 }
 
-#servicio, #dia {
+#servicio, #dia, #horario {
   border-bottom: var(--color-terciary) 1px solid;
-  width: 35%;
+  width: auto;
   text-align: center;
   font-weight: bold;
   color: var(--color-principal);
