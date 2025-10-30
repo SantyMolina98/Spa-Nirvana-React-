@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import '../App.css';
-import '../styles/loginpage.css';
+import '../styles/loginPage.css';
 import { Button, Card, Form, Alert } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
