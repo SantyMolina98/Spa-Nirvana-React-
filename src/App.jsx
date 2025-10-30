@@ -26,8 +26,8 @@ function App() {
               <Route path='/' element={<HomePage/>}/>
               <Route path='/turnos' element={<Turnos/>}/>
               <Route path='/categorias' element={<Categorias/>}/>
-              <Route path='/categorias/serviciosfacial' element={<ServiciosFacial/>}/>
-              <Route path='/categorias/serviciosmasaje' element={<ServiciosMasajes/>}/>
+              <Route path='/serviciosfacial' element={<ServiciosFacial/>}/>
+              <Route path='/serviciosmasaje' element={<ServiciosMasajes/>}/>
               <Route path='/contacto' element={<Contacto/>}/>
               <Route path='/nosotros' element={<Nosotros/>}/>    
               <Route path='/login' element={<Login/>}/>

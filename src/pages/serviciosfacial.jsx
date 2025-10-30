@@ -11,7 +11,7 @@ function ServiciosFacial() {
           <div className="card mb-3">
             <div className="row g-0">
               <div className="col-md-4">
-                <div id="carouselExampleCaptions" className="carousel slide">
+                <div id="carrusel-servicio-facial" className="carousel slide">
                   <div className="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -19,21 +19,21 @@ function ServiciosFacial() {
                   </div>
                   <div className="carousel-inner">
                     <div className="carousel-item active">
-                      <img src={imagenMap.STF1} className="d-block w-100" alt="STF1" height="750vh" />
+                      <img src={imagenMap.STF1} className="d-block w-100"  />
                       <div className="carousel-caption d-none d-md-block">
-                        <h5 style="color: black;">Essential Face Care</h5>
+                        <h5 >Essential Face Care</h5>
                       </div>
                     </div>
                     <div className="carousel-item">
-                      <img src={imagenMap.STF2} className="d-block w-100" alt="STF2" height="750vh" />
+                      <img src={imagenMap.STF2} className="d-block w-100"  />
                       <div className="carousel-caption d-none d-md-block">
-                      <h5 style="color: black;">Rebalancing Face Care</h5>
+                      <h5 >Rebalancing Face Care</h5>
                     </div>
                   </div>
                   <div className="carousel-item">
-                    <img src={imagenMap.STF3} className="d-block w-100" alt="stf3" height="750vh" />
+                    <img src={imagenMap.STF3} className="d-block w-100"  />
                     <div className="carousel-caption d-none d-md-block">
-                      <h5 style="color: black;">Glowing Roses</h5>
+                      <h5 >Glowing Roses</h5>
                     </div>
                   </div>
                 </div>
@@ -106,27 +106,17 @@ function ServiciosFacial() {
           </article>
         </section>
         <section>
-          <h2 id="Titulotesti">~ CONOCE LAS OPINIONES DE NUESTROS CLIENTES ~</h2>
+          <h2 className="Titulotesti">~ CONOCE LAS OPINIONES DE NUESTROS CLIENTES ~</h2>
           <div className="Cajaflexible reseñasflex">
-            <div className="card border-dark mb-3" style="max-width: 18rem;">
+            <div className="card border-dark mb-3" >
               <div className="card-header">
                 <div className="Flexreseña">
-                  <img src={imagenMap.RT1} alt="Spa" width="50vw" height="50vh" />
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                    </svg>
+                  <img src={imagenMap.RT1} alt="Spa"/>
+                    <i className="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill"></i>
                 </div>
               </div>
               <div className="card-body">
@@ -137,22 +127,20 @@ function ServiciosFacial() {
                     salgo con la piel luminosa y rejuvenecida. ¡Una experiencia cinco estrellas"</p>
               </div>
             </div>
-            <div className="card border-dark mb-3" style="max-width: 18rem;">
+            <div className="card border-dark mb-3" >
               <div className="card-header">
                 <div className="Flexreseña">
-                  <img src={imagenMap.RT2} alt="Spa" width="50vw" height="50vh" />
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
+                  <img src={imagenMap.RT2} alt="Spa"  />
+                   <i className="bi bi-star-fill"></i>
+
+                    <i className="bi bi-star-fill"></i>
+
+                   <i className="bi bi-star-fill"></i>
+
+                   <i className="bi bi-star-fill"></i>
+
+                   <i className="bi bi-star-fill"></i>
+                  
                 </div>
               </div>
               <div className="card-body">
@@ -163,22 +151,19 @@ function ServiciosFacial() {
                     también me relajé como nunca. Lo recomiendo totalmente."</p>
               </div>
             </div>
-            <div className="card border-dark mb-3" style="max-width: 18rem;">
+            <div className="card border-dark mb-3" >
               <div className="card-header">
                 <div className="Flexreseña">
-                  <img src={imagenMap.RT3} alt="Spa" width="50vw" height="50vh" />
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="border: black;" className="bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
+                  <img src={imagenMap.RT3} alt="Spa"  />
+
+                  <i className="bi bi-star-fill"></i>
+
+                  <i className="bi bi-star-fill"></i>
+
+                  <i className="bi bi-star-fill"></i>
+
+                  <i className="bi bi-star-fill"></i>
+                    
                 </div>
               </div>
               <div className="card-body">
