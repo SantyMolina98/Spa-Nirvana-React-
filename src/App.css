@@ -35,23 +35,6 @@ a {
   border-radius: 10px;
 }
 
-/* NAV */
-/* header {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  position: sticky;
-  top: 0px;
-  z-index: 2;
-} */
-/* .navbar,
-.navbar-expand-lg,
-.bg-body-tertiary {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-} */
-
 .cajaflexible {
   background-color: var(--color-fourth);
   display: flex;
@@ -60,11 +43,6 @@ a {
   padding: 0;
   margin: 0;
 }
-
-/* .bg-body-tertiary,
-.container-fluid {
-  padding: 0px;
-} */
 
 .Logo {
   width: 3em;
@@ -78,63 +56,6 @@ a {
     display: block;
   }
 }
-
-/* .paginaActiva {
-  background-color: var(--color-principal);
-}
-
-.paginaActivaLogin{  
-  color: var(--color-principal);
-}
-
-.navtext{
-  color: var(--color-fifth);
-  margin-right: 0;
-}
-
-
-.navtext:hover{
-  background-color: #ffffff4f;
-  color: #342d27;
-  cursor: pointer;
-  transition: 400ms;
-}
-
-.login:hover{
-  background-color: #ffffff4f;
-  cursor: pointer;
-  transition: 400ms;
-}
-
-li .dropdown-item{
-  width: 100%;
-  margin: 0;
-  padding-left: 1em;
-}
-li .dropdown-item:hover {
-  background-color: var(--color-fourth2);
-} */
-/* .form-control,
-.me-2 {
-  width: 100%;
-}
-.busqueda {
-  width: 100%;
-  margin-right: 1em;
-  text-align: end;
-  display: flex;
-  justify-content: end;
-} */
-
-/* MAIN */
-/* h1,
-h2,
-h4,
-p {
-  margin: 20px 30px;
-  text-align: center;
-} */
-
 
 .btnarticle {
   background-color: var(--color-principal);
@@ -212,30 +133,4 @@ p {
   .cajaflexible .navbar-toggler{
     margin-left: -5em;
   }
-  /* .nav-item .dropdown-menu  {
-  width: 180px;
-  margin-left: 3em;
-  padding: 0;
 }
-.dropdown-menu .dropdown-item{
-  margin: 0;
-}
-.dropdown-menu .dropdown-divider{
-  display: none;
-}
-.login .btnlogin{
-  margin-left: 2em;
-} */
-}
-/* @media (min-width: 600px) and (max-width: 768px) {
-  .navbar-toggler, .btndesplegable{
-    margin-left: -5em;
-  }
-  
-}
-
-@media (min-width: 800px) and (max-width: 1024px) {
-  .navbar-nav .nav-item .nav-link{
-    margin-right: -1.2em;
-  }
-} */

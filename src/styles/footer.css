@@ -1,11 +1,9 @@
 *{
-
-  --color-principalfooter :#584738 ;
-  --color-secondaryfooter : #846d4e;
+  --color-principalfooter :#090909 ;
+  --color-secondaryfooter : #ece6df79;
   --color-terciaryfooter : #efc78c;
-  --color-fourthfooter : #d8ab39;
-  --color-fifthfooter : #e4ce0d;
-   --color-sixthfooter : #3d321b;
+  --color-fourthfooter : #efc78c;
+   --color-sixthfooter : #efc78c;
 }
 .back-footer-color{
   background-color: var(--color-principalfooter);
@@ -65,13 +63,22 @@
   height: 30px;
 }
 .bi-facebook:hover, .bi-instagram:hover, .bi-tiktok:hover, .bi-twitter-x:hover{
-  background-color: var(--color-secondaryfooter); 
+  background-color: var(--color-secondaryfooter);
   border-radius: 1em;
-  
+  box-shadow: 0px 0px 20px var(--color-secondaryfooter);
+  color: #090909;
+  transition: 400ms;
+  display: inline-block;
+  min-width: 3px;
 }
 .columna2 .textofootercol ul li a p:hover, .columna3 .textofootercol ul li a p:hover{
   background-color: var(--color-secondaryfooter);
-  border-radius: 0.5em;
+  border-radius: 1em;
+  box-shadow: 0px 0px 10px var(--color-secondaryfooter);
+  color: #090909;
+  transition: 400ms;
+      display: inline-block;
+    min-width: 250px;
 }
 .bi-geo-alt-fill{
   color: #5c0303;

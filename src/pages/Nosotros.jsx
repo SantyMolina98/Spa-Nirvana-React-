@@ -11,7 +11,7 @@ function Nosotros  ()  {
         <img src={imagenMap.logospaheader} alt="logo" className="logoarticle" />
         <h3 className="mainh">Trabajamos con dedicación y creatividad para convertir ideas en soluciones funcionales y bien pensadas.</h3>
       </div>
-    <section className="card-section">
+     <section className="card-section">
       <div className="cardNos">
         <img src={imagenMap.Naza} alt="naza" className='fotoNos' />
         <div>
@@ -26,7 +26,7 @@ function Nosotros  ()  {
             <li className='liNos'><a href="https://www.instagram.com/nazarenamolina/" target="_blank" className="fa fa-instagram"></a></li>
           </ul>
         </div>
-      </div>      
+      </div>
     </section>
     <section className="card-section">
       <div className="cardNos">
