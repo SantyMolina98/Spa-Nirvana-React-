@@ -1,9 +1,14 @@
 import { Button, Card, Form } from 'react-bootstrap';
+import emailjs from '@emailjs/browser';
 import '../App.css';
 import '../styles/registroPage.css';
 import {  useNavigate } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useState, useContext, useRef } from 'react';
 import { UserContext } from '../context/UserContext';
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 function Registro () {
   const [nombre, setNombre] = useState('');
@@ -20,8 +25,27 @@ function Registro () {
 
   const { registro } = useContext(UserContext);
 
+  //Constante para uso de emailjs para enviar mails
+  const form =  useRef();
+
+  
+  //Función para registrar nuevo usuario
  async function registrar(e){
     e.preventDefault();
+
+    // Envío de datos a emailjs
+    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form.current, {publicKey: EMAILJS_PUBLIC_KEY})
+    .then(
+      () => {
+        console.log('Mensaje enviado correctamente');
+        alert('Registro exitoso! Revise su correo electrónico para más información.');
+        form.current.reset();
+      },
+       (error) => { 
+        console.log('Error al enviar el mensaje');
+        alert('Error al enviar el mensaje, intente nuevamente más tarde.');
+      }
+    )
     
     const formReg = e.target;
     setValidatedReg(true);
@@ -82,7 +106,7 @@ function Registro () {
       <Card className="CardRegistro">   
         <Card.Body className="ContainerRegistro">
           <h4  className='h4Reg'>Ahora ingrese sus datos</h4> 
-          <Form noValidate validated={validatedReg} className="FormRegistro" onSubmit={registrar}>
+          <Form noValidate validated={validatedReg} className="FormRegistro" ref={form} onSubmit={registrar}>
             <Form.Group>
               <Form.Label htmlFor="Nombre" name="Nombre" className="TextReg">Nombre:</Form.Label>
               <br/>
