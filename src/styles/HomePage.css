@@ -1,10 +1,21 @@
-*{
-  --color-principalHome: #584738;
-  --color-secondaryHome: #4c583e;
-  --color-terciaryHome: #B59E7D;
-  --color-fourthHome: #959581;
-  --color-fifthHome: #f1eada;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box; 
+  font-family: "Poppins", sans-serif;
 }
+:root{
+  --color-principal: #584738;
+  --color-principal2: #3f3228;
+  --color-secondary: #4c583e;
+  --color-terciary: #b59e7d;
+  --color-fourth: #959581;
+  --color-fourth2: #95958170;
+  --color-fifth: #f1eada;
+  --color-sixth: #eec58c;
+  --color-seventh: #aa6d3b;
+}
+
 .MainHomeP{
     margin-top: 0;
     height: 100%;
@@ -17,13 +28,24 @@
 .carrusel{
     width: 100%;
 }
+
 .logoarticle {
   width: 10%;
 }
+
 .sectionPromosHP{
     width: 100%;
     height: auto;
 }
+
+.main-content{
+  height: 100%;
+} 
+
+a {
+  text-decoration: none;
+}
+
 .img{
     width: 17%;
     height: 68%;
@@ -63,14 +85,12 @@
 .textoabsolute {
   position: absolute;
   padding: 10px;
-  color: var(--color-fifthHome);
   background-color: #b59e7d5a;
   border: solid 1px var(--color-fifthHome);
 }
 
 #etiquetaAsizeTratamiento, #etiquetaAsizeMasaje, #etiquetaAsizeRitual {
   font-size: 2rem;
-  /* Para que los botones se vean del mismo tamaño: */
   display: inline-block;
   min-width: 225.55px;
   text-align: center;
