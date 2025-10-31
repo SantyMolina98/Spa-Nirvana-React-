@@ -51,6 +51,7 @@ import Santy from './Img/Santy.png';
 import Gene from './Img/Gene.png';
 import logomastercard from './Img/logomastercard.png';
 import logospafooter from './Img/logospafooter.png';
+import direccion from './Img/direccion.png';
 
 const imagenMap = {
   //HomePage
@@ -97,7 +98,7 @@ const imagenMap = {
   //Nosotros
   Naza, Anahi, Santy, Gene,
   //Footer
-  logospafooter, logomastercard,
+  logospafooter, logomastercard, direccion,
 }
 
 export default imagenMap;

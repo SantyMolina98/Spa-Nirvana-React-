@@ -1,185 +1,37 @@
-/* *{
-  --color-principalfooter :#090909 ;
-  --color-secondaryfooter : #ece6df79;
-  --color-terciaryfooter : #efc78c;
-  --color-fourthfooter : #efc78c;
-   --color-sixthfooter : #efc78c;
-}
-.back-footer-color{
-  background-color: var(--color-principalfooter);
-}
-.footer-content {
-  width: 100%;
-  height: auto;
-  position: sticky;
- 
-  background-color: var(--color-principalfooter);
-}
-.card-img-footer {
-  width:40%;
-  background-color: var(--color-principalfooter);
-  color: var(--color-terciaryfooter);
-  border-style: none;
-}
-.col-md-4{
-  height: auto;
-  width: 220px;
-}
- .img-fluid {
-  width: 100%;
-  height: 230px;
-}
-.col-md-8{
-  width: 250px;
-}
-.card-body-img-footer{
-  width: auto;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;  
-}
-
-.RedesIMG{
-  width: 90%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
- .redes{
-  margin:0;
-  width: auto;
-  height: auto;
-}
-.bi-facebook, .bi-instagram, .bi-tiktok, .bi-twitter-x{
-  width: 50px;
-  height: 50px;
-  color: var(--color-fourthfooter);
-}
-.size-redes{
-  width: 60px;
-  height: 30px;
-}
-.bi-facebook:hover, .bi-instagram:hover, .bi-tiktok:hover, .bi-twitter-x:hover{
-  background-color: var(--color-secondaryfooter);
-  border-radius: 1em;
-  box-shadow: 0px 0px 20px var(--color-secondaryfooter);
-  color: #090909;
-  transition: 400ms;
-  display: inline-block;
-  min-width: 3px;
-}
-.columna2 .textofootercol ul li a p:hover, .columna3 .textofootercol ul li a p:hover{
-  background-color: var(--color-secondaryfooter);
-  border-radius: 1em;
-  box-shadow: 0px 0px 10px var(--color-secondaryfooter);
-  color: #090909;
-  transition: 400ms;
-      display: inline-block;
-    min-width: 250px;
-}
-.bi-geo-alt-fill{
-  color: #5c0303;
-}
-.nav,
-.justify-content-center,
-.border-bottom,
-.pb-3,
-.mb-3 {
-  width: auto;
-  height: auto;
-  color: var(--color-terciaryfooter);
-}
-.text-center,
-.text-body-secondary {
-  width: auto;
-}
-.mb-2 .nav-link {
-  color: var(--color-terciaryfooter);
-}
-#dr {
-  margin-top: 4em;
-}
-.columna2,
-.columna3 {
-  width: auto;
-}
-.p-footer {
-  margin-left: 0; 
-  text-align: start;
-  color: var(--color-fourthfooter);
-}
-.DownText {
-  width: 100%;
-  text-align: center;
-  color: var(--color-sixthfooter);
-  
-} */
-
-/* src/styles/footer.css */
-
-/* 1. Colores de Fondo y Base */
 .back-footer-color {
-    /* Color marrón oscuro para el fondo */
     background-color: #000000; 
 }
 
-/* 2. Estilo de los Enlaces (Alto Contraste) */
 .p-footer-link,
 .list-group-item a {
-    /* Color blanco/crema claro para la legibilidad */
-    color: #f0f0f0; 
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-size: 0.95rem; 
+    font-size: 1.1rem; 
 }
 
-.p-footer-link:hover,
-.list-group-item a:hover {
-    /* Color dorado para el hover */
-    color: #ffc107; 
-}
-
-/* 3. Estilo de los Títulos de Columna */
 h5 {
-    /* Usa el dorado para el acento y títulos */
-    color: #ffc107; 
-    letter-spacing: 1px;
-    font-weight: 600;
+    color: aliceblue;
+    letter-spacing: 2px;
+    font-weight: 800;
 }
 
-/* 4. Ícono Flotante de WhatsApp */
-.cajawp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
 
 .col-lg-4 h5 {
     text-align: center;
 }
 
 .col-lg-4 .list-group {
-    /* Centra los elementos de la lista */
     text-align: center;
 }
 
-/* Opcional: Centra elementos específicos si la regla de arriba no funciona */
-.p-footer-link,
 .list-group-item a {
-    /* Esto centra el texto DE los enlaces */
     text-align: center; 
-    /* Nota: Si el enlace ocupa todo el ancho, esto funciona */
 }
 
-/* Centra los iconos de Medios de Pago */
 .payment-icons {
-    /* Usa Flexbox para centrar horizontalmente el contenedor de íconos */
     display: flex;
-    justify-content: center; /* CLAVE para centrar horizontalmente */
-    margin-top: 10px; /* Espacio superior */
-    margin-bottom: 20px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.logospafooter{
+  max-width: 40%;
 }
