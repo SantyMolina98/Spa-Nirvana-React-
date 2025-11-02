@@ -2,7 +2,20 @@ import { createContext, useState, useEffect } from 'react';
 
 export const UserContext = createContext();
 
+
 export function UserProvider({ children }) {
+ //SECCIÓN PARA TURNOS
+ const [turnos, setTurnos] = useState();
+
+ const addTurno = () => {
+
+ }
+ const removeTurno = () => {
+
+ }
+
+ 
+ //SECCIÓN PARA USUARIOS
   const [user, setUser] = useState(null);
   const [register, setRegister] = useState(null);
   
