@@ -2,28 +2,31 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  --color-principal: #584738;
-  --color-secondary: #4c583e;
-  --color-terciary: #B59E7D;
-  --color-fourth: #959581;
-  --color-fifth: #f1eada;
+  --color-principalturnos: #584738;
+  --color-secondaryturnos: #4c583e;
+  --color-terciaryturnos: #B59E7D;
+  --color-fourthturnos: #959581;
+  --color-fifthturnos: #f1eada;
 }
 .MainT{
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
 .sectioncombos {
+  width: 60%;
   margin: 2px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+ 
   align-items: center;
-  border: 3px solid var(--color-principal);
+  border: 3px solid var(--color-principalturnos);
   overflow-x: hidden;
 }
 
@@ -47,19 +50,19 @@
 }
 
 .input-group-text {
-  background-color: var(--color-fourth);
+  background-color: var(--color-fourthturnos);
   width: 40%;
   display: flex;
   flex-direction: column;
-  color: var(--color-principal);
+  color: var(--color-principalturnos);
   font-weight: bold;
   padding: 10px;
 }
 
 .form-select {
-  background-color: var(--color-terciary);
+  background-color: var(--color-terciaryturnos);
   padding: 10px;
-  border: 1px solid var(--color-principal);
+  border: 1px solid var(--color-principalturnos);
   border-radius: 4px;
 }
 
@@ -77,43 +80,53 @@
   width: 100%;
   text-align: center;
   font-weight: bold;
-  color: var(--color-principal);
+  color: var(--color-principalturnos);
   margin-bottom: 10px;
 }
 
-#servicio, #dia, #horario {
-  border-bottom: var(--color-terciary) 1px solid;
+#categoriaturno, #dia, #horario {
+  border-bottom: var(--color-terciaryturnos) 1px solid;
   width: auto;
   text-align: center;
   font-weight: bold;
-  color: var(--color-principal);
+  color: var(--color-principalturnos);
   padding-bottom: 5px;
 }
 
-.flexcards{
+.hrturnos{
+  width: 80%;
+  font-weight:800 ;
+  border: 3px solid var(--color-principalturnos);
+}
+/* Sector de reservación de turnos */
+.turnos-reservados{
+  width: 100%;
+  height: auto;
+}
+/* .flexcards{
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 12px;
-}
+} */
 
 .btnTurnos {
-  background-color: var(--color-principal);
-  color: var(--color-fifth);
+  background-color: var(--color-principalturnos);
+  color: var(--color-fifthturnos);
   border: none;
   transition: transform 0.3s ease;
 }
 
 .btnTurnos:hover {
-  background-color: var(--color-terciary);
-  color: var(--color-fifth);
+  background-color: var(--color-terciaryturnos);
+  color: var(--color-fifthturnos);
   transform: scale(1.05);
 }
 .resumen-solicitud { 
   font-style: normal;
 }
 
-@media (max-width: 425px){
+/* @media (max-width: 425px){
   .flexcards {
     flex-direction: row;
     justify-content: center;
@@ -138,10 +151,10 @@
   font-weight: bold;
   transition: 0.3 ease;
 }
-
+ */
 
 .actions {
-  background-color: var(--color-terciary);
+  background-color: var(--color-terciaryturnos);
   margin: 10px;
   padding: 15px;
   display: flex;
@@ -160,7 +173,7 @@
   font-weight: bolder;
   text-align: center;
   margin-top: 20px;
-  color: var(--color-principal);
+  color: var(--color-principalturnos);
 }
 
 @media (max-width:425px) {
@@ -200,7 +213,7 @@
     margin-bottom: auto;
   }
 
-  .btn-confirm,
+  /* .btn-confirm,
   .btn-back {
     width: 100%;
     padding: 10px 15px;
@@ -215,7 +228,7 @@
   .card-body {
     flex-direction: column;
     max-width: 100%;
-  }
+  } */
 
   .row,
   .row-cols-1,
@@ -238,10 +251,10 @@
     width: 100%;
   }
 
-  .Tarjetaeliminar {
+ /*  .Tarjetaeliminar {
     width: 100%;
     flex-direction: row;
-  }
+  } */
 
   .row,
   .row-cols-1,
@@ -290,11 +303,11 @@
     width: 200%;
   }
 
-  .Tarjetaeliminar {
+  /* .Tarjetaeliminar {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-  }
+  } */
 
   .row,
   .row-cols-1,
