@@ -3,7 +3,7 @@ import emailjs from '@emailjs/browser';
 import '../App.css';
 import '../styles/registroPage.css';
 import {  useNavigate } from 'react-router-dom';
-import { useState, useContext, useRef } from 'react';
+import { useState, useContext, useRef, useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -15,10 +15,10 @@ function Registro () {
   const [apellido, setApellido] = useState('');
   const [usuario, setUsuario] = useState('');
   const [email, setEmail] = useState('');
-  const [telefono, setTelefono] = useState(0);
+  const [telefono, setTelefono] = useState('');
   const [domicilio, setDomicilio] = useState('');
   const [provincia, setProvincia] = useState('------');
-  const [cpostal, setCpostal] = useState('----');
+  const [cpostal, setCpostal] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [validatedReg, setValidatedReg] = useState(false);
   const navigateReg = useNavigate();
@@ -27,28 +27,30 @@ function Registro () {
 
   //Constante para uso de emailjs para enviar mails
   const form =  useRef();
+   useEffect(() => {
+    if (EMAILJS_PUBLIC_KEY) {
+      try {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+      } catch (err) {
+        console.error('emailjs init error', err);
+      }
+    }
+  }, []);
 
   
   //Función para registrar nuevo usuario
  async function registrar(e){
     e.preventDefault();
-
-    // Envío de datos a emailjs
-    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form.current, {publicKey: EMAILJS_PUBLIC_KEY})
-    .then(
-      () => {
-        console.log('Mensaje enviado correctamente');
-        alert('Registro exitoso! Revise su correo electrónico para más información.');
-        form.current.reset();
-      },
-       (error) => { 
-        console.log('Error al enviar el mensaje');
-        alert('Error al enviar el mensaje, intente nuevamente más tarde.');
-      }
-    )
-    
     const formReg = e.target;
     setValidatedReg(true);
+    // Envío de datos a emailjs
+    
+    // Si alguna validación falla, detenemos el proceso
+    if (formReg.checkValidity() === false) {
+      e.stopPropagation();
+      return;
+    } 
+    
 
     // Constantes para rechazar entradas inválidas
     const nameRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s'-]{3,18}$/;
@@ -69,35 +71,40 @@ function Registro () {
     const validCpostal = cpostalDigits.test(cpostal.trim());
     const validContrasena = contrasena.trim().length >= 6 && contrasena.trim().length <= 25;
 
-    // Si alguna validación falla, detenemos el proceso
-    if (formReg.checkValidity() === false) {
-      e.stopPropagation();
-      return;
-    } else {
+    
       //Condicional para registrar usuario si todas las validaciones son correctas
-      if ( validNombre &&
-        validApellido &&
-        validUsuario &&
-        validEmail &&
-        validTelefono &&
-        validDomicilio &&
-        validProvincia &&
-        validCpostal &&
-        validContrasena) 
-        {
-          try {
+    if ( !(validNombre &&
+      validApellido &&
+      validUsuario &&
+      validEmail &&
+      validTelefono &&
+      validDomicilio &&
+      validProvincia &&
+      validCpostal &&
+      validContrasena) )
+      {
+        try {
 
         await registro({userInfo: {nombre, apellido, usuario, email, telefono, domicilio, provincia, cpostal, contrasena}});
 
-        navigateReg('/');
-      } catch (err) {
-        
-        alert('No se pudo crear la sesión: ' + (err?.message || 'error desconocido'));
-      }
+          try {
+            await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form.current);
+            console.log('Mensaje enviado correctamente');
+            alert('Registro exitoso! Revise su correo electrónico para más información.');
+            if (form.current) form.current.reset();
+          } catch (emailErr) {
+            console.error('Error al enviar el mensaje', emailErr);
+            alert('Registro creado pero no se pudo enviar el correo. Intente más tarde.');
+          }
+
+      // redirigir al home (sesión ya iniciada por registro)
+      navigateReg('/');
+    } catch (err) {
+      alert('No se pudo crear la sesión: ' + (err?.message || 'error desconocido'));
+    }
           
-        }
-      }    
   }
+}
   
   return (
     <>
