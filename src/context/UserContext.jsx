@@ -57,13 +57,26 @@ export function UserProvider({ children }) {
     
   };
 
-  const registro = async (userInfo) => {
-    if(!userInfo){
+  const registro = async (datos) => {
+    const data = datos?.userInfo || datos;
+    if(!data){
       throw new Error('Información de registro inválida');
     }
     await new Promise((r) => setTimeout(r, 2000));
-      const inforegistro = {nombre: userInfo.nombre, apellido: userInfo.apellido, usuario: userInfo.usuario, email: userInfo.email, telefono: userInfo.telefono, domicilio: userInfo.domicilio, provincia: userInfo.provincia, cpostal: userInfo.cpostal, contrasena: userInfo.contrasena};
+      const inforegistro = {nombre: data.nombre, 
+        apellido: data.apellido, 
+        usuario: data.usuario, 
+        email: data.email, 
+        telefono: data.telefono, 
+        domicilio: data.domicilio, 
+        provincia: data.provincia, 
+        cpostal: data.cpostal, 
+        contrasena: data.contrasena};
     setRegister(inforegistro);
+
+    // Iniciar sesión automáticamente tras registro:
+    const userData = { username: data.usuario, nombre: data.nombre, email: data.email };
+    setUser(userData);
 
     return inforegistro;
   }
