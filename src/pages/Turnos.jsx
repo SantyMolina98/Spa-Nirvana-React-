@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import imagenMap from '../assets/imagenMap.js';
 import { Form } from 'react-bootstrap';
 
-function Turnos () {
-  
-
+ function Turnos () {
   return (
     <div className='MainT'>
     <section className="sectioncombos">
@@ -77,11 +75,11 @@ function Turnos () {
               <option value="horario-3">18 PM</option>
             </Form.Select>
           </div>
-        {/* <div className="input-group">
+         <div className="input-group">
            <span className="input-group-text" id="total-pagar">Total a Pagar:</span>
           <span className="input-group-text" id="precio-total">$ 105.000</span>
-        </div> */}
-      </Form>
+        </div> */
+     /*  </Form>
     </section>
     <hr className='hrturnos'/>
     <section>
@@ -90,7 +88,7 @@ function Turnos () {
         <hr className='hrturnos'/>
       </article>
     </section>
-    {/* <section>
+     <section>
       <article className="Tarjetaeliminar">
         <div className="row row-cols-1 row-cols-md-2 g-4">
           <div>
@@ -117,8 +115,8 @@ function Turnos () {
         </div>
       </div>
       </article>
-    </section> */}
-    {/* <section id="reserva">
+    </section>
+     <section id="reserva">
       <article>
         <div className="actions">
           <p id="resumen-solicitud">Resumen de solicitud:</p>
@@ -128,8 +126,8 @@ function Turnos () {
           <Link to="*" className="btnTurnos btn-back" id="volver-btn">Volver</Link>
         </div>
       </article>
-    </section> */}
-  </div>
+    </section>
+   </div>
   )
 }
-export default Turnos;
+export default Turnos; 
