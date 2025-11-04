@@ -7,7 +7,7 @@ import { useState, useContext, useRef, useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_TEMPLATE_REGISTRO_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_REGISTRO_ID;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 function Registro () {
@@ -88,7 +88,8 @@ function Registro () {
         await registro({userInfo: {nombre, apellido, usuario, email, telefono, domicilio, provincia, cpostal, contrasena}});
 
           try {
-            await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form.current);
+            const formEl = form.current || formReg;
+            await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_REGISTRO_ID, formEl);
             console.log('Mensaje enviado correctamente');
             alert('Registro exitoso! Revise su correo electrónico para más información.');
             if (form.current) form.current.reset();

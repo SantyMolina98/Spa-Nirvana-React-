@@ -27,10 +27,25 @@
 
 .cardLogin{
   margin: 1em;
+  margin-bottom:6em;
   padding: 0;
   border-radius: 1.5em;
-  
+  animation-name: cardslide;
+  animation-duration: 3s;
 }
+
+@keyframes cardslide {
+  from {
+    transform: scale(0.1,0.1);
+    right: 70%;
+    
+  }
+  to {
+    transform: scale(1,1);
+    right: 0;
+  }
+}
+
 .bodyCard{
   margin: 0;
   padding: 1em;
@@ -40,6 +55,7 @@
   width: auto;
   margin-left: 1em;
   margin-right: 1em;
+  margin-top: 0.5em;
   text-align: center;
 
 }

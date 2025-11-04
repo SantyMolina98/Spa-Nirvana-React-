@@ -33,6 +33,7 @@
   text-align: start;
   justify-content: center;
    margin-top: 0;
+   box-shadow: black 0px 4px 8px 0px;
   background-color: var(--color-aReg);
   border-radius: 1em;
 }
