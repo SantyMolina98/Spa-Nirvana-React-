@@ -1,133 +1,230 @@
 import '../App.css';
 import '../styles/turnosPages.css';
-import { Link } from 'react-router-dom';
-import imagenMap from '../assets/imagenMap.js';
-import { Form } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Form, Button, Alert } from 'react-bootstrap'; 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css'; 
 
- function Turnos () {
-  return (
-    <div className='MainT'>
-    <section className="sectioncombos">
-        <h2 id="Texturno">Reserva tu turno</h2>
-        <Form id="formuselec">
-          <div className="input-group">
-            <Form.Label className="input-group-text" htmlFor="categoria">CATEGORÍA</Form.Label>
-            <Form.Select className="form-select" id="categoriaturno">
-              <option defaultValue={'SELECCIONAR CATEGORÍA'}> SELECCIONAR CATEGORÍA</option>
-              <option value="servicio-trat-facial">TRATAMIENTOS FACIALES</option>
-              <option value="servicio-rituales">NUESTROS RITUALES</option>
-            </Form.Select>
+// Datos centralizados para Categorías y Servicios
+const datosTurnos = {
+    categorias: [
+        { value: 'servicio-trat-facial', label: 'TRATAMIENTOS FACIALES' },
+        { value: 'servicio-rituales', label: 'NUESTROS RITUALES' },
+        { value: 'servicio-corporales', label: 'TRATAMIENTOS CORPORALES' },
+        { value: 'servicio-masajes', label: 'MASAJES' },
+        { value: 'servicio-aroma', label: 'MASAJES CON AROMATERAPIA' },
+    ],
+    serviciosPorCategoria: {
+        'servicio-trat-facial': [
+            { value: 'essential-face-care', label: 'Essential Face Care' },
+            { value: 'glowing-vit-c', label: 'Glowing Vit C+' },
+            { value: 'rebalancing-face-care', label: 'Rebalancing Face Care' },
+            { value: 'glowing-roses', label: 'Glowing Roses' },
+        ],
+        'servicio-rituales': [
+            { value: 'ritual-nirvana-escape', label: 'Ritual Nirvana Escape' },
+            { value: 'ritual-mind-soul', label: 'Ritual Mind & Soul' },
+            { value: 'ritual-afflora', label: 'Ritual Afflora' },
+            { value: 'ritual-mulfem', label: 'Ritual Mülfem' },
+            { value: 'ritual-unad', label: 'Ritual Üñad' },
+            { value: 'ritual-urkutun', label: 'Ritual Ürkutun' },
+        ],
+        'servicio-corporales': [
+            { value: 'ceremonia-liwen', label: 'Ceremonia Liwen' },
+            { value: 'ceremonia-ragiantu', label: 'Ceremonia Ragiantu' },
+        ],
+        'servicio-masajes': [
+            { value: 'masaje-sueco', label: 'Masaje Sueco' },
+            { value: 'masaje-hot-stones', label: 'Masaje Hot Stones' },
+            { value: 'masaje-deep-tissue', label: 'Masaje Deep Tissue' },
+            { value: 'masaje-signature', label: 'Masaje Signature' },
+        ],
+        'servicio-aroma': [
+            { value: 'purificante', label: 'Purificante' },
+            { value: 'relajante', label: 'Relajante' },
+            { value: 'estimulante', label: 'Estimulante' },
+        ],
+    },
+};
+
+// Lógica simple para simular horarios disponibles (10:00, 15:00, 18:00)
+// Nota: 'new Date()' se usa aquí para establecer la hora de hoy.
+const horariosDisponibles = [
+    new Date().setHours(10, 0, 0, 0), 
+    new Date().setHours(15, 0, 0, 0),
+    new Date().setHours(18, 0, 0, 0),
+];
+
+// Función para filtrar días (solo Lunes, Jueves, Sábados)
+const filterDiasSemana = (date) => {
+    const day = date.getDay();
+    // 1 = Lunes, 4 = Jueves, 6 = Sábado.
+    return day === 1 || day === 4 || day === 6; 
+};
+
+
+function Turnos() {
+    // Estados para el formulario
+    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
+    const [servicioSeleccionado, setServicioSeleccionado] = useState('');
+    const [fechaSeleccionada, setFechaSeleccionada] = useState(null); 
+    const [horaSeleccionada, setHoraSeleccionada] = useState(null); 
+    
+    // Estado para la validación y mensajes
+    const [error, setError] = useState('');
+    const [reservaExitosa, setReservaExitosa] = useState(false);
+    
+    // Obtener los servicios basados en la categoría actual
+    const serviciosDisponibles = datosTurnos.serviciosPorCategoria[categoriaSeleccionada] || [];
+
+    const handleCategoriaChange = (e) => {
+        // Al cambiar la categoría, reseteamos el servicio
+        setCategoriaSeleccionada(e.target.value);
+        setServicioSeleccionado(''); 
+        // Limpiamos mensajes de error
+        setError('');
+        setReservaExitosa(false);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Previene el comportamiento por defecto de recargar la página
+
+        setError(''); // Limpiamos errores previos
+        setReservaExitosa(false); // Limpiamos éxito previo
+
+        // Validación de campos
+        if (!categoriaSeleccionada || !servicioSeleccionado || !fechaSeleccionada || !horaSeleccionada) {
+            setError('Por favor, selecciona una opción para todos los campos.');
+            return;
+        }
+
+        // Si la validación es exitosa, se simula el envío a un servidor:
+        console.log('Turno a reservar:', {
+            categoria: categoriaSeleccionada,
+            servicio: servicioSeleccionado,
+            fecha: fechaSeleccionada.toLocaleDateString(),
+            hora: horaSeleccionada.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        });
+
+        // Simulación de éxito
+        setReservaExitosa(true);
+
+        // Opcion: Resetear el formulario después de la reserva
+         //setCategoriaSeleccionada('');
+         //setServicioSeleccionado('');
+         //setFechaSeleccionada(null);
+         //setHoraSeleccionada(null);
+    };
+
+    return (
+        <div className='MainT'>
+            <section className="sectioncombos">
+                <h2 id="Texturno">Reserva tu turno </h2>
+                
+                {/* Mensaje de Error */}
+                {error && <Alert variant="danger">{error}</Alert>}
+                
+                {/* Mensaje de Éxito */}
+                {reservaExitosa && <Alert variant="success">✅ ¡Turno reservado con éxito!</Alert>}
+                
+                <Form id="formuselec" onSubmit={handleSubmit}>
+                    
+                    {/* SECCIÓN CATEGORÍA */}
+                    <div className="input-group mb-3">
+                        <Form.Label className="input-group-text" htmlFor="categoriaturno">CATEGORÍA</Form.Label>
+                        <Form.Select 
+                            className="form-select" 
+                            id="categoriaturno"
+                            value={categoriaSeleccionada}
+                            onChange={handleCategoriaChange}
+                        >
+                            <option value="">SELECCIONAR CATEGORÍA</option>
+                            {datosTurnos.categorias.map((cat) => (
+                                <option key={cat.value} value={cat.value}>
+                                    {cat.label}
+                                </option>
+                            ))}
+                        </Form.Select>
+                    </div>
+
+                    {/* SECCIÓN TIPO DE SERVICIO (Dependiente de Categoría) */}
+                    <div className="input-group mb-3">
+                        <Form.Label className="input-group-text" htmlFor="servicio-tipo">TIPO DE SERVICIO</Form.Label>
+                        {categoriaSeleccionada ? (
+                            <Form.Select
+                                value={servicioSeleccionado}
+                                onChange={(e) => setServicioSeleccionado(e.target.value)}
+                            >
+                                <option value="">SELECCIONAR SERVICIO</option>
+                                {serviciosDisponibles.map((servicio) => (
+                                    <option key={servicio.value} value={servicio.value}>
+                                        {servicio.label}
+                                    </option>
+                                ))}
+                            </Form.Select>
+                        ) : (
+                            <p className="form-text mt-2 text-muted">Selecciona una **Categoría** para ver los servicios disponibles.</p>
+                        )}
+                    </div>
+                    
+                    {/* SECCIÓN FECHA (DatePicker) */}
+                    <div className="input-group mb-3">
+                        <Form.Label className="input-group-text" htmlFor="dia">FECHA</Form.Label>
+                        <div className="form-control p-0" style={{border: 'none'}}> 
+                            <DatePicker
+                                selected={fechaSeleccionada}
+                                onChange={(date) => setFechaSeleccionada(date)}
+                                filterDate={filterDiasSemana}
+                                dateFormat="dd/MM/yyyy"
+                                placeholderText="Seleccionar Fecha"
+                                className="form-control custom-date-picker" // Clase personalizada para ajuste
+                                minDate={new Date()}
+                            />
+                        </div>
+                    </div>
+                    
+                    {/* SECCIÓN HORARIO (DatePicker para la hora) */}
+                    <div className="input-group mb-3">
+                        <Form.Label className="input-group-text" htmlFor="horario">HORARIO</Form.Label>
+                         <div className="form-control p-0" style={{border: 'none'}}> 
+                            <DatePicker
+                                selected={horaSeleccionada}
+                                onChange={(date) => setHoraSeleccionada(date)}
+                                showTimeSelect
+                                showTimeSelectOnly
+                                timeIntervals={60}
+                                timeCaption="Hora"
+                                dateFormat="h:mm aa"
+                                placeholderText="Seleccionar Horario"
+                                className="form-control custom-date-picker"
+                                includeTimes={horariosDisponibles}
+                                disabled={!fechaSeleccionada}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Botón de Confirmación */}
+                    <Button type="submit" variant="primary" className="confirTurno btnturno">
+                        Confirmar Turno
+                    </Button>
+                    
+                </Form>
+            </section>
             
-          </div>
-          <div className="input-group">
-            <Form.Label className="input-group-text" htmlFor="servicio-tipo">TIPO DE SERVICIO</Form.Label>
-            <Form.Select>
-                <option value="servicio-tratamiento-facial">SERVICIO DE TRATAMIENTOS FACIALES</option>
-                <option value="servicio-essential-face-care">Essential Face Care</option>
-                <option value="servicio-glowing-vit-c">Glowing Vit C+</option>
-                <option value="servicio-rebalancing-face-care">Rebalancing Face Care</option>
-                <option value="servicio-glowing-roses">Glowing Roses</option>
-              </Form.Select>
-              <Form.Select>
-                <option value="servicio-tratamiento-facial">SERVICIO DE TRATAMIENTOS CORPORALES</option>
-                <option value="servicio-ceremonia-liwen">Ceremonia Liwen</option>
-                <option value="servicio-ceremonia-ragiantu">Ceremonia Ragiantu</option>
-              </Form.Select>
-              <Form.Select>
-                <option value="servicio-tratamiento-facial">SERVICIO DE MASAJES</option>
-                <option value="servicio-masaje-sueco">Masaje Sueco</option>
-                <option value="servicio-masaje-hot-stones">Masaje Hot Stones</option>
-                <option value="servicio-masaje-deep-tissue">Masaje Deep Tissue</option>
-                <option value="servicio-masaje-signature">Masaje Signature</option>
-              </Form.Select>
-              <Form.Select>
-                <option value="servicio-tratamiento-facial">SERVICIO DE MASAJES CON AROMATERAPIA</option>
-                <option value="servicio-purificante">Purificante</option>
-                <option value="servicio-relajante">Relajante</option>
-                <option value="servicio-estimulante">Estimulante</option>
-              </Form.Select>
-              <Form.Select>
-                <option value="servicio-tratamiento-facial">SERVICIO DE RITUALES</option>
-                <option value="servicio-ritual-nirvana-escape">Ritual Nirvana Escape</option>
-                <option value="servicio-ritual-mind-soul">Ritual Mind & Soul</option>
-                <option value="servicio-ritual-afflora">Ritual Afflora</option>
-                <option value="servicio-ritual-mulfem">Ritual Mülfem</option>
-                <option value="servicio-ritual-unad">Ritual Üñad</option>
-                <option value="servicio-ritual-urkutun">Ritual Ürkutun</option>
-              </Form.Select>
-          </div>
-          <div className="input-group">
-            <Form.Label className="input-group-text" htmlFor="dia">DIA</Form.Label>
-            <Form.Select className="form-select" id="dia">
-              <option defaultValue={'SELECCIONAR DIA'}>SELECCIONAR DIA</option>
-              
-              <option value="lunes">LUNES</option>
-              <option value="jueves">JUEVES</option>
-              <option value="sabado">SABADOS</option>
-            </Form.Select>
-          </div>
-          <div className="input-group mb-3">
-            <Form.Label className="input-group-text" htmlFor="horario">HORARIO</Form.Label>
-            <Form.Select className="form-select" id="horario">
-              <option defaultValue={'SELECCIONAR HORARIO'}>SELECCIONAR HORARIO</option>
-              <option value="horario-1">10 AM</option>
-              <option value="horario-2">15 PM</option>
-              <option value="horario-3">18 PM</option>
-            </Form.Select>
-          </div>
-         <div className="input-group">
-           <span className="input-group-text" id="total-pagar">Total a Pagar:</span>
-          <span className="input-group-text" id="precio-total">$ 105.000</span>
-        </div> */
-     /*  </Form>
-    </section>
-    <hr className='hrturnos'/>
-    <section>
-      <article className="turnos-reservados">
-        <h3>Turnos Reservados</h3>
-        <hr className='hrturnos'/>
-      </article>
-    </section>
-     <section>
-      <article className="Tarjetaeliminar">
-        <div className="row row-cols-1 row-cols-md-2 g-4">
-          <div>
-            <div className="card">
-              <img src={imagenMap.Fondologinturnos1} className="card-img-top" alt="Masajes" height="250px"/>
-              <div className="card-body">
-                <h5 className="card-title">Servicio de Masajes</h5>
-                <p className="card-text">Sumérgete en un oasis de calma y renueva tu energía con nuestros masajes
-                  terapéuticos reparadores. Renovacion completa garantizada </p>
-                <Link to="*" className="btnTurnos">Eliminar turno</Link>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="card">
-              <img src={imagenMap.TI1} className="card-img-top" alt="SPA" height="250px"/>
-              <div className="card-body">
-                <h5 className="card-title">Servicio Faciales</h5>
-                <p className="card-text">Experimenta la revitalización profunda de tu piel con nuestros tratamientos
-                  faciales exclusivos. Diseñados para cada tipo de piel.</p>
-                <Link to="*" className="btnTurnos">Eliminar turno</Link>
-              </div>
-            </div>
+            <hr className='hrturnos mt-4'/>
+            
+            <section>
+                <article className="turnos-reservados">
+                    <h3>Resumen de la Selección </h3>
+                    <p>Categoría: **{datosTurnos.categorias.find(c => c.value === categoriaSeleccionada)?.label || 'Pendiente'}**</p>
+                    <p>Servicio: **{serviciosDisponibles.find(s => s.value === servicioSeleccionado)?.label || 'Pendiente'}**</p>
+                    <p>Fecha: **{fechaSeleccionada ? fechaSeleccionada.toLocaleDateString() : 'Pendiente'}**</p>
+                    <p>Hora: **{horaSeleccionada ? horaSeleccionada.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Pendiente'}**</p>
+                    <hr className='hrturnos'/>
+                </article>
+            </section>
         </div>
-      </div>
-      </article>
-    </section>
-     <section id="reserva">
-      <article>
-        <div className="actions">
-          <p id="resumen-solicitud">Resumen de solicitud:</p>
-          <p id="texsoli">Masajes corporales; duración de sesion 60 min.
-            Profesional asignado: Liliana Rodriguez</p>
-          <Link to="*" className="btnTurnos btn-confirm" id="confboton"> Confirmar </Link>
-          <Link to="*" className="btnTurnos btn-back" id="volver-btn">Volver</Link>
-        </div>
-      </article>
-    </section>
-   </div>
-  )
+    );
 }
-export default Turnos; 
+
+export default Turnos;
