@@ -17,7 +17,29 @@
   flex-direction: column;
   flex-wrap: wrap;
 }
+.custom-date-picker {
+     border: none !important;
+    padding: 0.375rem 0.75rem !important; /* Ajusta el padding para que se alinee */
+   }
+.form-control .react-datepicker-wrapper, 
+.form-control .react-datepicker__input-container {
+     width: 100%;
+ }
 
+ .confirTurno {
+background-color:#584738;
+border-radius: 0%;
+width: 100%;
+border: none;
+transition: transform 0.3s ease;
+cursor: pointer;
+
+ }
+
+ .btnturno:hover {
+background-color: var(--color-terciarycategoria);
+ border-color: var(--color-terciarycategoria);
+ }
 .sectioncombos {
   width: 60%;
   margin: 2px;
