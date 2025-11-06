@@ -1,162 +1,152 @@
 import '../App.css';
-
+import '../styles/servicios.css';
 import { Link } from 'react-router-dom';
 import imagenMap from '../assets/imagenMap.js';
+import {Card, Button, Carousel} from 'react-bootstrap';
 
 function ServiciosMasajes  () {
   return (
-  <main>
-    <section>
-      <article>
-         <div className="card mb-3">
-            <div className="row g-0">
-              <div className="col-md-4">
-                <div id="carouselExampleCaptions" className="carousel slide">
-                  <div className="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  </div>
-                  <div className="carousel-inner">
-                    <div className="carousel-item active">
-                      <img src={imagenMap.SM1} className="d-block w-100" alt="STF1"  />
-                        <div className="carousel-caption d-none d-md-block">
-                          <h5 >Masaje Sueco</h5>
-                        </div>
-                    </div>
-                    <div className="carousel-item">
-                      <img src={imagenMap.SM2} className="d-block w-100" alt="STF2"  />
-                      <div className="carousel-caption d-none d-md-block">
-                         <h5>Masaje Hot Stones</h5>
-                      </div>
-                    </div>
-                    <div className="carousel-item">
-                       <img src={imagenMap.SM3} className="d-block w-100" alt="stf3" />
-                       <div className="carousel-caption d-none d-md-block">
-                         <h5>Masaje Signature</h5>
-                       </div>
-                    </div>
-                  </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                      <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span className="visually-hidden">Previous</span>
-                    </button>
-                    <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                      <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span className="visually-hidden">Next</span>
-                    </button>
-                </div>
-              </div>
-              <div className="col-md-8">
-                <div className="card-body">
-                  <h5 className="card-title2">Masaje Sueco</h5>
-                    <p className="card-text">Este es el tipo de masaje en el que mover las manos relajar los
-                      músculos siempre coincidiendo en la dirección del masaje: siempre al corazón. Con
-                      eso, lo que obtienes es alivia todos los músculos relaja las articulaciones después
-                      de un día ajetreado y equilibra el cuerpo para descansar bien después del atardecer.
-
-                      Con masaje sueco la relajación se extiende por todo el cuerpo que además cubre la
-                      mente, eliminando toxinas, tonificando, activando la circulación sanguínea y
-                      transmitiendo todo lo que necesitamos para estar sanos.
-                    <br/>
-                      Duracion: 60 minutos
-                    </p>
-                  <h5 className="card-title2">Masaje Hot Stones</h5>
-                    <p className="card-text">Es una técnica de relajación y bienestar utilizada desde tiempos
-                      ancestrales. Se basa en la aplicación de piedras previamente calentadas sobre
-                      diferentes áreas del cuerpo. Estas piedras, generalmente de origen volcánico, son
-                      seleccionadas por su capacidad de retener el calor de manera prolongada.
-
-                      El objetivo principal del masaje con piedras calientes es proporcionar alivio y
-                      relajación a través del calor y el contacto directo con las piedras. Existen
-                      beneficios de masaje con piedras calientes, este considera una terapia física y
-                      emocional, ya que actúa sobre distintos aspectos del ser humano, tanto a nivel
-                      corporal como energético.
-                    <br/>
-                      Duracion: 60 minutos
-                    </p>
-                  <h5 className="card-title2">Masaje Signature</h5>
-                    <p className="card-text"> El masaje signature es un tipo de masaje que se caracteriza por ser de presión firme y eficaz, diseñado para eliminar dolores, tensiones del estrés y contracturas. Este masaje se personaliza según las necesidades del cliente y puede incluir el uso de aceite tibio fundido de velas naturales, lo que proporciona una hidratación profunda y una sensación de bienestar. Además, se enfoca en aliviar los músculos tensos y rígidos, utilizando técnicas que pueden incluir codos y nudillos para liberar la tensión muscular. 
-                    <br/>
-                      Duracion: 60 minutos
-                    </p>
-                    <p className="card-text"> Valor de cada servicio: $ 95.000 arg.</p>
-                      <Link to="/turnos" className="btnservicio">Reserva tu turno</Link>
-                </div>
-              </div>
+  <section className='MainServicio'>
+    <article>
+      <Carousel className='Carrusel-Servicio'>
+        <Carousel.Item>
+          <Card className='Contenido-Carrusel-Serv'>
+            <Card.Img variant="left" src={imagenMap.SM1} className='Img-Servicio'/>
+            <Card.Body className='Cuerpo-Texto'>
+              <Card.Title className='Titulo-Carrusel'>Masaje Sueco</Card.Title>
+              <Card.Text>
+                Este es el tipo de masaje en el que mover las manos relajar los músculos siempre coincidiendo en la dirección del masaje: siempre al corazón. Con eso, lo que obtienes es alivia todos los músculos relaja las articulaciones después de un día ajetreado y equilibra el cuerpo para descansar bien después del atardecer. 
+                <br />Con masaje sueco la relajación se extiende por todo el cuerpo que además cubre la mente, eliminando toxinas, tonificando, activando la circulación sanguínea y transmitiendo todo lo que necesitamos para estar sanos.
+                <br/>
+                Duracion: 60-70 minutos 
+                <br />
+                Precio del servicio: AR$ 50.000.
+              </Card.Text>
+              <Link to="/turnos?categoria=servicio-masajes&servicio=masaje-sueco">
+                <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
+              </Link>                   
+            </Card.Body>
+          </Card>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Card className='Contenido-Carrusel-Serv'>
+            <Card.Img variant="left" src={imagenMap.SM2} className='Img-Servicio'/>
+            <Card.Body className='Cuerpo-Texto'>
+              <Card.Title className='Titulo-Carrusel'>Masaje Hot Stones</Card.Title>
+              <Card.Text>
+                Es una técnica de relajación y bienestar utilizada desde tiempos ancestrales. Se basa en la aplicación de piedras previamente calentadas sobre diferentes áreas del cuerpo. Estas piedras, generalmente de origen volcánico, son seleccionadas por su capacidad de retener el calor de manera prolongada.
+                <br />
+                El objetivo principal del masaje con piedras calientes es proporcionar alivio y relajación a través del calor y el contacto directo con las piedras. Existen beneficios de masaje con piedras calientes, este considera una terapia física y emocional, ya que actúa sobre distintos aspectos del ser humano, tanto a nivel corporal como energético.
+                <br/>
+                Duracion: 60-75 minutos
+                <br />
+                Precio del servicio: AR$ 55.000.
+              </Card.Text>
+              <Link to="/turnos?categoria=servicio-masajes&servicio=masaje-hot-stones">
+                <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
+              </Link>                   
+            </Card.Body>
+          </Card>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Card  className='Contenido-Carrusel-Serv'>
+            <Card.Img variant="left" src={imagenMap.SM3} className='Img-Servicio'/>
+            <Card.Body  className='Cuerpo-Texto'>
+              <Card.Title className='Titulo-Carrusel'>Masaje Deep Tissue</Card.Title>
+              <Card.Text>
+                {/* falta agregar descripcion */}
+                <br/>
+                Duracion: 45-60 minutos
+                <br />
+                Precio del servicio: AR$ 49.000.
+              </Card.Text>
+              <Link to="/turnos?categoria=servicio-masajes&servicio=masaje-deep-tissue">
+                <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
+              </Link>
+            </Card.Body>
+          </Card>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Card  className='Contenido-Carrusel-Serv'>
+            <Card.Img variant="left" src={imagenMap.catmasajesignature} className='Img-Servicio'/>
+            <Card.Body className='Cuerpo-Texto'>
+              <Card.Title className='Titulo-Carrusel'>Masaje Signature</Card.Title>
+                <Card.Text>
+                  El masaje signature es un tipo de masaje que se caracteriza por ser de presión firme y eficaz, diseñado para eliminar dolores, tensiones del estrés y contracturas. Este masaje se personaliza según las necesidades del cliente y puede incluir el uso de aceite tibio fundido de velas naturales, lo que proporciona una hidratación profunda y una sensación de bienestar. Además, se enfoca en aliviar los músculos tensos y rígidos, utilizando técnicas que pueden incluir codos y nudillos para liberar la tensión muscular. 
+                  <br/>
+                  Duracion: 50-60 minutos
+                  <br />
+                  Precio del servicio: AR$ 46.500.
+                </Card.Text>
+                <Link to="/turnos?categoria=servicio-masajes&servicio=masaje-signature">
+                  <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
+                </Link>
+              </Card.Body>
+            </Card>
+          </Carousel.Item>
+        </Carousel>         
+    </article>
+    <article className='Sector-Comentarios'>
+      <hr className='hr-servicio'/>
+      <h2 className="Titulotesti">~ CONOCÉ LAS OPINIONES DE NUESTROS CLIENTES ~</h2>
+      <hr className='hr-servicio'/>
+      <div className='Cards-Comentarios'>
+        <Card className='Comentario'>
+          <Card.Body className='body-comentario'>
+            <div className='top-comentario'>
+              <i className="bi bi-file-person girl-coment"></i> 
+              <strong>Camila T. (38 años)</strong>
+              <br />
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <br />
             </div>
-         </div>
-      </article>
-    </section>
-    <section>
-      <h2 className="Titulotesti">~ CONOCE LAS OPINIONES DE NUESTROS CLIENTES ~</h2>
-      <div className="Cajaflexible reseñasflex">
-        <div className="card border-dark mb-3" >
-          <div className="card-header">
-            <div className="Flexreseña">
-              <img src={imagenMap.RT1} alt="Spa"  />
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
+            <Card.Text className='Testimonio'>
+              "Cada visita a este spa es un verdadero escape. El masaje relajante con aceites esenciales es mi favorito: salgo como nueva, sin tensiones y completamente renovada. El ambiente es sereno y elegante, y el personal tiene manos mágicas. Un lujo que vale cada centavo."
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <Card className='Comentario'>
+          <Card.Body className='body-comentario'>
+            <div className='top-comentario'><i className="bi bi-file-person boy-coment"></i> 
+              <strong>Martín S. (45 años)</strong>
+              <br />
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <br />
             </div>
-          </div>
-          <div className="card-body">
-            <h5 className="card-title2">Camila T. (38 años)</h5>
-              <p className="Testimonio"> Cada visita a este spa es un verdadero escape. El masaje relajante con aceites esenciales es mi favorito: salgo como nueva, sin tensiones y completamente renovada. El ambiente es sereno y elegante, y el personal tiene manos mágicas. Un lujo que vale cada centavo."</p>
-          </div>
-        </div>
-        <div className="card border-dark mb-3" >
-          <div className="card-header">
-            <div className="Flexreseña">
-              <img src={imagenMap.RT2} alt="Spa"  />
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
+            <Card.Text className='Testimonio'>  
+              "Trabajo muchas horas frente a la computadora y los masajes descontracturantes de este spa me han cambiado la vida. El lugar es impecable, con atención de primer nivel y terapeutas que realmente saben lo que hacen. Me ayudaron con dolores de espalda crónicos en pocas sesiones."
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <Card className='Comentario'>
+          <Card.Body className='body-comentario'>
+            <div className="top-comentario">
+              <i className="bi bi-file-person girl-coment"></i> 
+              <strong>Elena V. (50 años)</strong>
+              <br />
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <br />
             </div>
-          </div>
-          <div className="card-body">
-            <h5 className="card-title2">Martín L. (45 años)</h5>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <p className="Testimonio">"Trabajo muchas horas frente a la computadora y los masajes descontracturantes de este spa me han cambiado la vida. El lugar es impecable, con atención de primer nivel y terapeutas que realmente saben lo que hacen. Me ayudaron con dolores de espalda crónicos en pocas sesiones."</p>
-          </div>
-        </div>
-        <div className="card border-dark mb-3">
-          <div className="card-header">
-            < div className="Flexreseña">
-            </div>
-          </div>
-          <div className="card-body">
-            <h5 className="card-title2">Martín L. (45 años)</h5>
-              <p className="Testimonio">"Trabajo muchas horas frente a la computadora y los masajes descontracturantes de este spa me han cambiado la vida. El lugar es impecable, con atención de primer nivel y terapeutas que realmente saben lo que hacen. Me ayudaron con dolores de espalda crónicos en pocas sesiones."</p>
-          </div>
-        </div>
-        <div className="card border-dark mb-3">
-          <div className="card-header">
-            <div className="Flexreseña">
-              <img src={imagenMap.RT3} alt="Spa" />
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              <i className="bi-star-fill"></i>
-              </div>
-            </div>
-            <div className="card-body">
-              <h5 className="card-title2">Elena V. (50 años)</h5>
-                <p className="Testimonio"> "Este spa es mi refugio. El masaje con piedras calientes fue una experiencia única: profundo, relajante y sumamente reconfortante. Desde que empecé a venir, duermo mejor y me siento con más energía. Todo está pensado para que te sientas especial."</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+            <Card.Text className='Testimonio'>      
+              "Este spa es mi refugio. El masaje con piedras calientes fue una experiencia única: profundo, relajante y sumamente reconfortante. Desde que empecé a venir, duermo mejor y me siento con más energía. Todo está pensado para que te sientas especial."
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </div>
+    </article>
+  </section>
   )
 }
 

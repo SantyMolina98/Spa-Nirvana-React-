@@ -1,9 +1,10 @@
 import '../App.css';
 import '../styles/turnosPages.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useSearchParams } from 'react-router-dom';
 
 // Datos centralizados para Categorías y Servicios
 const datosTurnos = {
@@ -64,6 +65,9 @@ const filterDiasSemana = (date) => {
 
 
 function Turnos() {
+  //Localización desde página de servicio
+   const [searchParams] = useSearchParams(); 
+
   // Estados para el formulario
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
   const [servicioSeleccionado, setServicioSeleccionado] = useState('');
@@ -73,6 +77,21 @@ function Turnos() {
   // Estado para la validación y mensajes
   const [error, setError] = useState('');
   const [reservaExitosa, setReservaExitosa] = useState(false);
+
+  // Obtener los servicios basados en la categoría actual
+  // leer params al montar y preseleccionar si son válidos
+  useEffect(() => {
+    const categoriaParam = searchParams.get('categoria');
+    const servicioParam = searchParams.get('servicio');
+
+    if (categoriaParam && datosTurnos.categorias.some(c => c.value === categoriaParam)) {
+      setCategoriaSeleccionada(categoriaParam);
+      const serviciosDispon = datosTurnos.serviciosPorCategoria[categoriaParam] || [];
+      if (servicioParam && serviciosDispon.some(s => s.value === servicioParam)) {
+        setServicioSeleccionado(servicioParam);
+      }
+    }
+  }, [searchParams]);
 
   // Obtener los servicios basados en la categoría actual
   const serviciosDisponibles = datosTurnos.serviciosPorCategoria[categoriaSeleccionada] || [];
@@ -115,6 +134,7 @@ function Turnos() {
     //setFechaSeleccionada(null);
     //setHoraSeleccionada(null);
   };
+  
 
   return (
     <div className='MainT'>

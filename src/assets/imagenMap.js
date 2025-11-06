@@ -10,20 +10,20 @@ import publicidad50off from './Img/publicidad50off.jpg';
 import grid1tratamientos from './Img/grid1tratamientos.jpg';
 import grid2masajes from './Img/grid2masajes.jpg';
 import grid3rituales from './Img/grid3rituales.jpg';
-import categoriatfacial from './Img/categoriatfacial.JPG';
-import cattfacialessfaca from './Img/cattfacialessfaca.JPG';
+import categoriatfacial from './Img/categoriatfacial.jpg';
+import cattfacialessfaca from './Img/cattfacialessfaca.jpg';
 import cattfacialglowr from './Img/cattfacialglowr.jpg';
-import cattfacialglowvitc from './Img/cattfacialglowvitc.JPG';
+import cattfacialglowvitc from './Img/cattfacialglowvitc.jpg';
 import cattfacialrebfaca from './Img/cattfacialrebfaca.jpg';
-import categoriatcorporal from './Img/categoriatcorporal.JPG';
+import categoriatcorporal from './Img/categoriatcorporal.jpg';
 import cattcorporalliwen from './Img/cattcorporalliwen.jpg';
-import cattcorporalragiantu from './Img/cattcorporalragiantu.JPG';
-import categoriamasaje from './Img/categoriamasaje.JPG';
-import catmasajedtissue from './Img/catmasajedtissue.JPG';
-import catmasajehots from './Img/catmasajehots.JPG';
-import catmasajesignature from './Img/catmasajesignature.JPG';
-import catmasajesueco from './Img/catmasajesueco.JPG';
-import categoriaaromaterapia from './Img/categoriaaromaterapia.JPG';
+import cattcorporalragiantu from './Img/cattcorporalragiantu.jpg';
+import categoriamasaje from './Img/categoriamasaje.jpg';
+import catmasajedtissue from './Img/catmasajedtissue.jpg';
+import catmasajehots from './Img/catmasajehots.jpg';
+import catmasajesignature from './Img/catmasajesignature.jpg';
+import catmasajesueco from './Img/catmasajesueco.jpg';
+import categoriaaromaterapia from './Img/categoriaaromaterapia.jpg';
 import cataromateestim from './Img/cataromateestim.JPG';
 import cataromatepurif from './Img/cataromatepurif.JPG';
 import cataromaterelaj from './Img/cataromaterelaj.JPG';
@@ -32,13 +32,14 @@ import catritualafflora from './Img/catritualafflora.JPG';
 import catritualminds from './Img/catritualminds.jpg';
 import catritualmulfem from './Img/catritualmulfem.JPG';
 import catritualnirvesc from './Img/catritualnirvesc.jpg';
-import catritualunad from './Img/catritualunad.JPG';
-import catritualurkutun from './Img/catritualurkutun.JPG';
+import catritualunad from './Img/catritualunad.jpg';
+import catritualurkutun from './Img/catritualurkutun.jpg';
 import TI1 from './Img/TI1.jpg';
 import Fondologinturnos1 from './Img/Fondologinturnos1.png';
 import STF1 from './Img/STF1.jpg';
-import STF2 from './Img/STF2.JPG';
-import STF3 from './Img/STF3.JPG';
+import STF2 from './Img/STF2.jpg';
+import STF3 from './Img/STF3.jpg';
+import STF4 from './Img/STF3.jpg';
 import RT1 from './Img/RT1.jpg';
 import RT2 from './Img/RT2.jpg';
 import RT3 from './Img/RT3.jpg';
@@ -92,7 +93,7 @@ const imagenMap = {
   //Imagen de comentario de usuario
   RT1,  RT2,  RT3,
   //Servicio T Faciales
-  STF1,  STF2,  STF3,
+  STF1,  STF2,  STF3, STF4,
   //Servicio Masajes
   SM1, SM2,  SM3,
   //Nosotros
