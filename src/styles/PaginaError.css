@@ -2,19 +2,19 @@
     margin: 0;
     padding: 0;
     
-  --color-principal: #584738;
-  --color-secondary: #4c583e;
-  --color-terciary: #b59e7d;
-  --color-fourth: #959581;
-  --color-fourth2: #95958170;
-  --color-fifth: #f1eada;
-   --color-sixth: #eec58c;
+  --color-principalError: #584738;
+  --color-secondaryError: #4c583e;
+  --color-terciaryError: #b59e7d;
+  --color-fourthError: #959581;
+  --color-fourth2Error: #95958170;
+  --color-fifthError: #f1eada;
+   --color-sixthError: #eec58c;
   
     --color-input:rgb(82, 58, 11);
 }
 
 main{
-    background-color: var(--color-fifth);
+    background-color: var(--color-fifthError);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -56,7 +56,7 @@ main .error_container{
 }
 
 .error_code p:nth-of-type(2){
-    color: var(--color-input);
+    color: var(--color-terciaryError);
     animation: bounce 1.2s 1.8s linear forwards;
     opacity: 0;
 }
@@ -75,8 +75,8 @@ main .error_container{
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    background-color: var(--color-input);
-    color: var(--color-sixth);
+    background-color: var(--color-terciaryError);
+    color: var(--color-sixthError);
 }
 
 .action:hover{

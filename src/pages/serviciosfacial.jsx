@@ -21,7 +21,7 @@ function ServiciosFacial() {
                   <br />
                   Precio del servicio: AR$ 45.500. 
                 </Card.Text>
-                <Link to="/turnos?categoria=servicio-trat-facial&servicio=essential-face-care">
+                <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=essential-face-care"}>
                   <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
                 </Link>                   
               </Card.Body>
@@ -40,7 +40,7 @@ function ServiciosFacial() {
                       Precio del servicio: AR$ 45.500. 
                     
                 </Card.Text>
-                <Link to="/turnos?categoria=servicio-trat-facial&servicio=glowing-vit-c">
+                <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=glowing-vit-c"}>
                   <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
                 </Link>                   
               </Card.Body>
@@ -59,7 +59,7 @@ function ServiciosFacial() {
                   Precio del servicio: AR$ 49.000.
                   </p>
                 </Card.Text>
-                <Link to="/turnos?categoria=servicio-trat-facial&servicio=rebalancing-face-care">
+                <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=rebalancing-face-care"}>
                   <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
                 </Link>
               </Card.Body>
@@ -78,7 +78,7 @@ function ServiciosFacial() {
                     Precio del servicio: AR$ 50.000.
                     </p>
                   </Card.Text>
-                  <Link to="/turnos?categoria=servicio-trat-facial&servicio=glowing-roses">
+                  <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=glowing-roses"}>
                     <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
                   </Link>
               </Card.Body>

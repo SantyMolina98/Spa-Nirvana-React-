@@ -1,6 +1,5 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
-import 'bootstrap';
 import '../styles/headerComponent.css';
 import { NavLink, Link } from 'react-router-dom';
 import { useContext } from 'react';
@@ -16,7 +15,7 @@ function HeaderComponent () {
 
   return (
     <>
-      <Navbar key='lg' expand='lg' className='header-overflow'>
+      <Navbar key='lg' expand='lg' className='header-overflow ColorLetrasH'>
         <Container fluid>
           <Navbar.Brand to="/">
             <img src={logospaheader} className='logoSPA' alt="LogoSPA"/>
@@ -36,7 +35,7 @@ function HeaderComponent () {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-center flex-grow-1">
+              <Nav className="justify-content-center flex-grow-1 itemsHeader">
                 <NavLink to='/'>Inicio</NavLink>
                 <NavDropdown
                   title="Categorías"
@@ -80,14 +79,14 @@ function HeaderComponent () {
                   )}
                 </NavDropdown>
               </Nav>
-              <Form className="d-flex">
+              <Form className="d-flex itemsHeaderBusqueda">
                 <Form.Control
                   type="search"
                   placeholder="Buscar "
-                  className="me-2"
+                  className="me-2 busqueda"
                   aria-label="Search"
                 />
-                <Button>Buscar</Button>
+                <Button className='btnBusqueda'>Buscar</Button>
               </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

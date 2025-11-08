@@ -287,7 +287,7 @@ function Turnos() {
                         </div>
                     </div>
 
-                    <Button type="submit" variant="primary" className="w-100 mt-3">
+                    <Button type="submit" className="btnTurnos">
                         Confirmar Turno
                     </Button>
                     

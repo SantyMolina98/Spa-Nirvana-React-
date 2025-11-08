@@ -47,21 +47,21 @@ function Contacto () {
         <h2 id="FormContacto">También podés contactarnos por aquí las 24 hs:</h2>
         <article className="ContactoForm">
           <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" id="formBasicEmail">
               <Form.Label htmlFor="nombre-contacto" className="form-label" name="nombre-contacto">Nombre</Form.Label>
                 <Form.Control type="text" className="form-control" id="nombre-contacto" placeholder="Ej: Sofia" 
                 minLength={3} maxLength={30}
                 required/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" >
               <Form.Label htmlFor="apellido-contacto" className="form-label" name="apellido-contacto">Apellido</Form.Label>
               <Form.Control type="text" className="form-control" id="apellido-contacto" placeholder="Ej: Rodriguez" required/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" >
               <Form.Label htmlFor="email-contacto" className="form-label" name="email-contacto">Email</Form.Label>
               <Form.Control type="email" className="form-control" id="email-contacto" placeholder="name@example.com" required/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicTextarea">
+            <Form.Group className="mb-3" >
               <Form.Label htmlFor="textarea-contacto" className="form-label">Dejanos tu consulta</Form.Label>
               <Form.Control as="textarea" id="textarea-contacto" placeholder='Escriba aquí su consulta' rows="3" required/>
             </Form.Group>
