@@ -41,7 +41,7 @@ function HomePage () {
           Masajes Full Body + Coffee Pause<br/> Este paquete está diseñado para brindarle una experiencia integral de relajación, bienestar y renovación.
         </Card.Text>
         <Link to="*">
-        <Button variant="primary btnCardPromo">Ver más</Button>
+        <Button variant="primary" className='btnCardPromo'>Ver más</Button>
         </Link>
       </Card.Body>
       <Card.Footer className="text-muted">Válida hasta el 15 de noviembre o hasta agotar cupos.</Card.Footer>
@@ -57,7 +57,7 @@ function HomePage () {
           Blend de masaje a elección<br/>Incluye máscara facial, descanso y restauración en sala de relax acompañado de merienda saludable.
         </Card.Text>
         <Link to="*">
-        <Button variant="primary">Ver más</Button>
+        <Button variant="primary" className='btnCardPromo'>Ver más</Button>
         </Link>
       </Card.Body>
       <Card.Footer className="text-muted">Promo disponible hasta el 15/11 inclusive.</Card.Footer>
@@ -73,7 +73,7 @@ function HomePage () {
           Hidroterapia, Masajes, Facial. Para 2 personas<br/>Una tarde diferente para relajarse, descansar y compartir.
         </Card.Text>
         <Link to="*">
-        <Button variant="primary">Ver más</Button>
+        <Button variant="primary" className='btnCardPromo'>Ver más</Button>
         </Link>
       </Card.Body>
       <Card.Footer className="text-muted">Promo vigente hasta el 15/11 — ¡no te la pierdas!</Card.Footer>
@@ -89,7 +89,7 @@ function HomePage () {
           Masajes + Limpieza Facial<br/>Este paquete incluye un masaje descontracturante y limpieza facial para relajar el cuerpo y renovar la piel.
         </Card.Text>
         <Link to="*">
-        <Button variant="primary">Ver más</Button>
+        <Button variant="primary" className='btnCardPromo'>Ver más</Button>
         </Link>
       </Card.Body>
       <Card.Footer className="text-muted">Promo disponible hasta el 15/11 inclusive.</Card.Footer>

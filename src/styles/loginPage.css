@@ -18,7 +18,7 @@
   background-image: url(../assets/Img/Fondologinturnos1.png);
   background-position: center;
   background-size:cover;
-  width: auto;
+  width: 100vw;
   height: auto;
 }
 .colorcard{

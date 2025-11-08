@@ -3,11 +3,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    --color-sixth: #f1eada;
-    --color-input: rgb(82, 58, 11);
-    --color-background: #f1eada;
-    --color-card: #fff;
-    --color-sixth: #eec58c;
+    --color-sixthNosotros: #f1eada;
+    --color-inputNosotros: rgb(82, 58, 11);
+    --color-backgroundNosotros: #f1eada;
+    --color-cardNosotros: #fff;
+    --color-sixthNosotros: #eec58c;
 }
 
 .mainNos {
@@ -16,7 +16,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    background: var(--color-background);
+    background: var(--color-backgroundNosotros);
     color: #fdfdfd;
     font-family: 'Poppins', sans-serif;
     padding: 5%;
@@ -57,7 +57,7 @@
     width: 100%;
     padding: 20px;
     padding-top: 0px;
-    background: var(--color-card);
+    background: var(--color-cardNosotros);
     border-radius: 25px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     position: relative;

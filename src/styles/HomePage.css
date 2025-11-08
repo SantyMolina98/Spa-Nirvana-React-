@@ -5,15 +5,15 @@
   font-family: "Poppins", sans-serif;
 }
 :root{
-  --color-principal: #584738;
-  --color-principal2: #3f3228;
-  --color-secondary: #4c583e;
-  --color-terciary: #b59e7d;
-  --color-fourth: #959581;
-  --color-fourth2: #95958170;
-  --color-fifth: #f1eada;
-  --color-sixth: #eec58c;
-  --color-seventh: #aa6d3b;
+  --color-principalHome: #584738;
+  --color-principal2Home: #3f3228;
+  --color-secondaryHome: #4c583e;
+  --color-terciaryHome: #b59e7d;
+  --color-fourthHome: #959581;
+  --color-fourth2Home: #95958170;
+  --color-fifthHome: #f1eada;
+  --color-sixthHome: #eec58c;
+  --color-seventhHome: #aa6d3b;
 }
 
 .MainHomeP{
@@ -31,6 +31,13 @@
 
 .logoarticle {
   width: 10%;
+}
+.btnCardPromo{
+  width: 3em;
+  height: auto;
+  margin-bottom: 2px;
+  background-color: var(--color-seventhHome);
+  color: var(--color-fifthHome);
 }
 
 .sectionPromosHP{
@@ -116,7 +123,7 @@ a {
   height: 30em;
   object-fit: cover;
   border-radius: 5px;
-  border: solid 2px var(--color-fourth);
+  border: solid 2px var(--color-fourthHome);
   filter: brightness(60%);
   cursor: pointer;
 }

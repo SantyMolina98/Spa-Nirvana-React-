@@ -45,6 +45,7 @@
   align-items: space-between;
 }
 .Btn-Servicio{
+  width: 25%;
   background-color: var(--color-terciaryServicio);
   color: var(--color-fifthServicio);
   border: none;
