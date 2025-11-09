@@ -4,7 +4,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import imagenMap from '../assets/imagenMap.js';
 
 
-function Nosotros  ()  {
+function Nosotros () {
   return (
     <div className='mainNos'>
       <div className="centrado">

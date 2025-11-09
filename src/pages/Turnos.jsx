@@ -12,7 +12,6 @@ const generarHorarioDate = (hora) => {
 }
 
 const datosTurnos = {
-    // Nombre Profesionales
     profesionales: [
         { id: 'pro_ana', nombre: 'Ana García', especialidad: 'Facial' },
         { id: 'pro_luis', nombre: 'Luis Torres', especialidad: 'Masajes' },
@@ -20,14 +19,12 @@ const datosTurnos = {
         { id: 'pro_juan', nombre: 'Juan Pérez', especialidad: 'Corporal' },
     ],
 
-    // Categorías servicios
     categorias: [
-        { value: 'servicio-trat-facial', label: 'TRATAMIENTOS FACIALES' },
-        { value: 'servicio-rituales', label: 'NUESTROS RITUALES' },
-        { value: 'servicio-masajes', label: 'MASAJES' },
+        { value: 'servicio-trat-facial', label: 'Tratamiento Faciales' },
+        { value: 'servicio-rituales', label: 'Nuestros Rituales' },
+        { value: 'servicio-masajes', label: 'Masajes' },
     ],
 
-    // Disponibilidad servicios
     serviciosPorCategoria: {
         'servicio-trat-facial': [
             {
@@ -104,9 +101,6 @@ const datosTurnos = {
     },
 };
 
-
-// COMPONENTE TURNO
-
 function Turnos() {
 
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
@@ -128,20 +122,17 @@ function Turnos() {
         ? servicioActual.horariosDisponibles.map(generarHorarioDate)
         : [];
 
-    // Disponibilidad de Profesionales
     const idsProfesionalesDisponibles = servicioActual ? servicioActual.profesionalesId : [];
     const profesionalesDisponibles = datosTurnos.profesionales.filter(pro =>
         idsProfesionalesDisponibles.includes(pro.id)
     );
 
-    // Función de filtro de días para react-datepicker
     const filterDiasSemana = (date) => {
         const day = date.getDay(); 
         return diasPermitidos.includes(day);
     };
 
     const handleCategoriaChange = (e) => {
-        // Resetea todos los campos subsiguientes
         setCategoriaSeleccionada(e.target.value);
         setServicioSeleccionado('');
         setProfesionalSeleccionadoId('');
@@ -152,7 +143,6 @@ function Turnos() {
     };
 
     const handleServicioChange = (e) => {
-        // Resetea Profesional, Fecha y Hora
         setServicioSeleccionado(e.target.value);
         setProfesionalSeleccionadoId('');
         setFechaSeleccionada(null);
@@ -160,7 +150,6 @@ function Turnos() {
     }
 
     const handleProfesionalChange = (e) => {
-        // Resetea Fecha y Hora (ya que la disponibilidad podría depender del profesional)
         setProfesionalSeleccionadoId(e.target.value);
         setFechaSeleccionada(null);
         setHoraSeleccionada(null);
@@ -172,7 +161,6 @@ function Turnos() {
         setError('');
         setReservaExitosa(false);
 
-        // Validación Final
         if (!categoriaSeleccionada || !servicioSeleccionado || !profesionalSeleccionadoId || !fechaSeleccionada || !horaSeleccionada) {
             setError('Por favor, selecciona una opción para todos los campos.');
             return;
@@ -190,7 +178,6 @@ function Turnos() {
         setReservaExitosa(true);
     };
 
-    // Encuentra los nombres para el resumen final
     const profesionalNombre = datosTurnos.profesionales.find(p => p.id === profesionalSeleccionadoId)?.nombre;
     const servicioNombre = servicioActual?.label;
 
@@ -198,32 +185,27 @@ function Turnos() {
         <div className='MainT'>
             <section className="sectioncombos">
                 <h2 id="Texturno">Reserva tu turno </h2>
-
                 {error && <Alert variant="danger">{error}</Alert>}
-                {reservaExitosa && <Alert variant="success">✅ ¡Turno reservado con *{profesionalNombre}* para el *{servicioNombre}*!</Alert>}
-
-                <Form id="formuselec" onSubmit={handleSubmit}>
-
-                    
+                {reservaExitosa && <Alert variant="success">✅¡Tu turno fue reservado con éxito! Reserva con {profesionalNombre} para {servicioNombre}. Te esperamos en Gral Paz 576, SMT.</Alert>}
+                <Form id="formuselec" onSubmit={handleSubmit}>                  
                     <div className="input-group mb-3">
                         <Form.Label className="input-group-text">CATEGORÍA</Form.Label>
                         <Form.Select value={categoriaSeleccionada} onChange={handleCategoriaChange}>
-                            <option value="">SELECCIONAR CATEGORÍA</option>
+                            <option value="">Seleccionar Categoría</option>
                             {datosTurnos.categorias.map((cat) => (
                                 <option key={cat.value} value={cat.value}>{cat.label}</option>
                             ))}
                         </Form.Select>
                     </div>
 
-                    {/* SECCIÓN TIPO DE SERVICIO (Habilitado si hay Categoría) */}
                     <div className="input-group mb-3">
-                        <Form.Label className="input-group-text">TIPO DE SERVICIO</Form.Label>
+                        <Form.Label className="input-group-text">SERVICIO</Form.Label>
                         <Form.Select
                             value={servicioSeleccionado}
                             onChange={handleServicioChange}
                             disabled={!categoriaSeleccionada}
                         >
-                            <option value="">SELECCIONAR SERVICIO</option>
+                            <option value="">Seleccionar Servicio</option>
                             {serviciosDeCategoria.map((servicio) => (
                                 <option key={servicio.value} value={servicio.value}>
                                     {servicio.label}
@@ -241,7 +223,7 @@ function Turnos() {
                                 onChange={handleProfesionalChange}
                                 disabled={!servicioSeleccionado}
                             >
-                                <option value="">NOMBRE</option>
+                                <option value="">Nombre</option>
                                 {profesionalesDisponibles.map((pro) => (
                                     <option key={pro.id} value={pro.id}>
                                         {pro.nombre} ({pro.especialidad})
@@ -251,7 +233,6 @@ function Turnos() {
                         </div>
                     )}
 
-                    {/* SECCIÓN FECHA (Habilitado si hay Servicio) */}
                     <div className="input-group mb-3">
                         <Form.Label className="input-group-text">FECHA</Form.Label>
                         <div className="form-control p-0 custom-datepicker-container">
@@ -268,7 +249,6 @@ function Turnos() {
                         </div>
                     </div>
 
-                    {/* SECCIÓN HORARIO (Habilitado si hay Fecha y Servicio) */}
                     <div className="input-group mb-3">
                         <Form.Label className="input-group-text">HORARIO</Form.Label>
                         <div className="form-control p-0 custom-datepicker-container">
@@ -295,16 +275,15 @@ function Turnos() {
                 </Form>
             </section>
 
-            <hr className='hrturnos mt-4' />
+            <hr className='hrturnos' />
 
             <section>
                 <article className="turnos-reservados">
-                    <h3 id='Texturno'>Resumen del servicio</h3>
-                    <p>Profesional: {profesionalNombre || 'A definir'}</p>
+                    <h3>Resumen del servicio</h3>
                     <p>Servicio: {servicioNombre || 'A definir'}</p>
+                    <p>Profesional: {profesionalNombre || 'A definir'}</p>
                     <p>Fecha: {fechaSeleccionada ? fechaSeleccionada.toLocaleDateString() : 'A definir'}</p>
                     <p>Hora: {horaSeleccionada ? horaSeleccionada.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'A definir'}</p>
-                    <hr className='hrturnos' />
                 </article>
             </section>
         </div>
