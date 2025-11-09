@@ -3,7 +3,7 @@ import '../styles/Nosotros.css';
 import imagenMap from '../assets/imagenMap.js';
 
 
-function Nosotros  ()  {
+function Nosotros () {
   return (
     <div className='mainNos'>
       <div className="centrado">

@@ -34,14 +34,6 @@
   margin-bottom: 40px;
 }
 
-/* .btnCardPromo{
-  width: 2em;
-  height: auto;
-  margin-bottom: 2px;
-  background-color: var(--color-seventhHome);
-  color: var(--color-fifthHome);
-} */
-
 .sectionPromosHP{
     width: 100%;
     height: auto;
@@ -72,6 +64,7 @@ a {
     margin-bottom: 40px;
     letter-spacing: 2px;
 }
+
 .TextCardPromoHP{
   font-size: 0.95rem;
   color: #666;
@@ -106,6 +99,7 @@ a {
 .centrado p {
     font-size: 1.1rem; 
     line-height: 1.7; 
+    text-align: center;
     color: #444;
     margin-bottom: 20px;
 }
@@ -114,6 +108,7 @@ a {
     font-size: 0.9rem;
     color: #888;
     margin-top: 30px;
+    text-align: center;
 }
 
 .flex{
