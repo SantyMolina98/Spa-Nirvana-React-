@@ -37,7 +37,7 @@ import catritualurkutun from './img/catritualurkutun.JPG';
 import STF1 from './img/STF1.jpg';
 import STF2 from './img/STF2.JPG';
 import STF3 from './img/STF3.JPG';
-import STF4 from './img/STF3.jpg';
+import STF4 from './img/STF4.jpg';
 import SM1 from './img/SM1.jpg';
 import SM2 from './img/SM2.jpg';
 import SM3 from './img/SM3.jpg';
