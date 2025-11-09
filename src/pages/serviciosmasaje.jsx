@@ -54,11 +54,13 @@ function ServiciosMasajes  () {
             <Card.Body  className='Cuerpo-Texto'>
               <Card.Title className='Titulo-Carrusel'>Masaje Deep Tissue</Card.Title>
               <Card.Text>
-                {/* falta agregar descripcion */}
+                Es una técnica terapéutica enfocada en liberar la tensión muscular acumulada en las capas más profundas del músculo y el tejido conectivo. El objetivo del masaje Deep Tissue es tratar molestias musculares crónicas, contracturas, rigidez o nudos.
                 <br/>
+                Sus beneficios consisten en liberar nudos y adherencias musculares, mejorar la circulación y el flujo linfático, disminución notable de dolores musculares y articulares, mejora en su postura y movilidad, además de por supuesto, reducir el estrés físico y mental.
+                <br />
                 Duracion: 45-60 minutos
                 <br />
-                Precio del servicio: AR$ 49.000.
+                Precio del servicio: AR$ 58.000.
               </Card.Text>
               <Link to="/turnos?categoria=servicio-masajes&servicio=masaje-deep-tissue">
                 <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
