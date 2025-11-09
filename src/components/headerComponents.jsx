@@ -82,7 +82,7 @@ function HeaderComponent () {
               <Form className="d-flex itemsHeaderBusqueda">
                 <Form.Control
                   type="search"
-                  placeholder="Buscar "
+                  placeholder="Buscar"
                   className="me-2 busqueda"
                   aria-label="Search"
                 />

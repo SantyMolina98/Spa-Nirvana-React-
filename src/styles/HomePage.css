@@ -31,14 +31,16 @@
 
 .logoarticle {
   width: 10%;
+  margin-bottom: 40px;
 }
-.btnCardPromo{
+
+/* .btnCardPromo{
   width: 2em;
   height: auto;
   margin-bottom: 2px;
   background-color: var(--color-seventhHome);
   color: var(--color-fifthHome);
-}
+} */
 
 .sectionPromosHP{
     width: 100%;
@@ -65,22 +67,60 @@ a {
 }
 .h2HomeP{
     text-align: center;
+    font-size: 2rem;
+    color: #444;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
 }
 .TextCardPromoHP{
-    height: auto;
-    margin-top: 5px;
-    margin-bottom: 25px;
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 15px;
+  min-height: 70px;
 }
 .centrado {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0% 20%;
+  margin: 20%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.centrado h1 {
+    letter-spacing: 3px;
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-bottom: 5px; 
+    color: #333;
+}
+
+.centrado h3 {
+    font-size: 1.2rem;
+    font-style: italic; 
+    color: #666; 
+    margin-top: 0;
+    margin-bottom: 30px; 
+}
+
+.centrado p {
+    font-size: 1.1rem; 
+    line-height: 1.7; 
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.centrado p:last-child {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 30px;
 }
 
 .flex{
-    padding: 1%;
     display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 1%;
+    gap: 30px;
     justify-content: center;
 }
 .textoabs {
@@ -136,7 +176,8 @@ a {
 #etiquetaAsize:hover {
   transform: scale(1.05);
   transition: 600ms;
-}  
+} 
+
 /* Por defecto (mobile): ocultamos la publicidad */
 .publicidad {
   display: none;
@@ -156,10 +197,11 @@ a {
   border: 1px solid #342d27;
   object-fit: cover;
 }
+
 .btnWappHP {
   background-color: var(--color-principalHome);
   color: var(--color-fifthHome);
-  padding: 5px;
+  padding: 15px;
   border-radius: 10px;
   border: none;
   transition: transform 0.3s ease;
@@ -174,4 +216,30 @@ a {
 .GridsHomeP{
     width: 100%;
     height: auto;
+}
+
+.card {
+    width: 80%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateX(10px); 
+    box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background-color: #e0d9d3;
+    color: #555;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    margin-top: 15px;
+    color: #333;
 }
