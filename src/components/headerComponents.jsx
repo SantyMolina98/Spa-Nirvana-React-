@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import { UserContext } from '../context/UserContext';
-import logospaheader from '../assets/Img/logospaheader.png';
+import imagenMap from '../assets/imagenMap.js';
 
 function HeaderComponent () {
   const { user, logout, isAuthenticated } = useContext(UserContext);
@@ -18,7 +18,7 @@ function HeaderComponent () {
       <Navbar key='lg' expand='lg' className='header-overflow ColorLetrasH'>
         <Container fluid>
           <Navbar.Brand to="/">
-            <img src={logospaheader} className='logoSPA' alt="LogoSPA"/>
+            <img src={imagenMap.logospaheader} className='logoSPA' alt="LogoSPA"/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
           <Navbar.Offcanvas
