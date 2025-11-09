@@ -98,6 +98,17 @@
   background-color: var(--color-principallogin);
   color: var(--color-fifthlogin);
 }
+@media screen and (max-width:2800px){
+  .mainLogin{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: end;
+  }
+  .cardLogin{
+    width: 40%;
+  }
+}
 @media screen and (max-width:2500px){
   .mainLogin{
     width: 100vw;

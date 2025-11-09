@@ -1,4 +1,5 @@
 import { Button, Form } from 'react-bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
 import '../styles/contactopage.css';
 import emailjs from '@emailjs/browser';
