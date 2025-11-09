@@ -23,12 +23,12 @@ function HomePage () {
       </section>
       <section className='sectionPromosHP'>
           <article className="centrado">
-          <h1>NIRVANA Spa & Beauty</h1>
-          <h3>Un viaje sensorial de bienestar</h3>
+          <h1>Nirvana Spa & Beauty</h1>
+          <h3>Un viaje sensorial de bienestar...</h3>
           <img src={imagenMap.logospaheader} alt="logo" className="logoarticle"/>
-          <p>Te damos la bienvenida a Nirvana Spa & Beauty, con una combinación de tratamientos, rituales y ceremonias basados ​​en los conocimientos ancestrales de diferentes culturas.<br/>
-            Sumérjase en un viaje sensorial de bienestar en el spa más exclusivo de Tucumán. Disfrute relajantes masajes corporales y rituales cuidadosamente diseñados en un ambiente de lujo que irradia tranquilidad.</p>
-            <p>*Los masajes, propuestas y tratamientos no incluyen instalaciones: sauna, jacuzzi, piscina y gimnasio se encuentran habilitados solamente para huéspedes.</p>
+          <p>Te damos la bienvenida a Nirvana, donde combinamos tratamientos, rituales y ceremonias basados ​​en los conocimientos ancestrales de diferentes culturas.<br/>
+            Adéntrate en un viaje sensorial de bienestar en el spa más exclusivo de Tucumán. Disfrutá de relajantes masajes corporales y rituales cuidadosamente diseñados en un ambiente de lujo que irradia tranquilidad.</p>
+            <p>*Los masajes, propuestas y tratamientos no incluyen las siguientes instalaciones: sauna, jacuzzi y piscina; éstos se encuentran habilitados solamente para huéspedes.</p>
         </article>
       <h2 className='h2HomeP'>Promociones Destacadas</h2>
       <div className='flex'>
