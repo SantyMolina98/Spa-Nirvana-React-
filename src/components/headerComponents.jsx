@@ -29,7 +29,7 @@ function HeaderComponent () {
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
               <Container>
               <Navbar.Brand to="/">
-              <img src={logospaheader} className='logoSPA' alt="LogoSPA"/>
+              <img src={imagenMap.logospaheader} className='logoSPA' alt="LogoSPA"/>
              </Navbar.Brand>
             </Container>
               </Offcanvas.Title>
