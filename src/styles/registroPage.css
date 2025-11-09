@@ -111,7 +111,7 @@
   border:0.1em solid var(--color-principalReg);
 }
 
-@media (min-width:320px) and (max-width:425px){
+@media (min-width:320px) and (max-width:500px){
    .h2Reg{
     font-size: 1.4em;
   }

@@ -27,16 +27,6 @@ function Registro () {
 
   //Constante para uso de emailjs para enviar mails
   const form =  useRef();
-   useEffect(() => {
-    if (EMAILJS_PUBLIC_KEY) {
-      try {
-        emailjs.init(EMAILJS_PUBLIC_KEY);
-      } catch (err) {
-        console.error('emailjs init error', err);
-      }
-    }
-  }, []);
-
   
   //Función para registrar nuevo usuario
  async function registrar(e){
@@ -89,9 +79,14 @@ function Registro () {
 
           try {
             const formEl = form.current || formReg;
-            await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_REGISTRO_ID, formEl);
-            console.log('Mensaje enviado correctamente');
-            alert('Registro exitoso! Revise su correo electrónico para más información.');
+            await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_REGISTRO_ID, formEl)
+            .then(
+              (response) =>{
+                console.log('Mensaje enviado correctamente', response.status, response);
+                alert('Registro exitoso! Revise su correo electrónico para más información.');
+              }
+            );
+           
             if (form.current) form.current.reset();
           } catch (emailErr) {
             console.error('Error al enviar el mensaje', emailErr);

@@ -46,7 +46,6 @@ export function UserProvider({ children }) {
     }
   }, [user, register]);
 
-  // Simula una llamada a una API que devuelve un token y datos de usuario
   const login = async ({ username, password }) => {
     if (!username || !password) {
       throw new Error('Credenciales inválidas');

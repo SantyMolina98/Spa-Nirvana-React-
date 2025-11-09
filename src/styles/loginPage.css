@@ -96,6 +96,7 @@
 }
 .botonesLogin:hover{
   background-color: var(--color-principallogin);
+  color: var(--color-fifthlogin);
 }
 @media screen and (max-width:2500px){
   .mainLogin{
