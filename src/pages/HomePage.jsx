@@ -26,7 +26,7 @@ function HomePage () {
           <h1>NIRVANA Spa & Beauty</h1>
           <h3>Un viaje sensorial de bienestar</h3>
           <img src={imagenMap.logospaheader} alt="logo" className="logoarticle"/>
-          <p>Para una experiencia de verdadero placer, le da la bienvenida Nirvana Spa & Beauty, con una combinación de tratamientos, rituales y ceremonias basados ​​en los conocimientos ancestrales de diferentes culturas.<br/>
+          <p>Te damos la bienvenida a Nirvana Spa & Beauty, con una combinación de tratamientos, rituales y ceremonias basados ​​en los conocimientos ancestrales de diferentes culturas.<br/>
             Sumérjase en un viaje sensorial de bienestar en el spa más exclusivo de Tucumán. Disfrute relajantes masajes corporales y rituales cuidadosamente diseñados en un ambiente de lujo que irradia tranquilidad.</p>
             <p>*Los masajes, propuestas y tratamientos no incluyen instalaciones: sauna, jacuzzi, piscina y gimnasio se encuentran habilitados solamente para huéspedes.</p>
         </article>
