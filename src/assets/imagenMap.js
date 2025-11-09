@@ -34,15 +34,10 @@ import catritualmulfem from './img/catritualmulfem.jpg';
 import catritualnirvesc from './img/catritualnirvesc.jpg';
 import catritualunad from './img/catritualunad.jpg';
 import catritualurkutun from './img/catritualurkutun.jpg';
-import TI1 from './img/TI1.jpg';
-import Fondologinturnos1 from './img/Fondologinturnos1.png';
 import STF1 from './img/STF1.jpg';
 import STF2 from './img/STF2.jpg';
 import STF3 from './img/STF3.jpg';
 import STF4 from './img/STF3.jpg';
-import RT1 from './img/RT1.jpg';
-import RT2 from './img/RT2.jpg';
-import RT3 from './img/RT3.jpg';
 import SM1 from './img/SM1.jpg';
 import SM2 from './img/SM2.jpg';
 import SM3 from './img/SM3.jpg';
@@ -88,10 +83,6 @@ const imagenMap = {
   catritualnirvesc, 
   catritualunad,
   catritualurkutun, 
-  //Turnos
-  TI1, Fondologinturnos1,
-  //Imagen de comentario de usuario
-  RT1,  RT2,  RT3,
   //Servicio T Faciales
   STF1,  STF2,  STF3, STF4,
   //Servicio Masajes
