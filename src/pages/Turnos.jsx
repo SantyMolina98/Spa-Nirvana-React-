@@ -1,13 +1,13 @@
 import '../App.css';
 import '../styles/turnosPages.css';
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap'; 
+import { Form, Button, Alert } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'; 
+import 'react-datepicker/dist/react-datepicker.css';
 
-// Función auxiliar para generar objetos Date a partir de la hora (ej: 10, 15)
+
 const generarHorarioDate = (hora) => {
-    // Usamos el día actual solo para crear la estructura de tiempo correcta.
+
     return new Date().setHours(hora, 0, 0, 0);
 }
 
@@ -19,85 +19,86 @@ const datosTurnos = {
         { id: 'pro_maria', nombre: 'María Soto', especialidad: 'Rituales' },
         { id: 'pro_juan', nombre: 'Juan Pérez', especialidad: 'Corporal' },
     ],
-    
+
     // Categorías servicios
     categorias: [
         { value: 'servicio-trat-facial', label: 'TRATAMIENTOS FACIALES' },
         { value: 'servicio-rituales', label: 'NUESTROS RITUALES' },
         { value: 'servicio-masajes', label: 'MASAJES' },
     ],
-    
+
     // Disponibilidad servicios
     serviciosPorCategoria: {
         'servicio-trat-facial': [
-            { 
-                value: 'essential-face-care', 
-                label: 'Essential Face Care', 
-                // 1=Lunes, 4=Jueves
-                diasDisponibles: [1, 4], 
-                // Horas: 10 AM, 3 PM
+            {
+                value: 'essential-face-care',
+                label: 'Essential Face Care',
+
+                diasDisponibles: [1, 4],
+
                 horariosDisponibles: [10, 15],
-                profesionalesId: ['pro_ana'], 
+                profesionalesId: ['pro_ana'],
             },
-            { 
-                value: 'glowing-vit-c', 
-                label: 'Glowing Vit C+', 
-                // 2=Martes, 5=Viernes
-                diasDisponibles: [2, 5], 
-                // Horas: 12 PM, 5 PM
+
+            {
+                value: 'glowing-vit-c',
+                label: 'Glowing Vit C+',
+
+                diasDisponibles: [2, 5],
+
                 horariosDisponibles: [12, 17],
-                profesionalesId: ['pro_ana', 'pro_maria'], 
+                profesionalesId: ['pro_ana', 'pro_maria'],
             },
         ],
-        
+
         'servicio-rituales': [
-            { 
-                value: 'ritual-nirvana-escape', 
-                label: 'Ritual Nirvana Escape', 
-                // 6=Sábado
-                diasDisponibles: [6], 
-                // Horas: 11 AM, 4 PM
+            {
+                value: 'ritual-nirvana-escape',
+                label: 'Ritual Nirvana Escape',
+
+                diasDisponibles: [6],
+
                 horariosDisponibles: [11, 16],
-                profesionalesId: ['pro_maria', 'pro_luis'], 
+                profesionalesId: ['pro_maria', 'pro_luis'],
             },
         ],
 
         'servicio-masajes': [
-            { 
-                value: 'masaje-sueco', 
-                label: 'Masaje Sueco', 
-                // 2=Martes, 5=Viernes
-                diasDisponibles: [2, 5], 
-                // Horas: 2 PM, 6 PM
+            {
+                value: 'masaje-sueco',
+                label: 'Masaje Sueco',
+                diasDisponibles: [2, 5],
+
                 horariosDisponibles: [14, 18],
-                profesionalesId: ['pro_luis', 'pro_juan'], 
+                profesionalesId: ['pro_luis', 'pro_juan'],
             },
-            { 
-                value: 'Masaje Hot Stones', 
-                label: 'Masaje Hot Stones', 
-                // 2=Martes, 5=Viernes
-                diasDisponibles: [2, 5], 
-                // Horas: 2 PM, 6 PM
-                horariosDisponibles: [14, 18],
-                profesionalesId: ['pro_luis', 'pro_juan'], 
+
+            {
+                value: 'Masaje Hot Stones',
+                label: 'Masaje Hot Stones',
+
+                diasDisponibles: [2, 5],
+                horariosDisponibles: [15, 19],
+                profesionalesId: ['pro_luis', 'pro_juan'],
             },
-            { 
-                value: 'Masaje Signature', 
-                label: 'Masaje Signature', 
-                // 2=Martes, 5=Viernes
-                diasDisponibles: [2, 5], 
-                // Horas: 2 PM, 6 PM
-                horariosDisponibles: [14, 18],
-                profesionalesId: ['pro_luis', 'pro_juan'], 
+
+            {
+                value: 'Masaje Signature',
+                label: 'Masaje Signature',
+
+                diasDisponibles: [2, 5],
+                horariosDisponibles: [17, 20],
+                profesionalesId: ['pro_luis', 'pro_juan'],
             },
-            { 
-                value: 'Masaje Deep Tissue', 
-                label: 'Masaje Deep Tissue', 
-                // 2=Martes, 5=Viernes
-                diasDisponibles: [2, 5], 
-                // Horas: 2 PM, 6 PM
+
+            {
+                value: 'Masaje Deep Tissue',
+                label: 'Masaje Deep Tissue',
+
+                diasDisponibles: [2, 5],
+
                 horariosDisponibles: [14, 18],
-                profesionalesId: ['pro_luis', 'pro_juan'], 
+                profesionalesId: ['pro_luis', 'pro_juan'],
             },
         ],
     },
@@ -107,42 +108,42 @@ const datosTurnos = {
 // COMPONENTE TURNO
 
 function Turnos() {
-    
+
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
     const [servicioSeleccionado, setServicioSeleccionado] = useState('');
     const [profesionalSeleccionadoId, setProfesionalSeleccionadoId] = useState('');
-    const [fechaSeleccionada, setFechaSeleccionada] = useState(null); 
-    const [horaSeleccionada, setHoraSeleccionada] = useState(null); 
-    
+    const [fechaSeleccionada, setFechaSeleccionada] = useState(null);
+    const [horaSeleccionada, setHoraSeleccionada] = useState(null);
+
     const [error, setError] = useState('');
     const [reservaExitosa, setReservaExitosa] = useState(false);
-    
+
 
     const serviciosDeCategoria = datosTurnos.serviciosPorCategoria[categoriaSeleccionada] || [];
     const servicioActual = serviciosDeCategoria.find((s) => s.value === servicioSeleccionado);
-    
+
     //Disponibilidad de Días y Horas
     const diasPermitidos = servicioActual ? servicioActual.diasDisponibles : [];
-    const horariosPermitidos = servicioActual 
-        ? servicioActual.horariosDisponibles.map(generarHorarioDate) 
+    const horariosPermitidos = servicioActual
+        ? servicioActual.horariosDisponibles.map(generarHorarioDate)
         : [];
-        
+
     // Disponibilidad de Profesionales
     const idsProfesionalesDisponibles = servicioActual ? servicioActual.profesionalesId : [];
-    const profesionalesDisponibles = datosTurnos.profesionales.filter(pro => 
+    const profesionalesDisponibles = datosTurnos.profesionales.filter(pro =>
         idsProfesionalesDisponibles.includes(pro.id)
     );
-    
+
     // Función de filtro de días para react-datepicker
     const filterDiasSemana = (date) => {
-        const day = date.getDay(); // 0=Domingo, 1=Lunes, ..., 6=Sábado
-        return diasPermitidos.includes(day); 
+        const day = date.getDay(); 
+        return diasPermitidos.includes(day);
     };
 
     const handleCategoriaChange = (e) => {
         // Resetea todos los campos subsiguientes
         setCategoriaSeleccionada(e.target.value);
-        setServicioSeleccionado(''); 
+        setServicioSeleccionado('');
         setProfesionalSeleccionadoId('');
         setFechaSeleccionada(null);
         setHoraSeleccionada(null);
@@ -167,9 +168,9 @@ function Turnos() {
 
 
     const handleSubmit = (e) => {
-        e.preventDefault(); 
-        setError(''); 
-        setReservaExitosa(false); 
+        e.preventDefault();
+        setError('');
+        setReservaExitosa(false);
 
         // Validación Final
         if (!categoriaSeleccionada || !servicioSeleccionado || !profesionalSeleccionadoId || !fechaSeleccionada || !horaSeleccionada) {
@@ -188,7 +189,7 @@ function Turnos() {
 
         setReservaExitosa(true);
     };
-    
+
     // Encuentra los nombres para el resumen final
     const profesionalNombre = datosTurnos.profesionales.find(p => p.id === profesionalSeleccionadoId)?.nombre;
     const servicioNombre = servicioActual?.label;
@@ -197,13 +198,13 @@ function Turnos() {
         <div className='MainT'>
             <section className="sectioncombos">
                 <h2 id="Texturno">Reserva tu turno </h2>
-                
+
                 {error && <Alert variant="danger">{error}</Alert>}
                 {reservaExitosa && <Alert variant="success">✅ ¡Turno reservado con *{profesionalNombre}* para el *{servicioNombre}*!</Alert>}
-                
+
                 <Form id="formuselec" onSubmit={handleSubmit}>
+
                     
-                    {/* SECCIÓN CATEGORÍA */}
                     <div className="input-group mb-3">
                         <Form.Label className="input-group-text">CATEGORÍA</Form.Label>
                         <Form.Select value={categoriaSeleccionada} onChange={handleCategoriaChange}>
@@ -230,7 +231,7 @@ function Turnos() {
                             ))}
                         </Form.Select>
                     </div>
-                    
+
                     {/* SECCIÓN PROFESIONAL (Habilitado si hay Servicio y Profesionales disponibles) */}
                     {profesionalesDisponibles.length > 0 && (
                         <div className="input-group mb-3">
@@ -253,24 +254,24 @@ function Turnos() {
                     {/* SECCIÓN FECHA (Habilitado si hay Servicio) */}
                     <div className="input-group mb-3">
                         <Form.Label className="input-group-text">FECHA</Form.Label>
-                        <div className="form-control p-0 custom-datepicker-container"> 
+                        <div className="form-control p-0 custom-datepicker-container">
                             <DatePicker
                                 selected={fechaSeleccionada}
                                 onChange={(date) => setFechaSeleccionada(date)}
-                                filterDate={filterDiasSemana} // Filtra los días según el servicio
+                                filterDate={filterDiasSemana} 
                                 dateFormat="dd/MM/yyyy"
                                 placeholderText="Seleccionar Fecha"
                                 className="form-control custom-date-picker"
                                 minDate={new Date()}
-                                disabled={!servicioSeleccionado} 
+                                disabled={!servicioSeleccionado}
                             />
                         </div>
                     </div>
-                    
+
                     {/* SECCIÓN HORARIO (Habilitado si hay Fecha y Servicio) */}
                     <div className="input-group mb-3">
                         <Form.Label className="input-group-text">HORARIO</Form.Label>
-                         <div className="form-control p-0 custom-datepicker-container"> 
+                        <div className="form-control p-0 custom-datepicker-container">
                             <DatePicker
                                 selected={horaSeleccionada}
                                 onChange={(date) => setHoraSeleccionada(date)}
@@ -281,8 +282,8 @@ function Turnos() {
                                 dateFormat="h:mm aa"
                                 placeholderText="Seleccionar Horario"
                                 className="form-control custom-date-picker"
-                                includeTimes={horariosPermitidos} // Filtra las horas según el servicio
-                                disabled={!servicioSeleccionado || !fechaSeleccionada} 
+                                includeTimes={horariosPermitidos} 
+                                disabled={!servicioSeleccionado || !fechaSeleccionada}
                             />
                         </div>
                     </div>
@@ -290,12 +291,12 @@ function Turnos() {
                     <Button type="submit" className="btnTurnos">
                         Confirmar Turno
                     </Button>
-                    
+
                 </Form>
             </section>
-            
-            <hr className='hrturnos mt-4'/>
-            
+
+            <hr className='hrturnos mt-4' />
+
             <section>
                 <article className="turnos-reservados">
                     <h3 id='Texturno'>Resumen del servicio</h3>
@@ -303,7 +304,7 @@ function Turnos() {
                     <p>Servicio: {servicioNombre || 'A definir'}</p>
                     <p>Fecha: {fechaSeleccionada ? fechaSeleccionada.toLocaleDateString() : 'A definir'}</p>
                     <p>Hora: {horaSeleccionada ? horaSeleccionada.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'A definir'}</p>
-                    <hr className='hrturnos'/>
+                    <hr className='hrturnos' />
                 </article>
             </section>
         </div>

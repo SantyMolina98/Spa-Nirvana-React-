@@ -15,7 +15,7 @@
   padding: 15px;
   background-color: var(--color-fifthturnos);
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 15px rgba(214, 125, 8, 0.15);
 }
 
 .sectioncombos {
@@ -30,17 +30,17 @@
   font-style: normal;
   font-size: x-large;
   font-size: 2rem;
-  /* Tamaño más adecuado para móvil */
+
   color: var(--color-principalturnos);
   margin-bottom: 25px;
   text-align: center;
 }
 
 #formuselec {
-  /* MOBILE BASE: Stack vertical y ancho completo */
+
   width: 100%;
   margin: 0;
-  /* Eliminamos el margin fijo */
+  color: #584738;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -53,16 +53,16 @@
   border: 3px solid var(--color-principalturnos);
   font-style: normal;
   font-size: 1rem;
-  /* Tamaño más adecuado para móvil */
+
   color: var(--color-principalturnos);
   margin-bottom: 25px;
   text-align: center;
 }
 
-/* Sector de reservación de turnos */
+
 .turnos-reservados {
   width: 100%;
-  /* height: auto; */
+  height: auto;
   border: 2px solid var(--color-principalturnos);
   font-style: normal;
   font-size: 1rem;
@@ -71,12 +71,7 @@
   text-align: center;
 }
 
-.flexcards {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 12px;
-}
+
 
 .btnTurnos {
   background-color: var(--color-principalturnos);
@@ -86,7 +81,7 @@
 }
 
 .btnTurnos:hover {
-  background-color: var(--color-terciaryturnos);
+  background-color: var (--color-terciaryturnos);
   color: var(--color-fifthturnos);
   transform: scale(1.05);
 }
@@ -95,32 +90,7 @@
   font-style: normal;
 }
 
-/* @media (max-width: 425px){
-  .flexcards {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
 
-.Tarjetaeliminar {
-  display: flex;
-  flex-direction: column;
-  background-color: #959581;
-  width: 100%;
-}
-
-.btn-confirm,
-.btn-back {
-  width: 100%;
-  max-width: 250px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  font-weight: bold;
-  transition: 0.3 ease;
-}
- */
 
 .actions {
   background-color: var(--color-terciaryturnos);
@@ -140,44 +110,44 @@
 #resumen-solicitud {
   font-style: normal;
   font-size: 2rem;
-  /* Tamaño más adecuado para móvil */
+
   color: var(--color-principalturnos);
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
 .input-group {
-  /* Aseguramos que el grupo de input ocupe todo el ancho disponible */
+
   width: 100%;
   display: flex;
 }
 
 .input-group-text {
-  /* Etiqueta del input (e.g., CATEGORÍA) */
+
   background-color: var(--color-fourthturnos);
   width: 40%;
   min-width: 120px;
-  /* Asegura que la etiqueta no sea demasiado pequeña */
-  /* color: var(--color-principalturnos);
+
+  color: var(--color-principalturnos);
   font-weight: bold;
-  padding: 10px;
-  gap: 8px;
+  /* padding: 10px; */
+  /* gap: 8px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border-color: var(--color-principalturnos); */
+  border-color: var(--color-principalturnos);
 }
 
 .form-select,
 .custom-date-picker {
-  /* Selects y DatePicker */
+
   background-color: var(--color-terciaryturnos);
   color: var(--color-principalturnos);
   font-weight: bold;
   padding: 10px;
   border: 1px solid var(--color-principalturnos);
-  border-radius: 4px;
+  border-radius: 2px;
   transition: background-color 0.2s ease;
   width: 100%;
 }
@@ -186,10 +156,10 @@
 .custom-date-picker:hover {
   cursor: pointer;
   background-color: #a38d6f;
-  
+
 }
 
-/* Estilos de Botones (Unificados para Confirmar) */
+
 .btn {
   background-color: var(--color-principalturnos);
   border: none;
@@ -217,7 +187,7 @@
   background-color: var(--color-principalturnos);
 }
 
-/* Ajustes DatePicker (Mantenemos los ajustes para Bootstrap) */
+
 .custom-datepicker-container {
   border: none !important;
   padding: 0 !important;
@@ -237,11 +207,7 @@
 }
 
 
-/*
-====================================
-MEDIA QUERY: Tablets (768px)
-====================================
-*/
+
 @media (min-width: 768px) {
   .MainT {
     max-width: 700px;
@@ -249,23 +215,19 @@ MEDIA QUERY: Tablets (768px)
   }
 
   #formuselec {
-    /* GRID DE DOS COLUMNAS */
+
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
 
-  /* CATEGORÍA y SERVICIO ocupan el ancho completo */
-  .input-group:nth-child(1),
-  /* Categoría */
-  .input-group:nth-child(2)
 
-  /* Servicio */
-    {
+  .input-group:nth-child(1),
+  .input-group:nth-child(2) {
     grid-column: 1 / -1;
   }
 
-  /* Profesional, Fecha, Horario se distribuyen en las dos columnas restantes */
+
 
   .btn {
     grid-column: 1 / -1;
@@ -273,33 +235,12 @@ MEDIA QUERY: Tablets (768px)
   }
 }
 
-/*
-====================================
-MEDIA QUERY: Laptops (1024px)
-====================================
-*/
+
 @media (min-width: 1024px) {
   .MainT {
     max-width: 960px;
   }
- 
 
-  /* Categoría sigue siendo full-width (3 columnas) */
- /*  .input-group:nth-child(1) {
-    grid-column: 1 / -1;
-  } */
-
-  /* Servicio y Profesional ocupan 1/3, la Fecha puede ocupar el otro 1/3 */
-  /*  .input-group:nth-child(2),  */
-  /* Servicio  */
-  /*  .input-group:nth-child(3), */ 
-  /* Profesional */
-  /*  .input-group:nth-child(4)  */
-  /* Fecha */
-  /* {
-        grid-column: span 1; 
-    } */
- 
 
 }
 
@@ -308,20 +249,20 @@ MEDIA QUERY: Laptops (1024px)
     max-width: 1200px;
   }
 
-  /* GRID DE CUATRO COLUMNAS */
+
   #formuselec {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
-  /* CATEGORÍA y SERVICIO ocupan 2 columnas cada uno (media página) */
+
   .input-group:nth-child(1),
   .input-group:nth-child(2) {
     grid-column: span 2;
   }
 
-  /* El resto (Profesional, Fecha, Horario) se distribuye en las 4 columnas restantes */
+
 
   .btn {
-        grid-column: 1 / -1; 
-    } 
+    grid-column: 1 / -1;
+  }
 }
