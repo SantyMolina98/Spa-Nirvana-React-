@@ -21,6 +21,7 @@
 .dropdownn-login-saludo-header{
   background-color: var(--color-fourth2Header);
   font-weight: 550;
+  color: #302620;
 }
 .itemsHeader{
   display: flex;

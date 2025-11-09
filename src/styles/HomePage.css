@@ -133,6 +133,7 @@ a {
 
 #etiquetaAsizeTratamiento, #etiquetaAsizeMasaje, #etiquetaAsizeRitual {
   font-size: 2rem;
+  color: #333;
   display: inline-block;
   min-width: 225.55px;
   text-align: center;
