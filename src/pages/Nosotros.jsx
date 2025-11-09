@@ -1,5 +1,6 @@
 import '../App.css';
 import '../styles/Nosotros.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import imagenMap from '../assets/imagenMap.js';
 
 
@@ -21,9 +22,9 @@ function Nosotros  ()  {
             la ciencia y la tecnología, y mi objetivo es conectar ambos mundos. Resido en Tucumán y, además de mis
             estudios y mi formación, me desempeño como recepcionista y dedico mi tiempo libre a entrenar calistenia.</p>
           <ul className='ulNos'>
-            <li className='liNos'><a href="https://www.facebook.com/nazarena.molina.381265" target="_blank" className="fa fa-facebook"></a></li>
-            <li className='liNos'><a href="https://www.linkedin.com/in/nazarena-molina-b4376b270/" target="_blank" className="fa fa-linkedin"></a></li>
-            <li className='liNos'><a href="https://www.instagram.com/nazarenamolina/" target="_blank" className="fa fa-instagram"></a></li>
+            <li className='liNos'><a href="https://www.facebook.com/nazarena.molina.381265" target="_blank" className='fa' ><i className="bi bi-facebook"></i></a></li>
+            <li className='liNos'><a href="https://www.linkedin.com/in/nazarena-molina-b4376b270/" target="_blank" className='fa' ><i className="bi bi-linkedin"></i></a></li>
+            <li className='liNos'><a href="https://www.instagram.com/nazarenamolina/" target="_blank" className='fa' ><i className="bi bi-instagram"></i></a></li>
           </ul>
         </div>
       </div>
@@ -39,10 +40,10 @@ function Nosotros  ()  {
             en Santa Fe, mis pasiones fuera del trabajo incluyen la cocina, mis
             mascotas, el yoga y explorar nuevos lugares a través de viajes.</p>
           <ul className='ulNos'>
-            <li className='liNos'><a href="https://www.facebook.com/share/1E2tGpbciN/" target="_blank" className="fa fa-facebook"></a></li>
-            <li className='liNos'><a href="#" className="fa fa-linkedin"></a></li>
+            <li className='liNos'><a href="https://www.facebook.com/share/1E2tGpbciN/" target="_blank" className='fa' ><i className="bi bi-facebook"></i></a></li>
+            <li className='liNos'><a href="*" className="fa"><i className="bi bi-linkedin"></i></a></li>
             <li className='liNos'><a href="https://www.instagram.com/anahi.tellier_bioterapeuta/?igsh=aGFlMTV2NXllbHhi#"
-               target="_blank" className="fa fa-instagram"></a></li>
+               target="_blank" className='fa' ><i className="bi bi-instagram"></i></a></li>
           </ul>
         </div>
       </div>
@@ -58,9 +59,9 @@ function Nosotros  ()  {
             áreas en el desarrollo web. Resido de Salta, me gusta jugar al fútbol,
             dedicarme a la organización de mi casa y disfrutar de la compañía de mi pareja y amigos.</p>
           <ul className='ulNos'>
-            <li className='liNos'><a href="https://www.facebook.com/santy.molina.98cima?locale=es_LA" target="_blank" className="fa fa-facebook"></a></li>
-            <li className='liNos'><a href="https://www.linkedin.com/in/santiago-molina-2893a2339/" target="_blank" className="fa fa-linkedin"></a></li>
-            <li className='liNos'><a href="https://www.instagram.com/santymolina98/" target="_blank" className="fa fa-instagram"></a></li>
+            <li className='liNos'><a href="https://www.facebook.com/santy.molina.98cima?locale=es_LA" target="_blank" className='fa' ><i className="bi bi-facebook"></i></a></li>
+            <li className='liNos'><a href="https://www.linkedin.com/in/santiago-molina-2893a2339/" target="_blank" className='fa' ><i className="bi bi-linkedin"></i></a></li>
+            <li className='liNos'><a href="https://www.instagram.com/santymolina98/" target="_blank"  className='fa'><i className="bi bi-instagram"></i></a></li>
           </ul>
         </div>
       </div>
@@ -76,9 +77,9 @@ function Nosotros  ()  {
             profesional y poder avanzar en mis proyectos personales.Resido en Buenos Aires. En mi tiempo libre, me gusta
             ir al gimnasio, compartir con amigos, bailar, viajar y pasear a mi mascota.</p>
           <ul className='ulNos'>
-            <li className='liNos'><a href="https://www.facebook.com/Genesiscarolinabolano" target="_blank" className="fa fa-facebook"></a></li>
-            <li className='liNos'><a href="https://www.linkedin.com/in/genesis-bola%C3%B1o-55b6b0aa/" target="_blank" className="fa fa-linkedin"></a></li>
-            <li className='liNos'><a href="https://www.instagram.com/bgenesism/" target="_blank" className="fa fa-instagram"></a></li>
+            <li className='liNos'><a href="https://www.facebook.com/Genesiscarolinabolano" target="_blank" className='fa' ><i className="bi bi-facebook"></i></a></li>
+            <li className='liNos'><a href="https://www.linkedin.com/in/genesis-bola%C3%B1o-55b6b0aa/" target="_blank" className='fa' ><i className="bi bi-linkedin"></i></a></li>
+            <li className='liNos'><a href="https://www.instagram.com/bgenesism/" target="_blank" className='fa'><i className="bi bi-instagram"></i></a></li>
           </ul>
       </div>
       </div>
