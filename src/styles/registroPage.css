@@ -1,0 +1,246 @@
+*{
+  --color-principalReg:#584738;
+  --color-terciaryReg:#ebd5b6;
+  --color-fourthReg:#959581;
+  --color-btnReg:#cea878;
+  --color-inputReg:#745c3d;
+  --color-aReg:#c59143;
+  --color-selectReg:#f4e8cb;
+}
+
+.mainRegistro{
+  width: 100%;
+  height:100%;
+  padding-top: 1em;
+  text-align: center;
+  display:flex ;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-image: url(../assets/Img/fondoregistro.png);
+  background-position: center;
+}
+
+.h2Reg{
+  width: 100%;
+  font-weight: 700;
+  color: var(--color-principalReg);
+}
+
+.CardRegistro{
+  width: 60%;
+  margin-bottom: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: start;
+  justify-content: center;
+   margin-top: 0;
+   box-shadow: black 0px 4px 8px 0px;
+  background-color: #c59143bf;
+  border-radius: 1em;
+}
+
+.h4Reg{
+  width: 100%;
+  text-align: center;
+  font-weight: 550;
+}
+
+.ContainerRegistro{
+  width: auto;
+  padding: 1em;
+}
+
+#Nombre, #Apellido, #newuser, #E-mail, #domicilio, #selectprovincia, #cp, #contraseña2{
+  padding: 0.2em;
+  border-radius: 0.5em;
+  border: 0.15em solid var(--color-inputReg);
+  margin-bottom: 0.4em;
+  width: 90%;
+}
+
+.TelefonoF{
+  width: 100%;
+  display: flex;
+}
+
+#firsttelefono{
+  padding: 0.2em;
+  border: 1px ridge var(--color-inputReg);
+  border-radius: 0.5em;
+  font-weight: 100;
+  color: var(--color-principalReg);
+  margin-right: 0.5em;
+  margin-bottom: 0.4em;
+  width: auto;
+}
+
+#telefono{
+  padding: 0.2em;
+  border-radius: 0.5em;
+  border: 0.15em solid var(--color-inputReg);
+  margin-bottom: 0.4em;
+  width:84.5%;
+}
+
+.option-prov:hover{
+  width: 100%;
+  background-color: var(--color-btnReg);
+  color: var(--color-selectReg);
+}
+
+.TextReg{
+  font-size:large ;
+  font-weight: 500;
+}
+
+.BtnRegistro{
+  width: 100%;
+}
+
+.BotonR{
+  width: 200px;
+  margin-top: 1em;
+  background-color: var(--color-btnReg);
+  color: var(--color-principalReg);
+  padding: 0.2em;
+  border-radius: 0.5em;
+  border:0.1em solid var(--color-principalReg);
+}
+
+.BotonR:hover{
+  margin-top: 1em;
+  background-color: var(--color-principalReg);
+  color: var(--color-selectReg);
+  padding: 0.2em;
+  border-radius: 0.5em;
+  border:0.1em solid var(--color-principalReg);
+}
+
+@media (min-width:320px) and (max-width:500px){
+   .h2Reg{
+    font-size: 1.4em;
+  }
+  .mainRegistro{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+   .CardRegistro{
+    width: 80%;
+  }
+  .ContainerRegistro{
+    width: 100%;
+  }
+  .h4Reg{
+    font-size: 1.2em;
+    width: 100%;   
+    text-align: center;
+  }
+  .TextReg, #Recordar{
+    font-size: 0.9em;
+  }
+  #Nombre, #Apellido, #newuser, #E-mail, #domicilio, #selectciudad, #cp, #contraseña2{
+    width: 100%;
+    font-size: 0.8em;
+  }
+  #firsttelefono, #telefono{
+    font-size: 0.8em;
+  }
+  #firsttelefono{
+    width: 15%;
+  }
+  #telefono{
+    width: 85%;
+  }
+  .BtnRegistro{
+    width: 100%;
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+  }
+
+  .BotonR{
+    width: 300px;
+    margin: 0;
+    background-color: var(--color-inputReg);
+    color: var(--color-btnReg);
+  }
+}
+
+@media (min-width:600px) and (max-width:768px){
+   .h2Reg{
+    font-size: 1.5em;
+  }
+  .h4Reg{
+    font-size: 1.2em;
+    width: 100%;
+    text-align: center;
+  }
+  .TextReg, #Recordar{
+    font-size: 1em;
+  }
+  #Nombre, #Apellido, #newuser, #E-mail, #domicilio, #selectciudad, #cp, #contraseña2{
+    width: 100%;
+    font-size: 0.9em;
+  }
+  #firsttelefono, #telefono{
+    font-size: 0.9em;
+  }
+  #firsttelefono{
+    width: 15%;
+  }
+  #telefono{
+    width: 85%;
+  }
+  .BtnRegistro{
+    width: 100%;
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;  
+  }
+  .BotonR{
+    width: 300px;
+    margin: 0;
+    background-color: var(--color-inputReg);
+    color: var(--color-btnReg);
+  }
+}
+
+@media (min-width:900px) and (max-width:1024px){
+   .h2Reg{
+    font-size: 1.6em;
+  }
+  .h4Reg{
+    font-size: 1.3em;
+    width: 100%;
+    text-align: center;
+  }
+  .TextReg, #Recordar{
+    font-size: 1.1em;
+  }
+  #Nombre, #Apellido, #newuser, #E-mail, #domicilio, #selectciudad, #cp, #contraseña2{
+    width: 90%;
+    font-size: 1em;
+  }
+  #firsttelefono, #telefono{
+    font-size: 1em;
+  }
+  #firsttelefono{
+    width: 13%;
+  }
+  #telefono{
+    width: 77%;
+  }
+  .BtnRegistro{
+    width: 100%;
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+  }
+  .BotonR{
+    width: 300px;
+    background-color: var(--color-inputReg);
+    color: var(--color-btnReg);
+  }
+}

@@ -1,0 +1,37 @@
+.back-footer-color {
+    background-color: #000000; 
+}
+
+.p-footer-link,
+.list-group-item a {
+    font-size: 1.1rem; 
+}
+
+h5 {
+    color: aliceblue;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+
+.col-lg-4 h5 {
+    text-align: center;
+}
+
+.col-lg-4 .list-group {
+    text-align: center;
+}
+
+.list-group-item a {
+    text-align: center; 
+}
+
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.logospafooter{
+  max-width: 40%;
+}

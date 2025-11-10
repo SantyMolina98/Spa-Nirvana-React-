@@ -1,0 +1,91 @@
+import '../App.css';
+import '../styles/Nosotros.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import imagenMap from '../assets/imagenMap.js';
+
+
+function Nosotros () {
+  return (
+    <div className='mainNos'>
+      <div className="centrado">
+        <h1 className='h1Nos'>NIRVANA Spa & Beauty</h1>
+        <img src={imagenMap.logospaheader} alt="logo" className="logoarticle" />
+        <h3 className="mainh">Trabajamos con dedicación y creatividad para convertir ideas en soluciones funcionales y bien pensadas.</h3>
+      </div>
+     <section className="card-section">
+      <div className="cardNos">
+        <img src={imagenMap.Naza} alt="naza" className='fotoNos' />
+        <div>
+          <h2 className='h2Nos'>Nazarena Molina</h2>
+          <p className='descripcionNos'>Soy estudiante de Biotecnología, estoy inmersa en el fascinante mundo de la ciencia, y actualmente estoy
+            ampliando mis habilidades como desarrolladora Full Stack en Rolling Code. Me apasiona la intersección entre
+            la ciencia y la tecnología, y mi objetivo es conectar ambos mundos. Resido en Tucumán y, además de mis
+            estudios y mi formación, me desempeño como recepcionista y dedico mi tiempo libre a entrenar calistenia.</p>
+          <ul className='ulNos'>
+            <li className='liNos'><a href="https://www.facebook.com/nazarena.molina.381265" target="_blank" className='fa' ><i className="bi bi-facebook"></i></a></li>
+            <li className='liNos'><a href="https://www.linkedin.com/in/nazarena-molina-b4376b270/" target="_blank" className='fa' ><i className="bi bi-linkedin"></i></a></li>
+            <li className='liNos'><a href="https://www.instagram.com/nazarenamolina/" target="_blank" className='fa' ><i className="bi bi-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section className="card-section">
+      <div className="cardNos">
+        <img src={imagenMap.Anahi} alt="anahi" className='fotoNos' />
+        <div>
+          <h2 className='h2Nos'>Anahí Tellier</h2>
+          <p className='descripcionNos'>Soy Bioterapeuta y miembro del equipo de Bioterapia El Despertar, me dedico a guiar a individuos en su
+            camino hacia la autoconciencia y sanación de enfermedades y conflictos.Adicionalmente estoy cursando el
+            programa de desarrollador Full Stack en Rolling Code para expandir mis habilidades en el ámbito web. Resido
+            en Santa Fe, mis pasiones fuera del trabajo incluyen la cocina, mis
+            mascotas, el yoga y explorar nuevos lugares a través de viajes.</p>
+          <ul className='ulNos'>
+            <li className='liNos'><a href="https://www.facebook.com/share/1E2tGpbciN/" target="_blank" className='fa' ><i className="bi bi-facebook"></i></a></li>
+            <li className='liNos'><a href="*" className="fa"><i className="bi bi-linkedin"></i></a></li>
+            <li className='liNos'><a href="https://www.instagram.com/anahi.tellier_bioterapeuta/?igsh=aGFlMTV2NXllbHhi#"
+               target="_blank" className='fa' ><i className="bi bi-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section className="card-section">
+      <div className="cardNos">
+        <img src={imagenMap.Santy} alt="santy" className='fotoNos' />
+        <div>
+          <h2 className='h2Nos'>Santiago Martín Molina</h2>
+          <p className='descripcionNos'>Trabajo en la heladería Grido, donde he desarrollado una sólida capacidad para la atención al cliente
+            manejando diversas situaciones con profesionalismo. Adicionalmente, me estoy formando como
+            desarrollador Full Stack en Rolling Code, una oportunidad para crecer profesionalmente y explorar nuevas
+            áreas en el desarrollo web. Resido de Salta, me gusta jugar al fútbol,
+            dedicarme a la organización de mi casa y disfrutar de la compañía de mi pareja y amigos.</p>
+          <ul className='ulNos'>
+            <li className='liNos'><a href="https://www.facebook.com/santy.molina.98cima?locale=es_LA" target="_blank" className='fa' ><i className="bi bi-facebook"></i></a></li>
+            <li className='liNos'><a href="https://www.linkedin.com/in/santiago-molina-2893a2339/" target="_blank" className='fa' ><i className="bi bi-linkedin"></i></a></li>
+            <li className='liNos'><a href="https://www.instagram.com/santymolina98/" target="_blank"  className='fa'><i className="bi bi-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section className="card-section">
+      <div className="cardNos">
+        <img src={imagenMap.Gene} alt="gene" className='fotoNos' />
+        <div>
+          <h2 className='h2Nos'>Genesis Bolaño</h2>
+          <p className='descripcionNos'>Trabajo en Red Link como Auditor de Sistemas. Me encuentro estudiando la Licenciatura en Gestión en
+            Tecnología Informática en la UAI y también el
+            curso de desarrollador Full Stack en Rolling Code. Esto es para sumar nuevos conocimientos a nivel
+            profesional y poder avanzar en mis proyectos personales.Resido en Buenos Aires. En mi tiempo libre, me gusta
+            ir al gimnasio, compartir con amigos, bailar, viajar y pasear a mi mascota.</p>
+          <ul className='ulNos'>
+            <li className='liNos'><a href="https://www.facebook.com/Genesiscarolinabolano" target="_blank" className='fa' ><i className="bi bi-facebook"></i></a></li>
+            <li className='liNos'><a href="https://www.linkedin.com/in/genesis-bola%C3%B1o-55b6b0aa/" target="_blank" className='fa' ><i className="bi bi-linkedin"></i></a></li>
+            <li className='liNos'><a href="https://www.instagram.com/bgenesism/" target="_blank" className='fa'><i className="bi bi-instagram"></i></a></li>
+          </ul>
+      </div>
+      </div>
+    </section>
+  </div>
+  )
+}
+
+export default Nosotros;

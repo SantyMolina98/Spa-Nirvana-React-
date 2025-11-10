@@ -1,0 +1,126 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+  --color-principalcategoria: #584738;
+  --color-secondarycategoria: #4c583e;
+  --color-terciarycategoria: #b59e7d;
+  --color-fourthcategoria: #959581;
+  --color-fifthcategoria: #f1eada;
+   --color-sixthcategoria: #eec58c;
+   --color-seventhcategoria: #aa6d3b;
+}
+
+.maincategoria {
+  background-color: var(--color-fifthcategoria);
+  width: 100%;
+  height: 100%;
+}
+.seccion-categoria{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom:1.5em ;
+}
+.contenedorImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    height: 20em;
+}
+.row-categorias{
+  margin-left: 10em;
+  margin-right: 10em;
+  margin-top: 2em;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  gap: 4em;
+  flex-wrap: wrap;
+}
+
+.contenedor{
+  width: 400px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 2px solid var(--color-secondarycategoria);
+  border-radius: 1em;
+  padding: 1em;
+}
+.img-categoria{
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-categoria{
+  background-color: var(--color-principalcategoria);
+  text-decoration: none;
+  border-color: var(--color-principalcategoria);
+  border-radius: 10px;
+}
+.btn-categoria:hover{
+  background-color: var(--color-terciarycategoria);
+  border-color: var(--color-terciarycategoria);
+}
+
+
+/* MAIN BANNER*/
+
+.imgbanner {
+  width: 100%;
+  filter: grayscale(60%);
+  transition: 600ms;
+}
+.imgbanner:hover {
+  filter: grayscale(0%);
+  transform: scale(1.2);
+}
+
+
+
+.titulo {
+    position: absolute;
+    background-color: #1111118e;
+    padding: 20px;
+    color: #fff;
+    border-radius: 20px;
+}
+
+/* PAGINACION */
+.btnpagination {
+  background-color: #584738a0;
+  color: var(--color-fifthcategoria);
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.btnpagination:hover {
+  background-color: #b59e7d83;
+  color: var(--color-fifthcategoria);
+  transform: scale(1.05);
+}
+
+.btnactive{
+  background-color: #4c583ea3;
+  color: var(--color-fifthcategoria);
+}
+
+.btnactive:hover{
+  background-color: #4c583e51;
+  color: var(--color-fifthcategoria); 
+}
+
+.paginacion{
+  margin: 50px;
+  justify-content: center;
+}

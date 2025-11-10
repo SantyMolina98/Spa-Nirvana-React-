@@ -1,0 +1,236 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --color-sixthNosotros: #f1eada;
+    --color-inputNosotros: rgb(82, 58, 11);
+    --color-backgroundNosotros: #f1eada;
+    --color-cardNosotros: #fff;
+    --color-sixthNosotros: #eec58c;
+}
+
+.mainNos {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--color-backgroundNosotros);
+    color: #fdfdfd;
+    font-family: 'Poppins', sans-serif;
+    padding: 5%;
+    gap: 50px;
+}
+
+
+.h1Nos , .mainh {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    color: rgb(82, 58, 11);
+    margin: 30px;
+}
+
+.h1Nos {
+    font-size: clamp(30px, 6vw, 50px);
+    margin-bottom: 20px;
+    font-style:oblique;
+}
+
+.logoarticle {
+  width: 10%;
+}
+
+.card-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+
+}
+
+.cardNos {
+     height: 32em;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    padding-top: 0px;
+    background: var(--color-cardNosotros);
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+}
+
+.fotoNos {
+    max-width: 180px;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+}
+
+
+.h2Nos {
+    font-size: clamp(18px, 4vw, 30px);
+    font-weight: 600;
+    color:  rgb(82, 58, 11);
+    margin-top: 5px;
+}
+
+.descripcionNos {
+    font-size: clamp(12px, 2vw, 14px);
+    font-weight: 200;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 0.7;
+    max-width: none;
+    line-height: 1.5;
+    color: black;
+}
+
+
+.cardNos:hover .fotoNos {
+  transform: scale(1.05) translateX(-20%) scale(1.05);
+}
+
+.ulNos { 
+    margin-top: 20px; 
+    display: flex; 
+    flex-direction: row; 
+    padding: 0; 
+    list-style: none;
+}
+
+.liNos {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    ;
+    
+}
+
+.fa {
+    text-decoration: none;
+    color: white;
+    background:  rgb(82, 58, 11);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;;
+    line-height: 30px !important;
+    border-radius: 50%;
+    transition: all .3s ease-in-out;
+    font-size: 20px;
+}
+
+.fa:hover {
+    transform: scale(1.2);
+    color: white;
+    background: rgb(82, 58, 11);
+}
+
+
+@media (max-width: 992px) {
+    .mainNos {
+        padding: 30px 15px;
+        gap: 30px;
+    }
+
+    .cardNos {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+        padding-top: 90px;
+        align-items: center;
+    }
+
+    .fotoNos {
+
+        margin: -80px auto 20px auto;
+        width: 150px;
+        height: 150px;
+        transform: none;
+    }
+
+    .descripcionNos {
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+   .cardNos:hover .fotoNos {
+        transform: scale(1.05) translateX(-20%);
+    }
+
+}
+
+/* Para pantallas pequeñas (ej. celulares) */
+@media (max-width: 600px) {
+    .mainNos {
+        padding: 20px 10px;
+        gap: 20px;
+    }
+
+    .cardNos {
+
+        max-width: 400px;
+        padding-top: 110px
+    }
+
+    .fotoNos {
+        width: 120px;
+        height: 120px;
+        margin: -60px auto 15px auto;
+    }
+
+    .h2Nos {
+        font-size: 20px;
+    }
+
+
+    .descripcionNos {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+}
+
+/* Para pantallas pequeñas (ej. celulares) */
+@media (max-width: 600px) {
+    .mainNos {
+        padding: 20px 10px;
+        gap: 20px;
+    }
+
+    .cardNos {
+        padding: 15px;
+        padding-top: 90px;
+
+    }
+
+    .fotoNos {
+
+        width: 120px;
+        height: 120px;
+        margin: -60px auto 15px auto;
+
+    }
+
+    .h2Nos {
+        font-size: 20px;
+    }
+
+
+    .descripcionNos {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+}

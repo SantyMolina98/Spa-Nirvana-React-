@@ -1,0 +1,216 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --color-principalcontacto: #584738;
+  --color-secondarycontacto: #4c583e;
+  --color-terciarycontacto: #d2ab73;
+  --color-fourthcontacto: #743e0c;
+  --color-fifthcontacto: #f1eada;
+}
+
+#MainContacto{
+width: 100%;
+height: auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-around;
+color: var(--color-principalcontacto);
+}
+
+#Containerformulario {
+  display: flex;
+  flex-direction: column;
+}
+
+#FormContacto {
+  color: var(--color-principalcontacto);
+}
+
+.ContactoForm {
+  width: 50%;
+  padding: 1em;
+  margin-bottom: 2em ;
+  display: flex;
+  flex-direction: column;
+  background-color: #58473876;
+  border: var(--color-secondarycontacto) solid 1px;
+  border-radius: 3%;
+
+}
+
+.form-label {
+  font-weight: 700;
+}
+
+.form-control {
+  width: 95%;
+}
+
+#exampleFormControlInput1 {
+  border: var(--color-principalcontacto) solid 1.5px;
+  margin: 10px;
+}
+
+.MapaContainer {
+ margin-bottom: 2em;
+  border-radius: 2em;
+  box-shadow: black 0px 4px 8px 0px;
+}
+.MapaCard{
+  border-radius: 2em;
+}
+
+.Mapa {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  justify-content: center;
+}
+.hrcontacto{
+  width: 80%;
+  border: 2px solid var(--color-principalcontacto);
+}
+#enviarboton {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+#Contacto {
+  font-size: xx-large;
+  
+}
+
+.bi-geo-alt-fill {
+  font-size: x-large;
+  
+}
+
+
+#direccion {
+  font-size: xx-large;
+  justify-content: center;
+}
+.texto-direccion{
+  font-size: x-large;
+}
+.btnContacto {
+  margin-top: 1em;
+  width: 15%;
+  background-color: var(--color-principalcontacto);
+  color: var(--color-fifthcontacto);
+  border: none;
+  
+}
+
+.btnContacto:hover {
+  background-color: var(--color-fourthcontacto);
+  color: var(--color-fifthcontacto);
+  transform: scale(1.05);
+}
+
+@media (max-width:425px) {
+  .mapa {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .MapaCard {
+    width: 80%;
+  } 
+}
+
+@media (max-width:768px) {
+  .mapa {
+    width: 100%;
+    border: 10%;
+    align-content: center;
+    align-items: center;
+  }
+
+  iframe {
+    width: 100%;
+  }
+
+  #direccion {
+    margin-top: 10px;
+  }
+
+  #ContainerMapa {
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  #direccion {
+    width: 100%;
+  }
+
+  #Bordercaja {
+    padding-left: 5%;
+    border-radius: 7%;
+  }
+}
+
+.aesthetic-card {
+    width: 100%;
+    padding: 3rem;
+    background-color: #58473876;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(40, 41, 40, 0.1);
+}
+
+.aesthetic-icon {
+    color: var(--color-fifthcontacto);
+    font-size: 4rem;    
+}
+
+.aesthetic-title {
+    color: var(--color-fifthcontacto);
+    font-size: 1.6rem; 
+    font-weight: 600; 
+    letter-spacing: 0.09em; 
+}
+
+.aesthetic-text {
+  color: #333;
+  font-size: 1rem; 
+  font-weight: 300;  
+}
+
+.aesthetic-button {
+    background-color: var(--color-secondarycontacto);
+    color: var(--color-fifthcontacto);
+    padding: 0.75rem 1.5rem; 
+    border-radius: 0.5rem; 
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; 
+    font-weight: 700; 
+    font-size: 1.2rem;
+}
+
+.aesthetic-button:hover {
+    background-color: #4c583ea2; 
+    transition: 400ms;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1); 
+}
+
+.aesthetic-button i {
+    font-size: 2rem;
+}
+
+.aesthetic-footer-text {
+    color: var(--color-principalcontacto);
+    font-size: 0.8rem; 
+    margin-top: 2rem; 
+    opacity: 0.8;
+}

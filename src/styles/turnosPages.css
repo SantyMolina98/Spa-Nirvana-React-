@@ -1,0 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --color-principalturnos: #584738;
+  --color-secondaryturnos: #4c583e;
+  --color-terciaryturnos: #B59E7D;
+  --color-fourthturnos: #959581;
+  --color-fifthturnos: #f1eada;
+}
+
+.MainT {
+  max-width: 100%;
+  margin: 40px;
+  padding: 30px;
+  background-color: var(--color-fifthturnos);
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(88, 71, 56, 0.15);
+}
+
+.sectioncombos {
+  width: 100%;
+  padding: 10px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#Texturno {
+    font-size: 2.5rem; 
+    color: var(--color-principalturnos);
+    margin-bottom: 40px; 
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+#formuselec {
+  width: 100%;
+  margin: 0;
+  color: var(--color-principalturnos);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hrturnos {
+  width: 80%;
+  font-weight: 800;
+  border: 3px solid var(--color-principalturnos);
+  font-style: normal;
+  font-size: 1rem;
+
+  color: var(--color-principalturnos);
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+
+.turnos-reservados {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--color-principalturnos);
+  font-style: normal;
+  font-size: 1rem;
+  color: var(--color-principalturnos);
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+
+
+.btnTurnos {
+  background-color: var(--color-principalturnos);
+  color: var(--color-fifthturnos);
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.btnTurnos:hover {
+  background-color: var (--color-terciaryturnos);
+  color: var(--color-fifthturnos);
+  transform: scale(1.05);
+}
+
+.resumen-solicitud {
+  font-style: normal;
+}
+
+.actions {
+  background-color: var(--color-terciaryturnos);
+  margin: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-radius: 8px;
+}
+
+#texsoli,
+#resumen-solicitud {
+  font-style: normal;
+  font-size: 2rem;
+  color: var(--color-principalturnos);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.input-group {
+  width: 100%;
+}
+
+.input-group-text {
+    background-color: var(--color-fourthturnos);
+    width: 40%;
+    min-width: 120px;
+    color: var(--color-fifthturnos); 
+    font-weight: 700; 
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none; 
+    border-radius: 8px; 
+    height: 48px;
+}
+
+.form-select,
+.custom-date-picker {
+    background-color: var(--color-terciaryturnos);
+    color: var(--color-principalturnos);
+    font-weight: 500;
+    padding: 10px 15px;
+    border: 1px solid var(--color-principalturnos); 
+    border-left: none; 
+    border-radius: 0 8px 8px 0; 
+    width: 100%;
+    height: 48px; 
+}
+
+.form-select:hover,
+.custom-date-picker:hover {
+  cursor: pointer;
+  background-color: #a38d6f;
+}
+
+.form-select:focus,
+.custom-date-picker:focus {
+    border-color: var(--color-secondaryturnos);
+    box-shadow: 0 0 0 0.25rem rgba(76, 88, 62, 0.25);
+    background-color: #a38d6f;
+}
+.btnTurnos,
+.btn {
+    background-color: var(--color-principalturnos);
+    color: var(--color-fifthturnos);
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btnTurnos:hover,
+.btn:hover {
+    background-color: var(--color-terciaryturnos);
+    color: var(--color-fifthturnos);
+    transform: translatey(2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+.alert-danger, .alert-success {
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.turnos-reservados {
+    width: 100%;
+    padding: 30px;
+    background-color: #b59e7d44; 
+    border-radius: 15px;
+}
+
+.turnos-reservados h3 {
+    font-size: 1.8rem;
+    color: var(--color-principalturnos);
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.turnos-reservados p {
+    font-size: 1.1rem;
+    color: #444;
+    text-align: center;
+    max-width: 500px;
+    margin: 0px auto 20px;
+    border-bottom: 3px solid var(--color-fifthturnos);
+}
+
+.hrturnos {
+  width: 100%;
+  margin: 20px;
+  border: none;
+  height: 2px;
+  background-color: var(--color-principalturnos);
+}
+
+.custom-datepicker-container {
+    border: 1px solid var(--color-principalturnos);
+    border-left: none;
+    width: 100%;
+    height: 48px;
+}
+
+.custom-date-picker {
+    border: none;
+    height: 46.5px;
+    background-color: var(--color-terciaryturnos);
+    color: var(--color-principalturnos);
+}
+
+@media (min-width: 768px) {
+  .MainT {
+    max-width: 700px;
+    padding: 30px;
+  }
+
+  #formuselec {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+
+  .input-group:nth-child(1),
+  .input-group:nth-child(2) {
+    grid-column: 1 / -1;
+  }
+
+  .btn {
+    grid-column: 1 / -1;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .MainT {
+    max-width: 960px;
+  }
+
+
+}
+
+@media (min-width: 1440px) {
+  .MainT {
+    max-width: 1200px;
+  }
+
+
+  #formuselec {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+
+  .input-group:nth-child(1),
+  .input-group:nth-child(2) {
+    grid-column: span 2;
+  }
+
+  .btn {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,0 +1,250 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box; 
+  font-family: "Poppins", sans-serif;
+}
+:root{
+  --color-principalHome: #584738;
+  --color-principal2Home: #3f3228;
+  --color-secondaryHome: #4c583e;
+  --color-terciaryHome: #b59e7d;
+  --color-fourthHome: #959581;
+  --color-fourth2Home: #95958170;
+  --color-fifthHome: #f1eada;
+  --color-sixthHome: #eec58c;
+  --color-seventhHome: #aa6d3b;
+}
+
+.MainHomeP{
+    margin-top: 0;
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+}
+
+.carrusel{
+    width: 100%;
+}
+
+.logoarticle {
+  width: 10%;
+  margin-bottom: 40px;
+  min-width: 80px;
+}
+
+.sectionPromosHP{
+    width: 100%;
+    height: auto;
+}
+
+.main-content{
+  height: 100%;
+} 
+
+a {
+  text-decoration: none;
+}
+
+.img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.text-muted{
+    margin-top: 35px;
+    height: auto;
+}
+.h2HomeP{
+    text-align: center;
+    font-size: 2rem;
+    color: #444;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.TextCardPromoHP{
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 15px;
+  min-height: 70px;
+}
+.centrado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.centrado h1 {
+    letter-spacing: 3px;
+    font-size: 2.2rem;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 5px; 
+    color: #333;
+}
+
+.centrado h3 {
+    font-size: 1.2rem;
+    font-style: italic; 
+    text-align: center;
+    color: #666; 
+    margin-top: 0;
+    margin-bottom: 30px; 
+}
+
+.centrado p {
+    font-size: 1.1rem; 
+    line-height: 1.7; 
+    text-align: center;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.centrado p:last-child {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 1%;
+    gap: 30px;
+    justify-content: center;
+}
+.textoabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textoabsolute {
+  position: absolute;
+  padding: 10px;
+  background-color: #b59e7d5a;
+  border: solid 1px var(--color-fifthHome);
+}
+
+#etiquetaAsizeTratamiento, #etiquetaAsizeMasaje, #etiquetaAsizeRitual {
+  font-size: 2rem;
+  color: #333;
+  display: inline-block;
+  min-width: 225.55px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.seccionWrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+  padding: 12px;
+}
+
+@media (min-width: 1280px) {
+  .seccionWrap {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.secciones {
+  width: 100%;
+  height: 30em;
+  object-fit: cover;
+  border-radius: 5px;
+  border: solid 2px var(--color-fourthHome);
+  filter: brightness(60%);
+  cursor: pointer;
+}
+
+.secciones:hover {
+  filter: brightness(100%);
+  transition: 600ms;
+}
+
+#etiquetaAsize:hover {
+  transform: scale(1.05);
+  transition: 600ms;
+} 
+
+/* Por defecto (mobile): ocultamos la publicidad */
+.publicidad {
+  display: none;
+}
+
+/* Tablet (>= 768px) */
+@media (min-width: 768px) {
+  .publicidad {
+    display: block;
+  }
+}
+
+#imgpublicidad{
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid #342d27;
+  object-fit: cover;
+}
+
+.btnWappHP {
+  background-color: var(--color-principalHome);
+  color: var(--color-fifthHome);
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.btnWappHP:hover {
+  background-color: var(--color-terciaryHome);
+  color: var(--color-fifthHome);
+  transform: scale(1.05);
+}
+
+.GridsHomeP{
+    width: 100%;
+    height: auto;
+}
+
+.card {
+    width: 80%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateX(10px); 
+    box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background-color: #e0d9d3;
+    color: #555;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 2rem;
+    color: #333;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+

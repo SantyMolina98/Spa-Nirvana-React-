@@ -1,0 +1,166 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+  --color-principallogin: #584738;
+  --color-principal2login: #3f3228;
+  --color-secondarylogin: #be721c;
+  --color-terciarylogin: #b59e7d;
+  --color-fourthlogin: #f4e8cb;
+  --color-fifthlogin: #f1eada;
+  --color-sixthlogin: #eec58c;
+  --color-seventhlogin: #aa6d3b;
+  --color-eigthlogin: #be1b1b;
+}
+
+.mainLogin{
+  background-image: url(../assets/Img/Fondologinturnos1.png);
+  background-position: center;
+  background-size:cover;
+  width: 100vw;
+  height: auto;
+}
+.colorcard{
+  background-color: var(--color-sixthlogin);
+}
+
+.cardLogin{
+  margin: 1em;
+  margin-bottom:6em;
+  padding: 0;
+  border-radius: 1.5em;
+  animation-name: cardslide;
+  animation-duration: 3s;
+}
+
+@keyframes cardslide {
+  from {
+    transform: scale(0.1,0.1);
+    right: 70%;
+    
+  }
+  to {
+    transform: scale(1,1);
+    right: 0;
+  }
+}
+
+.bodyCard{
+  margin: 0;
+  padding: 1em;
+  border-radius: 1.5em;
+}
+.title-login{
+  width: auto;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 0.5em;
+  text-align: center;
+
+}
+.linkLogin{
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--color-secondarylogin);
+  margin-left: 0;
+}
+.FormInicioSesion{
+  width: auto;
+}
+
+.textlogin{
+  color: var(--color-principal2login);
+}
+.form-check .form-check-label {
+  background-color: transparent !important;
+}
+.alerterror{
+  width: auto;
+  border-radius: 10px;
+  padding: 0.2em;
+  background-color: var(--color-fourthlogin);
+  color: var(--color-eigthlogin);
+}
+.sectorBotones{
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.botonesLogin{
+  width: 80%;
+  margin-bottom: 10px;
+  background-color: var(--color-seventhlogin);
+  border: none;
+}
+.botonesLogin:hover{
+  background-color: var(--color-principallogin);
+  color: var(--color-fifthlogin);
+}
+@media screen and (max-width:2800px){
+  .mainLogin{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: end;
+  }
+  .cardLogin{
+    width: 40%;
+  }
+}
+@media screen and (max-width:2500px){
+  .mainLogin{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: end;
+  }
+  .cardLogin{
+    width: 40%;
+  }
+}
+@media screen and (max-width:1440px){
+  .mainLogin{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: end;
+  }
+  .cardLogin{
+    width: 40%;
+  }
+}
+@media screen and (max-width:1024px){
+  .mainLogin{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: end;
+  }
+  .cardLogin{
+    width: 60%;
+  }
+}
+@media screen and (max-width:768px){
+  .mainLogin{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: end;
+  }
+  .cardLogin{
+    width: 70%;
+  }
+}
+@media screen and (max-width:576px){
+  .mainLogin{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: end;
+  }
+  .cardLogin{
+    width: 90%;
+  }
+}
