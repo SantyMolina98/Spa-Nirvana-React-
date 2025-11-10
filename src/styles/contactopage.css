@@ -9,7 +9,6 @@
   --color-fifthcontacto: #f1eada;
 }
 
-
 #MainContacto{
 width: 100%;
 height: auto;
@@ -35,7 +34,7 @@ color: var(--color-principalcontacto);
   margin-bottom: 2em ;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-terciarycontacto);
+  background-color: #58473876;
   border: var(--color-secondarycontacto) solid 1px;
   border-radius: 3%;
 
@@ -160,3 +159,58 @@ color: var(--color-principalcontacto);
   }
 }
 
+.aesthetic-card {
+    width: 100%;
+    padding: 3rem;
+    background-color: #58473876;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(40, 41, 40, 0.1);
+}
+
+.aesthetic-icon {
+    color: var(--color-fifthcontacto);
+    font-size: 4rem;    
+}
+
+.aesthetic-title {
+    color: var(--color-fifthcontacto);
+    font-size: 1.6rem; 
+    font-weight: 600; 
+    letter-spacing: 0.09em; 
+}
+
+.aesthetic-text {
+  color: #333;
+  font-size: 1rem; 
+  font-weight: 300;  
+}
+
+.aesthetic-button {
+    background-color: var(--color-secondarycontacto);
+    color: var(--color-fifthcontacto);
+    padding: 0.75rem 1.5rem; 
+    border-radius: 0.5rem; 
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; 
+    font-weight: 700; 
+    font-size: 1.2rem;
+}
+
+.aesthetic-button:hover {
+    background-color: #4c583ea2; 
+    transition: 400ms;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1); 
+}
+
+.aesthetic-button i {
+    font-size: 2rem;
+}
+
+.aesthetic-footer-text {
+    color: var(--color-principalcontacto);
+    font-size: 0.8rem; 
+    margin-top: 2rem; 
+    opacity: 0.8;
+}

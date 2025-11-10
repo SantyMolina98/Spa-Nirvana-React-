@@ -19,14 +19,15 @@
   background-image: url(../assets/Img/fondoregistro.png);
   background-position: center;
 }
+
 .h2Reg{
   width: 100%;
   font-weight: 700;
   color: var(--color-principalReg);
 }
+
 .CardRegistro{
   width: 60%;
-  
   margin-bottom: 2em;
   display: flex;
   flex-wrap: wrap;
@@ -34,20 +35,21 @@
   justify-content: center;
    margin-top: 0;
    box-shadow: black 0px 4px 8px 0px;
-  background-color: var(--color-aReg);
+  background-color: #c59143bf;
   border-radius: 1em;
 }
+
 .h4Reg{
   width: 100%;
   text-align: center;
   font-weight: 550;
 }
+
 .ContainerRegistro{
   width: auto;
   padding: 1em;
- 
-  
 }
+
 #Nombre, #Apellido, #newuser, #E-mail, #domicilio, #selectprovincia, #cp, #contraseña2{
   padding: 0.2em;
   border-radius: 0.5em;
@@ -55,10 +57,12 @@
   margin-bottom: 0.4em;
   width: 90%;
 }
+
 .TelefonoF{
   width: 100%;
   display: flex;
 }
+
 #firsttelefono{
   padding: 0.2em;
   border: 1px ridge var(--color-inputReg);
@@ -89,10 +93,10 @@
   font-weight: 500;
 }
 
-
 .BtnRegistro{
   width: 100%;
 }
+
 .BotonR{
   width: 200px;
   margin-top: 1em;
@@ -102,6 +106,7 @@
   border-radius: 0.5em;
   border:0.1em solid var(--color-principalReg);
 }
+
 .BotonR:hover{
   margin-top: 1em;
   background-color: var(--color-principalReg);
@@ -116,8 +121,6 @@
     font-size: 1.4em;
   }
   .mainRegistro{
-   
-    
     width: 100%;
     display: flex;
     align-items: center;
@@ -131,8 +134,7 @@
   }
   .h4Reg{
     font-size: 1.2em;
-    width: 100%;
-    
+    width: 100%;   
     text-align: center;
   }
   .TextReg, #Recordar{
@@ -156,16 +158,16 @@
     margin-top: 1em;
     display: flex;
     justify-content: center;
-    
   }
+
   .BotonR{
     width: 300px;
     margin: 0;
     background-color: var(--color-inputReg);
     color: var(--color-btnReg);
   }
-  
 }
+
 @media (min-width:600px) and (max-width:768px){
    .h2Reg{
     font-size: 1.5em;
@@ -195,8 +197,7 @@
     width: 100%;
     margin-top: 1em;
     display: flex;
-    justify-content: center;
-    
+    justify-content: center;  
   }
   .BotonR{
     width: 300px;
@@ -204,8 +205,8 @@
     background-color: var(--color-inputReg);
     color: var(--color-btnReg);
   }
-  
 }
+
 @media (min-width:900px) and (max-width:1024px){
    .h2Reg{
     font-size: 1.6em;
@@ -236,11 +237,9 @@
     margin-top: 2em;
     display: flex;
     justify-content: center;
-    
   }
   .BotonR{
     width: 300px;
-  
     background-color: var(--color-inputReg);
     color: var(--color-btnReg);
   }
