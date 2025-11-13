@@ -12,6 +12,9 @@ import Login from './components/Login.jsx';
 import Registro from './pages/Registro.jsx';
 import PaginaError from './pages/PaginaError.jsx';
 import FooterComponent from './components/FooterComponent.jsx';
+import ServiciosTrCorporal from './pages/serviciostrcorporal.jsx';
+import ServiciosMaAromat from './pages/serviciosmarom.jsx';
+import ServiciosRitual from './pages/serviciosrituales.jsx';
 
 function App() {
 
@@ -27,7 +30,10 @@ function App() {
               <Route path='/turnos' element={<Turnos/>}/>
               <Route path='/categorias' element={<Categorias/>}/>
               <Route path='/serviciosfacial' element={<ServiciosFacial/>}/>
+              <Route path='/serviciostrcorporal' element={<ServiciosTrCorporal/>}/>
               <Route path='/serviciosmasaje' element={<ServiciosMasajes/>}/>
+              <Route path='/serviciosmaromat' element={<ServiciosMaAromat/>}/>
+              <Route path='/serviciosrituales' element={<ServiciosRitual/>}/>
               <Route path='/contacto' element={<Contacto/>}/>
               <Route path='/nosotros' element={<Nosotros/>}/>    
               <Route path='/login' element={<Login/>}/>

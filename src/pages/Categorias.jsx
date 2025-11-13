@@ -82,7 +82,7 @@ function Categorias() {
                 protector, diseñado para aliviar la pesadez, tensión e hinchazón
                 en piernas.
               </p>
-              <Link to="*">
+              <Link to="/serviciostrcorporal">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -94,7 +94,7 @@ function Categorias() {
                 <br />Tratamiento con ingredientes patagónicos que purifica y
                 renueva tu piel en solo 50 minutos.
               </p>
-              <Link to="*">
+              <Link to="/serviciostrcorporal">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>         
@@ -172,7 +172,7 @@ function Categorias() {
                 relajante del masaje con los delicados aromas de la rosa y el
                 azahar.
               </p>
-              <Link to="*">
+              <Link to="/serviciosmaromat">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -184,7 +184,7 @@ function Categorias() {
                 los aromas envolventes te transporten a un estado de calma
                 profunda.
               </p>
-              <Link to="*">
+              <Link to="/serviciosmaromat">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -196,7 +196,7 @@ function Categorias() {
                 fresca, cítrica y energizante que despierta tus sentidos y
                 renueva tu cuerpo.
               </p>
-              <Link to="*">
+              <Link to="/serviciosmaromat">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div> 
@@ -216,7 +216,7 @@ function Categorias() {
                 Experiencia dentro de nuestras Spa Suites. Incluye masaje sueco
                 y un servicio especial de delicias.
               </p>
-              <Link to="*">
+              <Link to="/serviciosrituales">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -228,7 +228,7 @@ function Categorias() {
                 tratamiento combina técnicas especializadas para liberar
                 tensiones en el cuero cabelludo, rostro y cuello.
               </p>
-              <Link to="*">
+              <Link to="/serviciosrituales">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -240,7 +240,7 @@ function Categorias() {
                 de nuestras Spa Suites. Incluye sesión de jacuzzi y masaje de
                 aromaterapia.
               </p>
-              <Link to="*">
+              <Link to="/serviciosrituales">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -251,7 +251,7 @@ function Categorias() {
                 <strong>Encuentro único y renovador</strong><br />Incluye
                 exfoliación corporal con ducha Vichy y masaje sueco.
               </p>
-              <Link to="*">
+              <Link to="/serviciosrituales">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -262,7 +262,7 @@ function Categorias() {
                 Este tratamiento incluye masaje de piedras calientes y
                 tratamiento facial.
               </p>
-              <Link to="*">
+              <Link to="/serviciosrituales">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
@@ -274,7 +274,7 @@ function Categorias() {
                 quien desee descansar luego de un viaje o un intenso día de
                 trabajo. Incluye masaje californiano y masaje de pies.
               </p>
-              <Link to="*">
+              <Link to="/serviciosrituales">
                 <Button type="button" className="btn-categoria" >Ver más</Button>
               </Link>
             </div>
