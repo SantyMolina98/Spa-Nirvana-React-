@@ -1,0 +1,139 @@
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import '../App.css';
+import '../styles/servicios.css';
+import { Link } from 'react-router-dom';
+import imagenMap from '../assets/imagenMap.js';
+import {Card, Button, Carousel} from 'react-bootstrap';
+
+function ServiciosMaAromat() {
+  return (
+   <section className='MainServicio'>
+    <article>
+     <Carousel className='Carrusel-Servicio'>
+      <Carousel.Item>
+        <Card className='Contenido-Carrusel-Serv'>
+          <Card.Img variant="left" src={imagenMap.cataromatepurif} className='Img-Servicio'/>
+          <Card.Body className='Cuerpo-Texto'>
+            <Card.Title className='Titulo-Carrusel'>Purificante</Card.Title>
+            <Card.Text>
+              Tratamiento para eliminar toxinas y revitalizar la piel, mediante el uso de diferentes aceites que contienen romero, eucalipto, menta, aloe vera y demás. 
+              <br/>
+              El objetivo del masaje con aromaterapia purificante es desintoxicar y drenar su piel para una mejora tanto estética como saludable para su correcta cirulación.
+              <br />
+              Duracion: 50-65 minutos
+              <br />
+              Precio del servicio: AR$ 65.000. 
+            </Card.Text>
+            <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=essential-face-care"}>
+              <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
+            </Link>                   
+          </Card.Body>
+        </Card>
+      </Carousel.Item>
+      <Carousel.Item>
+        <Card className='Contenido-Carrusel-Serv'>
+          <Card.Img variant="left" src={imagenMap.cataromaterelaj} className='Img-Servicio'/>
+          <Card.Body className='Cuerpo-Texto'>
+            <Card.Title className='Titulo-Carrusel'>Relajante</Card.Title>
+            <Card.Text>
+              Aplicamos aceites calmantes mediante maniobras de masaje lentas y suaves,pero precisas para cumplir el objetivo de liberar tensiones. Nuestros aceites están integrados por lavanda, manzanilla, sándalo, vainilla, entre otros.
+              <br/>
+              Al finalizar habrá librado hasta las tensiones más profundas, calmando su sistema nervioso y favorenciendo su descanso, ayudando también a dormir correctamente luego del masaje con aromaterapia relajante
+              <br />
+              Duracion: 60-75 minutos
+              <br />
+              Precio del servicio: AR$ 70.000. 
+            </Card.Text>
+            <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=essential-face-care"}>
+              <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
+            </Link>                   
+          </Card.Body>
+        </Card>
+      </Carousel.Item>
+      <Carousel.Item>
+        <Card className='Contenido-Carrusel-Serv'>
+          <Card.Img variant="left" src={imagenMap.cataromateestim} className='Img-Servicio'/>
+          <Card.Body className='Cuerpo-Texto'>
+            <Card.Title className='Titulo-Carrusel'>Estimulante</Card.Title>
+            <Card.Text>
+              Mediante el masaje con aromaterapia estimulante logramos combatir el cansancio y reactivar su energía con masajes firmes y dinámicos. El mismo se hace con la ayuda de aceites energizantes, los cuales contienen cítricos, cafeína, jengibre, entre otros.
+              <br/>
+              Garantizamos una mejora en el tono muscular, correcta circulación y una sensación de vitalidad y ánimo elevado.
+              <br />
+              Duracion: 50-60 minutos
+              <br />
+              Precio del servicio: AR$ 72.500.    
+            </Card.Text>
+            <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=glowing-vit-c"}>
+              <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
+            </Link>                   
+          </Card.Body>
+        </Card>
+      </Carousel.Item>
+     </Carousel>         
+    </article>
+    <article className='Sector-Comentarios'>
+      <hr className='hr-servicio'/>
+      <h2 className="Titulotesti">~ CONOCÉ LAS OPINIONES DE NUESTROS CLIENTES ~</h2>
+      <hr className='hr-servicio'/>
+      <div className='Cards-Comentarios'>
+        <Card className='Comentario'>
+          <Card.Body className='body-comentario'>
+            <div className='top-comentario'>
+              <i className="bi bi-file-person boy-coment"></i> 
+              <strong>José G. (65 años)</strong>
+              <br />
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <br />
+            </div>
+            <Card.Text className='Testimonio'>
+              "Mi esposa siempre me decía que necesitaba un cambio en mi vida si quería disfrutar a mis nietos, es por ellos que me animé a probar el masaje con aromaterapia estimulante, desde ese día me siento de 30 años otra vez!!. Gracias por la atención y el buen ambiente que brinda Nirvana Spa & Beauty, si no fuera por ustedes no podría disfrutar de mis nietos que son lo que más amo en este mundo, ¡¡Gracias infinitas!!"
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <Card className='Comentario'>
+          <Card.Body className='body-comentario'>
+            <div className='top-comentario'><i className="bi bi-file-person girl-coment"></i> 
+              <strong>Andrea K. (22 años)</strong>
+              <br />
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <br />
+            </div>
+            <Card.Text className='Testimonio'>
+              "Amo venir a este lugar, sin dudas es mi cable a tierra, si no fuera por el masaje con aromaterapia relajante no hubiera aprobado ninguna materia en la universidad de los nervios. Realmente me salvaron la vida!, desde el día que visité Nirvana Spa & Beauty duermo como un oso y estoy con los ánimos al 100%!. ¡Experiencia 5 estrellas!"
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <Card className='Comentario'>
+          <Card.Body className='body-comentario'>
+            <div className="top-comentario">
+              <i className="bi bi-file-person girl-coment"></i> 
+              <strong>Fabiana V. (39 años)</strong>
+              <br />
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <br />
+            </div>
+            <Card.Text className='Testimonio'>             
+              "Siempre creí que al pasar los 30 años uno perdía vitalidad, más como madre soltera y a mi edad... pero la verdad que cuando conocí el masaje con aromaterapia purificante ahora ¡puedo con todo!. Hasta mis hijos me lo agradecen, pero no tanto como yo agradezco a todo el personal de Nirvan Spa & Beauty, que siempre se portan de manera maravillosa."
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </div>
+     </article>
+    </section>
+  )
+}
+
+export default ServiciosMaAromat;
