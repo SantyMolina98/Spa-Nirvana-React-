@@ -33,8 +33,7 @@ function App() {
               <Route path='/login' element={<Login/>}/>
               <Route path='/login/registro' element={<Registro/>}/>
               <Route path='*' element={<PaginaError/>}/>
-            
-          
+              
         </Routes> 
         </main>
     <FooterComponent/>     
