@@ -46,12 +46,11 @@
 }
 
 .hrturnos {
-  width: 80%;
+  width: 100%;
   font-weight: 800;
   border: 3px solid var(--color-principalturnos);
   font-style: normal;
   font-size: 1rem;
-
   color: var(--color-principalturnos);
   margin-bottom: 25px;
   text-align: center;
@@ -79,7 +78,6 @@
 }
 
 .btnTurnos:hover {
-  background-color: var (--color-terciaryturnos);
   color: var(--color-fifthturnos);
   transform: scale(1.05);
 }
@@ -116,7 +114,7 @@
 
 .input-group-text {
     background-color: var(--color-fourthturnos);
-    width: 40%;
+    width: 50%;
     min-width: 120px;
     color: var(--color-fifthturnos); 
     font-weight: 700; 
@@ -134,7 +132,7 @@
 .custom-date-picker {
     background-color: var(--color-terciaryturnos);
     color: var(--color-principalturnos);
-    font-weight: 500;
+    font-size: 11px;
     padding: 10px 15px;
     border: 1px solid var(--color-principalturnos); 
     border-left: none; 

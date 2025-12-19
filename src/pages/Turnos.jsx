@@ -203,8 +203,7 @@ function Turnos() {
                         <Form.Select
                             value={servicioSeleccionado}
                             onChange={handleServicioChange}
-                            disabled={!categoriaSeleccionada}
-                        >
+                            disabled={!categoriaSeleccionada}>
                             <option value="">Seleccionar Servicio</option>
                             {serviciosDeCategoria.map((servicio) => (
                                 <option key={servicio.value} value={servicio.value}>
