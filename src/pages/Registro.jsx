@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 
-
 function Registro () {
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
