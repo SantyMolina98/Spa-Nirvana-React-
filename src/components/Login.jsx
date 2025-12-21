@@ -6,7 +6,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 
 function Login() {
-  const [user, setUser] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [validated, setValidated] = useState(false);
   const [error, setError] = useState(null);
@@ -32,11 +32,11 @@ function Login() {
     if (form.checkValidity() === false) {
       e.stopPropagation();
     } else {
-      if (user.trim().length >= 3 && user.trim().length <= 18 && password.trim().length >= 6 && password.trim().length <= 20)  {
+      if (username.trim().length >= 3 && username.trim().length <= 18 && password.trim().length >= 6 && password.trim().length <= 20)  {
         try {
           setError(null);
-          await login({ username: user.trim(), password: password.trim() });
-          setSuccess(`¡Bienvenido/a, ${user.trim()}! Has iniciado sesión con éxito.`);
+          await login({ username: username.trim(), password: password.trim() });
+          setSuccess(`¡Bienvenido/a, ${username.trim()}! Has iniciado sesión con éxito.`);
         } catch (err) {
           console.error(err);
           setError('Credenciales inválidas. Por favor, verifica tu usuario y contraseña.');
@@ -69,10 +69,10 @@ function Login() {
                 <Form.Label id='usuario' className='textlogin colorcard'>Usuario</Form.Label>
                 <Form.Control aria-label="Username"  aria-describedby="basic-addon1" required type="text" placeholder="Ingrese su usuario"
                   value={user}
-                  onChange={(e) => setUser(e.target.value)}
+                  onChange={(e) => setUsername(e.target.value)}
                   minLength={3} maxLength={18}
-                  isInvalid={validated && (user.trim().length < 3 || user.trim().length > 18)}
-                  isValid={validated && user.trim().length >= 3 && user.trim().length <= 18}
+                  isInvalid={validated && (username.trim().length < 3 || username.trim().length > 18)}
+                  isValid={validated && username.trim().length >= 3 && username.trim().length <= 18}
                 />
                 <Form.Control.Feedback type="invalid" className='alerterror'>
                   El usuario debe tener entre 3 y 18 caracteres.

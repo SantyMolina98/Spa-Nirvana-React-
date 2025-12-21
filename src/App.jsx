@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import HeaderComponents from './components/headerComponents.jsx';
@@ -15,14 +16,16 @@ import FooterComponent from './components/FooterComponent.jsx';
 import ServiciosTrCorporal from './pages/serviciostrcorporal.jsx';
 import ServiciosMaAromat from './pages/serviciosmarom.jsx';
 import ServiciosRitual from './pages/serviciosrituales.jsx';
+import ProtectedAdmin from './routes/ProtectedAdmin.jsx';
+import Admin from './pages/Admin.jsx';
 
 function App() {
-
+ 
   return (
     <>
     <BrowserRouter>
       <div className='body-content'>
-      <HeaderComponents/>
+      <HeaderComponents />
         <main className='main-content'>
         <Routes>
           
@@ -35,7 +38,12 @@ function App() {
               <Route path='/serviciosmaromat' element={<ServiciosMaAromat/>}/>
               <Route path='/serviciosrituales' element={<ServiciosRitual/>}/>
               <Route path='/contacto' element={<Contacto/>}/>
-              <Route path='/nosotros' element={<Nosotros/>}/>    
+              <Route path='/nosotros' element={<Nosotros/>}/> 
+              <Route path='/admin' element={
+                <ProtectedAdmin >  
+                  <Admin/>
+                </ProtectedAdmin> 
+              }/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/login/registro' element={<Registro/>}/>
               <Route path='*' element={<PaginaError/>}/>

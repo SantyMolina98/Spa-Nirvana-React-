@@ -1,25 +1,18 @@
 import { createContext, useState, useEffect } from 'react';
+import { crearUsuario } from '../helpers/UsuariosApi.js';
+import { authLogin } from '../helpers/LoginApi.js'; 
 
 export const UserContext = createContext();
 
 
 export function UserProvider({ children }) {
- //SECCIÓN PARA TURNOS
- const [turnos, setTurnos] = useState();
-
- const addTurno = () => {
-
- }
- const removeTurno = () => {
-
- }
-
- 
  //SECCIÓN PARA USUARIOS
   const [user, setUser] = useState(null);
   const [register, setRegister] = useState(null);
   
   const [loading, setLoading] = useState(true);
+
+  const isAdmin = user?.rol === 'Admin';
 
   useEffect(() => {
     // cargar desde localStorage si existe
@@ -46,27 +39,36 @@ export function UserProvider({ children }) {
     }
   }, [user, register]);
 
+
+  // Funciones de autenticación LOGIN
   const login = async ({ username, password }) => {
     if (!username || !password) {
       throw new Error('Credenciales inválidas');
     }
 
-    // Simular delay
-    await new Promise((r) => setTimeout(r, 2000));
+    try{
+      const respuestaLog = await authLogin({ username, password });
+      if(respuestaLog.ok){
+        localStorage.setItem("token", JSON.stringify(respuestaLog.token));
+        setUser(respuestaLog.usuario);
 
-    // Simular token y datos de usuario
+        return { user: respuestaLog.usuario };
+      } else{
+        throw new Error(respuestaLog.msg || 'Error en el login');
+      }
+    } catch (error) {
+      console.error('Error en el login API :', error);
+      throw new Error('No se pudo completar el login');
+    } 
     
-    const userData = { username };
-
-    setUser(userData);
     
-
-    return { user: userData };
   };
 
   const logout = () => {
     setUser(null);
-    
+    setRegister(null);
+    localStorage.removeItem('spa_user');
+    localStorage.removeItem('token');
   };
 
   const registro = async (datos) => {
@@ -74,28 +76,26 @@ export function UserProvider({ children }) {
     if(!data){
       throw new Error('Información de registro inválida');
     }
-    await new Promise((r) => setTimeout(r, 2000));
-      const inforegistro = {nombre: data.nombre, 
-        apellido: data.apellido, 
-        usuario: data.usuario, 
-        email: data.email, 
-        telefono: data.telefono, 
-        domicilio: data.domicilio, 
-        provincia: data.provincia, 
-        cpostal: data.cpostal, 
-        contrasena: data.contrasena};
-    setRegister(inforegistro);
+    
+    try {
+      const respuestareg = await crearUsuario(data);
+      if(respuestareg.ok){
+        setRegister(respuestareg.usuario);
+        setUser(respuestareg.usuario);
 
-    // Iniciar sesión automáticamente tras registro:
-    const userData = { username: data.usuario, nombre: data.nombre, email: data.email };
-    setUser(userData);
-
-    return inforegistro;
+        return { user : respuestareg.usuario}
+      } else{
+        throw new Error(respuestareg.msg || 'Error en el registro');
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+      throw new Error('No se pudo completar el registro');
+    }
   }
 
 
   return (
-    <UserContext.Provider value={{ user, loading, login, logout, registro, isAuthenticated: !!user }}>
+    <UserContext.Provider value={{ user, loading, login, logout, registro, isAuthenticated: !!user, isAdmin }}>
       {children}
     </UserContext.Provider>
   );

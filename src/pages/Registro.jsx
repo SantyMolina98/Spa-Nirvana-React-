@@ -2,6 +2,7 @@ import { Button, Card, Form } from 'react-bootstrap';
 import emailjs from '@emailjs/browser';
 import '../App.css';
 import '../styles/registroPage.css';
+import {crearUsuario} from '../helpers/UsuariosApi';
 import {  useNavigate } from 'react-router-dom';
 import { useState, useContext, useRef, useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
@@ -13,17 +14,15 @@ const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 function Registro () {
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
-  const [usuario, setUsuario] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
   const [domicilio, setDomicilio] = useState('');
   const [provincia, setProvincia] = useState('------');
   const [cpostal, setCpostal] = useState('');
-  const [contrasena, setContrasena] = useState('');
+  const [password, setPassword] = useState('');
   const [validatedReg, setValidatedReg] = useState(false);
   const navigateReg = useNavigate();
-
-  const { registro } = useContext(UserContext);
 
   //Constante para uso de emailjs para enviar mails
   const form =  useRef();
@@ -45,7 +44,7 @@ function Registro () {
     // Constantes para rechazar entradas inválidas
     const nameRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s'-]{3,18}$/;
     const apellidoRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s'-]{2,20}$/;
-    const usuarioLen = usuario.trim().length;
+    const usuarioLen = username.trim().length;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+com[^\s@]+$/;
     const telefonoDigits = /^\d{9,15}$/;
     const cpostalDigits = /^\d{4}$/;
@@ -59,11 +58,11 @@ function Registro () {
     const validDomicilio = domicilio.trim().length >= 8 && domicilio.trim().length <= 40;
     const validProvincia = provincia !== '------';
     const validCpostal = cpostalDigits.test(cpostal.trim());
-    const validContrasena = contrasena.trim().length >= 6 && contrasena.trim().length <= 25;
+    const validContrasena = password.trim().length >= 6 && password.trim().length <= 25;
 
     
       //Condicional para registrar usuario si todas las validaciones son correctas
-    if ( !(validNombre &&
+    if ( validNombre &&
       validApellido &&
       validUsuario &&
       validEmail &&
@@ -71,11 +70,10 @@ function Registro () {
       validDomicilio &&
       validProvincia &&
       validCpostal &&
-      validContrasena) )
+      validContrasena )
       {
         try {
-
-        await registro({userInfo: {nombre, apellido, usuario, email, telefono, domicilio, provincia, cpostal, contrasena}});
+          await crearUsuario({nombre, apellido, username, email, telefono, domicilio, provincia, cpostal, password});
 
           try {
             const formEl = form.current || formReg;
@@ -142,10 +140,10 @@ function Registro () {
               <Form.Label htmlFor="newuser" name="newuser" className="TextReg">Ingrese su nombre de usuario:</Form.Label><br/>
             <Form.Control type="text" name="newuser" id="newuser" placeholder="ej: Usuario123" 
               minLength={3} maxLength={18} size="20" 
-              value={usuario}
-              onChange={(e) => setUsuario(e.target.value)}
-              isInvalid={validatedReg && (usuario.trim().length < 3 || usuario.trim().length > 18)}
-              isValid={validatedReg && usuario.trim().length >= 3 && usuario.trim().length <= 18}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              isInvalid={validatedReg && (username.trim().length < 3 || username.trim().length > 18)}
+              isValid={validatedReg && username.trim().length >= 3 && username.trim().length <= 18}
               required />
               <Form.Control.Feedback type="invalid" className='alerterrorReg'>
                 El usuario debe tener entre 3 y 18 caracteres.
@@ -252,10 +250,10 @@ function Registro () {
               <Form.Label htmlFor="contraseña2" className="TextReg">Escriba una contraseña:</Form.Label> <br/>
               <Form.Control type="password" name="contraseña2" id="contraseña2" placeholder="Escriba aquí su contraseña" 
               minLength={6} maxLength={25} size='25'
-              value={contrasena}
-              onChange={(e) => setContrasena(e.target.value)}
-              isInvalid={validatedReg && (contrasena.trim().length < 6 || contrasena.trim().length > 25)}
-              isValid={validatedReg && contrasena.trim().length >= 6 && contrasena.trim().length <= 25}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              isInvalid={validatedReg && (password.trim().length < 6 || password.trim().length > 25)}
+              isValid={validatedReg && password.trim().length >= 6 && password.trim().length <= 25}
               required /> 
               <Form.Control.Feedback type="invalid" className='alerterrorReg'>
                 Su contraseña debe tener entre 6 y 25 caracteres.

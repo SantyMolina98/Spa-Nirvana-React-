@@ -10,7 +10,7 @@ import { UserContext } from '../context/UserContext';
 import imagenMap from '../assets/imagenMap.js';
 
 function HeaderComponent () {
-  const { user, logout, isAuthenticated } = useContext(UserContext);
+  const { user, logout, isAuthenticated, isAdmin } = useContext(UserContext);
   const navigate = useNavigate();
 
   return (
@@ -63,6 +63,7 @@ function HeaderComponent () {
                 <NavLink to='/turnos'>Turnos</NavLink>
                 <NavLink to='/contacto'>Contáctanos</NavLink>
                 <NavLink to='/nosotros'>Nosotros</NavLink>
+                {isAdmin && <NavLink to='/admin'>Admin</NavLink>}
                 <NavDropdown title={<i className="bi bi-person-circle"></i>} id='offcanvasNavbarDropdown-expand-login'>
                   {!isAuthenticated ? (
                     <>
@@ -78,6 +79,7 @@ function HeaderComponent () {
                     </>
                   )}
                 </NavDropdown>
+
               </Nav>
               <Form className="d-flex itemsHeaderBusqueda">
                 <Form.Control
