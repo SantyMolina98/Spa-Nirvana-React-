@@ -4,40 +4,35 @@ import { authLogin } from '../helpers/LoginApi.js';
 
 export const UserContext = createContext();
 
-
 export function UserProvider({ children }) {
  //SECCIÓN PARA USUARIOS
   const [user, setUser] = useState(null);
-  const [register, setRegister] = useState(null);
-  
   const [loading, setLoading] = useState(true);
 
   const isAdmin = user?.rol === 'Admin';
 
   useEffect(() => {
-    // cargar desde localStorage si existe
-    const stored = localStorage.getItem('spa_user');
-    if (stored) {
+    const storedUser = localStorage.getItem('spa_user');
+    if (storedUser) {
       try {
-        const parsed = JSON.parse(stored);
-        setUser(parsed.user || null);
-        
-        setRegister(parsed.register || null);
+        const parsed = JSON.parse(storedUser);
+        setUser(parsed);
       } catch (e) {
         console.error('Error parsing stored user', e);
+        localStorage.removeItem('spa_user');
+        localStorage.removeItem('token');
       }
     }
     setLoading(false);
   }, []);
 
   useEffect(() => {
-    // persistir cambios
-    if (user || register) {
-      localStorage.setItem('spa_user', JSON.stringify({ user, register }));
+    if (user) {
+      localStorage.setItem('spa_user', JSON.stringify(user));
     } else {
       localStorage.removeItem('spa_user');
     }
-  }, [user, register]);
+  }, [user]);
 
 
   // Funciones de autenticación LOGIN

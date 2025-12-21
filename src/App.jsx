@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import HeaderComponents from './components/headerComponents.jsx';
@@ -18,6 +17,8 @@ import ServiciosMaAromat from './pages/serviciosmarom.jsx';
 import ServiciosRitual from './pages/serviciosrituales.jsx';
 import ProtectedAdmin from './routes/ProtectedAdmin.jsx';
 import Admin from './pages/Admin.jsx';
+import RecuperarCuenta from './components/RecuperarCuenta';
+import NuevaPassword from './components/NuevaPassword';
 
 function App() {
  
@@ -53,6 +54,34 @@ function App() {
     <FooterComponent/>     
     </div>
     </BrowserRouter>
+=======
+      <BrowserRouter>
+        <div className='body-content'>
+          <HeaderComponents />
+          <main className='main-content'>
+            <Routes>
+
+              <Route path='/' element={<HomePage />} />
+              <Route path='/turnos' element={<Turnos />} />
+              <Route path='/categorias' element={<Categorias />} />
+              <Route path='/serviciosfacial' element={<ServiciosFacial />} />
+              <Route path='/serviciostrcorporal' element={<ServiciosTrCorporal />} />
+              <Route path='/serviciosmasaje' element={<ServiciosMasajes />} />
+              <Route path='/serviciosmaromat' element={<ServiciosMaAromat />} />
+              <Route path='/serviciosrituales' element={<ServiciosRitual />} />
+              <Route path='/contacto' element={<Contacto />} />
+              <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
+              <Route path="/recuperar/:token" element={<NuevaPassword />} />
+              <Route path='/nosotros' element={<Nosotros />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/login/registro' element={<Registro />} />
+              <Route path='*' element={<PaginaError />} />
+
+            </Routes>
+          </main>
+          <FooterComponent />
+        </div>
+      </BrowserRouter>
     </>
   )
 }
