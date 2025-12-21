@@ -36,55 +36,43 @@ export function UserProvider({ children }) {
 
 
   // Funciones de autenticación LOGIN
-  const login = async ({ username, password }) => {
-    if (!username || !password) {
-      throw new Error('Credenciales inválidas');
-    }
-
-    try{
-      const respuestaLog = await authLogin({ username, password });
-      if(respuestaLog.ok){
-        localStorage.setItem("token", JSON.stringify(respuestaLog.token));
-        setUser(respuestaLog.usuario);
-
-        return { user: respuestaLog.usuario };
-      } else{
-        throw new Error(respuestaLog.msg || 'Error en el login');
-      }
-    } catch (error) {
-      console.error('Error en el login API :', error);
-      throw new Error('No se pudo completar el login');
-    } 
-    
-    
+  const login = (userData) => {
+    setUser(userData);
   };
 
   const logout = () => {
     setUser(null);
-    setRegister(null);
     localStorage.removeItem('spa_user');
     localStorage.removeItem('token');
   };
 
   const registro = async (datos) => {
-    const data = datos?.userInfo || datos;
-    if(!data){
-      throw new Error('Información de registro inválida');
-    }
-    
-    try {
-      const respuestareg = await crearUsuario(data);
-      if(respuestareg.ok){
-        setRegister(respuestareg.usuario);
-        setUser(respuestareg.usuario);
+    const datosParaBackend = {
+      nombre: datos.nombre,
+      apellido: datos.apellido,
+      correo: datos.email,
+      telefono: datos.telefono,
+      domicilio: datos.domicilio,
+      ciudad: datos.provincia,
+      codpostal: datos.cpostal,
+      password: datos.contrasena,
+      rol: "ROL_USUARIO"
+    };
+    console.log("Enviando al backend (FINAL):", datosParaBackend);
 
-        return { user : respuestareg.usuario}
-      } else{
-        throw new Error(respuestareg.msg || 'Error en el registro');
+    try {
+      const respuesta = await crearUsuario(datosParaBackend);
+
+      if (respuesta.usuario || respuesta.uid) {
+        setUser(respuesta.usuario);
+        return respuesta.usuario;
+      } else {
+        return true;
       }
+
     } catch (error) {
-      console.error('Error during registration:', error);
-      throw new Error('No se pudo completar el registro');
+      console.error("Error en el registro:", error);
+      throw error;
     }
   }
 
