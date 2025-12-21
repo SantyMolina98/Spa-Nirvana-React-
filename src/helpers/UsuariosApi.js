@@ -1,4 +1,5 @@
-const url = "https://spa-nirvana-backend.vercel.copia.app/api/usuarios";
+const url = "https://spa-nirvana-backend-copia.vercel.app/api/usuarios";
+
 //Traer Usuarios
 export const getUsuarios = async (desde = 0) => {
   try {
@@ -46,13 +47,11 @@ export const crearUsuario = async (datos) => {
   try{
     const respuesta = await fetch(url, {
       method: "POST",
-      body: JSON.stringify(userData),
+      body: JSON.stringify(datos),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     });
-    if(!respuesta.ok){
-      throw new Error(data.msg || "No se pudo crear el usuario");
-    }
     const data = await respuesta.json();
+
     return data;
   } catch (error) {
     console.log(error);

@@ -1,15 +1,14 @@
 import { createContext, useState, useEffect } from 'react';
-import { crearUsuario } from '../helpers/UsuariosApi.js';
-import { authLogin } from '../helpers/LoginApi.js'; 
-
+import { crearUsuario } from '../helpers/UsuariosApi';
 export const UserContext = createContext();
 
 export function UserProvider({ children }) {
- //SECCIÓN PARA USUARIOS
+  const [turnos, setTurnos] = useState ();
+  const addTurno = () => { }
+  const removeTurno = () => { }
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const isAdmin = user?.rol === 'Admin';
 
   useEffect(() => {
     const storedUser = localStorage.getItem('spa_user');
@@ -33,17 +32,16 @@ export function UserProvider({ children }) {
       localStorage.removeItem('spa_user');
     }
   }, [user]);
-
-
-  // Funciones de autenticación LOGIN
+  
   const login = (userData) => {
     setUser(userData);
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('spa_user');
+
     localStorage.removeItem('token');
+    localStorage.removeItem('spa_user');
   };
 
   const registro = async (datos) => {
@@ -58,7 +56,6 @@ export function UserProvider({ children }) {
       password: datos.contrasena,
       rol: "ROL_USUARIO"
     };
-    console.log("Enviando al backend (FINAL):", datosParaBackend);
 
     try {
       const respuesta = await crearUsuario(datosParaBackend);
@@ -76,9 +73,18 @@ export function UserProvider({ children }) {
     }
   }
 
-
   return (
-    <UserContext.Provider value={{ user, loading, login, logout, registro, isAuthenticated: !!user, isAdmin }}>
+    <UserContext.Provider value={{
+      user,
+      loading,
+      login,
+      logout,
+      registro,
+      isAuthenticated: !!user,
+      turnos,
+      addTurno,
+      removeTurno
+    }}>
       {children}
     </UserContext.Provider>
   );
