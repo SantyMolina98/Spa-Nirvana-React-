@@ -1,4 +1,5 @@
 const url = "https://spa-nirvana-backend.vercel.app/api/auth/login";
+//const que usé yo: const url = "https://spa-nirvana-backend-copia.vercel.app/api/auth/login";
 
 export const authLogin = async (datos) => {
   try{
@@ -16,6 +17,6 @@ export const authLogin = async (datos) => {
 
   } catch (error) {
     console.log(error);
-    return { msg: "Error al conectar con el backend" };
+    return { msg: "Error al conectar con el backend." };
   }
 }

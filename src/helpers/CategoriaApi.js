@@ -19,7 +19,7 @@ export const getCategorias = async (desde = 0) => {
     return data;
   } catch (error) {
     console.log(error);
-    return { msg: "No se pudo obtener las categorías" };
+    return { msg: "No se pudo obtener las categorías." };
   }
 }
 
@@ -39,7 +39,7 @@ export const getCategoriaById = async (id) => {
     return data;
   } catch (error) {
     console.log(error);
-    return { msg: "No se pudo obtener la categoría" };
+    return { msg: "No se pudo obtener la categoría." };
   }
 }
 
@@ -60,7 +60,7 @@ export const crearCategoria = async (datos) => {
     return data;
   } catch (error) {
     console.log(error);
-    return { msg: "No se pudo crear la categoría" };
+    return { msg: "No se pudo crear la categoría." };
   }
 }
 
@@ -81,7 +81,7 @@ export const actualizarCategoria = async (id, datos) => {
     return data;
   } catch (error) {
     console.log(error);
-    return { msg: "No se pudo actualizar la categoría" };
+    return { msg: "No se pudo actualizar la categoría." };
   }
 }
 
@@ -101,6 +101,6 @@ export const eliminarCategoria = async (id) => {
     return data;
   } catch (error) {
     console.log(error);
-    return { msg: "No se pudo eliminar la categoría" };
+    return { msg: "No se pudo eliminar la categoría." };
   }
 }

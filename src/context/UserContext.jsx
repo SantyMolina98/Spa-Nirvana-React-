@@ -1,101 +1,89 @@
 import { createContext, useState, useEffect } from 'react';
-
+import { crearUsuario } from '../helpers/UsuariosApi';
 export const UserContext = createContext();
 
-
 export function UserProvider({ children }) {
- //SECCIÓN PARA TURNOS
- const [turnos, setTurnos] = useState();
+  const [turnos, setTurnos] = useState();
+  const addTurno = () => { }
+  const removeTurno = () => { }
 
- const addTurno = () => {
-
- }
- const removeTurno = () => {
-
- }
-
- 
- //SECCIÓN PARA USUARIOS
   const [user, setUser] = useState(null);
-  const [register, setRegister] = useState(null);
-  
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // cargar desde localStorage si existe
-    const stored = localStorage.getItem('spa_user');
-    if (stored) {
+    const storedUser = localStorage.getItem('spa_user');
+    if (storedUser) {
       try {
-        const parsed = JSON.parse(stored);
-        setUser(parsed.user || null);
-        
-        setRegister(parsed.register || null);
+        const parsed = JSON.parse(storedUser);
+        setUser(parsed);
       } catch (e) {
         console.error('Error parsing stored user', e);
+        localStorage.removeItem('spa_user');
+        localStorage.removeItem('token');
       }
     }
     setLoading(false);
   }, []);
 
   useEffect(() => {
-    // persistir cambios
-    if (user || register) {
-      localStorage.setItem('spa_user', JSON.stringify({ user, register }));
+    if (user) {
+      localStorage.setItem('spa_user', JSON.stringify(user));
     } else {
       localStorage.removeItem('spa_user');
     }
-  }, [user, register]);
+  }, [user]);
 
-  const login = async ({ username, password }) => {
-    if (!username || !password) {
-      throw new Error('Credenciales inválidas');
-    }
-
-    // Simular delay
-    await new Promise((r) => setTimeout(r, 2000));
-
-    // Simular token y datos de usuario
-    
-    const userData = { username };
-
+  const login = (userData) => {
     setUser(userData);
-    
-
-    return { user: userData };
   };
 
   const logout = () => {
     setUser(null);
-    
+    localStorage.removeItem('token');
+    localStorage.removeItem('spa_user');
   };
 
   const registro = async (datos) => {
-    const data = datos?.userInfo || datos;
-    if(!data){
-      throw new Error('Información de registro inválida');
+    const datosParaBackend = {
+      nombre: datos.nombre,
+      apellido: datos.apellido,
+      correo: datos.email,
+      telefono: datos.telefono,
+      domicilio: datos.domicilio,
+      ciudad: datos.provincia,
+      codpostal: datos.cpostal,
+      password: datos.contrasena,
+      rol: "ROL_USUARIO"
+    };
+
+    try {
+      const respuesta = await crearUsuario(datosParaBackend);
+
+      if (respuesta.usuario || respuesta.uid) {
+        setUser(respuesta.usuario);
+        return respuesta.usuario;
+      } else {
+        return true;
+      }
+
+    } catch (error) {
+      console.error("Error en el registro:", error);
+      throw error;
     }
-    await new Promise((r) => setTimeout(r, 2000));
-      const inforegistro = {nombre: data.nombre, 
-        apellido: data.apellido, 
-        usuario: data.usuario, 
-        email: data.email, 
-        telefono: data.telefono, 
-        domicilio: data.domicilio, 
-        provincia: data.provincia, 
-        cpostal: data.cpostal, 
-        contrasena: data.contrasena};
-    setRegister(inforegistro);
-
-    // Iniciar sesión automáticamente tras registro:
-    const userData = { username: data.usuario, nombre: data.nombre, email: data.email };
-    setUser(userData);
-
-    return inforegistro;
   }
 
-
   return (
-    <UserContext.Provider value={{ user, loading, login, logout, registro, isAuthenticated: !!user }}>
+    <UserContext.Provider value={{
+      user,
+      loading,
+      login,
+      logout,
+      registro,
+      isAuthenticated: !!user,
+      turnos,
+      addTurno,
+      removeTurno
+    }}>
       {children}
     </UserContext.Provider>
   );
