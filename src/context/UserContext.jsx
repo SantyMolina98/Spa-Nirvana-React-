@@ -32,13 +32,14 @@ export function UserProvider({ children }) {
       localStorage.removeItem('spa_user');
     }
   }, [user]);
-
+  
   const login = (userData) => {
     setUser(userData);
   };
 
   const logout = () => {
     setUser(null);
+
     localStorage.removeItem('token');
     localStorage.removeItem('spa_user');
   };
