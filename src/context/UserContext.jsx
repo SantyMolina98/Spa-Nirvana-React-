@@ -1,15 +1,14 @@
 import { createContext, useState, useEffect } from 'react';
-import { crearUsuario } from '../helpers/UsuariosApi.js';
-import { authLogin } from '../helpers/LoginApi.js'; 
-
+import { crearUsuario } from '../helpers/UsuariosApi';
 export const UserContext = createContext();
 
 export function UserProvider({ children }) {
- //SECCIÓN PARA USUARIOS
+  const [turnos, setTurnos] = useState ();
+  const addTurno = () => { }
+  const removeTurno = () => { }
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const isAdmin = user?.rol === 'Admin';
 
   useEffect(() => {
     const storedUser = localStorage.getItem('spa_user');
@@ -34,63 +33,57 @@ export function UserProvider({ children }) {
     }
   }, [user]);
 
-
-  // Funciones de autenticación LOGIN
-  const login = async ({ username, password }) => {
-    if (!username || !password) {
-      throw new Error('Credenciales inválidas');
-    }
-
-    try{
-      const respuestaLog = await authLogin({ username, password });
-      if(respuestaLog.ok){
-        localStorage.setItem("token", JSON.stringify(respuestaLog.token));
-        setUser(respuestaLog.usuario);
-
-        return { user: respuestaLog.usuario };
-      } else{
-        throw new Error(respuestaLog.msg || 'Error en el login');
-      }
-    } catch (error) {
-      console.error('Error en el login API :', error);
-      throw new Error('No se pudo completar el login');
-    } 
-    
-    
+  const login = (userData) => {
+    setUser(userData);
   };
 
   const logout = () => {
     setUser(null);
-    setRegister(null);
-    localStorage.removeItem('spa_user');
     localStorage.removeItem('token');
+    localStorage.removeItem('spa_user');
   };
 
   const registro = async (datos) => {
-    const data = datos?.userInfo || datos;
-    if(!data){
-      throw new Error('Información de registro inválida');
-    }
-    
-    try {
-      const respuestareg = await crearUsuario(data);
-      if(respuestareg.ok){
-        setRegister(respuestareg.usuario);
-        setUser(respuestareg.usuario);
+    const datosParaBackend = {
+      nombre: datos.nombre,
+      apellido: datos.apellido,
+      correo: datos.email,
+      telefono: datos.telefono,
+      domicilio: datos.domicilio,
+      ciudad: datos.provincia,
+      codpostal: datos.cpostal,
+      password: datos.contrasena,
+      rol: "ROL_USUARIO"
+    };
 
-        return { user : respuestareg.usuario}
-      } else{
-        throw new Error(respuestareg.msg || 'Error en el registro');
+    try {
+      const respuesta = await crearUsuario(datosParaBackend);
+
+      if (respuesta.usuario || respuesta.uid) {
+        setUser(respuesta.usuario);
+        return respuesta.usuario;
+      } else {
+        return true;
       }
+
     } catch (error) {
-      console.error('Error during registration:', error);
-      throw new Error('No se pudo completar el registro');
+      console.error("Error en el registro:", error);
+      throw error;
     }
   }
 
-
   return (
-    <UserContext.Provider value={{ user, loading, login, logout, registro, isAuthenticated: !!user, isAdmin }}>
+    <UserContext.Provider value={{
+      user,
+      loading,
+      login,
+      logout,
+      registro,
+      isAuthenticated: !!user,
+      turnos,
+      addTurno,
+      removeTurno
+    }}>
       {children}
     </UserContext.Provider>
   );
