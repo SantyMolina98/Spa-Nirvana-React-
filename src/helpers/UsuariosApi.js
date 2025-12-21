@@ -1,4 +1,5 @@
 const url = "https://spa-nirvana-backend.vercel.app/api/usuarios";
+//const que usé yo: const url = "http://localhost:3000/api/usuarios"
 
 //Traer Usuarios
 export const getUsuarios = async (desde = 0) => {
@@ -99,5 +100,35 @@ export const eliminarUsuario = async (id) => {
   } catch (error) {
     console.log(error);
     throw new Error("No se pudo eliminar el usuario");
+  }
+}
+
+export const solicitarRecuperacion = async (email) => {
+  try {
+    const respuesta = await fetch(`${url}/olvide-password`, {
+      method: "POST",
+      body: JSON.stringify({ correo: email }),
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
+    });
+    const data = await respuesta.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error al solicitar recuperación");
+  }
+}
+
+export const restablecerContrasena = async (token, newPassword) => {
+  try {    
+    const respuesta = await fetch(`${url}/nuevo-password/${token}`, {
+      method: "POST",
+      body: JSON.stringify({ password: newPassword }),
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
+    });
+    const data = await respuesta.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error al restablecer contraseña");
   }
 }
