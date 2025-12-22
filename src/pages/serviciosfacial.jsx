@@ -1,15 +1,49 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
 import '../styles/servicios.css';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import imagenMap from '../assets/imagenMap.js';
 import {Card, Button, Carousel} from 'react-bootstrap';
+import { useState, useEffect } from 'react';
 
 function ServiciosFacial() {
+
+    // 2. Hook para leer la URL
+  const [searchParams] = useSearchParams();
+  
+  // 3. Estado para controlar qué diapositiva se muestra (empieza en 0)
+  const [index, setIndex] = useState(0);
+
+  // 4. MAPA DE INDICES: Relaciona el parámetro de la URL con la posición en el Carrusel (0, 1, 2, 3)
+  const serviceMap = {
+    'essential': 0,   // Slide 1
+    'vitc': 1,        // Slide 2
+    'rebalancing': 2, // Slide 3
+    'roses': 3        // Slide 4
+  };
+
+  // 5. EFECTO: Cuando carga la página, revisamos la URL
+  useEffect(() => {
+    const servicioBuscado = searchParams.get('s'); // Obtenemos el valor de '?s=...'
+    
+    if (servicioBuscado && serviceMap[servicioBuscado] !== undefined) {
+      setIndex(serviceMap[servicioBuscado]); // Movemos el carrusel al índice correcto
+      
+      // Opcional: Scrollear un poco hacia abajo para que el carrusel quede centrado en pantalla
+      const elemento = document.querySelector('.MainServicio');
+      if(elemento) elemento.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [searchParams]);
+
+  // 6. Función para manejar el cambio manual (cuando el usuario toca las flechitas)
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
+
   return (
     <section className='MainServicio'>
       <article>
-        <Carousel className='Carrusel-Servicio'>
+        <Carousel className='Carrusel-Servicio' activeIndex={index} onSelect={handleSelect}>
           <Carousel.Item>
             <Card className='Contenido-Carrusel-Serv'>
               <Card.Img variant="left" src={imagenMap.STF1} className='Img-Servicio'/>

@@ -19,6 +19,7 @@ import ProtectedAdmin from './routes/ProtectedAdmin.jsx';
 import Admin from './pages/Admin.jsx';
 import RecuperarCuenta from './components/RecuperarCuenta';
 import NuevaPassword from './components/NuevaPassword';
+import ResultadosBusqueda from './pages/ResultadosBusqueda';
 
 function App() {
  
@@ -38,7 +39,9 @@ function App() {
               <Route path='/serviciosmaromat' element={<ServiciosMaAromat/>}/>
               <Route path='/serviciosrituales' element={<ServiciosRitual/>}/>
               <Route path='/contacto' element={<Contacto/>}/>
-              <Route path='/nosotros' element={<Nosotros/>}/> 
+              <Route path='/nosotros' element={<Nosotros/>}/>
+               <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
+              <Route path="/recuperar/:token" element={<NuevaPassword />} /> 
               <Route path='/admin' element={
                 <ProtectedAdmin >  
                   <Admin/>
@@ -46,7 +49,8 @@ function App() {
               }/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/login/registro' element={<Registro/>}/>
-              <Route path='*' element={<PaginaError/>}/>          
+              <Route path='*' element={<PaginaError/>}/> 
+              <Route path="/buscar" element={<ResultadosBusqueda />} />         
         </Routes> 
         </main>
       <FooterComponent/>     

@@ -2,7 +2,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
 import '../styles/headerComponent.css';
 import { NavLink, Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
@@ -12,6 +12,21 @@ import imagenMap from '../assets/imagenMap.js';
 function HeaderComponent () {
   const { user, logout, isAuthenticated, isAdmin } = useContext(UserContext);
   const navigate = useNavigate();
+
+    const [termino, setTermino] = useState('');
+
+  const handleSearch = (e) => {
+    e.preventDefault(); // Evita que la página se recargue
+    if (termino.trim()) {
+      // Redirige a la ruta de búsqueda con el query param
+      navigate(`/buscar?q=${termino}`);
+      setTermino(''); // Opcional: Limpia el input después de buscar
+      
+      // Opcional: Si quieres cerrar el menú Offcanvas en móvil al buscar, 
+      // necesitarías controlar el estado del show del Navbar, 
+      // pero por ahora dejémoslo simple.
+    }
+  };
 
   return (
     <>
@@ -81,14 +96,16 @@ function HeaderComponent () {
                 </NavDropdown>
 
               </Nav>
-              <Form className="d-flex itemsHeaderBusqueda">
+              <Form className="d-flex itemsHeaderBusqueda" onSubmit={handleSearch}>
                 <Form.Control
                   type="search"
                   placeholder="Buscar"
                   className="me-2 busqueda"
                   aria-label="Search"
+                  value={termino}
+                  onChange={(e) => setTermino(e.target.value)}
                 />
-                <Button className='btnBusqueda'>Buscar</Button>
+                <Button type="submit" className='btnBusqueda'>Buscar</Button>
               </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
