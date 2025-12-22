@@ -15,7 +15,7 @@ function HeaderComponent () {
 
   return (
     <>
-      <Navbar key='lg' expand='lg' className='header-overflow ColorLetrasH'>
+      <Navbar key='lg' expand='lg' className='header-overflow ColorLetrasH' sticky="top">
         <Container fluid>
           <Navbar.Brand to="/">
             <img src={imagenMap.logospaheader} className='logoSPA' alt="LogoSPA"/>
