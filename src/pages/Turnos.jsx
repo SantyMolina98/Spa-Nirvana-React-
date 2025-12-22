@@ -17,6 +17,7 @@ const datosTurnos = {
         { id: 'pro_sofia', nombre: 'Sofia Ramirez', especialidad: 'Masajes' },
         { id: 'pro_maria', nombre: 'María Soto', especialidad: 'Rituales' },
         { id: 'pro_juan', nombre: 'Juan Pérez', especialidad: 'Corporal' },
+        { id: 'pro_Lucia', nombre: 'Lucia Fernandez', especialidad: 'Corporal' },
     ],
     categorias: [
         { value: 'servicio-trat-facial', label: 'Tratamiento Faciales' },
@@ -35,7 +36,7 @@ const datosTurnos = {
             { value: 'masaje-sueco', label: 'Masaje Sueco', diasDisponibles: [2, 5], horariosDisponibles: [9, 11, 14, 18, 20], profesionalesId: ['pro_luis', 'pro_sofia'] },
             { value: 'Masaje Hot Stones', label: 'Masaje Hot Stones', diasDisponibles: [2, 5], horariosDisponibles: [15, 19, 21], profesionalesId: ['pro_juan', 'pro_sofia'] },
             { value: 'Masaje Signature', label: 'Masaje Signature', diasDisponibles: [2, 5], horariosDisponibles: [10, 1, 17, 20], profesionalesId: ['pro_luis', 'pro_juan', 'pro_sofia'] },
-            { value: 'Masaje Deep Tissue', label: 'Masaje Deep Tissue', diasDisponibles: [2, 5], horariosDisponibles: [14, 18], profesionalesId: ['pro_luis', 'pro_juan', 'pro_sofia'] },
+            { value: 'Masaje Deep Tissue', label: 'Masaje Deep Tissue', diasDisponibles: [2, 5], horariosDisponibles: [14, 18], profesionalesId: ['pro_luis', 'pro_juan', 'pro_sofia', 'pro_lucia'] },
         ],
     },
 };
