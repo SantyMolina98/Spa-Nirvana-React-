@@ -1,5 +1,5 @@
 export const serviciosData = [
-    // --- TRATAMIENTOS FACIALES (Ya los tenías) ---
+    //TRATAMIENTOS FACIALES
     {
         id: 1,
         titulo: "Essential Face Care",
@@ -29,7 +29,7 @@ export const serviciosData = [
         ruta: "/serviciosfacial?s=roses"
     },
 
-    // --- AROMATERAPIA (Nuevos) ---
+    //AROMATERAPIA
     {
         id: 5,
         titulo: "Aromaterapia Purificante",
@@ -52,7 +52,7 @@ export const serviciosData = [
         ruta: "/serviciosmaromat?s=estimulante"
     },
 
-    // --- MASAJES (Nuevos) ---
+    //MASAJES
     {
         id: 8,
         titulo: "Masaje Sueco",
@@ -82,7 +82,7 @@ export const serviciosData = [
         ruta: "/serviciosmasaje?s=signature"
     },
 
-    // --- RITUALES (Nuevos) ---
+    //RITUALES
     {
         id: 12,
         titulo: "Ritual Nirvana Escape",
@@ -126,7 +126,7 @@ export const serviciosData = [
         ruta: "/serviciosrituales?s=urkutun"
     },
 
-    // --- TRATAMIENTOS CORPORALES (Nuevos) ---
+    //TRATAMIENTOS CORPORALES
     {
         id: 18,
         titulo: "Ceremonia Liwen",
