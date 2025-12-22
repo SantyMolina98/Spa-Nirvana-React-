@@ -8,34 +8,26 @@ import { useState, useEffect } from 'react';
 
 function ServiciosFacial() {
 
-    // 2. Hook para leer la URL
   const [searchParams] = useSearchParams();
-  
-  // 3. Estado para controlar qué diapositiva se muestra (empieza en 0)
   const [index, setIndex] = useState(0);
-
-  // 4. MAPA DE INDICES: Relaciona el parámetro de la URL con la posición en el Carrusel (0, 1, 2, 3)
   const serviceMap = {
-    'essential': 0,   // Slide 1
-    'vitc': 1,        // Slide 2
-    'rebalancing': 2, // Slide 3
-    'roses': 3        // Slide 4
+    'essential': 0,   
+    'vitc': 1,        
+    'rebalancing': 2, 
+    'roses': 3       
   };
 
-  // 5. EFECTO: Cuando carga la página, revisamos la URL
   useEffect(() => {
-    const servicioBuscado = searchParams.get('s'); // Obtenemos el valor de '?s=...'
+    const servicioBuscado = searchParams.get('s'); 
     
     if (servicioBuscado && serviceMap[servicioBuscado] !== undefined) {
-      setIndex(serviceMap[servicioBuscado]); // Movemos el carrusel al índice correcto
+      setIndex(serviceMap[servicioBuscado]); 
       
-      // Opcional: Scrollear un poco hacia abajo para que el carrusel quede centrado en pantalla
       const elemento = document.querySelector('.MainServicio');
       if(elemento) elemento.scrollIntoView({ behavior: 'smooth' });
     }
   }, [searchParams]);
 
-  // 6. Función para manejar el cambio manual (cuando el usuario toca las flechitas)
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };

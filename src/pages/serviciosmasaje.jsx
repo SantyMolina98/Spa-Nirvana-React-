@@ -10,7 +10,6 @@ function ServiciosMasajes  () {
   const [searchParams] = useSearchParams();
   const [index, setIndex] = useState(0);
 
-  // Mapa de navegación
   const serviceMap = {
     'sueco': 0,
     'hotstones': 1,

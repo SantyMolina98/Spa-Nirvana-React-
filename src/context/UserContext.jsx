@@ -5,7 +5,6 @@ export const UserContext = createContext();
 
 export function UserProvider({ children }) {
   
-  //Turnos como un array vacío y leemos de localStorage si existen
   const [turnos, setTurnos] = useState(() => {
     const savedTurnos = localStorage.getItem('spa_turnos');
     return savedTurnos ? JSON.parse(savedTurnos) : [];
@@ -14,14 +13,13 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  //Efecto para guardar turnos automáticamente en localStorage cada vez que cambien
   useEffect(() => {
     localStorage.setItem('spa_turnos', JSON.stringify(turnos));
   }, [turnos]);
 
   // Agregar un turno al carrito
   const addTurno = (nuevoServicio) => {
-    //ID único para poder eliminarlo después sin errores
+
     const turnoConId = { ...nuevoServicio, id: Date.now() };
     setTurnos((prevTurnos) => [...prevTurnos, turnoConId]);
   };
@@ -59,11 +57,11 @@ export function UserProvider({ children }) {
   };
   const logout = () => {
     setUser(null);
-    setTurnos([]); //Vacia el estado en memoria
+    setTurnos([]);
     
     localStorage.removeItem('token');
     localStorage.removeItem('spa_user');
-    localStorage.removeItem('spa_turnos'); //Borra los turnos del almacenamiento local
+    localStorage.removeItem('spa_turnos');
 };
 
   const registro = async (datos) => {

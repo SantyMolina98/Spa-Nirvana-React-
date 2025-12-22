@@ -10,7 +10,6 @@ function ServiciosRitual() {
   const [searchParams] = useSearchParams();
   const [index, setIndex] = useState(0);
 
-  // Mapa de navegación
   const serviceMap = {
     'nirvanaescape': 0,
     'mindsoul': 1,

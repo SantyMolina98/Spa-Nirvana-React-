@@ -10,7 +10,6 @@ function ServiciosMaAromat() {
   const [searchParams] = useSearchParams();
   const [index, setIndex] = useState(0);
 
-  // Mapa de navegación
   const serviceMap = {
     'purificante': 0,
     'relajante': 1,
