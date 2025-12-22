@@ -51,34 +51,6 @@ function App() {
               
         </Routes> 
         </main>
-    <FooterComponent/>     
-    </div>
-    </BrowserRouter>
-=======
-      <BrowserRouter>
-        <div className='body-content'>
-          <HeaderComponents />
-          <main className='main-content'>
-            <Routes>
-
-              <Route path='/' element={<HomePage />} />
-              <Route path='/turnos' element={<Turnos />} />
-              <Route path='/categorias' element={<Categorias />} />
-              <Route path='/serviciosfacial' element={<ServiciosFacial />} />
-              <Route path='/serviciostrcorporal' element={<ServiciosTrCorporal />} />
-              <Route path='/serviciosmasaje' element={<ServiciosMasajes />} />
-              <Route path='/serviciosmaromat' element={<ServiciosMaAromat />} />
-              <Route path='/serviciosrituales' element={<ServiciosRitual />} />
-              <Route path='/contacto' element={<Contacto />} />
-              <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
-              <Route path="/recuperar/:token" element={<NuevaPassword />} />
-              <Route path='/nosotros' element={<Nosotros />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/login/registro' element={<Registro />} />
-              <Route path='*' element={<PaginaError />} />
-
-            </Routes>
-          </main>
           <FooterComponent />
         </div>
       </BrowserRouter>
