@@ -207,8 +207,6 @@ function Registro () {
             </Form.Control.Feedback>
             </Form.Group>
             <br/>
-
-            {/* CÓDIGO POSTAL */}
             <Form.Group>
               <Form.Label className="TextReg">Código Postal:</Form.Label> <br/>
               <Form.Control 
@@ -224,8 +222,6 @@ function Registro () {
               </Form.Control.Feedback>
             </Form.Group>
             <br/>
-
-            {/* CONTRASEÑA */}
             <Form.Group>
               <Form.Label className="TextReg">Escriba una contraseña:</Form.Label> <br/>
               <Form.Control 
@@ -234,22 +230,15 @@ function Registro () {
                 minLength={6} maxLength={25}
                 value={contrasena}
                 onChange={(e) => setContrasena(e.target.value)}
-                required 
-              /> 
+                required /> 
               <Form.Control.Feedback type="invalid" className='alerterrorReg'>
                 Mínimo 6 caracteres.
               </Form.Control.Feedback>
             </Form.Group>
-            <br/>
-
-            <Form.Group>
-              <Form.Check type="checkbox" label="Guardar contraseña" />
-            </Form.Group>
-            
+            <br/>     
             <div className="BtnRegistro">
               <Button type='submit' className='BotonR'>REGISTRARME</Button>
-            </div>
-          
+            </div>       
           </Form>
         </Card.Body>
       </Card>

@@ -13,18 +13,13 @@ function HeaderComponent () {
   const { user, logout, isAuthenticated, isAdmin } = useContext(UserContext);
   const navigate = useNavigate();
 
-    const [termino, setTermino] = useState('');
-
+  //BARRA BUSQUEDA
+  const [termino, setTermino] = useState('');
   const handleSearch = (e) => {
-    e.preventDefault(); // Evita que la página se recargue
+    e.preventDefault(); 
     if (termino.trim()) {
-      // Redirige a la ruta de búsqueda con el query param
       navigate(`/buscar?q=${termino}`);
-      setTermino(''); // Opcional: Limpia el input después de buscar
-      
-      // Opcional: Si quieres cerrar el menú Offcanvas en móvil al buscar, 
-      // necesitarías controlar el estado del show del Navbar, 
-      // pero por ahora dejémoslo simple.
+      setTermino(''); 
     }
   };
 
@@ -88,7 +83,13 @@ function HeaderComponent () {
                     </>
                   ) : (
                     <>
-                      <NavDropdown.ItemText className='dropdownn-login-saludo-header'>Hola, {user?.username || 'Usuario'}</NavDropdown.ItemText>
+                    <NavDropdown.ItemText className='dropdownn-login-saludo-header'>
+                        <div>
+                          Hola, {user?.nombre || "Usuario"}
+                          <br />
+                          {(user?.rol === 'ROL_ADMIN' || user?.rol === 'Admin') ? 'Administrador' : 'Cliente'}
+                        </div>
+                      </NavDropdown.ItemText>
                       <NavDropdown.Divider />
                       <NavDropdown.Item as="button" onClick={() => { logout(); navigate('/'); }} className='dropdownn-login-header'>Cerrar Sesión</NavDropdown.Item>
                     </>

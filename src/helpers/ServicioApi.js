@@ -1,4 +1,4 @@
-const url = "https://spa-nirvana-backend.vercel.app/api/servicios";
+const url = "https://spa-nirvana.vercel.app/api/servicios";
 
 //Traer Servicios
 export const getServicios = async (limite = 0, pagina = 0) => {

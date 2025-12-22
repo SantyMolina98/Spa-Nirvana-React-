@@ -40,8 +40,8 @@ function App() {
               <Route path='/serviciosrituales' element={<ServiciosRitual/>}/>
               <Route path='/contacto' element={<Contacto/>}/>
               <Route path='/nosotros' element={<Nosotros/>}/>
-               <Route path="/recuperar-cuenta" element={<RecuperarCuenta />} />
-              <Route path="/recuperar/:token" element={<NuevaPassword />} /> 
+               <Route path="/RecuperarCuenta" element={<RecuperarCuenta />} />
+              <Route path="/RecuperarCuenta/:token" element={<NuevaPassword />} /> 
               <Route path='/admin' element={
                 <ProtectedAdmin >  
                   <Admin/>
