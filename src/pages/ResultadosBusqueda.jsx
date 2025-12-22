@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { serviciosData } from '../helpers/listaServicios'; 
+import { serviciosData } from '../helpers/ListaServicios'; 
 
 const ResultadosBusqueda = () => {
   const [searchParams] = useSearchParams();
