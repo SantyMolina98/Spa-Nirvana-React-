@@ -125,7 +125,19 @@ function Turnos() {
             `¡Muchas gracias!`
         );
         
+// 1. Obtener los horarios que YA están reservados para el profesional y fecha elegidos
+const horariosOcupados = turnos
+    .filter(t => 
+        t.profesional === profesionalNombre && 
+        t.fecha === fechaSeleccionada?.toLocaleDateString()
+    )
+    .map(t => t.hora); // Ejemplo: ["10:00", "15:00"]
 
+// 2. Filtrar los horarios permitidos para que no incluyan los ocupados
+const horariosDisponiblesFiltrados = horariosPermitidos.filter(fechaHora => {
+    const horaTexto = new Date(fechaHora).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return !horariosOcupados.includes(horaTexto);
+});
     };
 
     return (

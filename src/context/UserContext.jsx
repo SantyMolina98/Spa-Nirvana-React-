@@ -57,13 +57,14 @@ export function UserProvider({ children }) {
   const login = (userData) => {
     setUser(userData);
   };
-
   const logout = () => {
     setUser(null);
-
+    setTurnos([]); //Vacia el estado en memoria
+    
     localStorage.removeItem('token');
     localStorage.removeItem('spa_user');
-  };
+    localStorage.removeItem('spa_turnos'); //Borra los turnos del almacenamiento local
+};
 
   const registro = async (datos) => {
     const datosParaBackend = {
