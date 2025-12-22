@@ -62,7 +62,6 @@ function Registro () {
           
           <Form noValidate validated={validatedReg} className="FormRegistro" onSubmit={registrar}>
             
-            {/* NOMBRE */}
             <Form.Group>
               <Form.Label className="TextReg">Nombre:</Form.Label>
               <br/>
@@ -79,8 +78,6 @@ function Registro () {
               </Form.Control.Feedback>
             </Form.Group> 
             <br/>
-
-            {/* APELLIDO */}
             <Form.Group>
               <Form.Label className="TextReg">Apellido:</Form.Label><br/>
               <Form.Control 
@@ -96,8 +93,6 @@ function Registro () {
               </Form.Control.Feedback>
             </Form.Group>
             <br/>
-
-            {/* USUARIO */}
             <Form.Group>
               <Form.Label className="TextReg">Nombre de usuario:</Form.Label><br/>
             <Form.Control 
@@ -113,8 +108,6 @@ function Registro () {
               </Form.Control.Feedback>
             </Form.Group>
             <br/>
-
-            {/* EMAIL (El type="email" valida el formato básico automáticamente) */}
             <Form.Group>
               <Form.Label className="TextReg">E-mail:</Form.Label><br/>
               <Form.Control 
@@ -130,8 +123,6 @@ function Registro () {
               </Form.Control.Feedback>
             </Form.Group>
             <br/>
-
-            {/* TELÉFONO */}
             <Form.Group>
               <Form.Label className="TextReg">Telefono:</Form.Label><br/>
             <div className="TelefonoF">
@@ -139,7 +130,7 @@ function Registro () {
               <Form.Control 
                 type="number" 
                 placeholder="Ingrese su N° de Teléfono"
-                min={18} // Validación básica de nro
+                min={18} 
                 value={telefono}
                 onChange={(e) => setTelefono(e.target.value)}
                 required 
@@ -149,8 +140,7 @@ function Registro () {
               </Form.Control.Feedback>
             </div> 
             </Form.Group>
-            
-            {/* DOMICILIO */}
+             <br/>
             <Form.Group>
               <Form.Label className="TextReg">Domicilio:</Form.Label> <br/>
               <Form.Control 
@@ -166,15 +156,13 @@ function Registro () {
               </Form.Control.Feedback>
             </Form.Group>
             <br/>
-
-            {/* PROVINCIA */}
             <Form.Group>
               <Form.Label className="TextReg">Provincia:</Form.Label><br/>
             <Form.Select 
                 value={provincia}
                 onChange={(e) => setProvincia(e.target.value)} 
                 required
-                isInvalid={validatedReg && provincia === '------'} // Validación manual simple para el select
+                isInvalid={validatedReg && provincia === '------'}
             >
               <option value="------" disabled>------</option>
               <option value="Buenos-Aires">Buenos Aires</option>

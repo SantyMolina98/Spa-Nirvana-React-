@@ -18,7 +18,7 @@ function HeaderComponent () {
   const handleSearch = (e) => {
     e.preventDefault(); 
     if (termino.trim()) {
-      navigate(`/buscar?q=${termino}`);
+      navigate(`/buscar?busqueda=${termino}`);
       setTermino(''); 
     }
   };
