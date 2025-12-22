@@ -1,4 +1,4 @@
-const url = "https://spa-nirvana-backend-copia.vercel.app/api/usuarios";
+const url = "https://spa-nirvana.vercel.app/api/usuarios";
 
 //Traer Usuarios
 export const getUsuarios = async (desde = 0) => {

@@ -1,4 +1,4 @@
-const url = "https://spa-nirvana-backend.vercel.app/api/reservas";
+const url = "https://spa-nirvana.vercel.app/api/reservas";
 
 //Traer Reservas
 export const getReservas = async (desde = 0) => {

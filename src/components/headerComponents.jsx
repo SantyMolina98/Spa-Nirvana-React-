@@ -2,7 +2,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
 import '../styles/headerComponent.css';
 import { NavLink, Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
@@ -12,6 +12,16 @@ import imagenMap from '../assets/imagenMap.js';
 function HeaderComponent () {
   const { user, logout, isAuthenticated, isAdmin } = useContext(UserContext);
   const navigate = useNavigate();
+
+  //BARRA BUSQUEDA
+  const [termino, setTermino] = useState('');
+  const handleSearch = (e) => {
+    e.preventDefault(); 
+    if (termino.trim()) {
+      navigate(`/buscar?q=${termino}`);
+      setTermino(''); 
+    }
+  };
 
   return (
     <>
@@ -73,7 +83,13 @@ function HeaderComponent () {
                     </>
                   ) : (
                     <>
-                      <NavDropdown.ItemText className='dropdownn-login-saludo-header'>Hola, {user?.username || 'Usuario'}</NavDropdown.ItemText>
+                    <NavDropdown.ItemText className='dropdownn-login-saludo-header'>
+                        <div>
+                          Hola, {user?.nombre || "Usuario"}
+                          <br />
+                          {(user?.rol === 'ROL_ADMIN' || user?.rol === 'Admin') ? 'Administrador' : 'Cliente'}
+                        </div>
+                      </NavDropdown.ItemText>
                       <NavDropdown.Divider />
                       <NavDropdown.Item as="button" onClick={() => { logout(); navigate('/'); }} className='dropdownn-login-header'>Cerrar Sesión</NavDropdown.Item>
                     </>
@@ -81,14 +97,16 @@ function HeaderComponent () {
                 </NavDropdown>
 
               </Nav>
-              <Form className="d-flex itemsHeaderBusqueda">
+              <Form className="d-flex itemsHeaderBusqueda" onSubmit={handleSearch}>
                 <Form.Control
                   type="search"
                   placeholder="Buscar"
                   className="me-2 busqueda"
                   aria-label="Search"
+                  value={termino}
+                  onChange={(e) => setTermino(e.target.value)}
                 />
-                <Button className='btnBusqueda'>Buscar</Button>
+                <Button type="submit" className='btnBusqueda'>Buscar</Button>
               </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

@@ -1,4 +1,4 @@
-const url = "https://spa-nirvana-backend.vercel.app/api/categorias";
+const url = "https://spa-nirvana.vercel.app/api/categorias";
 
 const token = JSON.parse(localStorage.getItem("token"));
 const limite = 6;

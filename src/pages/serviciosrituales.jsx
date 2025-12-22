@@ -1,15 +1,42 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
 import '../styles/servicios.css';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams} from 'react-router-dom';
 import imagenMap from '../assets/imagenMap.js';
+import { useState, useEffect } from 'react';
 import {Card, Button, Carousel} from 'react-bootstrap';
 
 function ServiciosRitual() {
+  const [searchParams] = useSearchParams();
+  const [index, setIndex] = useState(0);
+
+  // Mapa de navegación
+  const serviceMap = {
+    'nirvanaescape': 0,
+    'mindsoul': 1,
+    'afflora': 2,
+    'mulfem': 3,
+    'unad': 4,
+    'urkutun': 5
+  };
+
+  useEffect(() => {
+    const servicioBuscado = searchParams.get('s');
+    if (servicioBuscado && serviceMap[servicioBuscado] !== undefined) {
+      setIndex(serviceMap[servicioBuscado]);
+      const elemento = document.querySelector('.MainServicio');
+      if(elemento) elemento.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [searchParams]);
+
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
+
    return (
    <section className='MainServicio'>
     <article>
-     <Carousel className='Carrusel-Servicio'>
+     <Carousel className='Carrusel-Servicio' activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
         <Card className='Contenido-Carrusel-Serv'>
           <Card.Img variant="left" src={imagenMap.catritualnirvesc} className='Img-Servicio'/>

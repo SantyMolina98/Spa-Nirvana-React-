@@ -1,5 +1,4 @@
-const url = "https://spa-nirvana-backend-copia.vercel.app/api/auth/login";
-
+const url = "https://spa-nirvana.vercel.app/api/auth/login";
 
 export const authLogin = async (datos) => {
   try{

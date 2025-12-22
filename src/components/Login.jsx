@@ -126,12 +126,8 @@ function Login() {
                 <Form.Control.Feedback type="invalid" className='alerterror'>
                   La contraseña debe tener entre 6 y 20 caracteres.
                 </Form.Control.Feedback>
-                <div className="text-end mt-2">
-                    <Link 
-                        to="/RecuperarCuenta" 
-                        className="linkLogin colorcard" 
-                        style={{ textDecoration: 'none', fontSize: '0.9rem' }}
-                    >
+                <div className="text-center mt-3">
+                    <Link to="/RecuperarCuenta" className="linkLogin colorcard">
                         ¿Olvidaste tu contraseña?
                     </Link>
                 </div>
