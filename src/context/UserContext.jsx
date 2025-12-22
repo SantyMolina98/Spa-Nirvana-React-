@@ -4,6 +4,7 @@ import { crearUsuario } from '../helpers/UsuariosApi';
 export const UserContext = createContext();
 
 export function UserProvider({ children }) {
+  
   //Turnos como un array vacío y leemos de localStorage si existen
   const [turnos, setTurnos] = useState(() => {
     const savedTurnos = localStorage.getItem('spa_turnos');
@@ -52,13 +53,14 @@ export function UserProvider({ children }) {
       localStorage.removeItem('spa_user');
     }
   }, [user]);
-
+  
   const login = (userData) => {
     setUser(userData);
   };
 
   const logout = () => {
     setUser(null);
+
     localStorage.removeItem('token');
     localStorage.removeItem('spa_user');
   };
