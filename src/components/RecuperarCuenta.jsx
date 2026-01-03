@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Form, Card, Container, Alert } from 'react-bootstrap'; 
-import { solicitarRecuperacion } from '../helpers/UsuariosApi';
+import { solicitarRecuperacion } from '../helpers/UsuariosApi.js';
 import { Link } from 'react-router-dom';
 
 const RecuperarCuenta = () => {

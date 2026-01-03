@@ -3,8 +3,8 @@ import '../App.css';
 import '../styles/loginPage.css';
 import { Button, Card, Form, Alert, Spinner } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
-import { UserContext } from '../context/UserContext';
-import { authLogin } from '../helpers/LoginApi'; 
+import { UserContext } from '../context/UserContext.jsx';
+import { authLogin } from '../helpers/LoginApi.js'; 
 
 function Login() {
   
@@ -47,6 +47,7 @@ function Login() {
         const datos = {
           correo: email.trim(),
           password: password.trim(),
+          
         };
 
         const respuesta = await authLogin(datos);

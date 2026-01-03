@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-import { crearUsuario } from '../helpers/UsuariosApi';
+import { crearUsuario } from '../helpers/UsuariosApi.js';
 
 export const UserContext = createContext();
 
@@ -99,6 +99,7 @@ export function UserProvider({ children }) {
       logout,
       registro,
       isAuthenticated: !!user,
+      isAdmin: user && (user.rol === "ROL_ADMIN" || user.rol === "Admin"),
       turnos,
       addTurno,
       removeTurno

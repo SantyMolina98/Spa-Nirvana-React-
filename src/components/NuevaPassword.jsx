@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button, Form, Card, Container } from 'react-bootstrap';
-import { restablecerContrasena } from '../helpers/UsuariosApi'; 
+import { restablecerContrasena } from '../helpers/UsuariosApi.js'; 
 
 const NuevaPassword = () => {
   const { token } = useParams(); // Capturamos el token de la URL

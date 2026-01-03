@@ -1,5 +1,5 @@
 const url = "https://spa-nirvana.vercel.app";
-spa-nirvana-backend-navy.vercel
+
 export const crearUsuario = async (datos) => {
   try{
     const respuesta = await fetch(`${url}/api/usuarios`, {

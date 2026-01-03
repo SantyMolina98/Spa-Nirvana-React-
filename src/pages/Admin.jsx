@@ -1,11 +1,16 @@
 import '../App.css';
-import React, { useState, useEffect } from 'react';
-import { getUsuarios } from '../helpers/UsuariosApi';
-import { getReservas } from '../helpers/ReservasApi';
+import '../styles/admin.css';
+import { useState, useEffect } from 'react';
+import { getUsuarios, crearUsuario, actualizarUsuario, eliminarUsuario } from '../helpers/UsuariosApi.js';
+import { getCategorias, getCategoriaById, crearCategoria, actualizarCategoria, eliminarCategoria } from '../helpers/CategoriaApi.js';
+import { getServicios , getServicioById, crearServicio, actualizarServicio, eliminarServicio,  } from '../helpers/ServicioApi.js';
+import { getReservas,  } from '../helpers/ReservasApi.js';
 
 export default function Admin() {
   const [usuarios, setUsuarios] = useState([]);
   const [reservas, setReservas] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+  const [servicios, setServicios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -14,8 +19,14 @@ export default function Admin() {
       try {
         const usuariosData = await getUsuarios();
         const reservasData = await getReservas();
+        const categoriasData = await getCategorias();
+        const serviciosData = await getServicios();
+
         setUsuarios(usuariosData.usuarios || []);
         setReservas(reservasData.reservas || []);
+        setCategorias(categoriasData.categorias || []);
+        setServicios(serviciosData.servicios || []);
+        setLoading(false);
       } catch (err) {
         setError('Error al cargar los datos');
         console.error(err);
@@ -35,7 +46,6 @@ export default function Admin() {
   return (
     <main className="AdminPage">
       <h2>Panel de Administración</h2>
-
       <section>
         <h3>Usuarios</h3>
         <ul>
@@ -63,6 +73,22 @@ export default function Admin() {
             </li>
           ))}
         </ul>
+      </section>
+      <section>
+        <h3>Categorías</h3>
+        <ul>
+          {categorias.map(categoria => (
+            <li key={categoria._id}>
+              Nombre: {categoria.nombre}
+            </li>
+          ))}
+          {servicios.map(servicio => (
+            <li key={servicio._id}>
+              Servicio: {servicio.nombre}, Descripción: {servicio.descripcion}, Duración: {servicio.duracion} mins, Precio: ${servicio.precio}
+            </li>
+          ))}
+        </ul>
+        
       </section>
     </main>
   );
