@@ -2,7 +2,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
 import '../styles/headerComponent.css';
 import { NavLink, Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
@@ -10,12 +10,22 @@ import { UserContext } from '../context/UserContext';
 import imagenMap from '../assets/imagenMap.js';
 
 function HeaderComponent () {
-  const { user, logout, isAuthenticated } = useContext(UserContext);
+  const { user, logout, isAuthenticated, isAdmin } = useContext(UserContext);
   const navigate = useNavigate();
+
+  //BARRA BUSQUEDA
+  const [termino, setTermino] = useState('');
+  const handleSearch = (e) => {
+    e.preventDefault(); 
+    if (termino.trim()) {
+      navigate(`/buscar?busqueda=${termino}`);
+      setTermino(''); 
+    }
+  };
 
   return (
     <>
-      <Navbar key='lg' expand='lg' className='header-overflow ColorLetrasH'>
+      <Navbar key='lg' expand='lg' className='header-overflow ColorLetrasH' sticky="top">
         <Container fluid>
           <Navbar.Brand to="/">
             <img src={imagenMap.logospaheader} className='logoSPA' alt="LogoSPA"/>
@@ -63,6 +73,7 @@ function HeaderComponent () {
                 <NavLink to='/turnos'>Turnos</NavLink>
                 <NavLink to='/contacto'>Contáctanos</NavLink>
                 <NavLink to='/nosotros'>Nosotros</NavLink>
+                {isAdmin && <NavLink to='/admin'>Admin</NavLink>}
                 <NavDropdown title={<i className="bi bi-person-circle"></i>} id='offcanvasNavbarDropdown-expand-login'>
                   {!isAuthenticated ? (
                     <>
@@ -72,21 +83,30 @@ function HeaderComponent () {
                     </>
                   ) : (
                     <>
-                      <NavDropdown.ItemText className='dropdownn-login-saludo-header'>Hola, {user?.username || 'Usuario'}</NavDropdown.ItemText>
+                    <NavDropdown.ItemText className='dropdownn-login-saludo-header'>
+                        <div>
+                          Hola, {user?.nombre || "Usuario"}
+                          <br />
+                          {(user?.rol === 'ROL_ADMIN' || user?.rol === 'Admin') ? 'Administrador' : 'Cliente'}
+                        </div>
+                      </NavDropdown.ItemText>
                       <NavDropdown.Divider />
                       <NavDropdown.Item as="button" onClick={() => { logout(); navigate('/'); }} className='dropdownn-login-header'>Cerrar Sesión</NavDropdown.Item>
                     </>
                   )}
                 </NavDropdown>
+
               </Nav>
-              <Form className="d-flex itemsHeaderBusqueda">
+              <Form className="d-flex itemsHeaderBusqueda" onSubmit={handleSearch}>
                 <Form.Control
                   type="search"
                   placeholder="Buscar"
                   className="me-2 busqueda"
                   aria-label="Search"
+                  value={termino}
+                  onChange={(e) => setTermino(e.target.value)}
                 />
-                <Button className='btnBusqueda'>Buscar</Button>
+                <Button type="submit" className='btnBusqueda'>Buscar</Button>
               </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

@@ -15,17 +15,21 @@ import FooterComponent from './components/FooterComponent.jsx';
 import ServiciosTrCorporal from './pages/serviciostrcorporal.jsx';
 import ServiciosMaAromat from './pages/serviciosmarom.jsx';
 import ServiciosRitual from './pages/serviciosrituales.jsx';
+import ProtectedAdmin from './routes/ProtectedAdmin.jsx';
+import Admin from './pages/Admin.jsx';
+import RecuperarCuenta from './components/RecuperarCuenta';
+import NuevaPassword from './components/NuevaPassword';
+import ResultadosBusqueda from './pages/ResultadosBusqueda';
 
 function App() {
-
+ 
   return (
     <>
     <BrowserRouter>
       <div className='body-content'>
-      <HeaderComponents/>
+      <HeaderComponents />
         <main className='main-content'>
         <Routes>
-          
               <Route path='/' element={<HomePage/>}/>
               <Route path='/turnos' element={<Turnos/>}/>
               <Route path='/categorias' element={<Categorias/>}/>
@@ -35,16 +39,22 @@ function App() {
               <Route path='/serviciosmaromat' element={<ServiciosMaAromat/>}/>
               <Route path='/serviciosrituales' element={<ServiciosRitual/>}/>
               <Route path='/contacto' element={<Contacto/>}/>
-              <Route path='/nosotros' element={<Nosotros/>}/>    
+              <Route path='/nosotros' element={<Nosotros/>}/>
+               <Route path="/RecuperarCuenta" element={<RecuperarCuenta />} />
+              <Route path="/RecuperarCuenta/:token" element={<NuevaPassword />} /> 
+              <Route path='/admin' element={
+                <ProtectedAdmin >  
+                  <Admin/>
+                </ProtectedAdmin> 
+              }/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/login/registro' element={<Registro/>}/>
-              <Route path='*' element={<PaginaError/>}/>
-            
-          
+              <Route path='*' element={<PaginaError/>}/> 
+              <Route path="/buscar" element={<ResultadosBusqueda />} />         
         </Routes> 
         </main>
-    <FooterComponent/>     
-    </div>
+      <FooterComponent/>     
+      </div>
     </BrowserRouter>
     </>
   )

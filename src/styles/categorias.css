@@ -33,10 +33,9 @@
     height: 20em;
 }
 .row-categorias{
-  margin-left: 10em;
-  margin-right: 10em;
-  margin-top: 2em;
-  width: 100%;
+  width: 90%;
+  max-width: 1400px;
+  margin: 2em auto;
   height: auto;
   display: flex;
   justify-content: center;
@@ -45,7 +44,8 @@
 }
 
 .contenedor{
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -58,8 +58,11 @@
 .img-categoria{
   width: 100%;
   height: auto;
-  margin: 0;
-  padding: 0;
+  object-fit: cover;
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+  /* margin: 0;
+  padding: 0; */
 }
 
 .btn-categoria{

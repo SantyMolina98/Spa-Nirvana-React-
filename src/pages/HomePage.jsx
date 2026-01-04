@@ -44,7 +44,7 @@ function HomePage () {
         <Button  className='btnCardPromo'>Ver más</Button>
         </Link>
       </Card.Body>
-      <Card.Footer className="text-muted">Válida hasta el 15 de noviembre o hasta agotar cupos.</Card.Footer>
+      <Card.Footer className="text-muted">Válida hasta el 31 de diciembre o hasta agotar cupos.</Card.Footer>
       </Card>
       </div>
     <div className='flex'>
@@ -60,7 +60,7 @@ function HomePage () {
         <Button className='btnCardPromo'>Ver más</Button>
         </Link>
       </Card.Body>
-      <Card.Footer className="text-muted">Promo disponible hasta el 15/11 inclusive.</Card.Footer>
+      <Card.Footer className="text-muted">Promo disponible hasta el 25/12 inclusive.</Card.Footer>
     </Card>
     </div>
         <div className='flex'>
@@ -76,7 +76,7 @@ function HomePage () {
         <Button className='btnCardPromo'>Ver más</Button>
         </Link>
       </Card.Body>
-      <Card.Footer className="text-muted">Promo vigente hasta el 15/11 — ¡no te la pierdas!</Card.Footer>
+      <Card.Footer className="text-muted">Promo vigente hasta el 25/12 — ¡no te la pierdas!</Card.Footer>
     </Card>
     </div>
         <div className='flex'>
@@ -92,7 +92,7 @@ function HomePage () {
         <Button className='btnCardPromo'>Ver más</Button>
         </Link>
       </Card.Body>
-      <Card.Footer className="text-muted">Promo disponible hasta el 15/11 inclusive.</Card.Footer>
+      <Card.Footer className="text-muted">Promo disponible hasta el 25/12 inclusive.</Card.Footer>
     </Card>
     </div>
       </section>
