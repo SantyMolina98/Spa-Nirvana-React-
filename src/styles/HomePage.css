@@ -48,6 +48,14 @@ a {
   text-decoration: none;
 }
 
+.carousel-control-next{
+  justify-content: end;
+}
+
+.carousel-control-prev{
+  justify-content: start;
+}
+
 .img{
     width: 100%;
     height: 500px;
