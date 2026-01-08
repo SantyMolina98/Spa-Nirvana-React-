@@ -8,6 +8,7 @@ import { HashLink } from 'react-router-hash-link';
 import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import { UserContext } from '../context/UserContext';
 import imagenMap from '../assets/imagenMap.js';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function HeaderComponent () {
   const { user, logout, isAuthenticated, isAdmin } = useContext(UserContext);
@@ -25,7 +26,7 @@ function HeaderComponent () {
 
   return (
     <>
-      <Navbar key='lg' expand='lg' className='header-overflow ColorLetrasH' sticky="top">
+      <Navbar key='lg' expand='xl' className='header-overflow ColorLetrasH' sticky="top">
         <Container fluid>
           <Navbar.Brand to="/">
             <img src={imagenMap.logospaheader} className='logoSPA' alt="LogoSPA"/>
@@ -45,9 +46,10 @@ function HeaderComponent () {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-center flex-grow-1 itemsHeader">
-                <NavLink to='/'>Inicio</NavLink>
+              <Nav className="justify-content-center flex-grow-1 itemsHeader py-0">
+                <NavLink to='/'>HomePage</NavLink>
                 <NavDropdown
+                className='navdropdown'
                   title="Categorías"
                   id={`offcanvasNavbarDropdown-expand-lg`}>
                   <NavDropdown.Item as={HashLink} to='/categorias#scrollspyHeading1'>
@@ -106,7 +108,7 @@ function HeaderComponent () {
                   value={termino}
                   onChange={(e) => setTermino(e.target.value)}
                 />
-                <Button type="submit" className='btnBusqueda'>Buscar</Button>
+                <Button type="submit" id='btnBusqueda'><i class="bi bi-search-heart"></i></Button>
               </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
