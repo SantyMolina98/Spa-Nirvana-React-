@@ -47,7 +47,7 @@ function HeaderComponent () {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-center flex-grow-1 itemsHeader py-0">
-                <NavLink to='/'>Inicio</NavLink>
+                <NavLink to='/'>HomePage</NavLink>
                 <NavDropdown
                 className='navdropdown'
                   title="Categorías"
