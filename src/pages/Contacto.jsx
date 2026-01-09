@@ -16,7 +16,18 @@ function Contacto () {
  const sendEmail = (e) => {
   e.preventDefault();
 
-  emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form.current, EMAILJS_PUBLIC_KEY)
+  const now = new Date();
+  const fechaEnvio = `${now.toLocaleDateString()} a las ${now.toLocaleTimeString()}`;
+
+  const templateParams = {
+    name: form.current.name.value,
+    email: form.current.email.value,
+    title: form.current.title.value,
+    message: form.current.message.value,
+    fecha_registro: fechaEnvio,
+  };
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, { publicKey: EMAILJS_PUBLIC_KEY })
     .then(
       () => {
         alert('Email enviado con éxito!');
@@ -24,7 +35,7 @@ function Contacto () {
       },
       (error) => {
         console.log('FALLÓ CONEXIÓN...', error);
-        alert('Falló al enviar el email. Por favor, intente nuevamente!');
+        alert('Falló al enviar el email. Por favor, intente nuevamente.');
       }
     )
  }
@@ -63,21 +74,18 @@ function Contacto () {
         <article className="ContactoForm">
           <Form ref={form} onSubmit={sendEmail}>
             <Form.Group className="mb-3" id="formBasicEmail">
-              <Form.Label htmlFor="nombre-contacto" className="form-label" name="nombre-contacto">Nombre</Form.Label>
-                <Form.Control type="text" name='user_name' className="form-control" id="nombre-contacto" placeholder="Ej: Sofia" 
+              <Form.Label htmlFor="nombre-contacto" className="form-label" name="nombre-contacto">Nombre y Apellido</Form.Label>
+                <Form.Control type="text" name='name' className="form-control" id="nombre-contacto" placeholder="Ej: Sofia Perez" 
                 minLength={3} maxLength={30}
                 required/>
             </Form.Group>
             <Form.Group className="mb-3" >
-              <Form.Label htmlFor="apellido-contacto" className="form-label" name="apellido-contacto">Apellido</Form.Label>
-              <Form.Control type="text" name='user_lastname' className="form-control" id="apellido-contacto" placeholder="Ej: Rodriguez" required/>
-            </Form.Group>
-            <Form.Group className="mb-3" >
               <Form.Label htmlFor="email-contacto" className="form-label" name="email-contacto">Email</Form.Label>
-              <Form.Control type="email" name='user_email' className="form-control" id="email-contacto" placeholder="name@example.com" required/>
+              <Form.Control type="email" name='email' className="form-control" id="email-contacto" placeholder="name@example.com" required/>
             </Form.Group>
             <Form.Group className="mb-3" >
               <Form.Label htmlFor="textarea-contacto" className="form-label">Dejanos tu consulta</Form.Label>
+              <Form.Control as="textarea" name="title" id="textarea-contacto" placeholder='Asunto' rows="1" required/>
               <Form.Control as="textarea" name="message" id="textarea-contacto" placeholder='Escriba aquí su consulta' rows="3" required/>
             </Form.Group>
               <Button variant='primary' type='submit' className='btnContacto'>Enviar</Button>
