@@ -108,7 +108,11 @@ function HeaderComponent () {
                   value={termino}
                   onChange={(e) => setTermino(e.target.value)}
                 />
+
                 <Button type="submit" id='btnBusqueda'><i className="bi bi-search-heart"></i></Button>
+
+                <Button type="submit" id='btnBusqueda'><i class="bi bi-search-heart"></i></Button>
+ 
               </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
