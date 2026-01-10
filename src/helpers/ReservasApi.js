@@ -1,14 +1,16 @@
-const url = "https://spa-nirvana.vercel.app/api/reservas";
+const url = "https://spa-nirvana-backend.vercel.app/api/reservas";
+
+const token = localStorage.getItem("token");
+const limite = 100;
 
 //Traer Reservas
 export const getReservas = async (desde = 0) => {
   try {
-    const token = JSON.parse(localStorage.getItem("token"));
     const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
     if (token) headers["x-token"] = token;
 
-    const respuesta = await fetch(`${url}?limite=100&desde=${desde}`, {
+    const respuesta = await fetch(`${url}?limite=${limite}&desde=${desde}`, {
       method: "GET",
       headers
     });

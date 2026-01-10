@@ -4,9 +4,68 @@ import '../styles/servicios.css';
 import { Link, useSearchParams} from 'react-router-dom';
 import imagenMap from '../assets/imagenMap.js';
 import {Card, Button, Carousel} from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+import { ModalEditarServicio, ModalEliminarServicio } from '../components/ModalServicioAdmin';
+import { actualizarServicio, eliminarServicio } from '../helpers/ServicioApi';
+
 
 function ServiciosMaAromat() {
+  const { isAdmin } = useContext(UserContext);
+  const [showEdit, setShowEdit] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const [servicioSeleccionado, setServicioSeleccionado] = useState(null);
+
+  // Ejemplo de servicios para edición/eliminación (debería venir de props o estado real)
+  const servicios = [
+    {
+      key: 0,
+      titulo: 'Purificante',
+      descripcion: 'Tratamiento para eliminar toxinas y revitalizar la piel, mediante el uso de diferentes aceites que contienen romero, eucalipto, menta, aloe vera y demás. El objetivo del masaje con aromaterapia purificante es desintoxicar y drenar su piel para una mejora tanto estética como saludable para su correcta cirulación.',
+      precio: 65000
+    },
+    {
+      key: 1,
+      titulo: 'Relajante',
+      descripcion: 'Aplicamos aceites calmantes mediante maniobras de masaje lentas y suaves,pero precisas para cumplir el objetivo de liberar tensiones. Nuestros aceites están integrados por lavanda, manzanilla, sándalo, vainilla, entre otros. Al finalizar habrá librado hasta las tensiones más profundas, calmando su sistema nervioso y favorenciendo su descanso, ayudando también a dormir correctamente luego del masaje con aromaterapia relajante',
+      precio: 70000
+    },
+    {
+      key: 2,
+      titulo: 'Estimulante',
+      descripcion: 'Mediante el masaje con aromaterapia estimulante logramos combatir el cansancio y reactivar su energía con masajes firmes y dinámicos. El mismo se hace con la ayuda de aceites energizantes, los cuales contienen cítricos, cafeína, jengibre, entre otros. Garantizamos una mejora en el tono muscular, correcta circulación y una sensación de vitalidad y ánimo elevado.',
+      precio: 72500
+    }
+  ];
+
+  const handleEdit = (servicio) => {
+    setServicioSeleccionado(servicio);
+    setShowEdit(true);
+  };
+  const handleDelete = (servicio) => {
+    setServicioSeleccionado(servicio);
+    setShowDelete(true);
+  };
+  const handleSaveEdit = async (servicioEditado) => {
+    try {
+      await actualizarServicio(servicioEditado.key, {
+        titulo: servicioEditado.titulo,
+        descripcion: servicioEditado.descripcion,
+        precio: servicioEditado.precio
+      });
+    } catch (error) {
+      alert('Error al actualizar el servicio');
+    }
+    setShowEdit(false);
+  };
+  const handleConfirmDelete = async (servicio) => {
+    try {
+      await eliminarServicio(servicio.key);
+    } catch (error) {
+      alert('Error al eliminar el servicio');
+    }
+    setShowDelete(false);
+  };
   const [searchParams] = useSearchParams();
   const [index, setIndex] = useState(0);
 
@@ -49,7 +108,13 @@ function ServiciosMaAromat() {
             </Card.Text>
             <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=essential-face-care"}>
               <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
-            </Link>                   
+            </Link>
+            {isAdmin && (
+              <div className="admin-actions">
+                <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[0])}>Editar</Button>
+                <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[0])}>Eliminar</Button>
+              </div>
+            )}
           </Card.Body>
         </Card>
       </Carousel.Item>
@@ -69,7 +134,13 @@ function ServiciosMaAromat() {
             </Card.Text>
             <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=essential-face-care"}>
               <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
-            </Link>                   
+            </Link>
+            {isAdmin && (
+              <div className="admin-actions">
+                <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[1])}>Editar</Button>
+                <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[1])}>Eliminar</Button>
+              </div>
+            )}
           </Card.Body>
         </Card>
       </Carousel.Item>
@@ -89,11 +160,20 @@ function ServiciosMaAromat() {
             </Card.Text>
             <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=glowing-vit-c"}>
               <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
-            </Link>                   
+            </Link>
+            {isAdmin && (
+              <div className="admin-actions">
+                <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[2])}>Editar</Button>
+                <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[2])}>Eliminar</Button>
+              </div>
+            )}
           </Card.Body>
         </Card>
       </Carousel.Item>
-     </Carousel>         
+    </Carousel>
+    {/* Modales admin */}
+    <ModalEditarServicio show={showEdit} onHide={() => setShowEdit(false)} servicio={servicioSeleccionado} onSave={handleSaveEdit} />
+    <ModalEliminarServicio show={showDelete} onHide={() => setShowDelete(false)} servicio={servicioSeleccionado} onDelete={handleConfirmDelete} />
     </article>
     <article className='Sector-Comentarios'>
       <hr className='hr-servicio'/>

@@ -1,42 +1,62 @@
+import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
 import '../styles/contactopage.css';
 import emailjs from '@emailjs/browser';
-import { Link } from 'react-router-dom';
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_CONTACTO_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACTO_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-
-
 function Contacto () {
-  if (EMAILJS_PUBLIC_KEY) {
-    try {
-      emailjs.init(EMAILJS_PUBLIC_KEY);
-    } catch (e) {
-    console.error('emailjs init error', e);
-    }
-  }
+  
+ const form = useRef();
+
+ const sendEmail = (e) => {
+  e.preventDefault();
+
+  const now = new Date();
+  const fechaEnvio = `${now.toLocaleDateString()} a las ${now.toLocaleTimeString()}`;
+
+  const templateParams = {
+    name: form.current.name.value,
+    email: form.current.email.value,
+    title: form.current.title.value,
+    message: form.current.message.value,
+    fecha_registro: fechaEnvio,
+  };
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, { publicKey: EMAILJS_PUBLIC_KEY })
+    .then(
+      () => {
+        alert('Email enviado con éxito!');
+        form.current.reset();
+      },
+      (error) => {
+        console.log('FALLÓ CONEXIÓN...', error);
+        alert('Falló al enviar el email. Por favor, intente nuevamente.');
+      }
+    )
+ }
 
   return (
      <>
       <section id="MainContacto">
         <article className="Mapa">
-          <div class="aesthetic-card">
-           <i class="bi bi-clock-history aesthetic-icon"></i>
-           <h1 class="aesthetic-title">CONSULTA DIRECTA</h1>
-           <p class="aesthetic-text">
+          <div className="aesthetic-card">
+           <i className="bi bi-clock-history aesthetic-icon"></i>
+           <h1 className="aesthetic-title">CONSULTA DIRECTA</h1>
+           <p className="aesthetic-text">
           <span>Disponible:</span> 08:00 a 22:00 hs <br />Todos los días</p>
-          <div class="space-y-4">
+          <div className="space-y-4">
             <a href="https://wa.me/543815783030" target="_blank" 
-               class="aesthetic-button">
-                <i class="bi bi-whatsapp"></i>
+               className="aesthetic-button">
+                <i className="bi bi-whatsapp"></i>
                 <span> 0381-5783-030</span>
             </a>
         </div>
-        <p class="aesthetic-footer-text">
+        <p className="aesthetic-footer-text">
             Hacé click para iniciar el chat. Respondemos al instante.
         </p>
         </div>
@@ -52,28 +72,23 @@ function Contacto () {
          <hr className='hrcontacto'/>
         <h2 id="FormContacto">Nuestro equipo está disponible las 24 horas. Envíe su consulta aquí:</h2>
         <article className="ContactoForm">
-          <Form>
+          <Form ref={form} onSubmit={sendEmail}>
             <Form.Group className="mb-3" id="formBasicEmail">
-              <Form.Label htmlFor="nombre-contacto" className="form-label" name="nombre-contacto">Nombre</Form.Label>
-                <Form.Control type="text" className="form-control" id="nombre-contacto" placeholder="Ej: Sofia" 
+              <Form.Label htmlFor="nombre-contacto" className="form-label" name="nombre-contacto">Nombre y Apellido</Form.Label>
+                <Form.Control type="text" name='name' className="form-control" id="nombre-contacto" placeholder="Ej: Sofia Perez" 
                 minLength={3} maxLength={30}
                 required/>
             </Form.Group>
             <Form.Group className="mb-3" >
-              <Form.Label htmlFor="apellido-contacto" className="form-label" name="apellido-contacto">Apellido</Form.Label>
-              <Form.Control type="text" className="form-control" id="apellido-contacto" placeholder="Ej: Rodriguez" required/>
-            </Form.Group>
-            <Form.Group className="mb-3" >
               <Form.Label htmlFor="email-contacto" className="form-label" name="email-contacto">Email</Form.Label>
-              <Form.Control type="email" className="form-control" id="email-contacto" placeholder="name@example.com" required/>
+              <Form.Control type="email" name='email' className="form-control" id="email-contacto" placeholder="name@example.com" required/>
             </Form.Group>
             <Form.Group className="mb-3" >
               <Form.Label htmlFor="textarea-contacto" className="form-label">Dejanos tu consulta</Form.Label>
-              <Form.Control as="textarea" id="textarea-contacto" placeholder='Escriba aquí su consulta' rows="3" required/>
+              <Form.Control as="textarea" name="title" id="textarea-contacto" placeholder='Asunto' rows="1" required/>
+              <Form.Control as="textarea" name="message" id="textarea-contacto" placeholder='Escriba aquí su consulta' rows="3" required/>
             </Form.Group>
-            <Link to="*">
-              <Button type='button' className='btnContacto'>Enviar</Button>
-            </Link>
+              <Button variant='primary' type='submit' className='btnContacto'>Enviar</Button>
           </Form>  
           </article>
         </section>   

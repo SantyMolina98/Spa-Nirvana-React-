@@ -4,9 +4,75 @@ import '../styles/servicios.css';
 import { Link, useSearchParams } from 'react-router-dom';
 import imagenMap from '../assets/imagenMap.js';
 import {Card, Button, Carousel} from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+import { ModalEditarServicio, ModalEliminarServicio } from '../components/ModalServicioAdmin';
+import { actualizarServicio, eliminarServicio } from '../helpers/ServicioApi';
+
 
 function ServiciosFacial() {
+  const { isAdmin } = useContext(UserContext);
+  const [showEdit, setShowEdit] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const [servicioSeleccionado, setServicioSeleccionado] = useState(null);
+
+  // Ejemplo de servicios para edición/eliminación (debería venir de props o estado real)
+  const servicios = [
+    {
+      key: 0,
+      titulo: 'Essential Face Care',
+      descripcion: 'El full face es un procedimiento estético que aborda el rostro de manera integral, tratando diferentes áreas en una misma sesión para lograr un resultado armónico y natural. A diferencia de otros tratamientos localizados, su enfoque global permite trabajar de manera personalizada cada zona, según las necesidades específicas del paciente. Restaura el volumen, redefine los contornos y suaviza arrugas, siempre respetando la expresión natural del rostro.',
+      precio: 45500
+    },
+    {
+      key: 1,
+      titulo: 'Glowing Vit C+',
+      descripcion: 'El glowing vit c+ se trata de un procedimeinto de limpieza profunda para eliminar exceso de sebo. Se le aplica una máscara o sérum con vitamina C. Sus beneficios son brillo y luminosidad en la piel, mejora de textura y firmeza, nutrición y una piel hidratada.',
+      precio: 45500
+    },
+    {
+      key: 2,
+      titulo: 'Rebalancing Face Care',
+      descripcion: 'El rebalancing es una técnica fundamental en el proceso de selección de los mejores productos de estética. Permite ajustar la proporción de ingredientes activos para lograr un equilibrio óptimo en cada fórmula. Además, rebalancing es el templo donde la piel y el pelo recuperan su equilibrio. Además, el rebalancing facial es el arte y la ciencia de usar tratamientos no quirúrgicos, como rellenos dérmicos y Botox, para restaurar la simetría, proporción y armonía en el rostro, destinados a mejorar la simetría y armonía del rostro. Cada procedimiento se enfoca en diferentes aspectos del rostro, lo que permite un enfoque completo en mejorar la apariencia general.',
+      precio: 49000
+    },
+    {
+      key: 3,
+      titulo: 'Glowing Roses',
+      descripcion: 'El tratamiento facial Glowing Roses se realiza con perlas de células madre de rosa alpina y ácido hialurónico. Este lujoso ingrediente actúa como reafirmante natural, aportando luminosidad, hidratación, suavidad y elasticidad. Es un tratamiento no invasivo, indoloro y sin efectos secundarios, perfecto para recuperar la piel tras el verano y mejorar las manchas. El tratamiento se realiza con perlas de células madre de rosa alpina y ácido hialurónico, que previene la deshidratación a lo largo del día. Apto para todo tipo de piel, incluso las más sensibles.',
+      precio: 50000
+    }
+  ];
+
+  const handleEdit = (servicio) => {
+    setServicioSeleccionado(servicio);
+    setShowEdit(true);
+  };
+  const handleDelete = (servicio) => {
+    setServicioSeleccionado(servicio);
+    setShowDelete(true);
+  };
+  const handleSaveEdit = async (servicioEditado) => {
+    try {
+      // Aquí se asume que el servicio tiene un id o key único
+      await actualizarServicio(servicioEditado.key, {
+        titulo: servicioEditado.titulo,
+        descripcion: servicioEditado.descripcion,
+        precio: servicioEditado.precio
+      });
+    } catch (error) {
+      alert('Error al actualizar el servicio');
+    }
+    setShowEdit(false);
+  };
+  const handleConfirmDelete = async (servicio) => {
+    try {
+      await eliminarServicio(servicio.key);
+    } catch (error) {
+      alert('Error al eliminar el servicio');
+    }
+    setShowDelete(false);
+  };
 
   const [searchParams] = useSearchParams();
   const [index, setIndex] = useState(0);
@@ -50,7 +116,13 @@ function ServiciosFacial() {
                 </Card.Text>
                 <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=essential-face-care"}>
                   <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
-                </Link>                   
+                </Link>
+                {isAdmin && (
+                  <div className="admin-actions">
+                    <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[0])}>Editar</Button>
+                    <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[0])}>Eliminar</Button>
+                  </div>
+                )}
               </Card.Body>
             </Card>
           </Carousel.Item>
@@ -69,7 +141,13 @@ function ServiciosFacial() {
                 </Card.Text>
                 <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=glowing-vit-c"}>
                   <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
-                </Link>                   
+                </Link>
+                {isAdmin && (
+                  <div className="admin-actions">
+                    <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[1])}>Editar</Button>
+                    <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[1])}>Eliminar</Button>
+                  </div>
+                )}
               </Card.Body>
             </Card>
           </Carousel.Item>
@@ -89,6 +167,12 @@ function ServiciosFacial() {
                 <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=rebalancing-face-care"}>
                   <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
                 </Link>
+                {isAdmin && (
+                  <div className="admin-actions">
+                    <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[2])}>Editar</Button>
+                    <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[2])}>Eliminar</Button>
+                  </div>
+                )}
               </Card.Body>
             </Card>
           </Carousel.Item>
@@ -108,10 +192,19 @@ function ServiciosFacial() {
                   <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=glowing-roses"}>
                     <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
                   </Link>
+                  {isAdmin && (
+                    <div className="admin-actions">
+                      <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[3])}>Editar</Button>
+                      <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[3])}>Eliminar</Button>
+                    </div>
+                  )}
               </Card.Body>
             </Card>
           </Carousel.Item>
-        </Carousel>         
+        </Carousel>
+        {/* Modales admin */}
+        <ModalEditarServicio show={showEdit} onHide={() => setShowEdit(false)} servicio={servicioSeleccionado} onSave={handleSaveEdit} />
+        <ModalEliminarServicio show={showDelete} onHide={() => setShowDelete(false)} servicio={servicioSeleccionado} onDelete={handleConfirmDelete} />
       </article>
       <article className='Sector-Comentarios'>
         <hr className='hr-servicio'/>

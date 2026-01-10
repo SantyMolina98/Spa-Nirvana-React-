@@ -74,7 +74,7 @@ export function UserProvider({ children }) {
       ciudad: datos.provincia,
       codpostal: datos.cpostal,
       password: datos.contrasena,
-      rol: "ROL_USUARIO"
+      rol: "Usuario"
     };
 
     try {

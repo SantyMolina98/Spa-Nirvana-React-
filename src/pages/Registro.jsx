@@ -4,9 +4,15 @@ import '../styles/registroPage.css';
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+import emailjs from '@emailjs/browser';
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_BIENVENIDA_ID=import.meta.env.VITE_EMAILJS_TEMPLATE_BIENVENIDA_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 
 function Registro () {
+
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [usuario, setUsuario] = useState('');
@@ -26,6 +32,7 @@ function Registro () {
     e.preventDefault();
     const formReg = e.target;
     setValidatedReg(true);
+
     if (formReg.checkValidity() === false) {
       e.stopPropagation();
       return; 
@@ -42,9 +49,22 @@ function Registro () {
                 cpostal, 
                 contrasena
         });
+    
+    //para emailjs
+    const templateParams = {
+      name: usuario,
+      email: email,
+    };
 
-        alert('Registro exitoso!');
-        navigateReg('/'); 
+    await emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_BIENVENIDA_ID,
+      templateParams,
+      EMAILJS_PUBLIC_KEY
+    );
+
+    alert('¡Registro exitoso! Te enviamos un email de bienvenida.');
+    navigateReg('/');
 
     } catch (err) {
         console.error(err);
@@ -56,12 +76,10 @@ function Registro () {
     <>
     <div className='mainRegistro'>
       <h2 className='h2Reg'>CREAR NUEVO USUARIO</h2>
-      <Card className="CardRegistro">   
+      <Card className="CardRegistro">
         <Card.Body className="ContainerRegistro">
-          <h4  className='h4Reg'>Ahora ingrese sus datos</h4> 
-          
+          <h4  className='h4Reg'>Ahora ingrese sus datos</h4>
           <Form noValidate validated={validatedReg} className="FormRegistro" onSubmit={registrar}>
-            
             <Form.Group>
               <Form.Label className="TextReg">Nombre:</Form.Label>
               <br/>
@@ -111,7 +129,7 @@ function Registro () {
             <Form.Group>
               <Form.Label className="TextReg">E-mail:</Form.Label><br/>
               <Form.Control 
-                type="email" 
+                type="email"
                 placeholder="ej: usuario123@gmail.com" 
                 minLength={11} maxLength={45} 
                 value={email}

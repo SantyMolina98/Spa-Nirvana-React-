@@ -1,4 +1,4 @@
-const url = "https://spa-nirvana.vercel.app";
+const url = "https://spa-nirvana-backend.vercel.app";
 
 export const crearUsuario = async (datos) => {
   try{

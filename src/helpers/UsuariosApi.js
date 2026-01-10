@@ -1,9 +1,13 @@
-const url = "https://spa-nirvana.vercel.app/api/usuarios";
+const url = "https://spa-nirvana-backend.vercel.app/api/usuarios";
+
+const token = localStorage.getItem("token");
+const limite = 100;
 
 //Traer Usuarios
 export const getUsuarios = async (desde = 0) => {
+
   try {
-    const token = JSON.parse(localStorage.getItem("token"));
+    
     const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
     if (token) headers["x-token"] = token;
@@ -23,8 +27,9 @@ export const getUsuarios = async (desde = 0) => {
 
 //Traer Usuario por ID
 export const getUsuarioById = async (id) => {
+
   try{
-    const token = JSON.parse(localStorage.getItem("token"));
+    
     const headers = {"Content-Type": "application/json; charset=UTF-8"};  
 
     if (token) headers["x-token"] = token;
@@ -62,7 +67,6 @@ export const crearUsuario = async (datos) => {
 //Actualizar Usuario
 export const actualizarUsuario = async (id, datos) => {
   try{
-    const token = JSON.parse(localStorage.getItem("token"));
     const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
     if (token) headers["x-token"] = token;
@@ -84,7 +88,7 @@ export const actualizarUsuario = async (id, datos) => {
 //Eliminar Usuario (no físicamente)
 export const eliminarUsuario = async (id) => {
   try{
-    const token = JSON.parse(localStorage.getItem("token"));
+    
     const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
     if (token) headers["x-token"] = token;
