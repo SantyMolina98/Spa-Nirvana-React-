@@ -4,8 +4,68 @@ import '../styles/servicios.css';
 import { Link, useSearchParams } from 'react-router-dom';
 import imagenMap from '../assets/imagenMap.js';
 import {Card, Button, Carousel} from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+import { actualizarServicio, eliminarServicio } from '../helpers/ServicioApi';
+import { ModalEditarServicio, ModalEliminarServicio } from '../components/ModalServicioAdmin';
+
+
 function ServiciosTrCorporal() {
+  const { isAdmin } = useContext(UserContext);
+  const [showEdit, setShowEdit] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const [servicioSeleccionado, setServicioSeleccionado] = useState(null);
+
+  // Estado de servicios editable
+  const [servicios, setServicios] = useState([
+    {
+      key: 0,
+      titulo: 'Ceremonia Liwen',
+      descripcion: 'Terapia integral inspirada en rituales ancestrales mapuches, enfocada en restaurar el equilibrio físico y energético del cuerpo. Combinamos técnicas de exfoliación, envolturas naturales (arcilla o hierbas, a elección), masajes relajantes y aromas. En resumen, es una experiencia sensorial y de bienestar profundo, ideal para quienes buscan relajación y conexión con la naturaleza',
+      precio: 75000
+    },
+    {
+      key: 1,
+      titulo: 'Ceremonia Ragiantu',
+      descripcion: 'Exfoliación corporal natural para remover células muertas, seguido de una aplicación de fango nutritivo que contiene manzanilla y flores autóctonas para restaurar tejidos, finalizando con hidroterapia en ducha tipo Vichy. Sus beneficios constan en la restauración de tejidos corporales y una completa renovación sensorial.',
+      precio: 72500
+    }
+  ]);
+
+  const handleEdit = (servicio) => {
+    setServicioSeleccionado(servicio);
+    setShowEdit(true);
+  };
+  const handleDelete = (servicio) => {
+    setServicioSeleccionado(servicio);
+    setShowDelete(true);
+  };
+  const handleSaveEdit = async (servicioEditado) => {
+    try {
+      await actualizarServicio(servicioEditado.key, {
+        titulo: servicioEditado.titulo,
+        descripcion: servicioEditado.descripcion,
+        precio: servicioEditado.precio
+      });
+      setServicios(prev => prev.map(s =>
+        s.key === servicioEditado.key
+          ? { ...s, titulo: servicioEditado.titulo, descripcion: servicioEditado.descripcion, precio: servicioEditado.precio }
+          : s
+      ));
+    } catch (error) {
+      alert('Error al actualizar el servicio');
+    }
+    setShowEdit(false);
+  };
+  const handleConfirmDelete = async (servicio) => {
+    try{
+      await eliminarServicio(servicio.key);
+    }
+    catch(error){
+      alert('Error al eliminar el servicio');
+    }
+    setShowDelete(false);
+  };
   const [searchParams] = useSearchParams();
   const [index, setIndex] = useState(0);
 
@@ -47,7 +107,13 @@ function ServiciosTrCorporal() {
                 </Card.Text>
                 <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=essential-face-care"}>
                   <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
-                </Link>                   
+                </Link>
+                {isAdmin && (
+                  <div className="admin-actions">
+                    <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[0])}>Editar</Button>
+                    <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[0])}>Eliminar</Button>
+                  </div>
+                )}
               </Card.Body>
             </Card>
           </Carousel.Item>
@@ -67,11 +133,20 @@ function ServiciosTrCorporal() {
                 </Card.Text>
                 <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=glowing-vit-c"}>
                   <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
-                </Link>                   
+                </Link>
+                {isAdmin && (
+                  <div className="admin-actions">
+                    <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[1])}>Editar</Button>
+                    <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[1])}>Eliminar</Button>
+                  </div>
+                )}
               </Card.Body>
             </Card>
           </Carousel.Item>
-        </Carousel>         
+        </Carousel>
+        {/* Modales admin */}
+        <ModalEditarServicio show={showEdit} onHide={() => setShowEdit(false)} servicio={servicioSeleccionado} onSave={handleSaveEdit} />
+        <ModalEliminarServicio show={showDelete} onHide={() => setShowDelete(false)} servicio={servicioSeleccionado} onDelete={handleConfirmDelete} />
       </article>
       <article className='Sector-Comentarios'>
            <hr className='hr-servicio'/>
