@@ -1,23 +1,23 @@
 const url = "https://spa-nirvana-backend.vercel.app/api/usuarios";
 
-const token = localStorage.getItem("token");
 const limite = 100;
 
 //Traer Usuarios
 export const getUsuarios = async (desde = 0) => {
 
   try {
-    
-    const headers = {"Content-Type": "application/json; charset=UTF-8"};
+    const token = localStorage.getItem("token");
+    // const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
-    if (token) headers["x-token"] = token;
+    // if (token) headers["x-token"] = token;
 
     const respuesta = await fetch(`${url}?limite=${limite}&desde=${desde}`, {
       method: "GET",
-      headers 
+      headers: {"Content-Type": "application/json; charset=UTF-8", "x-token": token}
     });
+    console.log(respuesta);
     const data = await respuesta.json();
-
+    // console.log(data);
     return data;
   } catch (error) {
     console.log(error);

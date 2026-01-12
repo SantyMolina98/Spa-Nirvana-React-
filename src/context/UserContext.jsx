@@ -65,9 +65,10 @@ export function UserProvider({ children }) {
 };
 
   const registro = async (datos) => {
-    const datosParaBackend = {
+    const datosB = {
       nombre: datos.nombre,
       apellido: datos.apellido,
+      username: datos.usuario,
       correo: datos.email,
       telefono: datos.telefono,
       domicilio: datos.domicilio,
@@ -78,7 +79,7 @@ export function UserProvider({ children }) {
     };
 
     try {
-      const respuesta = await crearUsuario(datosParaBackend);
+      const respuesta = await crearUsuario(datosB);
       if (respuesta.usuario || respuesta.uid) {
         setUser(respuesta.usuario);
         return respuesta.usuario;
