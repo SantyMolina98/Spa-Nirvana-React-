@@ -3,6 +3,7 @@ import '../styles/categorias.css';
 import { Link } from "react-router-dom";
 import imagenMap from '../assets/imagenMap.js';
 import { Button } from 'react-bootstrap';
+import { crearServicio } from '../helpers/ServicioApi.js';
 
 function Categorias() {
   return (
