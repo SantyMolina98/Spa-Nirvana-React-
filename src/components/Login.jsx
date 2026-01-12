@@ -60,6 +60,7 @@ function Login() {
           } else {
              await login({ username: email });
           }
+          console.log(respuesta);
 
           setSuccess(`¡Bienvenido/a! Has iniciado sesión con éxito.`);
         } else {
