@@ -1,7 +1,6 @@
 import '../App.css';
 import '../styles/admin.css';
 import { useState, useEffect, useContext } from 'react';
-
 import { getUsuarios, crearUsuario, actualizarUsuario, eliminarUsuario } from '../helpers/UsuariosApi.js';
 import { getCategorias, getCategoriaById, crearCategoria, actualizarCategoria, eliminarCategoria } from '../helpers/CategoriaApi.js';
 import { getServicios , getServicioById, crearServicio, actualizarServicio, eliminarServicio,  } from '../helpers/ServicioApi.js';
@@ -60,8 +59,8 @@ export default function Admin() {
         <hr />
         <ul>
           {regularUsers.map(usuario => (
-            <li key={usuario._id}>
-              Usuario: {usuario.nombre} - Email: {usuario.email}
+            <li key={usuario.uid}>
+              Usuario: {usuario.nombre} - Email: {usuario.correo}
             </li>
           ))}
           <li>
@@ -79,8 +78,8 @@ export default function Admin() {
         <hr />
         <ul>
           {admins.map(usuario => (
-            <li key={usuario._id}>
-              Administrador: {usuario.nombre} - Email: {usuario.email}
+            <li key={usuario.uid}>
+              Administrador: {usuario.nombre} - Email: {usuario.correo}
             </li>
           ))}
           <li>
