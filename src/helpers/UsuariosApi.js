@@ -7,17 +7,14 @@ export const getUsuarios = async (desde = 0) => {
 
   try {
     const token = localStorage.getItem("token");
-    // const headers = {"Content-Type": "application/json; charset=UTF-8"};
-
-    // if (token) headers["x-token"] = token;
-
+ 
     const respuesta = await fetch(`${url}?limite=${limite}&desde=${desde}`, {
       method: "GET",
       headers: {"Content-Type": "application/json; charset=UTF-8", "x-token": token}
     });
-    console.log(respuesta);
+   
     const data = await respuesta.json();
-    // console.log(data);
+   
     return data;
   } catch (error) {
     console.log(error);
