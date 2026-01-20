@@ -1,34 +1,46 @@
 import '../App.css';
 import '../styles/admin.css';
 import { useState, useEffect, useContext } from 'react';
-import { getUsuarios, crearUsuario, actualizarUsuario, eliminarUsuario } from '../helpers/UsuariosApi.js';
-import { getCategorias, getCategoriaById, crearCategoria, actualizarCategoria, eliminarCategoria } from '../helpers/CategoriaApi.js';
-import { getServicios , getServicioById, crearServicio, actualizarServicio, eliminarServicio,  } from '../helpers/ServicioApi.js';
+import { getUsuarios } from '../helpers/UsuariosApi.js';
+import { getServicios } from '../helpers/ServicioApi.js';
 import { getReservas,  } from '../helpers/ReservasApi.js';
 import { UserContext } from '../context/UserContext.jsx';
-import { Button, Form, FormControl } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { ModalEditarServicio, ModalEliminarServicio } from '../components/ModalServicioEditDelete.jsx';
+import { ModalAgregarUsuario, ModalEditarUsuario, ModalEliminarUsuario } from '../components/ModalUsuariosAdmin.jsx';
+import { ModalAgregarServicio } from '../components/ModalServicioNuevo.jsx';
 
 export default function Admin() {
   const {user} = useContext(UserContext);
   const [usuarios, setUsuarios] = useState([]);
   const [reservas, setReservas] = useState([]);
-  const [categorias, setCategorias] = useState([]);
   const [servicios, setServicios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  
+  // Modales de servicios
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [servicioSeleccionado, setServicioSeleccionado] = useState(null);
+  const [showAgregarServicio, setShowAgregarServicio] = useState(false);
+
+  // Modales de usuarios
+  const [showAgregarUsuario, setShowAgregarUsuario] = useState(false);
+  const [showEditarUsuario, setShowEditarUsuario] = useState(false);
+  const [showEliminarUsuario, setShowEliminarUsuario] = useState(false);
+  const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const usuariosData = await getUsuarios();
         const reservasData = await getReservas();
-        const categoriasData = await getCategorias();
         const serviciosData = await getServicios();
 
         setUsuarios(usuariosData.usuarios || []);
         setReservas(reservasData.reservas || []);
-        setCategorias(categoriasData.categorias || []);
         setServicios(serviciosData.servicios || []);
+        
         
       } catch (err) {
         setError('Error al cargar los datos');
@@ -40,8 +52,62 @@ export default function Admin() {
     fetchData();
   }, []);
 
+  // Filtrar usuarios por rol
   const admins = usuarios.filter(usuario => usuario.rol === 'Admin');
   const regularUsers = usuarios.filter(usuario => usuario.rol !== 'Admin');
+
+  // Funciones para manejo de servicios
+  const handleEditServicio = (servicio) => {
+    setServicioSeleccionado(servicio);
+    setShowEditModal(true);
+  };
+
+  const handleDeleteServicio = (servicio) => {
+    setServicioSeleccionado(servicio);
+    setShowDeleteModal(true);
+  };
+
+  const handleSaveServicio = (servicioEditado) => {
+    setServicios(servicios.map(s => s._id === servicioEditado._id ? servicioEditado : s));
+    setShowEditModal(false);
+  };
+
+  const handleConfirmDeleteServicio = (servicio) => {
+    setServicios(servicios.filter(s => s._id !== servicio._id));
+    setShowDeleteModal(false);
+  };
+
+  const handleAgregarServicio = (nuevoServicio) => {
+    setServicios([...servicios, nuevoServicio]);
+    setShowAgregarServicio(false);
+  };
+
+  // Funciones para manejo de usuarios
+  const handleAgregarUsuario = (nuevoUsuario) => {
+    setUsuarios([...usuarios, nuevoUsuario]);
+    setShowAgregarUsuario(false);
+  };
+
+  const handleEditarUsuario = (usuario) => {
+    setUsuarioSeleccionado(usuario);
+    setShowEditarUsuario(true);
+  };
+
+  const handleEliminarUsuario = (usuario) => {
+    setUsuarioSeleccionado(usuario);
+    setShowEliminarUsuario(true);
+  };
+
+  const handleSaveUsuario = (usuarioEditado) => {
+    setUsuarios(usuarios.map(u => u.uid === usuarioEditado.uid ? usuarioEditado : u));
+    setShowEditarUsuario(false);
+  };
+
+  const handleConfirmDeleteUsuario = (usuario) => {
+    setUsuarios(usuarios.filter(u => u.uid !== usuario.uid));
+    setShowEliminarUsuario(false);
+  };
+
 
   if (loading) return <div className="TextoCargando"><h2>Cargando...</h2></div>;
   if (error) return <div className="TextoError"><h2>{error}</h2></div>;
@@ -52,40 +118,99 @@ export default function Admin() {
       <div className='ContenidoAdmin'>
         <section>
         <h3 className='TituloSeccion'>Usuarios</h3>
-        <Form>
-          <Form.Control type='search' placeholder='Buscar usuarios por ID' aria-label='Search'/>
-          <Button type='submit'>Buscar</Button>
-        </Form>
+        <Button 
+          className="mb-3"
+          onClick={() => setShowAgregarUsuario(true)}
+        >
+          Agregar Usuario
+        </Button>
         <hr />
-        <ul>
-          {regularUsers.map(usuario => (
-            <li key={usuario.uid}>
-              Usuario: {usuario.nombre} - Email: {usuario.correo}
-            </li>
-          ))}
-          <li>
-            Total de Usuarios: {regularUsers.length}
-          </li>
-        </ul>
+        {regularUsers.length > 0 ? (
+          <div className="table-responsive">
+            <table className="tabla-servicios">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {regularUsers.map(usuario => (
+                  <tr key={usuario.uid}>
+                    <td>{usuario.nombre}</td>
+                    <td>{usuario.correo}</td>
+                    <td>
+                      <Button 
+                        variant="warning" 
+                        size="sm" 
+                        className="me-2"
+                        onClick={() => handleEditarUsuario(usuario)}
+                      >
+                        Editar
+                      </Button>
+                      <Button 
+                        variant="danger" 
+                        size="sm"
+                        onClick={() => handleEliminarUsuario(usuario)}
+                      >
+                        Eliminar
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p><strong>Total de Usuarios: {regularUsers.length}</strong></p>
+          </div>
+        ) : (
+          <p>No hay usuarios registrados.</p>
+        )}
         </section>
         <hr />
         <section>
         <h3 className='TituloSeccion'>Administradores</h3>
-        <Form>
-          <Form.Control type='search' placeholder='Buscar administradores por ID' aria-label='Search'/>
-          <Button type='submit'>Buscar</Button>
-        </Form>
-        <hr />
-        <ul>
-          {admins.map(usuario => (
-            <li key={usuario.uid}>
-              Administrador: {usuario.nombre} - Email: {usuario.correo}
-            </li>
-          ))}
-          <li>
-            Total de Administradores: {admins.length}
-          </li>
-        </ul>
+        {admins.length > 0 ? (
+          <div className="table-responsive">
+            <table className="tabla-servicios">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {admins.map(admin => (
+                  <tr key={admin.uid}>
+                    <td>{admin.nombre}</td>
+                    <td>{admin.correo}</td>
+                    <td>
+                      <Button 
+                        variant="warning" 
+                        size="sm" 
+                        className="me-2"
+                        onClick={() => handleEditarUsuario(admin)}
+                      >
+                        Editar
+                      </Button>
+                      <Button 
+                        variant="danger" 
+                        size="sm"
+                        onClick={() => handleEliminarUsuario(admin)}
+                      >
+                        Eliminar
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p><strong>Total de Administradores: {admins.length}</strong></p>
+          </div>
+        ) : (
+          <p>No hay administradores registrados.</p>
+        )}
         </section>
         <hr />
         <section>
@@ -105,27 +230,99 @@ export default function Admin() {
         </ul>
         </section>
         <hr />
-        <section>
+       <section>
         <h3 className='TituloSeccion'>Servicios</h3>
-        <Button>Añadir Servicio</Button>
+        <Button 
+          className="mb-3"
+          onClick={() => setShowAgregarServicio(true)}
+        >
+          Añadir Servicio
+        </Button>
         <hr />
-        <ul>
-          {categorias.map(categoria => (
-            <li key={categoria._id}>
-              Nombre: {categoria.nombre}
-            </li>
-          ))}
-          {servicios.map(servicio => (
-            <li key={servicio._id}>
-              Servicio: {servicio.nombre}, Descripción: {servicio.descripcion}, Duración: {servicio.duracion} , Precio: ${servicio.precio}, <Button>Editar</Button>  <Button>Eliminar</Button>
-            </li>
-          ))}
-          <li>
-            Total de Servicios: {servicios.length}
-          </li>
-        </ul>
-        
+        {servicios.length > 0 ? (
+          <div className="table-responsive">
+            <table className="tabla-servicios">
+              <thead>
+                <tr>
+                  <th>Categoría</th>
+                  <th>Servicio</th>
+                  <th>Duración</th>
+                  <th>Precio</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {servicios.map(servicio => (
+                  <tr key={servicio._id}>
+                    <td>{servicio.categoria?.nombre || 'Sin categoría'}</td>
+                    <td>{servicio.nombre}</td>
+                    <td>{servicio.duracion}</td>
+                    <td>AR${servicio.precio}</td>
+                    <td>
+                      <Button 
+                        variant="warning" 
+                        size="sm" 
+                        className="me-2"
+                        onClick={() => handleEditServicio(servicio)}
+                      >
+                        Editar
+                      </Button>
+                      <Button 
+                        variant="danger" 
+                        size="sm"
+                        onClick={() => handleDeleteServicio(servicio)}
+                      >
+                        Eliminar
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p><strong>Total de Servicios: {servicios.length}</strong></p>
+          </div>
+        ) : (
+          <p>No hay servicios registrados.</p>
+        )}
         </section>
+        <ModalEditarServicio 
+          show={showEditModal} 
+          onHide={() => setShowEditModal(false)} 
+          servicio={servicioSeleccionado} 
+          onSave={handleSaveServicio} 
+        />
+        <ModalEliminarServicio 
+          show={showDeleteModal} 
+          onHide={() => setShowDeleteModal(false)} 
+          servicio={servicioSeleccionado} 
+          onDelete={handleConfirmDeleteServicio} 
+        />
+        
+        {/* Modales de Usuarios */}
+        <ModalAgregarUsuario 
+          show={showAgregarUsuario} 
+          onHide={() => setShowAgregarUsuario(false)} 
+          onSave={handleAgregarUsuario} 
+        />
+        <ModalEditarUsuario 
+          show={showEditarUsuario} 
+          onHide={() => setShowEditarUsuario(false)} 
+          usuario={usuarioSeleccionado} 
+          onSave={handleSaveUsuario} 
+        />
+        <ModalEliminarUsuario 
+          show={showEliminarUsuario} 
+          onHide={() => setShowEliminarUsuario(false)} 
+          usuario={usuarioSeleccionado} 
+          onDelete={handleConfirmDeleteUsuario} 
+        />
+
+        {/* Modal para agregar servicios */}
+        <ModalAgregarServicio 
+          show={showAgregarServicio} 
+          onHide={() => setShowAgregarServicio(false)} 
+          onSave={handleAgregarServicio} 
+        />
       </div>
     </main>
   );

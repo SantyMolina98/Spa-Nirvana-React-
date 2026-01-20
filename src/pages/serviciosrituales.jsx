@@ -6,7 +6,7 @@ import imagenMap from '../assets/imagenMap.js';
 import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import {Card, Button, Carousel} from 'react-bootstrap';
-import { ModalEditarServicio, ModalEliminarServicio } from '../components/ModalServicioAdmin';
+import { ModalEditarServicio, ModalEliminarServicio } from '../components/ModalServicioEditDelete.jsx';
 import { actualizarServicio, eliminarServicio } from '../helpers/ServicioApi';
   
 function ServiciosRitual() {
@@ -168,12 +168,12 @@ function ServiciosRitual() {
       </Carousel.Item>
       <Carousel.Item>
         <Card className='Contenido-Carrusel-Serv'>
-                          {isAdmin && (
-                            <div className="admin-actions">
-                              <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[0])}>Editar</Button>
-                              <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[0])}>Eliminar</Button>
-                            </div>
-                          )}
+          {isAdmin && (
+            <div className="admin-actions">
+              <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[0])}>Editar</Button>
+              <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[0])}>Eliminar</Button>
+            </div>
+          )}
           <Card.Img variant="left" src={imagenMap.catritualmulfem} className='Img-Servicio'/>
           <Card.Body className='Cuerpo-Texto'>
             <Card.Title className='Titulo-Carrusel'>Ritual Mülfem</Card.Title>

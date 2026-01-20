@@ -6,7 +6,7 @@ import imagenMap from '../assets/imagenMap.js';
 import {Card, Button, Carousel} from 'react-bootstrap';
 import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
-import { ModalEditarServicio, ModalEliminarServicio } from '../components/ModalServicioAdmin';
+import { ModalEditarServicio, ModalEliminarServicio } from '../components/ModalServicioEditDelete.jsx';
 import { actualizarServicio, eliminarServicio } from '../helpers/ServicioApi';
 
 

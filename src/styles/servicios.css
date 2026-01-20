@@ -13,7 +13,7 @@
 }
 
 .MainServicio{
-  width: 100%;
+  width: 100vw;
   height: auto;
 }
 
@@ -36,7 +36,7 @@
 }
 .Cuerpo-Texto{
   height: 30em;
-  width: 75%;
+  width: 100%;
   background-image:linear-gradient(to bottom, var(--color-terciaryServicio), var(--color-fifthServicio)) ;
   color: var(--color-fourthServicio);
   display: flex;

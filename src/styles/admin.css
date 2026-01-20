@@ -32,3 +32,73 @@
   color: var(--color-terciary);
   font-weight: 600;
 }
+
+/* Estilos para tabla de servicios */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.tabla-servicios {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabla-servicios thead {
+  background-color: var(--color-primay);
+  color: white;
+  font-weight: 600;
+}
+
+.tabla-servicios th {
+  padding: 1em;
+  text-align: left;
+  border-bottom: 2px solid var(--color-terciary);
+}
+
+.tabla-servicios td {
+  padding: 1em;
+  border-bottom: 1px solid #ddd;
+}
+
+.tabla-servicios tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.tabla-servicios tbody tr:hover {
+  background-color: rgba(220, 140, 75, 0.1);
+}
+
+.tabla-servicios tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive para dispositivos móviles */
+@media (max-width: 768px) {
+  .tabla-servicios {
+    font-size: 0.9em;
+  }
+  
+  .tabla-servicios th,
+  .tabla-servicios td {
+    padding: 0.7em;
+  }
+}
+
+/* Estilos para acciones de admin en servicios */
+.admin-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.admin-actions button {
+  font-size: 0.85rem;
+}
