@@ -1,10 +1,10 @@
 const url = "https://spa-nirvana-backend.vercel.app/api/categorias";
 
-const token = localStorage.getItem("token");
 const limite = 8;
 
 //Traer todas las categorías
 export const getCategorias = async (desde = 0) => {
+  const token = localStorage.getItem("token");
   try {
     const respuesta = await fetch(`${url}?limite=${limite}&desde=${desde}`, {
       method: "GET",
@@ -25,6 +25,7 @@ export const getCategorias = async (desde = 0) => {
 
 //Traer categoría por ID
 export const getCategoriaById = async (id) => {
+  const token = localStorage.getItem("token");
   try {
     const respuesta = await fetch(`${url}/${id}`, {
       method: "GET",
@@ -45,6 +46,7 @@ export const getCategoriaById = async (id) => {
 
 //Crear nueva categoría
 export const crearCategoria = async (datos) => {
+  const token = localStorage.getItem("token");
   try {
     const respuesta = await fetch(url, {
       method: "POST",
@@ -66,6 +68,7 @@ export const crearCategoria = async (datos) => {
 
 //Actualizar categoría
 export const actualizarCategoria = async (id, datos) => {
+  const token = localStorage.getItem("token");
   try {
     const respuesta = await fetch(`${url}/${id}`, {
       method: "PUT",
@@ -87,6 +90,7 @@ export const actualizarCategoria = async (id, datos) => {
 
 //Eliminar categoría
 export const eliminarCategoria = async (id) => {
+  const token = localStorage.getItem("token");
   try {
     const respuesta = await fetch(`${url}/${id}`, {
       method: "DELETE",

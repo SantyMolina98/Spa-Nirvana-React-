@@ -7,7 +7,7 @@ import {Card, Button, Carousel} from 'react-bootstrap';
 import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { actualizarServicio, eliminarServicio } from '../helpers/ServicioApi';
-import { ModalEditarServicio, ModalEliminarServicio } from '../components/ModalServicioAdmin';
+import { ModalEditarServicio, ModalEliminarServicio } from '../components/ModalServicioEditDelete.jsx';
 
 
 function ServiciosTrCorporal() {

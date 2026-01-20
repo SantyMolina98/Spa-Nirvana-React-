@@ -36,7 +36,6 @@ function Login() {
       setValidated(true);
       return;
     }
-
     setValidated(true);
 
     if (password.trim().length >= 6 && password.trim().length <= 20) {
@@ -53,14 +52,11 @@ function Login() {
         const respuesta = await authLogin(datos);
 
         if (respuesta?.token) {
-          localStorage.setItem("token", JSON.stringify(respuesta.token));
+          localStorage.setItem("token", respuesta.token); 
           
           if(respuesta.usuario){
              await login(respuesta.usuario); 
-          } else {
-             await login({ username: email });
           }
-
           setSuccess(`¡Bienvenido/a! Has iniciado sesión con éxito.`);
         } else {
           throw new Error(respuesta?.msg || 'Error al iniciar sesión.');
