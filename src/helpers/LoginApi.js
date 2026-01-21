@@ -1,4 +1,4 @@
-const url = "https://spa-nirvana-backend.vercel.app/api/auth/login";
+const url = `${import.meta.env.VITE_API_URL}/api/auth`;
 
 export const authLogin = async (datos) => {
   try{

@@ -1,4 +1,4 @@
-const url = "https://spa-nirvana-backend.vercel.app/api/categorias";
+const url = `${import.meta.env.VITE_API_URL}/api/categorias`;
 
 const limite = 8;
 

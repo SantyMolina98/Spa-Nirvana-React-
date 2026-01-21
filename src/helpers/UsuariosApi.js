@@ -1,10 +1,10 @@
-const url = "https://spa-nirvana-backend.vercel.app/api/usuarios";
+const url = `${import.meta.env.VITE_API_URL}/api/usuarios`;
 
 const limite = 100;
 
 //Traer Usuarios
 export const getUsuarios = async (desde = 0) => {
-
+ const token = localStorage.getItem("token");
   try {
     const token = localStorage.getItem("token");
  
@@ -26,7 +26,7 @@ export const getUsuarios = async (desde = 0) => {
 export const getUsuarioById = async (id) => {
 
   try{
-    
+    const token = localStorage.getItem("token");
     const headers = {"Content-Type": "application/json; charset=UTF-8"};  
 
     if (token) headers["x-token"] = token;
@@ -46,6 +46,7 @@ export const getUsuarioById = async (id) => {
 
 //Crear un nuevo Usuario (Registro)
 export const crearUsuario = async (datos) => {
+  const token = localStorage.getItem("token");
   try{
     const respuesta = await fetch(url, {
       method: "POST",
@@ -63,6 +64,7 @@ export const crearUsuario = async (datos) => {
 
 //Actualizar Usuario
 export const actualizarUsuario = async (id, datos) => {
+  const token = localStorage.getItem("token");
   try{
     const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
@@ -84,6 +86,7 @@ export const actualizarUsuario = async (id, datos) => {
 
 //Eliminar Usuario (no físicamente)
 export const eliminarUsuario = async (id) => {
+  const token = localStorage.getItem("token");
   try{
     
     const headers = {"Content-Type": "application/json; charset=UTF-8"};

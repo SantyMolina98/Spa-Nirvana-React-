@@ -1,4 +1,4 @@
-const url = "https://spa-nirvana-backend.vercel.app/api/reservas";
+const url = `${import.meta.env.VITE_API_URL}/api/reservas`;
 
 const token = localStorage.getItem("token");
 const limite = 100;
