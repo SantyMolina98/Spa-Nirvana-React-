@@ -1,4 +1,4 @@
-const url = "https://spa-nirvana-backend.vercel.app";
+const url = `${import.meta.env.VITE_API_URL}`;
 
 export const crearUsuario = async (datos) => {
   try{

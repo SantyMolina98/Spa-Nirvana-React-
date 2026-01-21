@@ -1,4 +1,4 @@
-const url = "https://spa-nirvana-backend.vercel.app/api/servicios";
+const url = `${import.meta.env.VITE_API_URL}/api/servicios`;
 
 const limite = 22;
 const token = localStorage.getItem("token");
