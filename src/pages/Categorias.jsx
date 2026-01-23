@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import '../styles/categorias.css';
 import { Link } from "react-router-dom";
 import imagenMap from '../assets/imagenMap.js';
 import { Button } from 'react-bootstrap';
 import { crearServicio } from '../helpers/ServicioApi.js';
+import { UserContext } from '../context/UserContext.jsx';
+import ModalAgregarServicio from '../components/ModalServicioNuevo.jsx';
 
 function Categorias() {
+  const { user } = useContext(UserContext);
+  const [showAgregarServicio, setShowAgregarServicio] = useState(false);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
+
+  // Debug: verificar el usuario
+  console.log('👤 Usuario en Categorias:', user);
+  console.log('🔑 Rol del usuario:', user?.rol);
+
+  const handleAgregarServicio = (categoria) => {
+    setCategoriaSeleccionada(categoria);
+    setShowAgregarServicio(true);
+  };
+
+  const handleGuardarServicio = async (nuevoServicio) => {
+    setShowAgregarServicio(false);
+    // Aquí puedes agregar lógica adicional si necesitas refrescar la lista
+  };
+
   return (
     <>
     <div className="maincategoria">  
@@ -13,7 +33,20 @@ function Categorias() {
         <article className="contenedorImg" id="scrollspyHeading1">
           <img src={imagenMap.categoriatfacial} alt="tratamientos-faciales" className="imgbanner" />
           <h2 className="titulo">Tratamientos Faciales</h2>
+          
         </article>
+        <article className='boton-admin-serv'>
+          {user?.rol === 'Admin' && (
+            <Button 
+              variant="success" 
+              size="sm" 
+              onClick={() => handleAgregarServicio('Tratamientos Faciales')}
+              className="btn-admin-agregar"
+            >
+              + Añadir Servicio
+            </Button>
+          )}
+        </article>         
         <article className="row-categorias">   
             <div className="contenedor">
               <img src={imagenMap.cattfacialessfaca} alt="tratamiento-essential-face-care" className="img-categoria" />
@@ -73,6 +106,18 @@ function Categorias() {
           <img src={imagenMap.categoriatcorporal} alt="tratamientos-corporales"  className="imgbanner" />
           <h2 className="titulo">Tratamientos Corporales</h2>
         </article>
+        <article className='boton-admin-serv'>
+          {user?.rol === 'Admin' && (
+            <Button 
+              variant="success" 
+              size="sm" 
+              onClick={() => handleAgregarServicio('Tratamientos Corporales')}
+              className="btn-admin-agregar"
+            >
+              + Añadir Servicio
+            </Button>
+          )}
+        </article>
         <article className="row-categorias">
             <div className="contenedor">
               <img src={imagenMap.cattcorporalliwen} alt="tratamiento-corporal-liwen" className="img-categoria" />
@@ -105,6 +150,18 @@ function Categorias() {
         <article className="contenedorImg" id="scrollspyHeading3">
           <img src={imagenMap.categoriamasaje} alt="masajes"  className="imgbanner" />
           <h2 className="titulo">Masajes</h2>
+        </article>
+        <article className='boton-admin-serv'>
+          {user?.rol === 'Admin' && (
+            <Button 
+              variant="success" 
+              size="sm" 
+              onClick={() => handleAgregarServicio('Masajes')}
+              className="btn-admin-agregar"
+            >
+              + Añadir Servicio
+            </Button>
+          )}
         </article>
         <article className="row-categorias">         
             <div className="contenedor">
@@ -164,6 +221,18 @@ function Categorias() {
           <img src={imagenMap.categoriaaromaterapia} alt="masajes-con-aromaterapia"  className="imgbanner" />
           <h2 className="titulo">Masajes con Aromaterapia</h2>
         </article>
+        <article className='boton-admin-serv'>
+          {user?.rol === 'Admin' && (
+            <Button 
+              variant="success" 
+              size="sm" 
+              onClick={() => handleAgregarServicio('Masajes con Aromaterapia')}
+              className="btn-admin-agregar"
+            >
+              + Añadir Servicio
+            </Button>
+          )}
+        </article>
         <article className="row-categorias">        
             <div className="contenedor">
               <img src={imagenMap.cataromatepurif} alt="masaje-a-purificante" className="img-categoria" />
@@ -207,6 +276,18 @@ function Categorias() {
         <article className="contenedorImg" id="scrollspyHeading5">
           <img src={imagenMap.categoriarituales} alt="a5" className="imgbanner" />
           <h2 className="titulo">Rituales</h2>
+        </article>
+        <article className='boton-admin-serv'>
+          {user?.rol === 'Admin' && (
+            <Button 
+              variant="success" 
+              size="sm" 
+              onClick={() => handleAgregarServicio('Rituales')}
+              className="btn-admin-agregar"
+            >
+              + Añadir Servicio
+            </Button>
+          )}
         </article>
         <article className="row-categorias">
             <div className="contenedor">
@@ -282,6 +363,14 @@ function Categorias() {
         </article>
       </section>
     </div>
+
+    {/* Modal para agregar nuevo servicio */}
+    <ModalAgregarServicio 
+      show={showAgregarServicio}
+      onHide={() => setShowAgregarServicio(false)}
+      onSave={handleGuardarServicio}
+      categoriaPreselec={categoriaSeleccionada}
+    />
   </>
   );
 }

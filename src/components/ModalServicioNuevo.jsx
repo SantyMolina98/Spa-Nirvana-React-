@@ -3,7 +3,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { crearServicio } from '../helpers/ServicioApi';
 import { getCategorias } from '../helpers/CategoriaApi';
 
-export function ModalAgregarServicio({ show, onHide, onSave }) {
+export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }) {
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [precio, setPrecio] = useState('');
@@ -19,12 +19,22 @@ export function ModalAgregarServicio({ show, onHide, onSave }) {
       try {
         const data = await getCategorias();
         setCategorias(data.categorias || []);
+        
+        // Si hay categoría preseleccionada, buscar su ID
+        if (categoriaPreselec && data.categorias) {
+          const categoriaEncontrada = data.categorias.find(
+            cat => cat.nombre === categoriaPreselec
+          );
+          if (categoriaEncontrada) {
+            setCategoriaId(categoriaEncontrada._id);
+          }
+        }
       } catch (err) {
         console.error('Error al cargar categorías:', err);
       }
     };
     fetchCategorias();
-  }, []);
+  }, [categoriaPreselec]);
 
   const resetForm = () => {
     setNombre('');
@@ -162,3 +172,5 @@ export function ModalAgregarServicio({ show, onHide, onSave }) {
     </Modal>
   );
 }
+
+export default ModalAgregarServicio;

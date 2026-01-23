@@ -31,6 +31,7 @@
     width: 100%;
     overflow: hidden;
     height: 20em;
+    
 }
 .row-categorias{
   width: 90%;
@@ -81,6 +82,7 @@
   width: 100%;
   filter: grayscale(60%);
   transition: 600ms;
+  z-index: 1;
 }
 .imgbanner:hover {
   filter: grayscale(0%);
@@ -95,6 +97,20 @@
     padding: 20px;
     color: #fff;
     border-radius: 20px;
+    z-index: 2;
+}
+
+/* BOTÓN ADMIN PARA AGREGAR SERVICIO */
+.boton-admin-serv{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: var(--color-terciarycategoria);
+}
+.btn-admin-agregar {
+   margin: 20px;
 }
 
 /* PAGINACION */

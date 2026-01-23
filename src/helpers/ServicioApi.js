@@ -1,12 +1,20 @@
 const url = `${import.meta.env.VITE_API_URL}/api/servicios`;
 
 const limite = 22;
-const token = localStorage.getItem("token");
+
 
 //Traer Servicios
 export const getServicios = async (desde = 0) => {
   try {
-    const respuesta = await fetch(`${url}?limite=${limite}&desde=${desde}`);
+    const token = localStorage.getItem("token"); 
+    const headers = {"Content-Type": "application/json; charset=UTF-8"};
+    
+    if (token) headers["x-token"] = token;
+
+    const respuesta = await fetch(`${url}?limite=${limite}&desde=${desde}`, {
+      method: "GET",
+      headers
+    });
     const data = await respuesta.json();
     
     return data;
@@ -19,7 +27,7 @@ export const getServicios = async (desde = 0) => {
 //Traer Servicio por ID
 export const getServicioById = async (id) => {
   try {
-    
+    const token = localStorage.getItem("token"); 
     const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
     if (token) headers["x-token"] = token;
@@ -40,7 +48,7 @@ export const getServicioById = async (id) => {
 //Crear un nuevo Servicio
 export const crearServicio = async (datos) => {
   try {
-    
+    const token = localStorage.getItem("token"); 
     const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
     if (token) headers["x-token"] = token;
@@ -62,7 +70,7 @@ export const crearServicio = async (datos) => {
 //Actualizar Servicio
 export const actualizarServicio = async (id, datos) => {
   try {
-    
+    const token = localStorage.getItem("token"); 
     const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
     if (token) headers["x-token"] = token;
@@ -84,7 +92,7 @@ export const actualizarServicio = async (id, datos) => {
 //Eliminar un Servicio
 export const eliminarServicio = async (id) => {
   try {
-    
+    const token = localStorage.getItem("token"); 
     const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
     if (token) headers["x-token"] = token;

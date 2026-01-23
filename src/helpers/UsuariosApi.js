@@ -46,7 +46,7 @@ export const getUsuarioById = async (id) => {
 
 //Crear un nuevo Usuario (Registro)
 export const crearUsuario = async (datos) => {
-  const token = localStorage.getItem("token");
+ 
   try{
     const respuesta = await fetch(url, {
       method: "POST",
