@@ -1,4 +1,4 @@
-const url = `${import.meta.env.VITE_API_URL}/api/auth`;
+const url = `${import.meta.env.VITE_API_URL}/api/auth/login`;
 
 export const authLogin = async (datos) => {
   try{

@@ -1,11 +1,11 @@
 const url = `${import.meta.env.VITE_API_URL}/api/reservas`;
 
-const token = localStorage.getItem("token");
 const limite = 100;
 
 //Traer Reservas
 export const getReservas = async (desde = 0) => {
   try {
+    const token = localStorage.getItem("token");
     const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
     if (token) headers["x-token"] = token;
@@ -26,7 +26,7 @@ export const getReservas = async (desde = 0) => {
 //Subir Reservas
 export const crearReserva = async (datos) => {
   try {
-    
+    const token = localStorage.getItem("token");
     const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
     if (token) headers["x-token"] = token;
@@ -49,7 +49,7 @@ export const crearReserva = async (datos) => {
 //Eliminar Reservas
 export const eliminarReserva = async (id) => {
   try {
-    
+    const token = localStorage.getItem("token");
     const headers = {"Content-Type": "application/json; charset=UTF-8"};
 
     if (token) headers["x-token"] = token;
