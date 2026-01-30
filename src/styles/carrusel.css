@@ -1,0 +1,17 @@
+*{
+  --color-principalHome: #584738;
+  --color-principal2Home: #3f3228;
+  --color-secondaryHome: #4c583e;
+  --color-terciaryHome: #b59e7d;
+  --color-fourthHome: #959581;
+  --color-fourth2Home: #95958170;
+  --color-fifthHome: #f1eada;
+  --color-sixthHome: #eec58c;
+  --color-seventhHome: #aa6d3b;
+}
+
+.bi-circle-fill{
+  display: inline-block;
+  font-size: 9px;
+  
+}

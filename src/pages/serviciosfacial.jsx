@@ -1,13 +1,11 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
 import '../styles/servicios.css';
-import { Link, useSearchParams } from 'react-router-dom';
-import imagenMap from '../assets/imagenMap.js';
-import {Card, Button, Carousel} from 'react-bootstrap';
-import { useState, useEffect, useContext } from 'react';
+import { Card } from 'react-bootstrap';
+import { useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { ModalEditarServicio, ModalEliminarServicio } from '../components/ModalServicioEditDelete.jsx';
-import { getServicios, actualizarServicio, eliminarServicio } from '../helpers/ServicioApi';
+import CarruselServicios from '../components/CarruselServicio';
 
 
 function ServiciosFacial() {
@@ -15,22 +13,7 @@ function ServiciosFacial() {
   const [showEdit, setShowEdit] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [servicioSeleccionado, setServicioSeleccionado] = useState(null);
-  const [servicios, setServicios] = useState([]);
-
-  //Traer todos los servicios desde la base de datos
-  useEffect(() => {
-    const fetchServicios = async () => {
-      try {
-        const serviciosData = await getServicios();
-        setServicios(serviciosData.servicios || []);
-      } catch (error) {
-        console.error('Error al cargar los servicios:', error);
-      }
-    }
-    fetchServicios();
-  }, []);
-
-  const essFaceCare = servicios.find(servicio => servicio.nombre === 'Essential Face Care');
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const handleEdit = (servicio) => {
     setServicioSeleccionado(servicio);
@@ -40,157 +23,26 @@ function ServiciosFacial() {
     setServicioSeleccionado(servicio);
     setShowDelete(true);
   };
-  const handleSaveEdit = async (servicioEditado) => {
-    try {
-      // Aquí se asume que el servicio tiene un id o key único
-      await actualizarServicio(servicioEditado.key, {
-        titulo: servicioEditado.titulo,
-        descripcion: servicioEditado.descripcion,
-        precio: servicioEditado.precio
-      });
-    } catch (error) {
-      alert('Error al actualizar el servicio');
-    }
+  const handleSaveEdit = async () => {
     setShowEdit(false);
+    setRefreshKey((prev) => prev + 1);
   };
-  const handleConfirmDelete = async (servicio) => {
-    try {
-      await eliminarServicio(servicio.key);
-    } catch (error) {
-      alert('Error al eliminar el servicio');
-    }
+  const handleConfirmDelete = async () => {
     setShowDelete(false);
-  };
-
-  const [searchParams] = useSearchParams();
-  const [index, setIndex] = useState(0);
-  const serviceMap = {
-    'essential': 0,   
-    'vitc': 1,        
-    'rebalancing': 2, 
-    'roses': 3       
-  };
-
-  useEffect(() => {
-    const servicioBuscado = searchParams.get('s'); 
-    
-    if (servicioBuscado && serviceMap[servicioBuscado] !== undefined) {
-      setIndex(serviceMap[servicioBuscado]); 
-      
-      const elemento = document.querySelector('.MainServicio');
-      if(elemento) elemento.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [searchParams]);
-
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
+    setRefreshKey((prev) => prev + 1);
   };
 
   return (
     <section className='MainServicio'>
       <article>
-        <Carousel className='Carrusel-Servicio' activeIndex={index} onSelect={handleSelect}>
-          <Carousel.Item>
-            <Card className='Contenido-Carrusel-Serv'>
-              <Card.Img variant="left" src={imagenMap.STF1} className='Img-Servicio'/>
-              <Card.Body className='Cuerpo-Texto'>
-                <Card.Title className='Titulo-Carrusel'>Essential Face Care</Card.Title>
-                  <Card.Text>
-                  El full face es un procedimiento estético que aborda el rostro de manera integral, tratando diferentes áreas en una misma sesión para lograr un resultado armónico y natural. A diferencia de otros tratamientos localizados, su enfoque global permite trabajar de manera personalizada cada zona, según las necesidades específicas del paciente. Restaura el volumen, redefine los contornos y suaviza arrugas, siempre respetando la expresión natural del rostro.
-                  <br/>
-                  Duracion: 50-60 minutos
-                  <br />
-                  Precio del servicio: AR$ 45.500. 
-                </Card.Text>
-                
-                <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=essential-face-care"}>
-                  <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
-                </Link>
-                {isAdmin && (
-                  <div className="admin-actions">
-                    <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[0])}>Editar</Button>
-                    <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[0])}>Eliminar</Button>
-                  </div>
-                )}
-              </Card.Body>
-            </Card>
-          </Carousel.Item>
-          <Carousel.Item>
-            <Card className='Contenido-Carrusel-Serv'>
-              <Card.Img variant="left" src={imagenMap.STF2} className='Img-Servicio'/>
-              <Card.Body className='Cuerpo-Texto'>
-                <Card.Title className='Titulo-Carrusel'>Glowing Vit C+</Card.Title>
-                <Card.Text>
-                      El glowing vit c+ se trata de un procedimeinto de limpieza profunda para eliminar exceso de sebo. Se le aplica una máscara o sérum con vitamina C. Sus beneficios son brillo y luminosidad en la piel, mejora de textura y firmeza, nutrición y una piel hidratada.
-                      <br/>
-                      Duracion: 45-60 minutos
-                      <br />
-                      Precio del servicio: AR$ 45.500. 
-                    
-                </Card.Text>
-                <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=glowing-vit-c"}>
-                  <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
-                </Link>
-                {isAdmin && (
-                  <div className="admin-actions">
-                    <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[1])}>Editar</Button>
-                    <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[1])}>Eliminar</Button>
-                  </div>
-                )}
-              </Card.Body>
-            </Card>
-          </Carousel.Item>
-          <Carousel.Item>
-            <Card  className='Contenido-Carrusel-Serv'>
-              <Card.Img variant="left" src={imagenMap.STF3} className='Img-Servicio'/>
-              <Card.Body  className='Cuerpo-Texto'>
-                <Card.Title className='Titulo-Carrusel'>Rebalancing Face Care</Card.Title>
-                <Card.Text>
-                  <p className="card-text">El rebalancing es una técnica fundamental en el proceso de selección de los mejores productos de estética. Permite ajustar la proporción de ingredientes activos para lograr un equilibrio óptimo en cada fórmula. Además, rebalancing es el templo donde la piel y el pelo recuperan su equilibrio. Además, el rebalancing facial es el arte y la ciencia de usar tratamientos no quirúrgicos, como rellenos dérmicos y Botox, para restaurar la simetría, proporción y armonía en el rostro, destinados a mejorar la simetría y armonía del rostro. Cada procedimiento se enfoca en diferentes aspectos del rostro, lo que permite un enfoque completo en mejorar la apariencia general.
-                  <br/>
-                  Duracion: 45-60 minutos
-                  <br />
-                  Precio del servicio: AR$ 49.000.
-                  </p>
-                </Card.Text>
-                <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=rebalancing-face-care"}>
-                  <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
-                </Link>
-                {isAdmin && (
-                  <div className="admin-actions">
-                    <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[2])}>Editar</Button>
-                    <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[2])}>Eliminar</Button>
-                  </div>
-                )}
-              </Card.Body>
-            </Card>
-          </Carousel.Item>
-          <Carousel.Item>
-            <Card  className='Contenido-Carrusel-Serv'>
-              <Card.Img variant="left" src={imagenMap.STF4} className='Img-Servicio'/>
-              <Card.Body className='Cuerpo-Texto'>
-                <Card.Title className='Titulo-Carrusel'>Glowing Roses</Card.Title>
-                  <Card.Text>
-                    <p className="card-text"> El tratamiento facial Glowing Roses se realiza con perlas de células madre de rosa alpina y ácido hialurónico. Este lujoso ingrediente actúa como reafirmante natural, aportando luminosidad, hidratación, suavidad y elasticidad. Es un tratamiento no invasivo, indoloro y sin efectos secundarios, perfecto para recuperar la piel tras el verano y mejorar las manchas. El tratamiento se realiza con perlas de células madre de rosa alpina y ácido hialurónico, que previene la deshidratación a lo largo del día. Apto para todo tipo de piel, incluso las más sensibles.
-                    <br/>
-                    Duracion: 50-60 minutos
-                    <br />
-                    Precio del servicio: AR$ 50.000.
-                    </p>
-                  </Card.Text>
-                  <Link to={"/turnos?categoria=servicio-trat-facial&serviciosPorCategoria=glowing-roses"}>
-                    <Button className='Btn-Servicio'>RESERVAR TURNO</Button>
-                  </Link>
-                  {isAdmin && (
-                    <div className="admin-actions">
-                      <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(servicios[3])}>Editar</Button>
-                      <Button variant="danger" size="sm" onClick={() => handleDelete(servicios[3])}>Eliminar</Button>
-                    </div>
-                  )}
-              </Card.Body>
-            </Card>
-          </Carousel.Item>
-        </Carousel>
+        <CarruselServicios
+          categoriaNombre="facial"
+          turnosCategoria="servicio-trat-facial"
+          isAdmin={isAdmin}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+          refreshKey={refreshKey}
+        />
         {/* Modales admin */}
         <ModalEditarServicio show={showEdit} onHide={() => setShowEdit(false)} servicio={servicioSeleccionado} onSave={handleSaveEdit} />
         <ModalEliminarServicio show={showDelete} onHide={() => setShowDelete(false)} servicio={servicioSeleccionado} onDelete={handleConfirmDelete} />
