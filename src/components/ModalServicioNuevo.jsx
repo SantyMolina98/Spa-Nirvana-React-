@@ -1,45 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { crearServicio } from '../helpers/ServicioApi';
-import { getCategorias } from '../helpers/CategoriaApi';
 
 export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }) {
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  const [precio, setPrecio] = useState('');
+  const [precio, setPrecio] = useState(0);
   const [duracion, setDuracion] = useState('');
   const [categoriaId, setCategoriaId] = useState('');
   const [imagen, setImagen] = useState('');
-  const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
-  useEffect(() => {
-    const fetchCategorias = async () => {
-      try {
-        const data = await getCategorias();
-        setCategorias(data.categorias || []);
-        
-        // Si hay categoría preseleccionada, buscar su ID
-        if (categoriaPreselec && data.categorias) {
-          const categoriaEncontrada = data.categorias.find(
-            cat => cat.nombre === categoriaPreselec
-          );
-          if (categoriaEncontrada) {
-            setCategoriaId(categoriaEncontrada._id);
-          }
-        }
-      } catch (err) {
-        console.error('Error al cargar categorías:', err);
-      }
-    };
-    fetchCategorias();
-  }, [categoriaPreselec]);
+  const [disponible, setDisponible] = useState(true);
 
   const resetForm = () => {
     setNombre('');
     setDescripcion('');
-    setPrecio('');
+    setPrecio(0);
     setDuracion('');
     setCategoriaId('');
     setImagen('');
@@ -47,35 +24,48 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
   };
 
   const handleClose = () => {
+    console.log('🟡 ModalAgregarServicio: cerrar modal');
     resetForm();
     onHide();
   };
 
   const handleSave = async () => {
-    if (!nombre.trim() || !descripcion.trim() || !precio || !duracion.trim() || !categoriaId) {
-      setError('Todos los campos son obligatorios');
-      return;
-    }
-
     setLoading(true);
     setError('');
 
-    try {
-      const nuevoServicio = await crearServicio({
-        nombre,
-        descripcion,
+    const categoriaFinal = categoriaId.trim() || (categoriaPreselec?.id || '');
+    if (!nombre.trim() || !descripcion.trim() || precio <= 0 || !duracion.trim() || !categoriaFinal || !imagen.trim()) {
+      console.warn('🔴 ModalAgregarServicio: validación fallida');
+      setError('Todos los campos son obligatorios');
+      setLoading(false);
+      return;
+    }
+
+     try{
+      const payload = {
+        nombre: nombre.trim(),
+        descripcion: descripcion.trim(),
         precio: parseFloat(precio),
-        duracion,
-        categoria: categoriaId,
-        imagen: imagen || undefined
-      });
+        duracion: duracion.trim(),
+        categoria: categoriaFinal,
+        img: imagen.trim(),
+        disponible
+      };
+      console.log('🟡 ModalAgregarServicio: enviando a crearServicio', payload);
+
+      const nuevoServicio = await crearServicio(payload);
+
+      console.log('🟢 ModalAgregarServicio: servicio creado', nuevoServicio);
 
       onSave(nuevoServicio);
       resetForm();
+    
     } catch (err) {
       console.error('Error al crear servicio:', err);
+      console.error('🔴 ModalAgregarServicio: fallo en crearServicio', err?.message || err);
       setError('Error al crear servicio: ' + err.message);
     } finally {
+      console.log('🟡 ModalAgregarServicio: fin de intento');
       setLoading(false);
     }
   };
@@ -133,19 +123,18 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>Categoría</Form.Label>
-            <Form.Select 
-              value={categoriaId} 
+            <Form.Label>ID de Categoría</Form.Label>
+            <Form.Control
+              value={categoriaId}
               onChange={e => setCategoriaId(e.target.value)}
+              placeholder="Ingrese el ID de la categoría"
               disabled={loading}
-            >
-              <option value="">Seleccione una categoría</option>
-              {categorias.map(cat => (
-                <option key={cat._id} value={cat._id}>
-                  {cat.nombre}
-                </option>
-              ))}
-            </Form.Select>
+            />
+            {categoriaPreselec && (
+              <Form.Text className="text-muted">
+                Categoría seleccionada: {categoriaPreselec}
+              </Form.Text>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3">

@@ -36,9 +36,9 @@ function ServiciosTrCorporal() {
     <section className='MainServicio'>
       <article>
         <CarruselServicios
-          categoriaNombre="corporal"
+          categoriaId="69401dc44ac523c9914c672c"
           matchCategoriaExacta
-          turnosCategoria="servicio-trat-corporal"
+          turnosCategoria="servicio-tratamiento-corporal"
           isAdmin={isAdmin}
           onEdit={handleEdit}
           onDelete={handleDelete}
