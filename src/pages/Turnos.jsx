@@ -1,11 +1,12 @@
 import "../App.css";
 import "../styles/turnosPages.css";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useMemo } from "react";
 import { Form, Button, Alert, Card } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { UserContext } from "../context/UserContext";
-import { getReservas, crearReserva, eliminarReserva } from "../helpers/ReservasApi";
+import { getReservas, crearReserva } from "../helpers/ReservasApi";
+import { getServicios } from "../helpers/ServicioApi";
 
 const generarHorarioDate = (hora) => {
   return new Date().setHours(hora, 0, 0, 0);
@@ -18,11 +19,13 @@ const datosTurnos = {
     { id: "pro_sofia", nombre: "Sofia Ramirez", especialidad: "Masajes" },
     { id: "pro_maria", nombre: "María Soto", especialidad: "Rituales" },
     { id: "pro_juan", nombre: "Juan Pérez", especialidad: "Corporal" },
-    { id: "pro_Lucia", nombre: "Lucia Fernandez", especialidad: "Corporal" },
+    { id: "pro_lucia", nombre: "Lucia Fernandez", especialidad: "Corporal" },
   ],
   categorias: [
-    { value: "servicio-trat-facial", label: "Tratamiento Faciales" },
+    { value: "servicio-trat-facial", label: "Tratamientos Faciales" },
     { value: "servicio-rituales", label: "Nuestros Rituales" },
+    { value: "servicio-corporal", label: "Tratamientos Corporales" },
+    { value: "servicio-aromaterapia", label: "Masajes con Aromaterapia" },
     { value: "servicio-masajes", label: "Masajes" },
   ],
   serviciosPorCategoria: {
@@ -30,16 +33,30 @@ const datosTurnos = {
       {
         value: "essential-face-care",
         label: "Essential Face Care",
-        diasDisponibles: [1, 4],
+        diasDisponibles: [1, 3, 5],
         horariosDisponibles: [10, 15, 18, 20],
         profesionalesId: ["pro_ana"],
       },
       {
         value: "glowing-vit-c",
         label: "Glowing Vit C+",
-        diasDisponibles: [2, 5],
+        diasDisponibles: [2, 4, 6],
         horariosDisponibles: [10, 12, 17, 19],
         profesionalesId: ["pro_ana", "pro_maria"],
+      },
+      {
+        value: "rebalancing-face-care",
+        label: "Rebalancing Face Care",
+        diasDisponibles: [1, 4],
+        horariosDisponibles: [9, 13, 16, 19],
+        profesionalesId: ["pro_ana", "pro_maria"],
+      },
+      {
+        value: "glowing-roses",
+        label: "Glowing Roses",
+        diasDisponibles: [3, 5],
+        horariosDisponibles: [11, 14, 18],
+        profesionalesId: ["pro_ana"],
       },
     ],
     "servicio-rituales": [
@@ -49,6 +66,80 @@ const datosTurnos = {
         diasDisponibles: [6],
         horariosDisponibles: [11, 16, 18, 20],
         profesionalesId: ["pro_maria", "pro_luis"],
+      },
+      {
+        value: "ritual-mind-soul",
+        label: "Ritual Mind & Soul",
+        diasDisponibles: [2, 6],
+        horariosDisponibles: [10, 13, 17],
+        profesionalesId: ["pro_maria"],
+      },
+      {
+        value: "ritual-afflora",
+        label: "Ritual Afflora",
+        diasDisponibles: [4, 6],
+        horariosDisponibles: [12, 16, 19],
+        profesionalesId: ["pro_maria", "pro_luis"],
+      },
+      {
+        value: "ritual-mulfem",
+        label: "Ritual Mülfem",
+        diasDisponibles: [5, 6],
+        horariosDisponibles: [10, 15, 18],
+        profesionalesId: ["pro_maria"],
+      },
+      {
+        value: "ritual-unad",
+        label: "Ritual Üñad",
+        diasDisponibles: [6],
+        horariosDisponibles: [11, 16, 19],
+        profesionalesId: ["pro_maria", "pro_luis"],
+      },
+      {
+        value: "ritual-urkutun",
+        label: "Ritual Ürkutun",
+        diasDisponibles: [6],
+        horariosDisponibles: [12, 17, 20],
+        profesionalesId: ["pro_maria", "pro_luis"],
+      },
+    ],
+    "servicio-corporal": [
+      {
+        value: "ceremonia-liwen",
+        label: "Ceremonia Liwen",
+        diasDisponibles: [2, 5],
+        horariosDisponibles: [9, 12, 16, 19],
+        profesionalesId: ["pro_juan", "pro_lucia"],
+      },
+      {
+        value: "ceremonia-ragiantu",
+        label: "Ceremonia Ragiantu",
+        diasDisponibles: [3, 6],
+        horariosDisponibles: [10, 14, 18],
+        profesionalesId: ["pro_juan", "pro_lucia"],
+      },
+    ],
+    "servicio-aromaterapia": [
+      {
+        value: "aromaterapia-purificante",
+        label: "Aromaterapia Purificante",
+        diasDisponibles: [2, 4, 6],
+        horariosDisponibles: [10, 13, 16, 19],
+        profesionalesId: ["pro_luis", "pro_sofia"],
+      },
+      {
+        value: "aromaterapia-relajante",
+        label: "Aromaterapia Relajante",
+        diasDisponibles: [1, 3, 5],
+        horariosDisponibles: [11, 15, 18, 20],
+        profesionalesId: ["pro_luis", "pro_sofia"],
+      },
+      {
+        value: "aromaterapia-estimulante",
+        label: "Aromaterapia Estimulante",
+        diasDisponibles: [2, 5],
+        horariosDisponibles: [9, 12, 17],
+        profesionalesId: ["pro_luis", "pro_sofia"],
       },
     ],
     "servicio-masajes": [
@@ -60,21 +151,21 @@ const datosTurnos = {
         profesionalesId: ["pro_luis", "pro_sofia"],
       },
       {
-        value: "Masaje Hot Stones",
+        value: "masaje-hot-stones",
         label: "Masaje Hot Stones",
         diasDisponibles: [2, 5],
         horariosDisponibles: [15, 19, 21],
         profesionalesId: ["pro_juan", "pro_sofia"],
       },
       {
-        value: "Masaje Signature",
+        value: "masaje-signature",
         label: "Masaje Signature",
         diasDisponibles: [2, 5],
-        horariosDisponibles: [10, 1, 17, 20],
+        horariosDisponibles: [10, 13, 17, 20],
         profesionalesId: ["pro_luis", "pro_juan", "pro_sofia"],
       },
       {
-        value: "Masaje Deep Tissue",
+        value: "masaje-deep-tissue",
         label: "Masaje Deep Tissue",
         diasDisponibles: [2, 5],
         horariosDisponibles: [14, 18],
@@ -86,7 +177,7 @@ const datosTurnos = {
 
 function Turnos() {
   const context = useContext(UserContext);
-  const { turnos = [], addTurno, removeTurno, isAuthenticated } = context || {};
+  const { turnos = [], addTurno, removeTurno, isAuthenticated, user } = context || {};
 
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
   const [servicioSeleccionado, setServicioSeleccionado] = useState("");
@@ -96,6 +187,11 @@ function Turnos() {
   const [horaSeleccionada, setHoraSeleccionada] = useState(null);
   const [error, setError] = useState("");
   const [reservaExitosa, setReservaExitosa] = useState(false);
+  const [reservasDb, setReservasDb] = useState([]);
+  const [loadingReservas, setLoadingReservas] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [serviciosDb, setServiciosDb] = useState([]);
+  const [loadingServicios, setLoadingServicios] = useState(false);
 
   // Filtro de servicios elegidos
   const serviciosDeCategoria =
@@ -116,6 +212,93 @@ function Turnos() {
   )?.nombre;
   const servicioNombre = servicioActual?.label;
 
+  const formatDateKey = (value) => {
+    if (!value) return "";
+    if (value instanceof Date) {
+      const y = value.getFullYear();
+      const m = String(value.getMonth() + 1).padStart(2, "0");
+      const d = String(value.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
+    }
+    const parsed = new Date(value);
+    if (!Number.isNaN(parsed.getTime())) {
+      const y = parsed.getFullYear();
+      const m = String(parsed.getMonth() + 1).padStart(2, "0");
+      const d = String(parsed.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
+    }
+    if (typeof value === "string") {
+      if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+      const parts = value.split("/");
+      if (parts.length === 3) {
+        const [d, m, y] = parts;
+        if (y && m && d) return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
+      }
+    }
+    return String(value);
+  };
+
+  const formatTimeKey = (value) => {
+    if (!value) return "";
+    if (value instanceof Date) {
+      const h = String(value.getHours()).padStart(2, "0");
+      const m = String(value.getMinutes()).padStart(2, "0");
+      return `${h}:${m}`;
+    }
+    const parsed = new Date(value);
+    if (!Number.isNaN(parsed.getTime())) {
+      const h = String(parsed.getHours()).padStart(2, "0");
+      const m = String(parsed.getMinutes()).padStart(2, "0");
+      return `${h}:${m}`;
+    }
+    if (typeof value === "string") {
+      const match = value.match(/(\d{1,2}):(\d{2})/);
+      if (match) {
+        const h = String(match[1]).padStart(2, "0");
+        const m = String(match[2]).padStart(2, "0");
+        return `${h}:${m}`;
+      }
+    }
+    return String(value);
+  };
+
+  const normalizeText = (value) => {
+    return String(value || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+  };
+
+  const reservasOcupadas = useMemo(() => {
+    if (!profesionalNombre || !fechaSeleccionada) return [];
+    const fechaKey = formatDateKey(fechaSeleccionada);
+    const ocupadasDb = reservasDb
+      .filter(
+        (r) =>
+          formatDateKey(r.fechaReserva || r.fecha) === fechaKey
+      )
+      .map((r) => formatTimeKey(r.horaReserva || r.hora));
+
+    const ocupadasCarrito = turnos
+      .filter(
+        (t) =>
+          formatDateKey(t.fechaReserva || t.fecha) === fechaKey
+      )
+      .map((t) => formatTimeKey(t.horaReserva || t.hora));
+
+    return Array.from(new Set([...ocupadasDb, ...ocupadasCarrito]));
+  }, [fechaSeleccionada, profesionalNombre, reservasDb, turnos]);
+
+  const horariosDisponiblesFiltrados = useMemo(() => {
+    if (!horariosPermitidos.length) return [];
+    if (!reservasOcupadas.length) return horariosPermitidos;
+    return horariosPermitidos.filter((fechaHora) => {
+      const horaTexto = formatTimeKey(fechaHora);
+      return !reservasOcupadas.includes(horaTexto);
+    });
+  }, [horariosPermitidos, reservasOcupadas]);
+
   const filterDiasSemana = (date) => diasPermitidos.includes(date.getDay());
 
   const resetCamposDependientes = () => {
@@ -134,7 +317,45 @@ function Turnos() {
     }
   }, [reservaExitosa]);
 
-  const handleSubmit = (e) => {
+  const cargarReservas = async () => {
+    if (!isAuthenticated) return [];
+    setLoadingReservas(true);
+    try {
+      const data = await getReservas();
+      const reservasList = data?.reservas || data?.data || data || [];
+      const list = Array.isArray(reservasList) ? reservasList : [];
+      setReservasDb(list);
+      return list;
+    } catch (err) {
+      console.error(err);
+      return reservasDb;
+    } finally {
+      setLoadingReservas(false);
+    }
+  };
+
+  useEffect(() => {
+    cargarReservas();
+  }, [isAuthenticated, profesionalSeleccionadoId, fechaSeleccionada]);
+
+  useEffect(() => {
+    const cargarServicios = async () => {
+      setLoadingServicios(true);
+      try {
+        const data = await getServicios();
+        const serviciosList = data?.servicios || data?.data || data || [];
+        setServiciosDb(Array.isArray(serviciosList) ? serviciosList : []);
+      } catch (err) {
+        console.error("[Turnos] error getServicios", err);
+      } finally {
+        setLoadingServicios(false);
+      }
+    };
+
+    cargarServicios();
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!isAuthenticated) {
@@ -153,30 +374,107 @@ function Turnos() {
       return;
     }
 
-    const nuevoTurno = {
+    if (loadingServicios) {
+      setError("Cargando servicios, intenta nuevamente.");
+      return;
+    }
+    if (loadingReservas || submitting) return;
+
+    const fechaKey = formatDateKey(fechaSeleccionada);
+    const horaKey = formatTimeKey(horaSeleccionada);
+
+    console.log("[Turnos] intento reserva", {
       servicio: servicioNombre,
       profesional: profesionalNombre,
-      fecha: fechaSeleccionada.toLocaleDateString(),
-      hora: horaSeleccionada.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
+      fecha: fechaKey,
+      hora: horaKey,
+    });
+
+    const reservasActuales = await cargarReservas();
+    const turnoDuplicado = [...reservasActuales, ...turnos].some((t) => {
+      return (
+        formatDateKey(t.fechaReserva || t.fecha) === fechaKey &&
+        formatTimeKey(t.horaReserva || t.hora) === horaKey
+      );
+    });
+
+    if (turnoDuplicado) {
+      console.log("[Turnos] duplicado detectado", { fechaKey, horaKey, profesionalNombre });
+      setError("este turno ya está reservado");
+      return;
+    }
+
+    const servicioMatch = serviciosDb.find((s) => {
+      const nombre = s?.nombre || s?.titulo || "";
+      return normalizeText(nombre) === normalizeText(servicioNombre);
+    });
+
+    if (!servicioMatch?._id && !servicioMatch?.id) {
+      setError("No se pudo identificar el servicio seleccionado.");
+      return;
+    }
+
+    const servicioId = servicioMatch?._id || servicioMatch?.id;
+    const servicioLabel = servicioMatch?.nombre || servicioMatch?.titulo || servicioNombre;
+
+    const payload = {
+      servicio: servicioId,
+      fechaReserva: fechaKey,
+      horaReserva: horaKey,
+      rol: user?.rol || "Usuario",
+      profesional: profesionalNombre,
     };
+    console.log("[Turnos] payload", payload);
 
-    addTurno(nuevoTurno);
-    setReservaExitosa(true);
-    setError("");
+    try {
+      setSubmitting(true);
+      const respuesta = await crearReserva(payload);
+      const reservaCreada = respuesta?.reserva || respuesta;
 
-    // Restauramos los campos para permitir una nueva selección
-    setServicioSeleccionado("");
-    setFechaSeleccionada(null);
-    setHoraSeleccionada(null);
+      if (respuesta?.ok === false || respuesta?.statusCode === 409) {
+        setError("este turno ya está reservado");
+        return;
+      }
+
+      const nuevoTurno = {
+        ...payload,
+        servicioId,
+        servicioNombre: servicioLabel,
+        fecha: payload.fechaReserva,
+        hora: payload.horaReserva,
+        id: reservaCreada?._id || reservaCreada?.id || Date.now(),
+      };
+
+      addTurno(nuevoTurno);
+      setReservasDb((prev) => [...prev, nuevoTurno]);
+      setReservaExitosa(true);
+      setError("");
+
+      // Restauramos los campos para permitir una nueva selección
+      setServicioSeleccionado("");
+      setFechaSeleccionada(null);
+      setHoraSeleccionada(null);
+    } catch (err) {
+      console.error("[Turnos] error crearReserva", err);
+      const message = err?.message?.toLowerCase?.() || "";
+      const status = err?.status || err?.response?.status;
+      if (status === 401 || message.includes("token")) {
+        setError("Tu sesión expiró. Iniciá sesión nuevamente para reservar.");
+      } else if (message.includes("duplic") || status === 409 || message.includes("reserv")) {
+        setError("este turno ya está reservado");
+      } else {
+        setError(err?.message || "No se pudo crear la reserva. Intenta nuevamente.");
+      }
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleFinalizarReservaTotal = () => {
     const resumen = turnos
       .map(
-        (t) => `- ${t.servicio} con ${t.profesional} (${t.fecha} - ${t.hora})`
+        (t) =>
+          `- ${t.servicioNombre || t.servicio} con ${t.profesional} (${t.fecha} - ${t.hora})`
       )
       .join("\n");
 
@@ -187,23 +485,7 @@ function Turnos() {
       `¡Muchas gracias!`
     );
 
-    const horariosOcupados = turnos
-      .filter(
-        (t) =>
-          t.profesional === profesionalNombre &&
-          t.fecha === fechaSeleccionada?.toLocaleDateString()
-      )
-      .map((t) => t.hora);
-
-    const horariosDisponiblesFiltrados = horariosPermitidos.filter(
-      (fechaHora) => {
-        const horaTexto = new Date(fechaHora).toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
-        return !horariosOcupados.includes(horaTexto);
-      }
-    );
+    // Las reservas ya se guardan al crear cada turno.
   };
 
   return (
@@ -315,16 +597,20 @@ function Turnos() {
                     showTimeSelectOnly
                     timeIntervals={60}
                     dateFormat="h:mm aa"
-                    includeTimes={horariosPermitidos}
+                    includeTimes={horariosDisponiblesFiltrados}
                     placeholderText="Seleccionar Horario"
                     className="form-control"
-                    disabled={!fechaSeleccionada}
+                    disabled={!fechaSeleccionada || loadingReservas}
                   />
                 </div>
               </div>
 
-              <Button type="submit" className="btnTurnos w-100">
-                Añadir al Carrito
+                <Button
+                  type="submit"
+                  className="btnTurnos w-100"
+                  disabled={submitting || loadingServicios}
+                >
+                  {submitting ? "Reservando..." : "Añadir al Carrito"}
               </Button>
             </Form>
           </>
@@ -366,12 +652,16 @@ function Turnos() {
                         <Card.Body className="d-flex flex-column justify-content-between">
                           <div>
                             <Card.Title className="text-primary h6">
-                              {item.servicio}
+                              USTED RESERVÓ : {item.servicioNombre || item.servicio}
                             </Card.Title>
                             <Card.Text className="small">
                               <strong>Profesional:</strong> {item.profesional}
                               <br />
                               <strong>Fecha:</strong> {item.fecha} - {item.hora}
+                              <br />
+                              <strong>Usuario:</strong> {user?.nombre || "N/A"}
+                              <br />
+                              <p>¡MUCHAS GRACIAS!</p>
                             </Card.Text>
                           </div>
                           <Button
