@@ -22,6 +22,26 @@ export const getUsuarios = async (desde = 0) => {
   }
 }
 
+//Traer Profesionales
+export const getProfesionales = async (desde = 0) => {
+  try {
+    const token = localStorage.getItem("token");
+    const headers = {};
+    if (token) headers["x-token"] = token;
+
+    const respuesta = await fetch(
+      `${url}/profesionales-public?desde=${desde}&limite=${limite}`,
+      { headers }
+    );
+    const data = await respuesta.json();
+    const list = data?.profesionales || data?.usuarios || data?.data || data || [];
+    return Array.isArray(list) ? list : [];
+  } catch (error) {
+    console.log(error);
+    throw new Error("No se pudieron obtener los profesionales");
+  }
+}
+
 //Traer Usuario por ID
 export const getUsuarioById = async (id) => {
 
