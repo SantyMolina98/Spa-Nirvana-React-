@@ -1,10 +1,33 @@
 import '../App.css';
 import '../styles/HomePage.css';
 import {Link} from 'react-router-dom';
-import {Carousel, Image, Card, Button} from 'react-bootstrap';
+import {Carousel, Image, Button} from 'react-bootstrap';
 import imagenMap from '../assets/imagenMap.js';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../context/UserContext.jsx';
+import { getServicios } from '../helpers/ServicioApi.js';
+import { CarruselServiciosDestacados } from '../components/CarruselServiciosDestacados.jsx';
 
 function HomePage () {
+  const { user } = useContext(UserContext);
+  const [serviciosDestacados, setServiciosDestacados] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const cargarServiciosDestacados = async () => {
+      try {
+        const data = await getServicios();
+        const destacados = (data.servicios || []).filter(servicio => servicio.destacado === true);
+        setServiciosDestacados(destacados);
+      } catch (error) {
+        console.error('Error al cargar servicios destacados:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    cargarServiciosDestacados();
+  }, []);
+
   return (
     <>
     <main className='MainHomeP'>
@@ -30,71 +53,21 @@ function HomePage () {
             Adéntrate en un viaje sensorial de bienestar en el spa más exclusivo de Tucumán. Disfrutá de relajantes masajes corporales y rituales cuidadosamente diseñados en un ambiente de lujo que irradia tranquilidad.</p>
             <p>*Los masajes, propuestas y tratamientos no incluyen las siguientes instalaciones: sauna, jacuzzi y piscina; éstos se encuentran habilitados solamente para huéspedes.</p>
         </article>
-      <h2 className='h2HomeP'>Promociones Destacadas</h2>
-      <div className='flex'>
-      <Card className="text-center">
-      <Card.Header>PROMO MASAJES</Card.Header>
-      <Card.Body>
-        <Card.Title>Massage Relax</Card.Title>
-        <Card.Img variant="top" src={imagenMap.promo1} className='img' />
-        <Card.Text className='TextCardPromoHP'>
-          Masajes Full Body + Coffee Pause<br/> Este paquete está diseñado para brindarle una experiencia integral de relajación, bienestar y renovación.
-        </Card.Text>
-        <Link to="*">
-        <Button  className='btnCardPromo'>Ver más</Button>
-        </Link>
-      </Card.Body>
-      <Card.Footer className="text-muted">Válida hasta el 31 de diciembre o hasta agotar cupos.</Card.Footer>
-      </Card>
+      <div className='d-flex justify-content-between align-items-center mb-3'>
+        <h2 className='h2HomeP'>Promociones Destacadas</h2>
+        {user?.rol === 'Admin' && (
+          <Link to="/admin">
+            <Button variant="primary" size="sm">Agregar Promo</Button>
+          </Link>
+        )}
       </div>
-    <div className='flex'>
-        <Card className="text-center">
-      <Card.Header>PROMO SPA</Card.Header>
-      <Card.Body>
-        <Card.Title>Spa Revitalizante</Card.Title>
-        <Card.Img variant="top" src={imagenMap.promo2} className='img' />
-        <Card.Text className='TextCardPromoHP'>
-          Blend de masaje a elección<br/>Incluye máscara facial, descanso y restauración en sala de relax acompañado de merienda saludable.
-        </Card.Text>
-        <Link to="*">
-        <Button className='btnCardPromo'>Ver más</Button>
-        </Link>
-      </Card.Body>
-      <Card.Footer className="text-muted">Promo disponible hasta el 25/12 inclusive.</Card.Footer>
-    </Card>
-    </div>
-        <div className='flex'>
-        <Card className="text-center">
-      <Card.Header>PROMO SPA</Card.Header>
-      <Card.Body>
-        <Card.Title>Día de Spa Relax</Card.Title>
-        <Card.Img variant="top" src={imagenMap.promo3} className='img' />
-        <Card.Text>
-          Hidroterapia, Masajes, Facial. Para 2 personas<br/>Una tarde diferente para relajarse, descansar y compartir.
-        </Card.Text>
-        <Link to="*">
-        <Button className='btnCardPromo'>Ver más</Button>
-        </Link>
-      </Card.Body>
-      <Card.Footer className="text-muted">Promo vigente hasta el 25/12 — ¡no te la pierdas!</Card.Footer>
-    </Card>
-    </div>
-        <div className='flex'>
-        <Card className="text-center">
-      <Card.Header>PROMO DIA DE SPA</Card.Header>
-      <Card.Body>
-        <Card.Title>Mini Day Spa</Card.Title>
-        <Card.Img variant="top" src={imagenMap.promo4} className='img' />
-        <Card.Text>
-          Masajes + Limpieza Facial<br/>Este paquete incluye un masaje descontracturante y limpieza facial para relajar el cuerpo y renovar la piel.
-        </Card.Text>
-        <Link to="*">
-        <Button className='btnCardPromo'>Ver más</Button>
-        </Link>
-      </Card.Body>
-      <Card.Footer className="text-muted">Promo disponible hasta el 25/12 inclusive.</Card.Footer>
-    </Card>
-    </div>
+      
+      {loading ? (
+        <p className="text-center">Cargando promociones...</p>
+      ) : (
+        <CarruselServiciosDestacados servicios={serviciosDestacados} />
+      )}
+      
       </section>
       <section className="publicidad">
       <img src={imagenMap.publicidad50off} alt="publicidad-50-%" id="imgpublicidad"/>
