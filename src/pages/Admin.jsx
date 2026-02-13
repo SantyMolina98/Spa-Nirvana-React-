@@ -3,12 +3,13 @@ import '../styles/admin.css';
 import { useState, useEffect, useContext } from 'react';
 import { getUsuarios } from '../helpers/UsuariosApi.js';
 import { getServicios } from '../helpers/ServicioApi.js';
-import { getReservas,  } from '../helpers/ReservasApi.js';
+import { getReservasAdmin } from '../helpers/ReservasApi.js';
 import { UserContext } from '../context/UserContext.jsx';
 import { Button } from 'react-bootstrap';
 import { ModalEditarServicio, ModalEliminarServicio } from '../components/ModalServicioEditDelete.jsx';
 import { ModalAgregarUsuario, ModalEditarUsuario, ModalEliminarUsuario } from '../components/ModalUsuariosAdmin.jsx';
 import { ModalAgregarServicio } from '../components/ModalServicioNuevo.jsx';
+import { ModalEliminarReserva } from '../components/ModalEliminarReserva.jsx';
 
 export default function Admin() {
   const {user} = useContext(UserContext);
@@ -30,11 +31,15 @@ export default function Admin() {
   const [showEliminarUsuario, setShowEliminarUsuario] = useState(false);
   const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null);
 
+  // Modales de reservas
+  const [showEliminarReserva, setShowEliminarReserva] = useState(false);
+  const [reservaSeleccionada, setReservaSeleccionada] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const usuariosData = await getUsuarios();
-        const reservasData = await getReservas();
+        const reservasData = await getReservasAdmin();
         const serviciosData = await getServicios();
 
         setUsuarios(usuariosData.usuarios || []);
@@ -54,7 +59,8 @@ export default function Admin() {
 
   // Filtrar usuarios por rol
   const admins = usuarios.filter(usuario => usuario.rol === 'Admin');
-  const regularUsers = usuarios.filter(usuario => usuario.rol !== 'Admin');
+  const profesionales = usuarios.filter(usuario => usuario.rol === 'Profesional');
+  const regularUsers = usuarios.filter(usuario => usuario.rol !== 'Admin' && usuario.rol !== 'Profesional');
 
   // Funciones para manejo de servicios
   const handleEditServicio = (servicio) => {
@@ -106,6 +112,17 @@ export default function Admin() {
   const handleConfirmDeleteUsuario = (usuario) => {
     setUsuarios(usuarios.filter(u => u.uid !== usuario.uid));
     setShowEliminarUsuario(false);
+  };
+
+  // Funciones para manejo de reservas
+  const handleEliminarReserva = (reserva) => {
+    setReservaSeleccionada(reserva);
+    setShowEliminarReserva(true);
+  };
+
+  const handleConfirmDeleteReserva = (reserva) => {
+    setReservas(reservas.filter(r => r._id !== reserva._id));
+    setShowEliminarReserva(false);
   };
 
 
@@ -186,21 +203,17 @@ export default function Admin() {
                     <td>{admin.nombre}</td>
                     <td>{admin.correo}</td>
                     <td>
-                      <Button 
-                        variant="warning" 
-                        size="sm" 
-                        className="me-2"
-                        onClick={() => handleEditarUsuario(admin)}
-                      >
-                        Editar
-                      </Button>
-                      <Button 
-                        variant="danger" 
-                        size="sm"
-                        onClick={() => handleEliminarUsuario(admin)}
-                      >
-                        Eliminar
-                      </Button>
+                      {admin.uid === user?.uid ? (
+                        <Button 
+                          variant="warning" 
+                          size="sm" 
+                          onClick={() => handleEditarUsuario(admin)}
+                        >
+                          Editar
+                        </Button>
+                      ) : (
+                        <span className="text-muted">Solo {admin.nombre} puede editar su perfil</span>
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -215,19 +228,46 @@ export default function Admin() {
         <hr />
         <section>
         <h3 className='TituloSeccion'>Reservas</h3>
-        <Button>Añadir Reserva</Button>
-        <Button>Eliminar Reserva</Button>
         <hr />
-        <ul>
-          {reservas.map(reserva => (
-            <li key={reserva._id}>
-              Servicio: {reserva.servicio}, Fecha: {new Date(reserva.fechaReserva).toLocaleDateString()}, Usuario: {reserva.usuario?.nombre}
-            </li>
-          ))}
-          <li>
-            Total de Reservas: {reservas.length}
-          </li>
-        </ul>
+        {reservas.length > 0 ? (
+          <div className="table-responsive">
+            <table className="tabla-servicios">
+              <thead>
+                <tr>
+                  <th>ID Reserva</th>
+                  <th>Servicio</th>
+                  <th>Fecha</th>
+                  <th>ID Profesional</th>
+                  <th>Usuario</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {reservas.map(reserva => (
+                  <tr key={reserva._id}>
+                    <td>{reserva._id}</td>
+                    <td>{reserva.servicio?.nombre || reserva.servicio}</td>
+                    <td>{new Date(reserva.fechaReserva).toLocaleDateString('es-AR')}</td>
+                    <td>{reserva.profesional?._id || reserva.profesional?.nombre || reserva.profesional || 'No disponible'}</td>
+                    <td>{reserva.usuario?.nombre || 'No disponible'}</td>
+                    <td>
+                      <Button 
+                        variant="danger" 
+                        size="sm"
+                        onClick={() => handleEliminarReserva(reserva)}
+                      >
+                        Eliminar Reserva
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p><strong>Total de Reservas: {reservas.length}</strong></p>
+          </div>
+        ) : (
+          <p>No hay reservas registradas.</p>
+        )}
         </section>
         <hr />
        <section>
@@ -248,6 +288,7 @@ export default function Admin() {
                   <th>Servicio</th>
                   <th>Duración</th>
                   <th>Precio</th>
+                  <th>Destacado</th>
                   <th>Acciones</th>
                 </tr>
               </thead>
@@ -258,6 +299,7 @@ export default function Admin() {
                     <td>{servicio.nombre}</td>
                     <td>{servicio.duracion}</td>
                     <td>AR${servicio.precio}</td>
+                    <td>{servicio.destacado ? 'SÍ' : 'NO'}</td>
                     <td>
                       <Button 
                         variant="warning" 
@@ -322,6 +364,14 @@ export default function Admin() {
           show={showAgregarServicio} 
           onHide={() => setShowAgregarServicio(false)} 
           onSave={handleAgregarServicio} 
+        />
+
+        {/* Modal para eliminar reservas */}
+        <ModalEliminarReserva 
+          show={showEliminarReserva} 
+          onHide={() => setShowEliminarReserva(false)} 
+          reserva={reservaSeleccionada} 
+          onDelete={handleConfirmDeleteReserva} 
         />
       </div>
     </main>

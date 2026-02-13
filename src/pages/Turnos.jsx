@@ -5,7 +5,7 @@ import { Form, Button, Alert, Card } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { UserContext } from "../context/UserContext";
-import { getReservas, crearReserva } from "../helpers/ReservasApi";
+import { crearReserva } from "../helpers/ReservasApi";
 import { getServicios } from "../helpers/ServicioApi";
 import { getProfesionales } from "../helpers/UsuariosApi";
 
@@ -433,26 +433,6 @@ function Turnos() {
     }
   }, [reservaExitosa]);
 
-  const cargarReservas = async () => {
-    if (!isAuthenticated) return [];
-    setLoadingReservas(true);
-    try {
-      const data = await getReservas();
-      const reservasList = data?.reservas || data?.data || data || [];
-      const list = Array.isArray(reservasList) ? reservasList : [];
-      setReservasDb(list);
-      return list;
-    } catch (err) {
-      console.error(err);
-      return reservasDb;
-    } finally {
-      setLoadingReservas(false);
-    }
-  };
-
-  useEffect(() => {
-    cargarReservas();
-  }, [isAuthenticated, profesionalSeleccionadoId, fechaSeleccionada]);
 
   useEffect(() => {
     const cargarServicios = async () => {
@@ -523,7 +503,7 @@ function Turnos() {
       hora: horaKey,
     });
 
-    const reservasActuales = await cargarReservas();
+    // Solo validar duplicados en el carrito local, el backend validará duplicados en BD
     const profesionalKeyNombre = normalizeText(profesionalNombre);
     const profesionalKeyId = normalizeText(profesionalSeleccionadoId);
     const servicioKeyId = normalizeText(servicioSeleccionado);
@@ -566,21 +546,6 @@ function Turnos() {
       return;
     }
 
-    const reservaDuplicada = reservasActuales.some((t) => {
-      return (
-        formatDateKey(t.fechaReserva || t.fecha) === fechaKey &&
-        formatTimeKey(t.horaReserva || t.hora) === horaKey &&
-        matchesProfesional(t) &&
-        matchesServicio(t)
-      );
-    });
-
-    if (reservaDuplicada) {
-      console.log("[Turnos] duplicado detectado", { fechaKey, horaKey, profesionalNombre });
-      setError("Ya existe una reserva con ese servicio, profesional, dia y horario");
-      return;
-    }
-
     const servicioId = obtenerIdServicio(servicioActual);
     if (!servicioId) {
       setError("No se pudo identificar el servicio seleccionado.");
@@ -594,13 +559,18 @@ function Turnos() {
       fechaReserva: fechaKey,
       horaReserva: horaKey,
       rol: user?.rol || "Usuario",
-      profesional: profesionalNombre,
+      profesional: profesionalSeleccionadoId,
     };
-    console.log("[Turnos] payload", payload);
+    console.log("[Turnos] payload COMPLETO:", JSON.stringify(payload, null, 2));
+    console.log("[Turnos] servicio ID:", servicioId);
+    console.log("[Turnos] profesional ID:", profesionalSeleccionadoId);
+    console.log("[Turnos] fecha:", fechaKey);
+    console.log("[Turnos] hora:", horaKey);
 
     try {
       setSubmitting(true);
       const respuesta = await crearReserva(payload);
+      console.log("[Turnos] respuesta del servidor:", respuesta);
       const reservaCreada = respuesta?.reserva || respuesta;
 
       if (respuesta?.ok === false || respuesta?.statusCode === 409) {
