@@ -1,4 +1,6 @@
-const url = `${import.meta.env.VITE_API_URL}/api/categorias`;
+import { API_BASE_URL } from "./apiBaseUrl";
+
+const url = `${API_BASE_URL}/api/categorias`;
 
 const limite = 8;
 

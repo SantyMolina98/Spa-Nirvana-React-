@@ -1,4 +1,6 @@
-const url = `${import.meta.env.VITE_API_URL}/api/servicios`;
+import { API_BASE_URL } from "./apiBaseUrl";
+
+const url = `${API_BASE_URL}/api/servicios`;
 
 const limite = 50;
 
