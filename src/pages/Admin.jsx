@@ -134,13 +134,16 @@ export default function Admin() {
       <h2 className='PanelAdmin'>Panel de Administración. Bienvenido/a {user?.nombre}</h2>
       <div className='ContenidoAdmin'>
         <section>
-        <h3 className='TituloSeccion'>Usuarios</h3>
-        <Button 
-          className="mb-3"
-          onClick={() => setShowAgregarUsuario(true)}
-        >
-          Agregar Usuario
-        </Button>
+          <article className='sector-titulo-boton'>
+            <h3 className='TituloSeccion'>Usuarios</h3>
+            <Button 
+            className="boton-panel-admin"
+            onClick={() => setShowAgregarUsuario(true)}
+            >
+            Agregar Usuario
+            </Button>
+          </article>
+        
         <hr />
         {regularUsers.length > 0 ? (
           <div className="table-responsive">
@@ -271,13 +274,15 @@ export default function Admin() {
         </section>
         <hr />
        <section>
-        <h3 className='TituloSeccion'>Servicios</h3>
-        <Button 
-          className="mb-3"
-          onClick={() => setShowAgregarServicio(true)}
-        >
+        <article className='sector-titulo-boton'>
+          <h3 className='TituloSeccion'>Servicios</h3>
+          <Button 
+            className="boton-panel-admin"
+            onClick={() => setShowAgregarServicio(true)}
+          >
           Añadir Servicio
-        </Button>
+          </Button>
+        </article>
         <hr />
         {servicios.length > 0 ? (
           <div className="table-responsive">

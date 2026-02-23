@@ -1,4 +1,9 @@
-*{
+body, *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+
   --color-principalHome: #584738;
   --color-principal2Home: #3f3228;
   --color-secondaryHome: #4c583e;
@@ -10,6 +15,17 @@
   --color-seventhHome: #aa6d3b;
 }
 
+main{
+  margin: 0;
+  padding: 0;
+}
+
+.Carrusel-Servicio{
+  width: 100%;
+}
+.Contenido-Carrusel-Serv{
+  width: 100%;
+}
 .bi-circle-fill{
   display: inline-block;
   font-size: 9px;

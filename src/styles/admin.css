@@ -1,8 +1,10 @@
 *{
-  --color-primay:#dc8c4b;
+  --color-primay:#eca367;
   --color-secondary:#f5f5f5;
   --color-terciary:#4a3006;
   --color-fourth:#4b7dcf;
+  --color-fifth:#f5f6f8;
+  --color-sixth:#e4d5c4;
 }
 
 .AdminPage{
@@ -10,6 +12,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
+  background-color: var(--color-fifth);
 }
 .ContenidoAdmin{
   width: 100%;
@@ -35,15 +38,15 @@
 
 /* Estilos para tabla de servicios */
 .table-responsive {
-  width: 100%;
+  width: auto;
   overflow-x: auto;
-  margin: 1em 0;
+  margin: 1em 2em 2em 2em;
 }
 
 .tabla-servicios {
   width: 100%;
   border-collapse: collapse;
-  background-color: var(--color-secondary);
+  background-color: var(--color-sixth);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
@@ -71,13 +74,21 @@
 }
 
 .tabla-servicios tbody tr:hover {
-  background-color: rgba(220, 140, 75, 0.1);
+  background-color: rgba(225, 124, 35, 0.355);
 }
 
 .tabla-servicios tbody tr:last-child td {
   border-bottom: none;
 }
 
+.sector-titulo-boton{
+  width: 100%;
+  margin: 0;
+  padding-left: 2em;
+  display: flex;
+  align-items: center;
+  gap: 10em;
+}
 /* Responsive para dispositivos móviles */
 @media (max-width: 768px) {
   .tabla-servicios {
