@@ -1,3 +1,4 @@
+import '../styles/HomePage.css';
 import { Carousel, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -7,7 +8,9 @@ export function CarruselServiciosDestacados({ servicios }) {
   }
 
   return (
-    <Carousel className='carrusel-hp' interval={4000} controls indicators>
+    <Carousel className='carrusel-hp' interval={4000} controls
+     
+     indicators>
       {servicios.map((servicio) => (
         <Carousel.Item key={servicio._id}>
           <div className='d-flex justify-content-center'>

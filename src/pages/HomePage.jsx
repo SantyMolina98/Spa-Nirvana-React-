@@ -31,7 +31,7 @@ function HomePage () {
   return (
     <>
     <main className='MainHomeP'>
-      <section>
+      <section className='banner-carrusel'>
       <Carousel fade>
       <Carousel.Item>
         <Image src={imagenMap.banner1} rounded className='carrusel'/>
@@ -53,11 +53,11 @@ function HomePage () {
             Adéntrate en un viaje sensorial de bienestar en el spa más exclusivo de Tucumán. Disfrutá de relajantes masajes corporales y rituales cuidadosamente diseñados en un ambiente de lujo que irradia tranquilidad.</p>
             <p>*Los masajes, propuestas y tratamientos no incluyen las siguientes instalaciones: sauna, jacuzzi y piscina; éstos se encuentran habilitados solamente para huéspedes.</p>
         </article>
-      <div className='d-flex justify-content-between align-items-center mb-3'>
+      <div className='seccion-promos-carrusel'>
         <h2 className='h2HomeP'>Promociones Destacadas</h2>
         {user?.rol === 'Admin' && (
           <Link to="/admin">
-            <Button variant="primary" size="sm">Agregar Promo</Button>
+            <Button className='button-admin'>Agregar Promo</Button>
           </Link>
         )}
       </div>
@@ -65,7 +65,7 @@ function HomePage () {
       {loading ? (
         <p className="text-center">Cargando promociones...</p>
       ) : (
-        <CarruselServiciosDestacados servicios={serviciosDestacados} />
+        <CarruselServiciosDestacados className="carrusel-servicios-destacados" servicios={serviciosDestacados} />
       )}
       
       </section>
