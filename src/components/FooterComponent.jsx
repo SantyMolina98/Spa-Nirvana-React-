@@ -7,7 +7,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 function FooterComponent() {
   return (
     <footer className="back-footer-color pt-4 pt-md-5">
-      <Container>
+      <Container className="container-footer">
         <Row className="pb-4 mb-4 border-bottom align-items-start">
           <Col xs={12} lg={4} className="mb-4 mb-lg-0 text-center">
             <img 
@@ -22,14 +22,14 @@ function FooterComponent() {
               <Link to="URL_X" className="redes mx-2 text-white fs-4"><i className="bi bi-twitter-x"></i></Link>
             </div>
           </Col>
-          <Col xs={12} md={6} lg={4} className="mb-4 mb-lg-0">
+          <Col xs={12} lg={4} className="mb-4 mb-lg-0 text-center">
             <h5 className="text-uppercase mb-3">Nuestros Datos</h5>
             <ListGroup variant="flush" className="bg-transparent">
               <ListGroup.Item className="bg-transparent border-0 ps-0 pb-2 text-white p-footer-link">
                 <i className="bi bi-telephone-fill me-2"></i>Atención al Cliente - 0381 5783 030
               </ListGroup.Item>
               <ListGroup.Item className="bg-transparent border-0 ps-0 pb-2">
-                <Link to="URL_LINKEDIN" target="_blank" rel="noopener noreferrer" className="text-white p-footer-link">
+                <Link to="/contacto" target="_blank" rel="noopener noreferrer" className="text-white p-footer-link">
                   Trabajá con Nosotros <i className="bi bi-linkedin ms-1"></i>
                 </Link>
               </ListGroup.Item>
@@ -40,7 +40,7 @@ function FooterComponent() {
                 <Link to="/nosotros" className="text-white p-footer-link">Nosotros</Link>
               </ListGroup.Item>
               <ListGroup.Item className="bg-transparent border-0 ps-0 pb-2">
-                <a href="URL_GOOGLE_MAPS" target="_blank" rel="noopener noreferrer" className="text-white p-footer-link">
+                <a href="https://www.google.com/maps/place/Gral.+Jos%C3%A9+Mar%C3%ADa+Paz+576,+T4000+San+Miguel+de+Tucum%C3%A1n,+Tucum%C3%A1n/@-26.8364215,-65.2097043,17z/data=!3m1!4b1!4m6!3m5!1s0x94225c0e8d3f160f:0xaf25f4de8ee29e12!8m2!3d-26.8364263!4d-65.2071294!16s%2Fg%2F11jym09rlv?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="text-white p-footer-link">
                   <img src={imagenMap.direccion} alt="logo-mastercard" className="me-2" width="20" />Gral. José María Paz 576, SMT</a>
               </ListGroup.Item>
             </ListGroup>
@@ -52,7 +52,7 @@ function FooterComponent() {
                 <Link to="/ayuda" className="text-white p-footer-link">Centro de Ayuda</Link>
               </ListGroup.Item>
               <ListGroup.Item className="bg-transparent border-0 ps-0 pb-3">
-                <Link to="/cancelar-turno" className="text-warning fw-bold p-footer-link">Cancelar un turno</Link>
+                <Link to="/turnos" className="text-warning fw-bold p-footer-link">Cancelar un turno</Link>
               </ListGroup.Item>
               
               <ListGroup.Item className="bg-transparent border-0 ps-0 pb-2">
@@ -67,6 +67,7 @@ function FooterComponent() {
               <img src={imagenMap.logomastercard} alt="logo-mastercard" className="me-2" width="40" />
               <i className="bi bi-credit-card-fill text-white fs-4 me-2"></i>
               <i className="bi bi-paypal text-white fs-4"></i>
+              <i className="bi bi-cash-stack text-white fs-4"></i>
             </div>
           </Col>
         </Row>
