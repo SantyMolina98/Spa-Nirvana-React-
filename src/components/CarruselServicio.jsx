@@ -197,9 +197,11 @@ const CarruselServicios = ({
               />
               <Card.Body className='Cuerpo-Texto'>
                 <Card.Title className='Titulo-Carrusel'>{nombreServicio}</Card.Title>
-                <Card.Text>
+                <Card.Text className='descripcion-servicio'>
                   {descripcionServicio || 'Sin descripción disponible.'}
                   <br /> <br />
+                </Card.Text>
+                <Card.Text className='duracion-precio-servicio'>
                   <i className="bi bi-circle-fill"></i> Duración: {duracionServicio || 'A confirmar'}
                   <br />
                   <i className="bi bi-circle-fill"></i> Precio del servicio: AR$ {precioServicio || 'A confirmar'}.

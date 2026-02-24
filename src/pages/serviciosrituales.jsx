@@ -66,7 +66,7 @@ function ServiciosRitual() {
               <br />
             </div>
             <Card.Text className='Testimonio'>
-              
+              "Para una persona como yo, que al trabajar en una escuela paso mucho tiempo de pie, el Ritual Nirvana Escape fue una verdadera experiencia extrasensorial. Me ayudaron a aliviar la tensión muscular y a sentirme renovada después de largas jornadas. ¡Recomiendo sus servicios a todos los que buscan un momento de relajación y bienestar!"
             </Card.Text>
           </Card.Body>
         </Card>
@@ -83,7 +83,7 @@ function ServiciosRitual() {
               <br />
             </div>
             <Card.Text className='Testimonio'>
-              
+              "Desde que empecé a estudiar en la facultad soy un manojo de nervios, sinceramente este spa cambió mi vida. El Ritual Ürkutun es de otro planeta, me ayudó a relajarme y a encontrar un equilibrio mental que no sabía que necesitaba. El ambiente es increíble, el personal es súper atento y los resultados son impresionantes. ¡Una experiencia de cinco estrellas!"
             </Card.Text>
           </Card.Body>
         </Card>
@@ -101,7 +101,7 @@ function ServiciosRitual() {
               <br />
             </div>
             <Card.Text className='Testimonio'>             
-              
+              "Soy padre primerizo y el estrés de cuidar a un bebé es real, pero este spa me salvó la vida. El Ritual Mülfem es una experiencia única que me ayudó a relajarme y a recargar energías. El personal es increíblemente amable y profesional, y el ambiente es tan relajante que me sentí como en un oasis de tranquilidad. ¡Recomiendo este lugar a todos los padres que necesitan un respiro!"
             </Card.Text>
           </Card.Body>
         </Card>
