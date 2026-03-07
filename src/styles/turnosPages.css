@@ -10,7 +10,7 @@
 }
 
 .bgturnos {
-  background-image: url(../src/assets/img/fondoturnos.jpg);
+  background-image: url('/img/fondoturnos.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -35,7 +35,9 @@
 
 .login-prompt-image {
   flex: 1.2;
-  background-image: url(../src/assets/img/turnosbloq.png); 
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-image: url('/img/turnosbloq.png'); 
   background-size: cover;
   background-position: center;
   min-height: 400px;
