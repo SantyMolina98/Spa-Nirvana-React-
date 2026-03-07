@@ -151,7 +151,7 @@ function Categorias() {
           const slugServicio = servicio.slug || crearSlug(nombreServicio);
 
           return (
-            <div className="contenedor" key={servicio._id || nombreServicio}>
+       <div className="contenedor" key={servicio._id || nombreServicio}>
               {imagenServicio && (
                 <img
                   src={imagenServicio}
@@ -159,15 +159,17 @@ function Categorias() {
                   className="img-categoria"
                 />
               )}
-              <h4>{nombreServicio}</h4>
-              <p>
-                {descripcionServicio
-                  ? truncarTexto(descripcionServicio)
-                  : 'Sin descripción disponible.'}
-              </p>
-              <Link to={`${rutaBase}?s=${slugServicio}`}>
-                <Button type="button" className="btn-categoria">Ver más</Button>
-              </Link>
+              <div className="info-servicio-card">
+                <h4>{nombreServicio}</h4>
+                <p>
+                  {descripcionServicio
+                    ? truncarTexto(descripcionServicio, 200) 
+                    : 'Sin descripción disponible.'}
+                </p>
+                <Link to={`${rutaBase}?s=${slugServicio}`} style={{ textDecoration: 'none' }}>
+                  <Button type="button" className="btn-categoria">Ver detalles</Button>
+                </Link>
+              </div>
             </div>
           );
         })}
@@ -275,8 +277,6 @@ function Categorias() {
         {renderServiciosCategoria('Rituales', '/serviciosrituales')}
       </section>
     </div>
-
-    {/* Modal para agregar nuevo servicio */}
     <ModalAgregarServicio 
       show={showAgregarServicio}
       onHide={() => setShowAgregarServicio(false)}

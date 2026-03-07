@@ -77,7 +77,7 @@ function HomePage () {
           <p>General José María Paz 576, San Miguel de Tucumán - Argentina.</p>
           <p>Horario: todos los días de 07:00 a 21:00 hs. <br/>Mail: nirvanaspaybeauty@gmail.com</p>
         <a href="https://web.whatsapp.com/" target="_blank">
-          <button type="button" className="btnWappHP">Whatsapp Spa Concierge</button>
+          <button type="button" className="btnWappHP">Whatsapp Spa</button>
         </a> 
         </article>
         <div className="seccionWrap">
@@ -94,6 +94,9 @@ function HomePage () {
             <Link to="/categorias" className="textoabsolute" id="etiquetaAsizeRitual" >Rituales</Link>
           </div>
         </div>
+        <div className="wp cajawp">
+        <a href="URL_WHATSAPP_API" target="_blank" rel="noopener noreferrer" className="visitado"><i className="bi bi-whatsapp"></i></a>
+      </div>
       </section>
     </main>
     </>

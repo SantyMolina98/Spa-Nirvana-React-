@@ -605,6 +605,7 @@ function Turnos() {
         ...payload,
         servicioId,
         servicioNombre: servicioLabel,
+        profesionalNombre: profesionalNombre,
         fecha: payload.fechaReserva,
         hora: payload.horaReserva,
         id: reservaCreada?._id || reservaCreada?.id || Date.now(),
@@ -615,8 +616,9 @@ function Turnos() {
       setReservaExitosa(true);
       setError("");
 
-      // Restauramos los campos para permitir una nueva selección
+      setCategoriaSeleccionada("");
       setServicioSeleccionado("");
+      setProfesionalSeleccionadoId("");
       setFechaSeleccionada(null);
       setHoraSeleccionada(null);
     } catch (err) {
@@ -645,7 +647,7 @@ function Turnos() {
     const resumen = turnos
       .map(
         (t) =>
-          `- ${t.servicioNombre || t.servicio} con ${t.profesional} (${t.fecha} - ${t.hora})`,
+          `- ${t.servicioNombre || t.servicio} con ${t.profesionalNombre || t.profesional} (${t.fecha} - ${t.hora})`,
       )
       .join("\n");
 
@@ -693,12 +695,12 @@ function Turnos() {
             {reservaExitosa && (
               <Alert
                 variant="success"
-                className="animate__animated animate__fadeIn"
               >
                 ✅ ¡Turno añadido al carrito! Puedes elegir otro o finalizar
                 abajo.
               </Alert>
             )}
+            <div className="layout-dos-columnas">
             <div className="cardbgturnos">
               <h4 className="titulo-form-detalle">Detalles del Servicio</h4>
               <Form id="formuselec" onSubmit={handleSubmit}>
@@ -819,12 +821,7 @@ function Turnos() {
                 </div>
               </Form>
             </div>
-          </>
-        )}
-
-        {isAuthenticated && (
-          <>
-            <section className="resumen-actual">
+                        <section className="resumen-actual">
               <div className="resumen-card">
                 <h3 className="resumen-titulo">
                   <i className="bi bi-bar-chart-line"></i> Resumen selección
@@ -859,7 +856,12 @@ function Turnos() {
                 </div>
               </div>
             </section>
+            </div>
+          </>
+        )}
 
+        {isAuthenticated && (
+          <>
             <section className="carrito-lujo-container">
               <div className="carrito-header">
                 <h2>Carrito de Reservas</h2>
@@ -886,7 +888,7 @@ function Turnos() {
                             <div className="info-item">
                               <i className="bi bi-person"></i>
                               <span>
-                                Profesional: <strong>{item.profesional}</strong>
+                               Profesional: {" "}<strong>{item.profesionalNombre || item.profesional}</strong>
                               </span>
                             </div>
                             <div className="info-item">
