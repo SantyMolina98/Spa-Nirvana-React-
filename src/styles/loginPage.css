@@ -11,7 +11,7 @@
   --color-fifthlogin: #f1eada;
   --color-sixthlogin: #eec58c;
   --color-seventhlogin: #aa6d3b;
-  --color-eigthlogin: #be1b1b;
+  --color-eigthlogin: #db7165;
 }
 
 .mainLogin{
@@ -22,7 +22,7 @@
   height: auto;
 }
 .colorcard{
-  background-color: var(--color-sixthlogin);
+  background-color: var(--color-fifthlogin);
 }
 
 .cardLogin{
@@ -52,19 +52,26 @@
   border-radius: 1.5em;
 }
 .title-login{
-  width: auto;
   margin-left: 1em;
   margin-right: 1em;
   margin-top: 0.5em;
   text-align: center;
-
+  font-weight: 600;
 }
 .linkLogin{
   text-decoration: none;
   font-weight: 600;
-  color: var(--color-secondarylogin);
+  color: #917e64;
   margin-left: 0;
 }
+
+.linkLogin:hover{
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--color-fifthlogin);
+  margin-left: 0;
+}
+
 .FormInicioSesion{
   width: auto;
 }
@@ -73,8 +80,9 @@
   color: var(--color-principal2login);
 }
 .form-check .form-check-label {
-  background-color: transparent !important;
+  background-color: transparent;
 }
+
 .alerterror{
   width: auto;
   border-radius: 10px;
@@ -83,7 +91,6 @@
   color: var(--color-eigthlogin);
 }
 .sectorBotones{
-  width: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -91,7 +98,7 @@
 .botonesLogin{
   width: 80%;
   margin-bottom: 10px;
-  background-color: var(--color-seventhlogin);
+  background-color: var(--color-terciarylogin);
   border: none;
 }
 .botonesLogin:hover{
