@@ -48,6 +48,8 @@ import Gene from './img/Gene.png';
 import logomastercard from './img/logomastercard.png';
 import logospafooter from './img/logospafooter.png';
 import direccion from './img/direccion.png';
+import fondoturnos from './img/fondoturnos.jpg';
+import turnosbloq from './img/turnosbloq.png';
 
 const imagenMap = {
   //HomePage
@@ -89,6 +91,8 @@ const imagenMap = {
   SM1, SM2,  SM3,
   //Nosotros
   Naza, Anahi, Santy, Gene,
+  //Turnos
+  fondoturnos, turnosbloq,
   //Footer
   logospafooter, logomastercard, direccion,
 }

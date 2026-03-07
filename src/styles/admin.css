@@ -1,115 +1,203 @@
-*{
-  --color-primay:#eca367;
-  --color-secondary:#f5f5f5;
-  --color-terciary:#4a3006;
-  --color-fourth:#4b7dcf;
-  --color-fifth:#f5f6f8;
-  --color-sixth:#e4d5c4;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.AdminPage{
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--color-fifth);
-}
-.ContenidoAdmin{
-  width: 100%;
-}
-
-.TextoCargando{
-  width: 100%;
-  text-align: center;
-  margin: 2em;
+:root {
+  --bg-cream: #f6f3ed;
+  --card-white: #ffffff;
+  --text-main: #3d3129;
+  --text-muted: #8c827a;
+  --accent-brown: #a67c52;
+  --accent-brown-hover: #8f6741;
+  --border-light: #e8e4db;
+  --status-active-bg: #e4f5e9;
+  --status-active-text: #2f7a4c;
+  --status-inactive-bg: #f5f5f5;
+  --status-inactive-text: #616161;
 }
 
-.PanelAdmin{
-  width: 100%;
-  padding: 1em;
-  background-color: var(--color-primay);
-  color: var(--color-secondary);
+body {
+  background-color: var(--bg-cream);
 }
 
-.TituloSeccion{
-  color: var(--color-terciary);
+.AdminPage {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-cream);
+  padding: 2rem;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h2 {
+  color: var(--text-main);
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-header p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.kpi-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.kpi-card {
+  background-color: var(--card-white);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--border-light);
+}
+
+.kpi-title {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-/* Estilos para tabla de servicios */
+.kpi-number {
+  color: var(--text-main);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.admin-card {
+  background-color: var(--card-white);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border-light);
+}
+
+.sector-titulo-boton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.TituloSeccion {
+  color: var(--text-main);
+  font-weight: 700;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.boton-panel-admin {
+  background-color: var(--accent-brown);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.boton-panel-admin:hover {
+  background-color: var(--accent-brown-hover) !important;
+  transform: translateY(-2px);
+}
+
 .table-responsive {
-  width: auto;
+  width: 100%;
   overflow-x: auto;
-  margin: 1em 2em 2em 2em;
 }
 
 .tabla-servicios {
   width: 100%;
   border-collapse: collapse;
-  background-color: var(--color-sixth);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
 }
 
-.tabla-servicios thead {
-  background-color: var(--color-primay);
-  color: white;
-  font-weight: 600;
-}
-
-.tabla-servicios th {
-  padding: 1em;
+.tabla-servicios thead th {
+  padding: 1rem 0.5rem;
   text-align: left;
-  border-bottom: 2px solid var(--color-terciary);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border-light);
 }
 
 .tabla-servicios td {
-  padding: 1em;
-  border-bottom: 1px solid #ddd;
-}
-
-.tabla-servicios tbody tr {
-  transition: background-color 0.3s ease;
-}
-
-.tabla-servicios tbody tr:hover {
-  background-color: rgba(225, 124, 35, 0.355);
+  padding: 1.2rem 0.5rem;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 500;
+  vertical-align: middle;
 }
 
 .tabla-servicios tbody tr:last-child td {
   border-bottom: none;
 }
 
-.sector-titulo-boton{
+.badge-status {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.badge-active {
+  background-color: var(--status-active-bg);
+  color: var(--status-active-text);
+}
+
+.badge-role {
+  background-color: #fff3e0;
+  color: var(--accent-brown);
+}
+
+.action-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  margin-right: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.edit-btn {
+  color: var(--status-inactive-text);
+}
+
+.edit-btn:hover {
+  color: var(--bg-cream);
+}
+
+.delete-btn {
+  color: var(--text-muted);
+}
+
+.delete-btn:hover {
+  color: #d32f2f;
+}
+
+.TextoCargando, .TextoError {
   width: 100%;
-  margin: 0;
-  padding-left: 2em;
-  display: flex;
-  align-items: center;
-  gap: 10em;
-}
-/* Responsive para dispositivos móviles */
-@media (max-width: 768px) {
-  .tabla-servicios {
-    font-size: 0.9em;
-  }
-  
-  .tabla-servicios th,
-  .tabla-servicios td {
-    padding: 0.7em;
-  }
-}
-
-/* Estilos para acciones de admin en servicios */
-.admin-actions {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid #ddd;
-}
-
-.admin-actions button {
-  font-size: 0.85rem;
+  text-align: center;
+  margin: 4em 0;
+  color: var(--accent-brown);
+  font-weight: bold;
 }
