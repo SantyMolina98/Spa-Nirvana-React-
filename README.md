@@ -38,11 +38,11 @@ Esta es una aplicación de página única (SPA) desarrollada con React para un s
 Este proyecto está deployado en Netlify, usando una URL gratuita proporcionada del mismo, también usted podrá navegar desde aquí explorando como un usuario normal o un usuario administrador. También podrá crear un usuario desde cero, completando con sus datos, aclarando que navegará como un usuario común luego de realizar su registro. Si desea navegar con un usuario ya creado, las credenciales serán dadas en el siguiente paso.
 
 ## Usuarios
-- *USUARIO (común)* : Email : usuario123@gmail.com
-                      Contraseña : usuario123
+- *USUARIO (común)* : Email : naza@gmail.com
+                      Contraseña : 123456
 
-- *USUARIO (Admin)* : Email : vale@gmail.com
-                      Contraseña : nazarena
+- *USUARIO (Admin)* : Email : gonzalo@gmail.com
+                      Contraseña : 123456
 
 ### Ejecución en Modo Desarrollo
 - Ejecuta `npm run dev` para iniciar el servidor de desarrollo.
