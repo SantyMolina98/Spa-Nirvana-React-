@@ -1,6 +1,14 @@
 # SPA React - Salón de Belleza
 
-Esta es una aplicación de página única (SPA) desarrollada con React para un salón de belleza. Permite a los usuarios explorar servicios, realizar reservas, iniciar sesión, registrarse y gestionar cuentas.
+Nirvana Spa & Beauty es una plataforma web integral diseñada para gestionar reservas y servicios de un spa exclusivo. Ofrece una experiencia de usuario (UX) relajante, premium y altamente intuitiva, permitiendo a los clientes explorar tratamientos, gestionar su carrito de turnos y administrar sus cuentas.
+
+# Características Principales
+
+- 🛒 **Carrito de Turnos Inteligente:** Sistema de reservas múltiple con validación de horarios, fechas y profesionales en tiempo real.
+- 💅 **Diseño UI/UX Premium:** Interfaz completamente responsiva con estética minimalista, maquetada con CSS Grid, Flexbox y animaciones sutiles.
+- 🔐 **Autenticación y Recuperación:** Sistema de Login/Registro y recuperación de contraseñas integrados.
+- ⚙️ **Panel de Administración:** Gestión de servicios, categorías y control de turnos exclusivos para usuarios con rol Admin.
+- 📧 **Notificaciones Automatizadas:** Integración con EmailJS para el envío de correos de bienvenida al registrarse.
 
 ## Lenguajes Utilizados
 
@@ -26,7 +34,8 @@ Esta es una aplicación de página única (SPA) desarrollada con React para un s
 - **ESLint**: Para linting del código JavaScript.
 - **@vitejs/plugin-react-swc**: Plugin de Vite para React con SWC.
 
-## Modo de Uso
+## Modo de Uso 
+Si deseas correr este proyecto en tu entorno local, sigue estos pasos:
 
 ### Instalación
 1. Clona el repositorio o descarga los archivos.
@@ -37,7 +46,7 @@ Esta es una aplicación de página única (SPA) desarrollada con React para un s
 - "https://spa-nirvana.netlify.app/"
 Este proyecto está deployado en Netlify, usando una URL gratuita proporcionada del mismo, también usted podrá navegar desde aquí explorando como un usuario normal o un usuario administrador. También podrá crear un usuario desde cero, completando con sus datos, aclarando que navegará como un usuario común luego de realizar su registro. Si desea navegar con un usuario ya creado, las credenciales serán dadas en el siguiente paso.
 
-## Usuarios
+## Usuarios de ejemplo
 - *USUARIO (común)* : Email : naza@gmail.com
                       Contraseña : 123456
 
