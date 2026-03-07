@@ -2,7 +2,6 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-
   --color-principalcategoria: #584738;
   --color-secondarycategoria: #4c583e;
   --color-terciarycategoria: #b59e7d;
@@ -45,34 +44,76 @@
 }
 
 .contenedor{
+ background-color: #ffffff;
+  border: 1px solid rgba(181, 158, 125, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
   width: 100%;
-  max-width: 400px;
-  height: auto;
+  max-width: 380px; 
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  border: 2px solid var(--color-secondarycategoria);
-  border-radius: 1em;
-  padding: 1em;
-}
-.img-categoria{
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 0.5em;
-  margin-bottom: 1em;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 0;
 }
 
-.btn-categoria{
-  background-color: var(--color-principalcategoria);
-  text-decoration: none;
-  border-color: var(--color-principalcategoria);
-  border-radius: 10px;
+.contenedor:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
-.btn-categoria:hover{
-  background-color: var(--color-terciarycategoria);
-  border-color: var(--color-terciarycategoria);
+
+.img-categoria {
+  width: 100%;
+  height: 280px; 
+  object-fit: cover;
+  margin-bottom: 0; 
+  border-radius: 0;
+}
+
+.info-servicio-card {
+  padding: 1.5rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.info-servicio-card h4 {
+  color: #3d3129;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.info-servicio-card p {
+  color: var(--color-fourthcategoria);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.btn-categoria {
+  background-color: var(--color-fifthcategoria);
+  color: var(--color-principalcategoria);
+  border: 1px solid rgba(181, 158, 125, 0.3);
+  border-radius: 12px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  width: 100%;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-categoria:hover {
+  background-color: var(--color-principalcategoria);
+  color: #ffffff;
 }
 
 
@@ -106,8 +147,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  background-color: var(--color-terciarycategoria);
+  background-color: var(--color-fifthcategoria);
 }
 .btn-admin-agregar {
    margin: 20px;

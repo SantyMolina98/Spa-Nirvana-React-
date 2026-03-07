@@ -52,7 +52,7 @@ function FooterComponent() {
                 <Link to="/ayuda" className="text-white p-footer-link">Centro de Ayuda</Link>
               </ListGroup.Item>
               <ListGroup.Item className="bg-transparent border-0 ps-0 pb-3">
-                <Link to="/turnos" className="text-warning fw-bold p-footer-link">Cancelar un turno</Link>
+                <Link to="/turnos" className="text-white p-footer-link">Cancelar un turno</Link>
               </ListGroup.Item>
               
               <ListGroup.Item className="bg-transparent border-0 ps-0 pb-2">
@@ -77,9 +77,6 @@ function FooterComponent() {
           </Col>
         </Row>
       </Container>
-      <div className="wp cajawp">
-        <a href="URL_WHATSAPP_API" target="_blank" rel="noopener noreferrer" className="visitado"><i className="bi bi-whatsapp"></i></a>
-      </div>
     </footer>
   );
 }

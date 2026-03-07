@@ -157,8 +157,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
 }
 
 .resumen-card {
@@ -260,6 +258,7 @@
     transform: translatey(2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
+
 .alert-danger, .alert-success {
     border-radius: 8px;
     text-align: center;
@@ -272,6 +271,7 @@
   border-radius: 24px;
   padding: 3rem;
   box-shadow: 0 4px 15px rgba(88, 71, 56, 0.1);
+  width: 100%;
 }
 
 .titulo-form-detalle {
@@ -280,6 +280,19 @@
   color: #65594f;
   margin-bottom: 1.5rem;
   text-align: left;
+}
+
+.layout-dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .layout-dos-columnas {
+    grid-template-columns: 1.5fr 1fr;
+    align-items: flex-start;
+  }
 }
 
 #formuselec {
@@ -362,7 +375,7 @@
   max-width: 900px;
   margin: 3rem auto;
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: var(--color-fourthturnos);
+  background-color: #c3b4a0;
   border-radius: 20px;
   padding: 2rem;
 }
