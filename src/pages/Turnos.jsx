@@ -8,6 +8,7 @@ import { UserContext } from "../context/UserContext";
 import { crearReserva } from "../helpers/ReservasApi";
 import { getServicios } from "../helpers/ServicioApi";
 import { getProfesionales } from "../helpers/UsuariosApi";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const toTimeDate = (hora, minutos = 0) => {
   const base = new Date();
@@ -17,7 +18,13 @@ const toTimeDate = (hora, minutos = 0) => {
 
 function Turnos() {
   const context = useContext(UserContext);
-  const { turnos = [], addTurno, removeTurno, isAuthenticated, user } = context || {};
+  const {
+    turnos = [],
+    addTurno,
+    removeTurno,
+    isAuthenticated,
+    user,
+  } = context || {};
 
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
   const [servicioSeleccionado, setServicioSeleccionado] = useState("");
@@ -50,7 +57,9 @@ function Turnos() {
   };
 
   const obtenerNombreServicio = (servicio) => {
-    return servicio?.nombre || servicio?.titulo || servicio?.nombreServicio || "";
+    return (
+      servicio?.nombre || servicio?.titulo || servicio?.nombreServicio || ""
+    );
   };
 
   const obtenerIdServicio = (servicio) => {
@@ -133,7 +142,7 @@ function Turnos() {
   const profesionalActual = useMemo(() => {
     if (!profesionalSeleccionadoId) return null;
     return profesionalesDb.find(
-      (p) => obtenerIdProfesional(p) === profesionalSeleccionadoId
+      (p) => obtenerIdProfesional(p) === profesionalSeleccionadoId,
     );
   }, [profesionalesDb, profesionalSeleccionadoId]);
 
@@ -152,7 +161,9 @@ function Turnos() {
     if (!categoriaSeleccionada) return [];
     return serviciosDb.filter((servicio) => {
       const nombreCategoria = obtenerNombreCategoria(servicio?.categoria);
-      return normalizeText(nombreCategoria) === normalizeText(categoriaSeleccionada);
+      return (
+        normalizeText(nombreCategoria) === normalizeText(categoriaSeleccionada)
+      );
     });
   }, [serviciosDb, categoriaSeleccionada]);
 
@@ -160,7 +171,7 @@ function Turnos() {
     if (!servicioSeleccionado) return null;
     return (
       serviciosDb.find(
-        (servicio) => obtenerIdServicio(servicio) === servicioSeleccionado
+        (servicio) => obtenerIdServicio(servicio) === servicioSeleccionado,
       ) || null
     );
   }, [serviciosDb, servicioSeleccionado]);
@@ -170,7 +181,7 @@ function Turnos() {
     const servicioId = obtenerIdServicio(servicioActual);
     const servicioNombre = normalizeText(obtenerNombreServicio(servicioActual));
     const servicioCategoria = normalizeText(
-      obtenerNombreCategoria(servicioActual?.categoria)
+      obtenerNombreCategoria(servicioActual?.categoria),
     );
 
     return profesionalesDb.filter((profesional) => {
@@ -192,8 +203,7 @@ function Turnos() {
         const itemId = normalizeText(obtenerIdServicio(item));
         const itemNombre = normalizeText(obtenerNombreServicio(item));
         return (
-          itemId === normalizeText(servicioId) ||
-          itemNombre === servicioNombre
+          itemId === normalizeText(servicioId) || itemNombre === servicioNombre
         );
       });
 
@@ -203,15 +213,21 @@ function Turnos() {
       const agendaMatch = agenda.some((item) => {
         const agendaServicio = item?.servicio;
         if (!agendaServicio) return false;
-        if (typeof agendaServicio === "string" || typeof agendaServicio === "number") {
+        if (
+          typeof agendaServicio === "string" ||
+          typeof agendaServicio === "number"
+        ) {
           return normalizeText(agendaServicio) === normalizeText(servicioId);
         }
-        return normalizeText(obtenerIdServicio(agendaServicio)) === normalizeText(servicioId);
+        return (
+          normalizeText(obtenerIdServicio(agendaServicio)) ===
+          normalizeText(servicioId)
+        );
       });
       if (agendaMatch) return true;
 
       const especialidad = normalizeText(
-        obtenerEspecialidadProfesional(profesional)
+        obtenerEspecialidadProfesional(profesional),
       );
       return (
         especialidad &&
@@ -295,7 +311,8 @@ function Turnos() {
       const parts = value.split("/");
       if (parts.length === 3) {
         const [d, m, y] = parts;
-        if (y && m && d) return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
+        if (y && m && d)
+          return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
       }
     }
     return String(value);
@@ -326,7 +343,11 @@ function Turnos() {
   };
 
   const reservasOcupadas = useMemo(() => {
-    if (!profesionalSeleccionadoId || !fechaSeleccionada || !servicioSeleccionado) {
+    if (
+      !profesionalSeleccionadoId ||
+      !fechaSeleccionada ||
+      !servicioSeleccionado
+    ) {
       return [];
     }
     const fechaKey = formatDateKey(fechaSeleccionada);
@@ -341,7 +362,7 @@ function Turnos() {
           registro?.profesionalNombre ||
           registro?.profesionalId ||
           registro?.profesional?.nombre ||
-          registro?.profesional?.id
+          registro?.profesional?.id,
       );
       if (!key) return true;
       return key === profesionalKeyNombre || key === profesionalKeyId;
@@ -355,7 +376,7 @@ function Turnos() {
           registro?.servicio?.nombre ||
           registro?.servicio?.titulo ||
           registro?.servicio?._id ||
-          registro?.servicio?.id
+          registro?.servicio?.id,
       );
       if (!key) return true;
       return key === servicioKeyId || key === servicioKeyNombre;
@@ -366,7 +387,7 @@ function Turnos() {
         (r) =>
           formatDateKey(r.fechaReserva || r.fecha) === fechaKey &&
           matchesProfesional(r) &&
-          matchesServicio(r)
+          matchesServicio(r),
       )
       .map((r) => formatTimeKey(r.horaReserva || r.hora));
 
@@ -375,7 +396,7 @@ function Turnos() {
         (t) =>
           formatDateKey(t.fechaReserva || t.fecha) === fechaKey &&
           matchesProfesional(t) &&
-          matchesServicio(t)
+          matchesServicio(t),
       )
       .map((t) => formatTimeKey(t.horaReserva || t.hora));
 
@@ -433,7 +454,6 @@ function Turnos() {
     }
   }, [reservaExitosa]);
 
-
   useEffect(() => {
     const cargarServicios = async () => {
       setLoadingServicios(true);
@@ -456,7 +476,9 @@ function Turnos() {
       setLoadingProfesionales(true);
       try {
         const data = await getProfesionales();
-        const list = Array.isArray(data) ? data : data?.usuarios || data?.data || [];
+        const list = Array.isArray(data)
+          ? data
+          : data?.usuarios || data?.data || [];
         setProfesionalesDb(Array.isArray(list) ? list : []);
       } catch (err) {
         console.error("[Turnos] error getProfesionales", err);
@@ -514,7 +536,7 @@ function Turnos() {
           registro?.profesionalNombre ||
           registro?.profesionalId ||
           registro?.profesional?.nombre ||
-          registro?.profesional?.id
+          registro?.profesional?.id,
       );
       if (!key) return true;
       return key === profesionalKeyNombre || key === profesionalKeyId;
@@ -527,7 +549,7 @@ function Turnos() {
           registro?.servicio?.nombre ||
           registro?.servicio?.titulo ||
           registro?.servicio?._id ||
-          registro?.servicio?.id
+          registro?.servicio?.id,
       );
       if (!key) return true;
       return key === servicioKeyId || key === servicioKeyNombre;
@@ -552,7 +574,8 @@ function Turnos() {
       return;
     }
 
-    const servicioLabel = obtenerNombreServicio(servicioActual) || servicioNombre;
+    const servicioLabel =
+      obtenerNombreServicio(servicioActual) || servicioNombre;
 
     const payload = {
       servicio: servicioId,
@@ -602,10 +625,16 @@ function Turnos() {
       const status = err?.status || err?.response?.status;
       if (status === 401 || message.includes("token")) {
         setError("Tu sesión expiró. Iniciá sesión nuevamente para reservar.");
-      } else if (message.includes("duplic") || status === 409 || message.includes("reserv")) {
+      } else if (
+        message.includes("duplic") ||
+        status === 409 ||
+        message.includes("reserv")
+      ) {
         setError("este turno ya está reservado");
       } else {
-        setError(err?.message || "No se pudo crear la reserva. Intenta nuevamente.");
+        setError(
+          err?.message || "No se pudo crear la reserva. Intenta nuevamente.",
+        );
       }
     } finally {
       setSubmitting(false);
@@ -616,36 +645,47 @@ function Turnos() {
     const resumen = turnos
       .map(
         (t) =>
-          `- ${t.servicioNombre || t.servicio} con ${t.profesional} (${t.fecha} - ${t.hora})`
+          `- ${t.servicioNombre || t.servicio} con ${t.profesional} (${t.fecha} - ${t.hora})`,
       )
       .join("\n");
 
     alert(
       `¡RESERVA CONFIRMADA!\n\n` +
-      `Servicios Reservados:\n${resumen}\n\n` +
-      `Te esperamos en nuestro local en Gral Paz 576, SMT.\n` +
-      `¡Muchas gracias!`
+        `Servicios Reservados:\n${resumen}\n\n` +
+        `Te esperamos en nuestro local en Gral Paz 576, SMT.\n` +
+        `¡Muchas gracias!`,
     );
-
-    // Las reservas ya se guardan al crear cada turno.
   };
 
   return (
-    <div className="MainT">
-      <section className="sectioncombos">
+    <section className="bgturnos">
+      <div>
         <h2 id="Texturno">Reserva tu turno</h2>
-
         {!isAuthenticated ? (
-          <Card className="text-center p-4 shadow-sm">
-            <Card.Body>
-              <Card.Title>Contenido Exclusivo</Card.Title>
-              <Card.Text>
-                Inicia sesión para poder gestionar tus reservas.
-              </Card.Text>
-              <Button variant="primary" href="/login">
-                Ir al Login
-              </Button>
-            </Card.Body>
+          <Card className="login-prompt-card shadow-lg mx-auto">
+            <div className="login-prompt-layout">
+              <div className="login-prompt-image">
+                <div className="lock-icon-overlay">
+                  <i className="bi bi-lock-fill"></i>
+                </div>
+              </div>
+              <div className="login-prompt-content">
+                <h3 className="login-prompt-title">Contenido Exclusivo</h3>
+                <p className="login-prompt-text">
+                  Inicia sesión para poder gestionar tus reservas y acceder a
+                  tratamientos personalizados.
+                </p>
+                <Button href="/login" className="btn-login-primary">
+                  Iniciar Sesión <i className="bi bi-arrow-right ms-2"></i>
+                </Button>
+                <div className="login-divider">
+                  <span>O ÚNETE AHORA</span>
+                </div>
+                <Button href="/login/registro" className="btn-login-secondary">
+                  Crear una cuenta
+                </Button>
+              </div>
+            </div>
           </Card>
         ) : (
           <>
@@ -659,200 +699,239 @@ function Turnos() {
                 abajo.
               </Alert>
             )}
-
-            <Form id="formuselec" onSubmit={handleSubmit}>
-              <div className="input-group mb-3">
-                <Form.Label className="input-group-text">CATEGORÍA</Form.Label>
-                <Form.Select
-                  value={categoriaSeleccionada}
-                  onChange={(e) => {
-                    setCategoriaSeleccionada(e.target.value);
-                    resetCamposDependientes();
-                  }}
-                >
-                  <option value="">Seleccionar Categoría</option>
-                  {categoriasDisponibles.map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
-                    </option>
-                  ))}
-                </Form.Select>
-              </div>
-
-              <div className="input-group mb-3">
-                <Form.Label className="input-group-text">SERVICIO</Form.Label>
-                <Form.Select
-                  value={servicioSeleccionado}
-                  onChange={(e) => {
-                    setServicioSeleccionado(e.target.value);
-                    resetProfesionalYFecha();
-                  }}
-                  disabled={!categoriaSeleccionada}
-                >
-                  <option value="">Seleccionar Servicio</option>
-                  {serviciosDeCategoria.map((s) => {
-                    const servicioId = obtenerIdServicio(s);
-                    const servicioLabel = obtenerNombreServicio(s);
-                    if (!servicioId) return null;
-                    return (
-                      <option key={servicioId} value={servicioId}>
-                        {servicioLabel}
-                      </option>
-                    );
-                  })}
-                </Form.Select>
-              </div>
-
-              <div className="input-group mb-3">
-                <Form.Label className="input-group-text">
-                  PROFESIONAL
-                </Form.Label>
-                <Form.Select
-                  value={profesionalSeleccionadoId}
-                  onChange={(e) => {
-                    setProfesionalSeleccionadoId(e.target.value);
-                    resetFechaYHora();
-                  }}
-                  disabled={!servicioSeleccionado}
-                >
-                  <option value="">Seleccionar Profesional</option>
-                  {profesionalesDisponibles.map((p) => {
-                    const profesionalId = obtenerIdProfesional(p);
-                    const profesionalLabel = obtenerNombreProfesional(p);
-                    const especialidad = obtenerEspecialidadProfesional(p);
-                    if (!profesionalId) return null;
-                    return (
-                      <option key={profesionalId} value={profesionalId}>
-                        {profesionalLabel}
-                        {especialidad ? ` (${especialidad})` : ""}
-                      </option>
-                    );
-                  })}
-                </Form.Select>
-              </div>
-
-              <div className="input-group mb-3">
-                <Form.Label className="input-group-text">FECHA</Form.Label>
-                <div className="form-control p-0 custom-datepicker-container">
-                  <DatePicker
-                    selected={fechaSeleccionada}
-                    onChange={(date) => setFechaSeleccionada(date)}
-                    filterDate={filterDiasSemana}
-                    dateFormat="dd/MM/yyyy"
-                    minDate={new Date()}
-                    placeholderText="Seleccionar Fecha"
-                    className="form-control"
-                    disabled={!profesionalSeleccionadoId}
-                  />
-                </div>
-              </div>
-
-              <div className="input-group mb-3">
-                <Form.Label className="input-group-text">HORARIO</Form.Label>
-                <div className="form-control p-0 custom-datepicker-container">
-                  <DatePicker
-                    selected={horaSeleccionada}
-                    onChange={(date) => setHoraSeleccionada(date)}
-                    showTimeSelect
-                    showTimeSelectOnly
-                    timeIntervals={60}
-                    dateFormat="HH:mm"
-                    includeTimes={horariosDisponiblesFiltrados}
-                    placeholderText="Seleccionar Horario"
-                    className="form-control"
-                    disabled={!fechaSeleccionada || loadingReservas}
-                  />
-                </div>
-              </div>
-
-                <Button
-                  type="submit"
-                  className="btnTurnos w-100"
-                  disabled={submitting || loadingServicios}
-                >
-                  {submitting ? "Reservando..." : "Añadir al Carrito"}
-              </Button>
-            </Form>
-          </>
-        )}
-      </section>
-
-      <hr className="hrturnos" />
-
-      {isAuthenticated && (
-        <>
-          <section className="resumen-actual mb-4">
-            <Card className="text-center bg-light shadow-sm">
-              <Card.Body>
-                <h3 className="h5 text-muted">Resumen selección actual</h3>
-                <p className="mb-1">
-                  <strong>Servicio:</strong> {servicioNombre || "A definir"}
-                </p>
-                <p className="mb-0">
-                  <strong>Profesional:</strong>{" "}
-                  {profesionalNombre || "A definir"}
-                </p>
-              </Card.Body>
-            </Card>
-          </section>
-
-          <section className="carrito-turnos mt-5 p-4 rounded border shadow-sm bg-white">
-            <h3 className="mb-4 text-center">🛒 Mi Carrito de Turnos</h3>
-
-            {turnos.length === 0 ? (
-              <Alert variant="info" className="text-center">
-                Tu carrito está vacío.
-              </Alert>
-            ) : (
-              <>
-                <div className="row">
-                  {turnos.map((item) => (
-                    <div className="col-md-6 mb-3" key={item.id}>
-                      <Card className="h-100 border-primary shadow-sm">
-                        <Card.Body className="d-flex flex-column justify-content-between">
-                          <div>
-                            <Card.Title className="text-primary h6">
-                              USTED RESERVÓ : {item.servicioNombre || item.servicio}
-                            </Card.Title>
-                            <Card.Text className="small">
-                              <strong>Profesional:</strong> {item.profesional}
-                              <br />
-                              <strong>Fecha:</strong> {item.fecha} - {item.hora}
-                              <br />
-                              <strong>Usuario:</strong> {user?.nombre || "N/A"}
-                              <br />
-                              <p>¡MUCHAS GRACIAS!</p>
-                            </Card.Text>
-                          </div>
-                          <Button
-                            variant="outline-danger"
-                            size="sm"
-                            className="mt-2 align-self-start"
-                            onClick={() => removeTurno(item.id)}
-                          >
-                            🗑️ Eliminar
-                          </Button>
-                        </Card.Body>
-                      </Card>
-                    </div>
-                  ))}
-                </div>
-                <div className="text-center mt-4">
-                  <Button
-                    variant="success"
-                    size="lg"
-                    className="px-5 shadow"
-                    onClick={handleFinalizarReservaTotal}
+            <div className="cardbgturnos">
+              <h4 className="titulo-form-detalle">Detalles del Servicio</h4>
+              <Form id="formuselec" onSubmit={handleSubmit}>
+                <div className="form-campo">
+                  <Form.Label className="estilo-label">CATEGORÍA</Form.Label>
+                  <Form.Select
+                    className="estilo-input"
+                    value={categoriaSeleccionada}
+                    onChange={(e) => {
+                      setCategoriaSeleccionada(e.target.value);
+                      resetCamposDependientes();
+                    }}
                   >
-                    Finalizar Reserva Total
+                    <option value="">Seleccione una categoría</option>
+                    {categoriasDisponibles.map((cat) => (
+                      <option key={cat} value={cat}>
+                        {cat}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </div>
+
+                <div className="form-campo">
+                  <Form.Label className="estilo-label">SERVICIO</Form.Label>
+                  <Form.Select
+                    className="estilo-input"
+                    value={servicioSeleccionado}
+                    onChange={(e) => {
+                      setServicioSeleccionado(e.target.value);
+                      resetProfesionalYFecha();
+                    }}
+                    disabled={!categoriaSeleccionada}
+                  >
+                    <option value="">Seleccione un servicio</option>
+                    {serviciosDeCategoria.map((s) => {
+                      const servicioId = obtenerIdServicio(s);
+                      const servicioLabel = obtenerNombreServicio(s);
+                      if (!servicioId) return null;
+                      return (
+                        <option key={servicioId} value={servicioId}>
+                          {servicioLabel}
+                        </option>
+                      );
+                    })}
+                  </Form.Select>
+                </div>
+
+                <div className="form-campo">
+                  <Form.Label className="estilo-label">PROFESIONAL</Form.Label>
+                  <Form.Select
+                    className="estilo-input"
+                    value={profesionalSeleccionadoId}
+                    onChange={(e) => {
+                      setProfesionalSeleccionadoId(e.target.value);
+                      resetFechaYHora();
+                    }}
+                    disabled={!servicioSeleccionado}
+                  >
+                    <option value="">Seleccione su profesional</option>
+                    {profesionalesDisponibles.map((p) => {
+                      const profesionalId = obtenerIdProfesional(p);
+                      const profesionalLabel = obtenerNombreProfesional(p);
+                      const especialidad = obtenerEspecialidadProfesional(p);
+                      if (!profesionalId) return null;
+                      return (
+                        <option key={profesionalId} value={profesionalId}>
+                          {profesionalLabel}
+                          {especialidad ? ` (${especialidad})` : ""}
+                        </option>
+                      );
+                    })}
+                  </Form.Select>
+                </div>
+
+                <div className="form-campo">
+                  <Form.Label className="estilo-label">FECHA</Form.Label>
+                  <div className="estilo-input-container">
+                    <DatePicker
+                      selected={fechaSeleccionada}
+                      onChange={(date) => setFechaSeleccionada(date)}
+                      filterDate={filterDiasSemana}
+                      dateFormat="dd/MM/yyyy"
+                      minDate={new Date()}
+                      placeholderText="Seleccione una fecha"
+                      className="form-control estilo-input"
+                      disabled={!profesionalSeleccionadoId}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-campo">
+                  <Form.Label className="estilo-label">HORARIO</Form.Label>
+                  <div className="estilo-input-container">
+                    <DatePicker
+                      selected={horaSeleccionada}
+                      onChange={(date) => setHoraSeleccionada(date)}
+                      showTimeSelect
+                      showTimeSelectOnly
+                      timeIntervals={60}
+                      dateFormat="HH:mm"
+                      includeTimes={horariosDisponiblesFiltrados}
+                      placeholderText="Seleccione un horario"
+                      className="form-control estilo-input"
+                      disabled={!fechaSeleccionada || loadingReservas}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-btn-container">
+                  <Button
+                    type="submit"
+                    className="btn-anadir-carrito"
+                    disabled={submitting || loadingServicios}
+                  >
+                    <i className="bi bi-cart3"></i>{" "}
+                    {submitting ? "Reservando..." : "Añadir al Carrito"}
                   </Button>
                 </div>
-              </>
-            )}
-          </section>
-        </>
-      )}
-    </div>
+              </Form>
+            </div>
+          </>
+        )}
+
+        {isAuthenticated && (
+          <>
+            <section className="resumen-actual">
+              <div className="resumen-card">
+                <h3 className="resumen-titulo">
+                  <i className="bi bi-bar-chart-line"></i> Resumen selección
+                  actual
+                </h3>
+                <div className="resumen-item">
+                  <span className="resumen-label">CATEGORÍA</span>
+                  <span className="resumen-valor">
+                    {categoriaSeleccionada || "—"}
+                  </span>
+                </div>
+
+                <div className="resumen-item">
+                  <span className="resumen-label">SERVICIO</span>
+                  <span className="resumen-valor">{servicioNombre || "—"}</span>
+                </div>
+
+                <div className="resumen-item">
+                  <span className="resumen-label">PROFESIONAL</span>
+                  <span className="resumen-valor">
+                    {profesionalNombre || "—"}
+                  </span>
+                </div>
+
+                <div className="resumen-item">
+                  <span className="resumen-label">FECHA Y HORA</span>
+                  <span className="resumen-valor">
+                    {fechaSeleccionada || horaSeleccionada
+                      ? `${fechaSeleccionada ? fechaSeleccionada.toLocaleDateString("es-ES") : ""} ${horaSeleccionada ? horaSeleccionada.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }) : ""}`
+                      : "—"}
+                  </span>
+                </div>
+              </div>
+            </section>
+
+            <section className="carrito-lujo-container">
+              <div className="carrito-header">
+                <h2>Carrito de Reservas</h2>
+                <p>REVISE SUS SELECCIONES DE LUJO</p>
+              </div>
+
+              {turnos.length === 0 ? (
+                <div className="alert alert-info text-center carrito-vacio">
+                  Tu carrito está vacío. ¡Te invitamos a descubrir nuestros
+                  servicios!
+                </div>
+              ) : (
+                <>
+                  <div className="carrito-items-list">
+                    {turnos.map((item) => (
+                      <div className="reserva-card" key={item.id}>
+                        <div className="reserva-detalles">
+                          <span className="reserva-label">USTED RESERVÓ</span>
+                          <h4 className="reserva-titulo">
+                            {item.servicioNombre || item.servicio}
+                          </h4>
+
+                          <div className="reserva-info-grid">
+                            <div className="info-item">
+                              <i className="bi bi-person"></i>
+                              <span>
+                                Profesional: <strong>{item.profesional}</strong>
+                              </span>
+                            </div>
+                            <div className="info-item">
+                              <i className="bi bi-calendar3"></i>
+                              <span>
+                                Fecha:{" "}
+                                <strong>
+                                  {item.fecha}, {item.hora}
+                                </strong>
+                              </span>
+                            </div>
+                            <div className="info-item">
+                              <i className="bi bi-person-circle"></i>
+                              <span>
+                                Usuario:{" "}
+                                <strong>{user?.nombre || "N/A"}</strong>
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="reserva-footer">
+                            <button
+                              className="btn-eliminar-lujo"
+                              onClick={() => removeTurno(item.id)}
+                            >
+                              <i className="bi bi-trash3"></i> ELIMINAR
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                    <button
+                      className="btn-finalizar-lujo"
+                      onClick={handleFinalizarReservaTotal}
+                    >
+                      FINALIZAR RESERVA TOTAL
+                    </button>
+                </>
+              )}
+            </section>
+          </>
+        )}
+      </div>
+    </section>
   );
 }
 
