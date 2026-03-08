@@ -28,6 +28,7 @@ Nirvana Spa & Beauty es una plataforma web integral diseñada para gestionar res
 - **React Datepicker** (v8.10.0): Componente para seleccionar fechas.
 - **@emailjs/browser** (v4.4.1): Para enviar correos electrónicos desde el navegador.
 - **React Router Hash Link** (v2.4.3): Para navegación con anclas en React Router.
+- **AOS** (v2.3.4): Para animaciones básicas.
 
 ### Dependencias de Desarrollo
 - **Vite** (v7.1.2): Herramienta de construcción y servidor de desarrollo.
