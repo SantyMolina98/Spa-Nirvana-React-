@@ -102,7 +102,7 @@ function HeaderComponent () {
               <Form className="d-flex itemsHeaderBusqueda" onSubmit={handleSearch}>
                 <Form.Control
                   type="search"
-                  placeholder="Buscar"
+                  placeholder="Buscar tratamientos..."
                   className="me-2 busqueda"
                   aria-label="Search"
                   value={termino}
