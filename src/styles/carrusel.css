@@ -3,7 +3,6 @@ body, *{
   padding: 0;
   box-sizing: border-box;
   
-
   --color-principalHome: #584738;
   --color-principal2Home: #3f3228;
   --color-secondaryHome: #4c583e;
@@ -29,6 +28,11 @@ main{
 .bi-circle-fill{
   display: inline-block;
   font-size: 9px;  
+}
+.admin-actions{
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 @media (min-width:400px) and (max-width: 600px) {
@@ -85,3 +89,37 @@ main{
   }
   
 } 
+
+@media (max-width: 768px) {
+  .Carrusel-Servicio {
+    height: auto;
+  }
+
+  .Contenido-Carrusel-Serv {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .Img-Servicio {
+    width: 100%;
+    height: 250px;
+  }
+
+  .Cuerpo-Texto {
+    width: 100%;
+    height: auto;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .Titulo-Carrusel {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .Btn-Servicio {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+}
