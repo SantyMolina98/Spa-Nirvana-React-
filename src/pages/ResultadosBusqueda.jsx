@@ -1,5 +1,6 @@
 import { useSearchParams, Link } from 'react-router-dom';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import '../styles/resultadosBusqueda.css'; 
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import { serviciosData } from '../helpers/ListaServicios'; 
 
 const ResultadosBusqueda = () => {
@@ -26,41 +27,45 @@ const ResultadosBusqueda = () => {
   });
 
   return (
-    <Container className="my-4">
-      <h2 className="text-center mb-4">
-        Resultados de la búsqueda:
-      </h2>
+    <div className="resultados-wrapper">
+      
+      <div className="resultados-header">
+        <h2 className="resultados-title">Resultados de la búsqueda</h2>
+        <p className="resultados-subtitle">Mostrando los mejores tratamientos de bienestar para ti.</p>
+      </div>
+
       {resultados.length === 0 ? (
-        <div className="text-center mt-5">
+        <div className="resultados-vacio">
           <h4>Sin resultados 😢</h4>
           <p>Lo sentimos, no encontramos coincidencias con su búsqueda. Por favor, intente con palabras clave más generales o verifique la ortografía.</p>
           <Link to="/">
-             <Button variant="secondary">Volver al Inicio</Button>
+             <button className="btn-volver-lujo">Volver al Inicio</button>
           </Link>
         </div>
       ) : (
-        <Row>
+        <div className="resultados-grid">
           {resultados.map((item) => (
-            <Col key={item.id} xs={12} md={6} lg={4} className="mb-4">
-              <Card className="h-100 shadow-sm colorcard border-0"> 
-                <Card.Body className="d-flex flex-column">
-                  <div className="mb-2">
-                    <span className="badge bg-secondary">{item.categoria}</span>
-                  </div>
-                  <Card.Title className="fw-bold">{item.titulo}</Card.Title>
-                  <Card.Text>{item.descripcion}</Card.Text>
-                  <div className="mt-auto pt-3">
-                    <Link to={item.ruta} className="w-100 btn btn-primary botonesLogin">
-                      Ver Servicio
-                    </Link>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
+            <div key={item.id} className="resultado-card-lujo">
+              
+              <div className="resultado-contenido">
+                <span className="resultado-badge">{item.categoria}</span>
+                <h3 className="resultado-titulo">{item.titulo}</h3>
+                <p className="resultado-desc">{item.descripcion}</p>
+              </div>
+
+              <div className="resultado-footer">
+                <Link to={item.ruta} style={{ textDecoration: 'none' }}>
+                  <button className="btn-ver-servicio">
+                    Ver Servicio <i className="bi bi-arrow-right ms-2"></i>
+                  </button>
+                </Link>
+              </div>
+
+            </div>
           ))}
-        </Row>
+        </div>
       )}
-    </Container>
+    </div>
   );
 };
 
