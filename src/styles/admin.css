@@ -112,7 +112,7 @@ body {
 }
 
 .boton-panel-admin:hover {
-  background-color: var(--accent-brown-hover) !important;
+  background-color: var(--accent-brown-hover);
   transform: translateY(-2px);
 }
 
