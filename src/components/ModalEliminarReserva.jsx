@@ -13,6 +13,7 @@ export function ModalEliminarReserva({ show, onHide, reserva, onDelete }) {
     try {
       await eliminarReserva(reserva._id);
 
+      setLoading(false);
       onDelete(reserva);
 
     } catch (err) {
