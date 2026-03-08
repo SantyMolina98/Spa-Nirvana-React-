@@ -40,7 +40,7 @@ export function CarruselServiciosDestacados({ servicios }) {
   const gruposDeServicios = agruparServicios(servicios, cardsPerSlide);
 
   return (
-    <Carousel className="carrusel-hp pb-5" interval={4000} controls indicators>
+    <Carousel className="carrusel-hp pb-5" interval={4000} controls indicators data-aos="fade-up" data-aos-delay="800" data-aos-duration="600" data-aos-easing="ease-in-out">
       {gruposDeServicios.map((grupo, index) => (
         <Carousel.Item key={index}>
           <div className="d-flex justify-content-center flex-row gap-4 px-3 py-3">
