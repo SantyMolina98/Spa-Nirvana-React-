@@ -46,14 +46,14 @@ function HomePage () {
       </section>
       <section className='sectionPromosHP'>
           <article className="centrado">
-          <h1>Nirvana Spa & Beauty</h1>
-          <h3>Un viaje sensorial de bienestar...</h3>
-          <img src={imagenMap.logospaheader} alt="logo" className="logoarticle"/>
-          <p>Te damos la bienvenida a Nirvana, donde combinamos tratamientos, rituales y ceremonias basados ​​en los conocimientos ancestrales de diferentes culturas.<br/>
+          <h1 data-aos="fade-up" data-aos-delay="800" data-aos-duration="1000" data-aos-easing="ease-in-out">Nirvana Spa & Beauty</h1>
+          <h3  data-aos="fade-up" data-aos-delay="800" data-aos-duration="900" data-aos-easing="ease-in-out">Un viaje sensorial de bienestar...</h3>
+          <img src={imagenMap.logospaheader} alt="logo" className="logoarticle"  data-aos="fade-up" data-aos-delay="800" data-aos-duration="800"/>
+          <p data-aos="fade-up" data-aos-delay="800" data-aos-duration="700" data-aos-easing="ease-in-out">Te damos la bienvenida a Nirvana, donde combinamos tratamientos, rituales y ceremonias basados ​​en los conocimientos ancestrales de diferentes culturas.<br/>
             Adéntrate en un viaje sensorial de bienestar en el spa más exclusivo de Tucumán. Disfrutá de relajantes masajes corporales y rituales cuidadosamente diseñados en un ambiente de lujo que irradia tranquilidad.</p>
-            <p>*Los masajes, propuestas y tratamientos no incluyen las siguientes instalaciones: sauna, jacuzzi y piscina; éstos se encuentran habilitados solamente para huéspedes.</p>
+          <p data-aos="fade-up" data-aos-delay="800" data-aos-duration="680" data-aos-easing="ease-in-out">*Los masajes, propuestas y tratamientos no incluyen las siguientes instalaciones: sauna, jacuzzi y piscina; éstos se encuentran habilitados solamente para huéspedes.</p>
         </article>
-      <div className='seccion-promos-carrusel'>
+      <div className='seccion-promos-carrusel' data-aos="fade-right" data-aos-delay="800" data-aos-duration="600" data-aos-easing="ease-in-out">
         <h2 className='h2HomeP'>Promociones Destacadas</h2>
         {user?.rol === 'Admin' && (
           <Link to="/admin">
@@ -65,7 +65,7 @@ function HomePage () {
       {loading ? (
         <p className="text-center">Cargando promociones...</p>
       ) : (
-        <CarruselServiciosDestacados className="carrusel-servicios-destacados" servicios={serviciosDestacados} />
+        <CarruselServiciosDestacados className="carrusel-servicios-destacados" servicios={serviciosDestacados}/>
       )}
       
       </section>
@@ -73,23 +73,23 @@ function HomePage () {
       <img src={imagenMap.publicidad50off} alt="publicidad-50-%" id="imgpublicidad"/>
       </section>
       <section className='GridsHomeP'>
-        <article className="centrado" >
-          <p>General José María Paz 576, San Miguel de Tucumán - Argentina.</p>
-          <p>Horario: todos los días de 07:00 a 21:00 hs. <br/>Mail: nirvanaspaybeauty@gmail.com</p>
-        <a href="https://web.whatsapp.com/" target="_blank">
-          <button type="button" className="btnWappHP">Whatsapp Spa</button>
+        <article className="centrado">
+          <p data-aos="fade-down" data-aos-delay="800" data-aos-duration="600" data-aos-easing="ease-in-out">General José María Paz 576, San Miguel de Tucumán - Argentina.</p>
+          <p data-aos="fade-down" data-aos-delay="800" data-aos-duration="700" data-aos-easing="ease-in-out">Horario: todos los días de 07:00 a 21:00 hs. <br/>Mail: nirvanaspaybeauty@gmail.com</p>
+        <a href="https://web.whatsapp.com/" target="_blank" data-aos="fade-down" data-aos-delay="800" data-aos-duration="600" data-aos-easing="ease-in-out">
+          <button type="button" className="btnWappHP" data-aos="fade-up" data-aos-delay="900" data-aos-duration="600" data-aos-easing="ease-in-out">Whatsapp Spa</button>
         </a> 
         </article>
         <div className="seccionWrap">
-          <div className="textoabs">
+          <div className="textoabs" data-aos="fade-up" data-aos-delay="600" data-aos-duration="600" data-aos-easing="ease-in-out">
             <img src={imagenMap.grid1tratamientos} alt="grid1-tratamientos" className="secciones"/>
             <Link to="/categorias" className="textoabsolute" id="etiquetaAsizeTratamiento" >Tratamientos</Link>
           </div>
-          <div className="textoabs">
+          <div className="textoabs" data-aos="fade-up" data-aos-delay="700" data-aos-duration="700" data-aos-easing="ease-in-out">
             <img src={imagenMap.grid2masajes} alt="grid2-masajes" className="secciones"/>
             <Link to="/categorias" className="textoabsolute" id="etiquetaAsizeMasaje" >Masajes</Link>
           </div>
-          <div className="textoabs">
+          <div className="textoabs" data-aos="fade-up" data-aos-delay="800" data-aos-duration="800" data-aos-easing="ease-in-out">
             <img src={imagenMap.grid3rituales} alt="grid3-rituales" className="secciones"/>
             <Link to="/categorias" className="textoabsolute" id="etiquetaAsizeRitual" >Rituales</Link>
           </div>

@@ -1,5 +1,5 @@
 .contacto-wrapper {
-  background-color: #faf8f5;
+  background-color: #52453478;
   min-height: 100vh;
   padding: 4rem 1rem;
   font-family: 'Inter', system-ui, sans-serif;
@@ -15,7 +15,7 @@
 }
 
 .contacto-subtitle {
-  color: #baa486;
+  color: #82735d;
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 2px;
@@ -32,7 +32,7 @@
 }
 
 .contacto-desc {
-  color: #8c827a;
+  color: #58524e;
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -237,7 +237,7 @@
 }
 
 .info-item-foot i {
-  color: #baa486;
+  color: #82735d;
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
@@ -250,7 +250,7 @@
 }
 
 .info-item-foot p {
-  color: #8c827a;
+  color: #5f5853;
   font-size: 0.85rem;
   margin: 0;
 }
@@ -263,7 +263,7 @@
 
 .redes-iconos a i {
   font-size: 1.2rem;
-  color: #a89c8d;
+  color: #82735d;
   transition: color 0.3s ease;
 }
 

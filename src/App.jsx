@@ -20,9 +20,19 @@ import Admin from './pages/Admin.jsx';
 import RecuperarCuenta from './components/RecuperarCuenta';
 import NuevaPassword from './components/NuevaPassword';
 import ResultadosBusqueda from './pages/ResultadosBusqueda';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+
 
 function App() {
- 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Duración de la animación en milisegundos
+      once: true, // Animar solo una vez al hacer scroll
+    });
+  }, []);
+  
   return (
     <>
     <BrowserRouter>
