@@ -8,13 +8,6 @@
   --color-fourthServicio:#785421;
   --color-fifthServicio:#f4db9f;
   --color-sixthServicio: #f6eace;
-  --color-shecoment:#b52677;
-  --color-boycoment:#0a2394;
-}
-
-.MainServicio{
-  width: 100%;
-  height: auto;
 }
 
 .Carrusel-Servicio{
@@ -29,15 +22,17 @@
 .Img-Servicio{
   width: 25%;
   height: 30em;
+  object-fit: cover;
 }
 .Titulo-Carrusel{
   font-size: xx-large;
+  font-weight: 900;
   color: var(--color-secondaryServicio);
 }
 .Cuerpo-Texto{
   height: 30em;
   width: 100%;
-  background-image:linear-gradient(to bottom, var(--color-terciaryServicio), var(--color-fifthServicio)) ;
+  background-image:linear-gradient(to bottom, var(--color-principalServicio), var(--color-fifthServicio)) ;
   color: var(--color-fourthServicio);
   display: flex;
   flex-direction: column;
@@ -46,80 +41,148 @@
 }
 .Btn-Servicio{
   width: 25%;
-  background-color: var(--color-terciaryServicio);
-  color: var(--color-fifthServicio);
+  background-color: var(--color-principalServicio);
+  color: var(--color-sixthServicio);
   border: none;
   margin-bottom: 2em;
 }
 .Btn-Servicio:hover{
-  background-color: var(--color-secondaryServicio);
-  color: var(--color-fifthServicio);
+  background-color: var(--color-sixthServicio);
+  color: var(--color-principalServicio);
 }
 .hr-servicio{
   width: 90%;
   border: 1px solid var(--color-secondaryServicio);
 }
-/* Sección de comentarios */
-.Sector-Comentarios{
-  margin-top: 2em;
-  margin-bottom: 2em;
+
+.Sector-Comentarios {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.Cards-Comentarios{
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  height: auto;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #faf8f5;
+  padding: 4rem 1rem;
+}
+
+.testimonios-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.testimonios-label {
+  color: #a89c8d;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.Titulotesti {
+  color: #5c4e43;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+.Cards-Comentarios {
+  width: 100%;
+  max-width: 1100px;
   display: flex;
-  justify-content: space-around;
-}
-.Comentario{
-  width: 29%;
-  border-radius: 1em;
-}
-.body-comentario{
-  margin: 0;
-  padding: 0;
-  border-radius: 1em;
-  background-color: var(--color-sixthServicio);
-}
-.top-comentario{
-  background-color: var(--color-principalServicio);
-  padding-left: 1em;
-  border-radius: 1em 1em 0 0;
-}
-.bi-star-fill{
-    color: yellow;
+  justify-content: center;
+  gap: 2rem; 
 }
 
-.boy-coment , .girl-coment{
-  font-size: x-large;
-  margin-right: 0.5em;
-}
-.boy-coment{
-  color: var(--color-boycoment);
-}
-.girl-coment{
-  color: var(--color-shecoment);
-}
-
-.Testimonio{
-  margin: 1em;
-  
-  color: black;
+.Comentario-Lujo {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  width: 32%;
+  box-shadow: 0 10px 30px rgba(88, 71, 56, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
 }
 
+.Comentario-Lujo:hover {
+  transform: translateY(-5px);
+}
 
-@media (max-width:768px) {
-  .Cards-Comentarios{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.estrellas-lujo {
+  color: #ddcc4f;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 0.2rem;
+}
+
+.Testimonio-Lujo {
+  color: #65594f;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.autor-lujo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar-lujo {
+  width: 45px;
+  height: 45px;
+  background-color: #f3efe6;
+  color: #a89c8d;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.autor-info-lujo {
+  display: flex;
+  flex-direction: column;
+}
+
+.autor-info-lujo strong {
+  color: #4a3b32;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.1rem;
+}
+
+.autor-info-lujo span {
+  color: #a89c8d;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 992px) {
+  .Cards-Comentarios {
+    flex-wrap: wrap;
   }
-  .Comentario{
-    width: 80%;
-    margin-bottom: 1em;
+  .Comentario-Lujo {
+    width: 48%;
+  }
+}
+
+@media (max-width: 768px) {
+  .Comentario-Lujo {
+    width: 100%;
+    max-width: 400px;
+  }
+  .Sector-Comentarios {
+    padding: 3rem 1rem;
   }
 }

@@ -75,9 +75,9 @@ function Login() {
     <>
       <div className="mainLogin">
         <Card className="cardLogin colorcard">
-          <h3 className="colorcard title-login">INICIAR SESIÓN</h3>
+          <h3 className="colorcard title-login">Iniciar Sesión</h3>
           <Card.Body className="bodyCard colorcard">
-            <p className="colorcard">¿Sos nuevo/a? <Link to="/login/registro" className="linkLogin colorcard">REGISTRATE</Link></p>
+            <p className="colorcard">¿No tienes una cuenta? <Link to="/login/registro" className="linkLogin colorcard">Registrate</Link></p>
             
             {error && (
               <Alert variant="danger" onClose={() => setError(null)} dismissible>

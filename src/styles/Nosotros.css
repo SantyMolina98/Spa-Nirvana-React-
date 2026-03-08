@@ -1,236 +1,125 @@
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    --color-sixthNosotros: #f1eada;
-    --color-inputNosotros: rgb(82, 58, 11);
-    --color-backgroundNosotros: #f1eada;
-    --color-cardNosotros: #fff;
-    --color-sixthNosotros: #eec58c;
+:root {
+  --bg-cream: #f6f3ed;
+  --card-white: #ffffff;
+  --text-main: #3d3129;
+  --text-muted: #8c827a;
+  --accent-brown: #a67c52;
+  --accent-brown-hover: #8f6741;
+  --border-light: #e8e4db;
 }
 
 .mainNos {
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    background: var(--color-backgroundNosotros);
-    color: #fdfdfd;
-    font-family: 'Poppins', sans-serif;
-    padding: 5%;
-    gap: 50px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-cream);
+  font-family: 'Inter', system-ui, sans-serif;
+  padding: 4rem 2rem 6rem 2rem;
 }
 
-
-.h1Nos , .mainh {
-    width: 100%;
-    text-align: center;
-    font-weight: 600;
-    color: rgb(82, 58, 11);
-    margin: 30px;
+.centrado {
+  margin-bottom: 1rem;
+  max-width: 800px;
 }
 
-.h1Nos {
-    font-size: clamp(30px, 6vw, 50px);
-    margin-bottom: 20px;
-    font-style:oblique;
-}
 
 .logoarticle {
-  width: 10%;
+  margin: 1.5rem;
+  opacity: 0.9;
 }
 
-.card-section {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 500px;
-
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  width: 100%;
 }
 
 .cardNos {
-     height: 32em;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-    padding-top: 0px;
-    background: var(--color-cardNosotros);
-    border-radius: 25px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    position: relative;
-    flex-direction: column;
-    text-align: center;
-    overflow: hidden;
+  background-color: var(--border-light);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.fotoNos {
-    max-width: 180px;
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: 0.5s;
+.cardNos:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
+.fotoNos {  
+  width: 40%;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  border: 4px solid var(--bg-cream);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
 
 .h2Nos {
-    font-size: clamp(18px, 4vw, 30px);
-    font-weight: 600;
-    color:  rgb(82, 58, 11);
-    margin-top: 5px;
+  color: var(--text-main);
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .descripcionNos {
-    font-size: clamp(12px, 2vw, 14px);
-    font-weight: 200;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    opacity: 0.7;
-    max-width: none;
-    line-height: 1.5;
-    color: black;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
 }
 
-
-.cardNos:hover .fotoNos {
-  transform: scale(1.05) translateX(-20%) scale(1.05);
-}
-
-.ulNos { 
-    margin-top: 20px; 
-    display: flex; 
-    flex-direction: row; 
-    padding: 0; 
-    list-style: none;
+.ulNos {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  padding: 0;
+  width: 100%;
 }
 
 .liNos {
-    list-style: none;
-    display: inline-block;
-    margin: 0;
-    ;
-    
+  display: inline-block;
 }
 
 .fa {
-    text-decoration: none;
-    color: white;
-    background:  rgb(82, 58, 11);
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;;
-    line-height: 30px !important;
-    border-radius: 50%;
-    transition: all .3s ease-in-out;
-    font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  background-color: var(--bg-cream);
+  color: var(--accent-brown);
+  border-radius: 50px;
+  transition: all 0.2s ease;
+  font-size: 1.3rem;
 }
 
 .fa:hover {
-    transform: scale(1.2);
-    color: white;
-    background: rgb(82, 58, 11);
+  background-color: var(--accent-brown);
+  color: var(--card-white);
+  transform: translateY(-3px);
 }
 
-
-@media (max-width: 992px) {
-    .mainNos {
-        padding: 30px 15px;
-        gap: 30px;
-    }
-
-    .cardNos {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px;
-        padding-top: 90px;
-        align-items: center;
-    }
-
-    .fotoNos {
-
-        margin: -80px auto 20px auto;
-        width: 150px;
-        height: 150px;
-        transform: none;
-    }
-
-    .descripcionNos {
-        max-width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-   .cardNos:hover .fotoNos {
-        transform: scale(1.05) translateX(-20%);
-    }
-
-}
-
-/* Para pantallas pequeñas (ej. celulares) */
-@media (max-width: 600px) {
-    .mainNos {
-        padding: 20px 10px;
-        gap: 20px;
-    }
-
-    .cardNos {
-
-        max-width: 400px;
-        padding-top: 110px
-    }
-
-    .fotoNos {
-        width: 120px;
-        height: 120px;
-        margin: -60px auto 15px auto;
-    }
-
-    .h2Nos {
-        font-size: 20px;
-    }
-
-
-    .descripcionNos {
-        font-size: 12px;
-        margin-bottom: 15px;
-    }
-
-}
-
-/* Para pantallas pequeñas (ej. celulares) */
-@media (max-width: 600px) {
-    .mainNos {
-        padding: 20px 10px;
-        gap: 20px;
-    }
-
-    .cardNos {
-        padding: 15px;
-        padding-top: 90px;
-
-    }
-
-    .fotoNos {
-
-        width: 120px;
-        height: 120px;
-        margin: -60px auto 15px auto;
-
-    }
-
-    .h2Nos {
-        font-size: 20px;
-    }
-
-
-    .descripcionNos {
-        font-size: 12px;
-        margin-bottom: 15px;
-    }
+@media (max-width: 768px) {
+  .mainNos {
+    padding: 2rem 1rem;
+  }
+  
+  .cardNos {
+    padding: 2rem 1.5rem;
+  }
 }

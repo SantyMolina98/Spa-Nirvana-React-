@@ -1,41 +1,100 @@
-import '../styles/HomePage.css';
-import { Carousel, Card, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import "../styles/HomePage.css";
+import { useState, useEffect } from "react";
+import { Carousel, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export function CarruselServiciosDestacados({ servicios }) {
+  const [cardsPerSlide, setCardsPerSlide] = useState(3);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setCardsPerSlide(1); //1 card
+      } else if (window.innerWidth < 1024) {
+        setCardsPerSlide(2); //2 cards
+      } else {
+        setCardsPerSlide(3); //3 cards
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   if (!servicios || servicios.length === 0) {
-    return <p className="text-center">No hay promociones destacadas en este momento.</p>;
+    return (
+      <p className="text-center mt-5">
+        No hay promociones destacadas en este momento.
+      </p>
+    );
   }
 
+  const agruparServicios = (arr, tamaño) => {
+    const grupos = [];
+    for (let i = 0; i < arr.length; i += tamaño) {
+      grupos.push(arr.slice(i, i + tamaño));
+    }
+    return grupos;
+  };
+
+  const gruposDeServicios = agruparServicios(servicios, cardsPerSlide);
+
   return (
-    <Carousel className='carrusel-hp' interval={4000} controls
-     
-     indicators>
-      {servicios.map((servicio) => (
-        <Carousel.Item key={servicio._id}>
-          <div className='d-flex justify-content-center'>
-            <Card className="text-center" style={{ maxWidth: '500px', width: '100%' }}>
-              <Card.Header>{servicio.categoria?.nombre || 'PROMO'}</Card.Header>
-              <Card.Body>
-                <Card.Img 
-                  variant="top" 
-                  src={servicio.img || servicio.imagen } 
-                  className='img' 
-                  alt={servicio.nombre}
-                  style={{ maxHeight: '300px', objectFit: 'cover' }}
-                />
-                <Card.Title className="mt-3">{servicio.nombre}</Card.Title>
-                <Card.Text className='TextCardPromoHP'>
-                  {servicio.descripcion}
-                </Card.Text>
-                <Link to={`/servicios/${servicio._id}`}>
-                  <Button className='btnCardPromo'>Ver más</Button>
-                </Link>
-              </Card.Body>
-              <Card.Footer className="text-muted">
-                Precio: AR${servicio.precio}
-              </Card.Footer>
-            </Card>
+    <Carousel className="carrusel-hp pb-5" interval={4000} controls indicators>
+      {gruposDeServicios.map((grupo, index) => (
+        <Carousel.Item key={index}>
+          <div className="d-flex justify-content-center flex-row gap-4 px-3 py-3">
+            {grupo.map((servicio) => {
+              const imgUrl =
+                servicio.img?.secure_url ||
+                servicio.imagen?.secure_url ||
+                servicio.img ||
+                servicio.imagen ||
+                "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3";
+              return (
+                <div
+                  className="card card-promo-lujo"
+                  key={servicio._id}
+                  style={{
+                    width:
+                      cardsPerSlide === 1
+                        ? "100%"
+                        : cardsPerSlide === 2
+                          ? "48%"
+                          : "31%",
+                    maxWidth: cardsPerSlide === 1 ? "450px" : "none",
+                    margin: "0",
+                  }}
+                >
+                  <div className="card-header text-center">
+                    {servicio.categoria?.nombre || "PROMO"}
+                  </div>
+                  <img
+                    src={imgUrl}
+                    alt={servicio.nombre}
+                    className="card-img-top"
+                  />
+                  <div className="card-body">
+                    <h4 className="card-title">{servicio.nombre}</h4>
+                    <p className="card-text TextCardPromoHP">
+                      {servicio.descripcion}
+                    </p>
+
+                    <Link
+                      to={`/servicios/${servicio._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <Button className="btn w-100 btnCardPromo">
+                        Ver detalles
+                      </Button>
+                    </Link>
+                  </div>
+                  <div className="card-footer text-center">
+                    Precio: AR${servicio.precio}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </Carousel.Item>
       ))}

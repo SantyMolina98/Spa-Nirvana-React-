@@ -1,222 +1,299 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  --color-principalcontacto: #584738;
-  --color-secondarycontacto: #4c583e;
-  --color-terciarycontacto: #d2ab73;
-  --color-fourthcontacto: #743e0c;
-  --color-fifthcontacto: #f1eada;
-}
-
-#MainContacto{
-width: 100%;
-height: auto;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-around;
-color: var(--color-principalcontacto);
-}
-
-#Containerformulario {
+.contacto-wrapper {
+  background-color: #faf8f5;
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-#FormContacto {
-  color: var(--color-principalcontacto);
+.contacto-header {
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 3rem;
 }
 
-.ContactoForm {
-  width: 50%;
-  padding: 1em;
-  margin-bottom: 2em ;
-  display: flex;
-  flex-direction: column;
-  background-color: #58473876;
-  border: var(--color-secondarycontacto) solid 1px;
-  border-radius: 3%;
-
+.contacto-subtitle {
+  color: #baa486;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
-.form-label {
-  font-weight: 700;
+.contacto-title {
+  color: #4a3b32;
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
 }
 
-.form-control {
+.contacto-desc {
+  color: #8c827a;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.contacto-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
   width: 100%;
+  max-width: 1000px;
+  margin-bottom: 4rem;
 }
 
-#exampleFormControlInput1 {
-  border: var(--color-principalcontacto) solid 1.5px;
-  margin: 10px;
+.contacto-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(88, 71, 56, 0.05); 
+  padding: 2.5rem;
+  height: 100%;
 }
 
-.MapaContainer {
- margin-bottom: 2em;
-  border-radius: 2em;
-  box-shadow: black 0px 4px 8px 0px;
-}
-.MapaCard{
-  border-radius: 2em;
+.card-title-small {
+  font-size: 1.1rem;
+  color: #65594f;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
 }
 
-.Mapa {
-  margin-top: 1em;
+.card-title-small i {
+  color: #baa486;
+}
+
+.card-title-medium {
+  font-size: 1.4rem;
+  color: #4a3b32;
+  font-weight: 400;
+}
+
+.contacto-col-izq {
   display: flex;
   flex-direction: column;
-  
-  align-items: center;
-  justify-content: center;
+  gap: 2rem;
 }
-.hrcontacto{
-  width: 80%;
-  border: 2px solid var(--color-principalcontacto);
-}
-#enviarboton {
+
+.card-header-flex {
   display: flex;
-  width: 50%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
-#Contacto {
-  font-size: xx-large;
-  
+.consulta-horario {
+  color: #7b7167;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
 }
 
-.bi-geo-alt-fill {
-  font-size: x-large;
-  
+.consulta-horario strong {
+  color: #4a3b32;
 }
 
+.btn-whatsapp-lujo {
+  background-color: #baa486;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s ease;
+}
 
-#direccion {
-  font-size: xx-large;
-  justify-content: center;
+.btn-whatsapp-lujo:hover {
+  background-color: #a89172;
+  color: #ffffff;
 }
-.texto-direccion{
-  font-size: x-large;
+
+.mapa-container-lujo {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #e8e4db;
 }
-.btnContacto {
-  margin-top: 1em;
-  width: 15%;
-  background-color: var(--color-principalcontacto);
-  color: var(--color-fifthcontacto);
+
+.mapa-iframe {
+  filter: grayscale(20%) contrast(110%);
+}
+
+.mapa-overlay-info {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.mapa-overlay-info span {
+  color: #4a3b32;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.mapa-overlay-info small {
+  color: #8c827a;
+  font-weight: 400;
+  font-size: 0.75rem;
+}
+
+.btn-mapa-pequeno {
+  background-color: #4a3b32;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.label-lujo {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #a89c8d;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.input-lujo {
+  background-color: #ffffff;
+  border: 1px solid #f0ebe1;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  color: #5c4e43;
+  font-size: 0.95rem;
+  box-shadow: none;
+  transition: 0.3s ease;
+}
+
+.input-lujo::placeholder {
+  color: #d1c8b8;
+}
+
+.input-lujo:focus {
+  border-color: #baa486;
+}
+
+.btn-enviar-lujo {
+  background-color: #4a3b32;
+  color: #ffffff;
   border: none;
-  
+  border-radius: 12px;
+  padding: 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  width: 100%;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
 }
 
-.btnContacto:hover {
-  background-color: var(--color-fourthcontacto);
-  color: var(--color-fifthcontacto);
-  transform: scale(1.05);
+.btn-enviar-lujo:hover {
+  background-color: #3b3028;
+  transform: translateY(-2px);
 }
 
-@media (max-width:425px) {
-  .mapa {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .MapaCard {
-    width: 80%;
-  } 
+.contacto-footer-info {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  width: 100%;
+  max-width: 900px;
+  border-top: 1px solid #e8e4db;
+  padding-top: 3rem;
 }
 
-@media (max-width:768px) {
-  .mapa {
-    width: 100%;
-    border: 10%;
-    align-content: center;
-    align-items: center;
-  }
+.info-item-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-  iframe {
-    width: 100%;
-  }
+.info-item-foot i {
+  color: #baa486;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
 
-  #direccion {
-    margin-top: 10px;
-  }
+.info-item-foot h4 {
+  color: #4a3b32;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
 
-  #ContainerMapa {
-    width: 100%;
-    justify-content: space-between;
+.info-item-foot p {
+  color: #8c827a;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.redes-iconos {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.redes-iconos a i {
+  font-size: 1.2rem;
+  color: #a89c8d;
+  transition: color 0.3s ease;
+}
+
+.redes-iconos a:hover i {
+  color: #4a3b32;
+}
+
+@media (max-width: 992px) {
+  .contacto-grid-container {
+    grid-template-columns: 1fr;
+  }
+  .contacto-footer-info {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contacto-wrapper {
+    padding: 3rem 1rem;
+  }
+  .card-header-flex {
     flex-direction: column;
-    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.5rem;
   }
-
-  #direccion {
-    width: 100%;
+  .form-grid-2 {
+    grid-template-columns: 1fr;
   }
-
-  #Bordercaja {
-    padding-left: 5%;
-    border-radius: 7%;
+  .contacto-footer-info {
+    flex-direction: column;
+    gap: 2rem;
   }
-  .ContactoForm{
-    width: 80%;
-  }
-  .btnContacto {
-    width: 30%;
-  }
-}
-
-.aesthetic-card {
-    width: 100%;
-    padding: 3rem;
-    background-color: #58473876;
-    border-radius: 20px;
-    text-align: center;
-    border: 1px solid rgba(40, 41, 40, 0.1);
-}
-
-.aesthetic-icon {
-    color: var(--color-fifthcontacto);
-    font-size: 4rem;    
-}
-
-.aesthetic-title {
-    color: var(--color-fifthcontacto);
-    font-size: 1.6rem; 
-    font-weight: 600; 
-    letter-spacing: 0.09em; 
-}
-
-.aesthetic-text {
-  color: #333;
-  font-size: 1rem; 
-  font-weight: 300;  
-}
-
-.aesthetic-button {
-    background-color: var(--color-secondarycontacto);
-    color: var(--color-fifthcontacto);
-    padding: 0.75rem 1.5rem; 
-    border-radius: 0.5rem; 
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem; 
-    font-weight: 700; 
-    font-size: 1.2rem;
-}
-
-.aesthetic-button:hover {
-    background-color: #4c583ea2; 
-    transition: 400ms;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 1); 
-}
-
-.aesthetic-button i {
-    font-size: 2rem;
-}
-
-.aesthetic-footer-text {
-    color: var(--color-principalcontacto);
-    font-size: 0.8rem; 
-    margin-top: 2rem; 
-    opacity: 0.8;
 }
