@@ -281,6 +281,44 @@
   }
 }
 
+/* Keep contact form inputs neutral even when Bootstrap marks them valid/invalid */
+.inputContacto.form-control:valid,
+.inputContacto.form-control:invalid,
+.inputContacto.form-select:valid,
+.inputContacto.form-select:invalid,
+.inputContacto.form-control.is-valid,
+.inputContacto.form-control.is-invalid,
+.inputContacto.form-select.is-valid,
+.inputContacto.form-select.is-invalid {
+  border-color: #f0ebe1;
+  padding-right: 0.75rem;
+  background-image: none;
+  box-shadow: none;
+}
+
+.inputContacto.form-control:focus:valid,
+.inputContacto.form-control:focus:invalid,
+.inputContacto.form-select:focus:valid,
+.inputContacto.form-select:focus:invalid,
+.inputContacto.form-control.is-valid:focus,
+.inputContacto.form-control.is-invalid:focus,
+.inputContacto.form-select.is-valid:focus,
+.inputContacto.form-select.is-invalid:focus {
+  border-color: #baa486;
+  box-shadow: none;
+}
+
+.feedback-lujo {
+  width: auto;
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  background-color: #f8e9e9;
+  color: #b85a5a;
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 0.3rem;
+}
+
 @media (max-width: 768px) {
   .contacto-wrapper {
     padding: 3rem 1rem;

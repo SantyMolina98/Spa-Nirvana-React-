@@ -21,9 +21,9 @@ function Nosotros () {
                 Soy estudiante de Biotecnología, estoy inmersa en el fascinante mundo de la ciencia, y actualmente estoy ampliando mis habilidades como desarrolladora Full Stack en Rolling Code. Me apasiona la intersección entre la ciencia y la tecnología, y mi objetivo es conectar ambos mundos. Resido en Tucumán y, además de mis estudios y mi formación, me desempeño como recepcionista y dedico mi tiempo libre a entrenar calistenia.
               </p>
               <ul className='ulNos'>
-                <li className='liNos'><a href="https://www.facebook.com/nazarena.molina.381265" target="_blank" rel="noopener noreferrer" className='fa'><i className="bi bi-facebook"></i></a></li>
+                <li className='liNos'><a href="https://github.com/nazarenamolina" target="_blank" rel="noopener noreferrer" className='fa'><i className="bi bi-github"></i></a></li>
                 <li className='liNos'><a href="https://www.linkedin.com/in/nazarena-molina-b4376b270/" target="_blank" rel="noopener noreferrer" className='fa'><i className="bi bi-linkedin"></i></a></li>
-                <li className='liNos'><a href="https://www.instagram.com/nazarenamolina/" target="_blank" rel="noopener noreferrer" className='fa'><i className="bi bi-instagram"></i></a></li>
+                
               </ul>
             </div>
           </div>
@@ -37,9 +37,9 @@ function Nosotros () {
                 Soy Bioterapeuta y miembro del equipo de Bioterapia El Despertar, me dedico a guiar a individuos en su camino hacia la autoconciencia y sanación de enfermedades y conflictos. Adicionalmente estoy cursando el programa de desarrollador Full Stack en Rolling Code para expandir mis habilidades en el ámbito web. Resido en Santa Fe, mis pasiones fuera del trabajo incluyen la cocina, mis mascotas, el yoga y explorar nuevos lugares a través de viajes.
               </p>
               <ul className='ulNos'>
-                <li className='liNos'><a href="https://www.facebook.com/share/1E2tGpbciN/" target="_blank" rel="noopener noreferrer" className='fa'><i className="bi bi-facebook"></i></a></li>
+                <li className='liNos'><a href="https://github.com/Anahi-Tellier" target="_blank" rel="noopener noreferrer" className='fa'><i className="bi bi-github"></i></a></li>
                 <li className='liNos'><a href="*" className="fa"><i className="bi bi-linkedin"></i></a></li>
-                <li className='liNos'><a href="https://www.instagram.com/anahi.tellier_bioterapeuta/?igsh=aGFlMTV2NXllbHhi#" target="_blank" rel="noopener noreferrer" className='fa'><i className="bi bi-instagram"></i></a></li>
+                
               </ul>
             </div>
           </div>
@@ -53,9 +53,9 @@ function Nosotros () {
                 Trabajo en la heladería Grido, donde he desarrollado una sólida capacidad para la atención al cliente manejando diversas situaciones con profesionalismo. Adicionalmente, me estoy formando como desarrollador Full Stack en Rolling Code, una oportunidad para crecer profesionalmente y explorar nuevas áreas en el desarrollo web. Resido en Salta, me gusta jugar al fútbol, dedicarme a la organización de mi casa y disfrutar de la compañía de mi pareja y amigos.
               </p>
               <ul className='ulNos'>
-                <li className='liNos'><a href="https://www.facebook.com/santy.molina.98cima?locale=es_LA" target="_blank" rel="noopener noreferrer" className='fa'><i className="bi bi-facebook"></i></a></li>
+                <li className='liNos'><a href="https://github.com/SantyMolina98" target="_blank" rel="noopener noreferrer" className='fa'><i className="bi bi-github"></i></a></li>
                 <li className='liNos'><a href="https://www.linkedin.com/in/santiago-molina-2893a2339/" target="_blank" rel="noopener noreferrer" className='fa'><i className="bi bi-linkedin"></i></a></li>
-                <li className='liNos'><a href="https://www.instagram.com/santymolina98/" target="_blank" rel="noopener noreferrer" className='fa'><i className="bi bi-instagram"></i></a></li>
+                
               </ul>
             </div>
           </div>
