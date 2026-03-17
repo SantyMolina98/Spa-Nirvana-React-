@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { Button, Form } from "react-bootstrap";
+import React, { useRef, useState } from "react";
+import { Button, Form, Alert } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../App.css";
 import "../styles/contactopage.css";
@@ -11,18 +11,57 @@ const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 function Contacto() {
   const form = useRef();
+  const [emptyFields, setEmptyFields] = useState({ name: false, email: false, title: false, message: false });
+  const [invalidEmail, setInvalidEmail] = useState(false);
+  const [error, setError] = useState(null);
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
+
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setAttemptedSubmit(true);
+
+    const nameValue = form.current.name.value.trim();
+    const emailValue = form.current.email.value.trim();
+    const titleValue = form.current.title.value.trim();
+    const messageValue = form.current.message.value.trim();
+
+    const nextEmptyFields = {
+      name: nameValue === '',
+      email: emailValue === '',
+      title: titleValue === '',
+      message: messageValue === '',
+    };
+
+    setEmptyFields(nextEmptyFields);
+    setInvalidEmail(false);
+    setError(null);
+
+    if (Object.values(nextEmptyFields).some(val => val === true)) {
+      return;
+    }
+
+    if (!validateEmail(emailValue)) {
+      setInvalidEmail(true);
+      return;
+    }
+
+    if (nameValue.length < 3 || nameValue.length > 30) {
+      setError("El nombre debe tener entre 3 y 30 caracteres.");
+      return;
+    }
 
     const now = new Date();
     const fechaEnvio = `${now.toLocaleDateString()} a las ${now.toLocaleTimeString()}`;
 
     const templateParams = {
-      name: form.current.name.value,
-      email: form.current.email.value,
-      title: form.current.title.value,
-      message: form.current.message.value,
+      name: nameValue,
+      email: emailValue,
+      title: titleValue,
+      message: messageValue,
       fecha_registro: fechaEnvio,
     };
 
@@ -32,12 +71,15 @@ function Contacto() {
       })
       .then(
         () => {
-          alert("Email enviado con éxito!");
+          alert("¡Su consulta fue enviada con éxito!\n\nNuestro equipo ya está trabajando para brindarle una solución.\n¡Gracias por elegirnos!");
           form.current.reset();
+          setEmptyFields({ name: false, email: false, title: false, message: false });
+          setInvalidEmail(false);
+          setAttemptedSubmit(false);
         },
         (error) => {
           console.log("FALLÓ CONEXIÓN...", error);
-          alert("Falló al enviar el email. Por favor, intente nuevamente.");
+          setError("Falló al enviar el email. Por favor, intente nuevamente.");
         },
       );
   };
@@ -68,7 +110,7 @@ function Contacto() {
                   </p>
                 </div>
                 <a
-                  href="https://wa.me/543815783030"
+                  href="*"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-whatsapp-lujo"
@@ -100,7 +142,7 @@ function Contacto() {
                     <small>San Miguel de Tucumán</small>
                   </span>
                   <a
-                    href="https://maps.google.com"
+                    href="https://www.google.com/maps/place/Gral.+Jos%C3%A9+Mar%C3%ADa+Paz+576,+T4000+San+Miguel+de+Tucum%C3%A1n,+Tucum%C3%A1n/@-26.8364215,-65.2097043,17z/data=!3m1!4b1!4m6!3m5!1s0x94225c0e8d3f160f:0xaf25f4de8ee29e12!8m2!3d-26.8364263!4d-65.2071294!16s%2Fg%2F11jym09rlv?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-mapa-pequeno"
@@ -115,7 +157,13 @@ function Contacto() {
             <div className="contacto-card card-formulario">
               <h3 className="card-title-medium mb-4">Envía un E-mail</h3>
 
-              <Form ref={form} onSubmit={sendEmail} className="form-lujo">
+              {error && (
+                <Alert variant="danger" onClose={() => setError(null)} dismissible className="mb-3">
+                  {error}
+                </Alert>
+              )}
+
+              <Form ref={form} onSubmit={sendEmail} noValidate className="form-lujo">
                 <div className="form-grid-2">
                   <Form.Group className="mb-3">
                     <Form.Label className="label-lujo">
@@ -124,12 +172,15 @@ function Contacto() {
                     <Form.Control
                       type="text"
                       name="name"
-                      className="input-lujo"
+                      className="input-lujo inputContacto"
                       placeholder="Ej. Ana García"
-                      minLength={3}
-                      maxLength={30}
-                      required
+                      isInvalid={attemptedSubmit && emptyFields.name}
                     />
+                    {attemptedSubmit && emptyFields.name && (
+                      <Form.Control.Feedback type="invalid" className="feedback-lujo">
+                        Completar campo con su nombre
+                      </Form.Control.Feedback>
+                    )}
                   </Form.Group>
 
                   <Form.Group className="mb-3">
@@ -139,16 +190,25 @@ function Contacto() {
                     <Form.Control
                       type="email"
                       name="email"
-                      className="input-lujo"
+                      className="input-lujo inputContacto"
                       placeholder="ana@ejemplo.com"
-                      required
+                      isInvalid={attemptedSubmit && (emptyFields.email || invalidEmail)}
                     />
+                    {attemptedSubmit && (emptyFields.email || invalidEmail) && (
+                      <Form.Control.Feedback type="invalid" className="feedback-lujo">
+                        {emptyFields.email ? "Completar campo con su email" : "Ingresó un email no válido"}
+                      </Form.Control.Feedback>
+                    )}
                   </Form.Group>
                 </div>
 
                 <Form.Group className="mb-3">
                   <Form.Label className="label-lujo">ASUNTO</Form.Label>
-                  <Form.Select name="title" className="input-lujo" required>
+                  <Form.Select 
+                    name="title" 
+                    className="input-lujo inputContacto" 
+                    isInvalid={attemptedSubmit && emptyFields.title}
+                  >
                     <option value="">Selecciona un asunto...</option>
                     <option value="Consulta sobre tratamientos">
                       Consulta sobre tratamientos
@@ -161,6 +221,11 @@ function Contacto() {
                     </option>
                     <option value="Otros">Otros</option>
                   </Form.Select>
+                  {attemptedSubmit && emptyFields.title && (
+                    <Form.Control.Feedback type="invalid" className="feedback-lujo">
+                      Completar campo con un asunto
+                    </Form.Control.Feedback>
+                  )}
                 </Form.Group>
 
                 <Form.Group className="mb-4">
@@ -168,11 +233,16 @@ function Contacto() {
                   <Form.Control
                     as="textarea"
                     name="message"
-                    className="input-lujo"
+                    className="input-lujo inputContacto"
                     placeholder="¿Cómo podemos ayudarte hoy?"
                     rows="4"
-                    required
+                    isInvalid={attemptedSubmit && emptyFields.message}
                   />
+                  {attemptedSubmit && emptyFields.message && (
+                    <Form.Control.Feedback type="invalid" className="feedback-lujo">
+                      Completar campo con su mensaje
+                    </Form.Control.Feedback>
+                  )}
                 </Form.Group>
 
                 <Button type="submit" className="btn-enviar-lujo">
@@ -197,13 +267,13 @@ function Contacto() {
             <i className="bi bi-share"></i>
             <h4>Redes Sociales</h4>
             <div className="redes-iconos">
-              <a href="#">
+              <a href="*">
                 <i className="bi bi-instagram"></i>
               </a>
-              <a href="#">
+              <a href="*">
                 <i className="bi bi-facebook"></i>
               </a>
-              <a href="#">
+              <a href="*">
                 <i className="bi bi-whatsapp"></i>
               </a>
             </div>

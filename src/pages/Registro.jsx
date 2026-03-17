@@ -6,6 +6,8 @@ import { useState, useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import emailjs from "@emailjs/browser";
 
+/* QUEDA MODIFICAR ESTILOS DE FORMULARIOS AQUÍ */
+
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_BIENVENIDA_ID = import.meta.env
   .VITE_EMAILJS_TEMPLATE_BIENVENIDA_ID;
@@ -167,7 +169,7 @@ function Registro() {
                   <Form.Control
                     type="number"
                     placeholder="381 000 0000"
-                    min={18}
+                    min={10000000}
                     value={telefono}
                     onChange={(e) => setTelefono(e.target.value)}
                     required
@@ -247,7 +249,7 @@ function Registro() {
                 <Form.Control
                   type="number"
                   placeholder="Ej. 4000"
-                  min={4}
+                  min={1000}
                   value={cpostal}
                   onChange={(e) => setCpostal(e.target.value)}
                   required

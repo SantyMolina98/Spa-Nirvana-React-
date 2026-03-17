@@ -247,7 +247,6 @@ export default function Admin() {
             <table className="tabla-servicios">
               <thead>
                 <tr>
-                  <th>ID Reserva</th>
                   <th>Servicio</th>
                   <th>Fecha</th>
                   <th>Cliente</th>
@@ -257,7 +256,6 @@ export default function Admin() {
               <tbody>
                 {reservas.map(reserva => (
                   <tr key={reserva._id}>
-                    <td style={{fontSize: '0.8rem', color: 'var(--text-muted)'}}>{reserva._id.substring(0, 8)}...</td>
                     <td>{reserva.servicio?.nombre || reserva.servicio}</td>
                     <td>{new Date(reserva.fechaReserva).toLocaleDateString('es-AR')}</td>
                     <td>{reserva.usuario?.nombre || 'No disponible'}</td>
