@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { crearServicio } from '../helpers/ServicioApi';
+import { getCategorias } from '../helpers/CategoriaApi';
 
 export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }) {
   const [nombre, setNombre] = useState('');
@@ -12,6 +13,29 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [disponible, setDisponible] = useState(true);
+  const [destacado, setDestacado] = useState(false);
+  const [listaCategorias, setListaCategorias] = useState([]);
+  const [cargandoCategorias, setCargandoCategorias] = useState(false);
+
+  useEffect(() => {
+    if (show) {
+      cargarCategorias();
+    }
+  }, [show]);
+
+  const cargarCategorias = async () => {
+    setCargandoCategorias(true);
+    try {
+      const data = await getCategorias(); 
+      if (data && data.categorias) {
+        setListaCategorias(data.categorias);
+      }
+    } catch (error) {
+      console.error("Error al cargar categorías:", error);
+    } finally {
+      setCargandoCategorias(false);
+    }
+  };
 
   const resetForm = () => {
     setNombre('');
@@ -21,6 +45,7 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
     setCategoriaId('');
     setImagen('');
     setError('');
+    setDestacado(false);
   };
 
   const handleClose = () => {
@@ -49,7 +74,8 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
         duracion: duracion.trim(),
         categoria: categoriaFinal,
         img: imagen.trim(),
-        disponible
+        disponible,
+        destacado
       };
       console.log('🟡 ModalAgregarServicio: enviando a crearServicio', payload);
 
@@ -123,16 +149,26 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>ID de Categoría</Form.Label>
-            <Form.Control
+            <Form.Label>Categoría</Form.Label>
+            <Form.Select
               value={categoriaId}
               onChange={e => setCategoriaId(e.target.value)}
-              placeholder="Ingrese el ID de la categoría"
-              disabled={loading}
-            />
+              disabled={loading || cargandoCategorias}
+            >
+            <option value="">
+                {cargandoCategorias ? 'Cargando categorías...' : 'Seleccione una categoría'}
+              </option>
+              
+              {listaCategorias.map((cat) => (
+                <option key={cat._id} value={cat._id}>
+                  {cat.nombre}
+                </option>
+              ))}
+            </Form.Select>
+            
             {categoriaPreselec && (
               <Form.Text className="text-muted">
-                Categoría seleccionada: {categoriaPreselec}
+                Categoría seleccionada por defecto.
               </Form.Text>
             )}
           </Form.Group>
@@ -146,6 +182,18 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
               disabled={loading}
             />
           </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicDestacado">
+            <Form.Check 
+              type="switch"
+              id="destacado-switch"
+              label="¿Marcar como Servicio Destacado?"
+              checked={destacado}
+              onChange={(e) => setDestacado(e.target.checked)}
+              disabled={loading}
+            />
+          </Form.Group>
+
         </Form>
       </Modal.Body>
       <Modal.Footer>
