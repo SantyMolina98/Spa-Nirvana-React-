@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { crearServicio } from '../helpers/ServicioApi';
-import '../styles/loginPage.css';
+import { getCategorias } from '../helpers/CategoriaApi';
 
 export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }) {
   const [nombre, setNombre] = useState('');
@@ -25,6 +25,29 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [disponible, setDisponible] = useState(true);
+  const [destacado, setDestacado] = useState(false);
+  const [listaCategorias, setListaCategorias] = useState([]);
+  const [cargandoCategorias, setCargandoCategorias] = useState(false);
+
+  useEffect(() => {
+    if (show) {
+      cargarCategorias();
+    }
+  }, [show]);
+
+  const cargarCategorias = async () => {
+    setCargandoCategorias(true);
+    try {
+      const data = await getCategorias(); 
+      if (data && data.categorias) {
+        setListaCategorias(data.categorias);
+      }
+    } catch (error) {
+      console.error("Error al cargar categorías:", error);
+    } finally {
+      setCargandoCategorias(false);
+    }
+  };
 
   const nombreTrimmed = nombre.trim();
   const nombreLongitudValida = nombreTrimmed.length >= 5 && nombreTrimmed.length <= 30;
@@ -51,6 +74,8 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
     setCategoriaId('');
     setImagen('');
     setError('');
+    setDestacado(false);
+    
     setFieldErrors({});
     setSubmitAttempted(false);
     setTouchedFields({
@@ -145,8 +170,10 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
         precio: parseFloat(precioNumber),
         duracion: `${duracionMinNumber}-${duracionMaxNumber}min`,
         categoria: categoriaFinal,
+        //img: imagen.trim(),
         img: imagenTrimmed,
-        disponible
+        disponible,
+        destacado
       };
       console.log('🟡 ModalAgregarServicio: enviando a crearServicio', payload);
 
@@ -298,9 +325,23 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>ID de Categoría</Form.Label>
-            <Form.Control
+            <Form.Label>Categoría</Form.Label>
+            <Form.Select
               value={categoriaId}
+              onChange={e => setCategoriaId(e.target.value)}
+              disabled={loading || cargandoCategorias}
+            >
+            <option value="">
+                {cargandoCategorias ? 'Cargando categorías...' : 'Seleccione una categoría'}
+              </option>
+              
+              {listaCategorias.map((cat) => (
+                <option key={cat._id} value={cat._id}>
+                  {cat.nombre}
+                </option>
+              ))}
+            </Form.Select>
+            
               onBlur={() => setTouchedFields((prev) => ({ ...prev, categoria: true }))}
               onChange={e => {
                 setCategoriaId(e.target.value);
@@ -313,9 +354,10 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
               isValid={shouldValidate('categoria') && !!categoriaId.trim() && !fieldErrors.categoria}
               disabled={loading}
             />
+                
             {categoriaPreselec && (
               <Form.Text className="text-muted">
-                Categoría seleccionada: {categoriaPreselec}
+                Categoría seleccionada por defecto.
               </Form.Text>
             )}
             <Form.Control.Feedback type="invalid" className="alerterror">
@@ -343,6 +385,18 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
               {fieldErrors.imagen || 'Completar campo de URL de Imagen'}
             </Form.Control.Feedback>
           </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicDestacado">
+            <Form.Check 
+              type="switch"
+              id="destacado-switch"
+              label="¿Marcar como Servicio Destacado?"
+              checked={destacado}
+              onChange={(e) => setDestacado(e.target.checked)}
+              disabled={loading}
+            />
+          </Form.Group>
+
         </Form>
       </Modal.Body>
       <Modal.Footer>

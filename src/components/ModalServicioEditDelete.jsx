@@ -7,6 +7,7 @@ export function ModalEditarServicio({ show, onHide, servicio, onSave }) {
   const [descripcion, setDescripcion] = useState(servicio?.descripcion || '');
   const [precio, setPrecio] = useState(servicio?.precio || '');
   const [duracion, setDuracion] = useState(servicio?.duracion || '');
+  const [destacado, setDestacado] = useState(servicio?.destacado || false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -15,6 +16,7 @@ export function ModalEditarServicio({ show, onHide, servicio, onSave }) {
     setDescripcion(servicio?.descripcion || '');
     setPrecio(servicio?.precio || '');
     setDuracion(servicio?.duracion || '');
+    setDestacado(servicio?.destacado || false);
     setError('');
   }, [servicio]);
 
@@ -33,7 +35,8 @@ export function ModalEditarServicio({ show, onHide, servicio, onSave }) {
         nombre, 
         descripcion, 
         precio: parseFloat(precio), 
-        duracion 
+        duracion,
+        destacado
       };
 
       // Llamar a la API para actualizar el servicio
@@ -41,7 +44,8 @@ export function ModalEditarServicio({ show, onHide, servicio, onSave }) {
         nombre,
         descripcion,
         precio: parseFloat(precio),
-        duracion
+        duracion,
+        destacado
       });
 
       // Llamar al callback onSave con los datos actualizados
@@ -103,6 +107,17 @@ export function ModalEditarServicio({ show, onHide, servicio, onSave }) {
               disabled={loading}
             />
           </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formEditDestacado">
+            <Form.Check 
+              type="switch"
+              label="¿Marcar como Servicio Destacado?"
+              checked={destacado}
+              onChange={(e) => setDestacado(e.target.checked)}
+              disabled={loading}
+            />
+          </Form.Group>
+          
         </Form>
       </Modal.Body>
       <Modal.Footer>
