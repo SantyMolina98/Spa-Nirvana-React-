@@ -90,10 +90,12 @@
   background-color: var(--color-fourthlogin);
   color: var(--color-eigthlogin);
 }
+
 .sectorBotones{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 .botonesLogin{
   width: 80%;
@@ -104,6 +106,13 @@
 .botonesLogin:hover{
   background-color: var(--color-principallogin);
   color: var(--color-fifthlogin);
+}
+.continuar-google{
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media screen and (max-width:2800px){
   .mainLogin{
