@@ -89,7 +89,19 @@ export default function Admin() {
 
   // Funciones para manejo de usuarios
   const handleAgregarUsuario = (nuevoUsuario) => {
-    setUsuarios([...usuarios, nuevoUsuario]);
+    console.log("RECIBO DEL BACKEND:", nuevoUsuario);
+
+    // Si hay error
+    if (nuevoUsuario?.errors || nuevoUsuario?.msg) {
+      alert("Error del servidor: " + (nuevoUsuario.errors ? nuevoUsuario.errors[0].msg : nuevoUsuario.msg));
+      return; 
+    }
+
+    // Extraemos los datos del usuario (el "recibo")
+    const usuarioFinal = nuevoUsuario.usuario || nuevoUsuario.data || nuevoUsuario;
+    
+    // Actualizamos la tabla al instante
+    setUsuarios([...usuarios, usuarioFinal]);
     setShowAgregarUsuario(false);
   };
 

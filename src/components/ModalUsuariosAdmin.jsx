@@ -3,7 +3,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { crearUsuario, actualizarUsuario, eliminarUsuario } from '../helpers/UsuariosApi';
 
 export function ModalAgregarUsuario({ show, onHide, onSave }) {
-  const [nombre, setNombre] = useState(''); 
+  const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [usuario, setUsuario] = useState('');
   const [email, setEmail] = useState('');
@@ -18,9 +18,9 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
 
   const provincias = [
     '------', 'Buenos Aires', 'Catamarca', 'Chaco', 'Chubut', 'Ciudad de Buenos Aires',
-    'Córdoba', 'Corrientes', 'Entre Ríos', 'Formosa', 'Jujuy', 'La Pampa', 'La Rioja',
-    'Mendoza', 'Misiones', 'Neuquén', 'Río Negro', 'Salta', 'San Juan', 'San Luis',
-    'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego', 'Tucumán'
+    'Cordoba', 'Corrientes', 'Entre Rios', 'Formosa', 'Jujuy', 'La Pampa', 'La Rioja',
+    'Mendoza', 'Misiones', 'Neuquen', 'Rio Negro', 'Salta', 'San Juan', 'San Luis',
+    'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego', 'Tucuman'
   ];
 
   const resetForm = () => {
@@ -44,9 +44,15 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
 
   const handleSave = async () => {
     // Validar campos obligatorios
-    if (!nombre.trim() || !apellido.trim() || !usuario.trim() || !email.trim() || 
-        !telefono.trim() || !domicilio.trim() || provincia === '------' || !cpostal.trim() || !contrasena.trim()) {
+    if (!nombre.trim() || !apellido.trim() || !usuario.trim() || !email.trim() ||
+      !telefono.trim() || !domicilio.trim() || provincia === '------' || !cpostal.trim() || !contrasena.trim()) {
       setError('Todos los campos son obligatorios');
+      return;
+    }
+
+    // Validar longitudes y contraseñas 
+    if (contrasena.length < 6) {
+      setError('La contraseña debe tener al menos 6 caracteres');
       return;
     }
 
@@ -76,18 +82,31 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
     setError('');
 
     try {
-      const nuevoUsuario = await crearUsuario({
-        nombre,
-        apellido,
-        usuario,
-        email,
-        telefono,
-        domicilio,
-        provincia,
-        cpostal,
-        contrasena,
-        rol
-      });
+      const datosAEnviar = {
+        nombre: nombre,
+        apellido: apellido,
+        username: usuario,
+        correo: email,
+        telefono: telefono,
+        domicilio: domicilio,
+        ciudad: provincia,      
+        codpostal: Number(cpostal), 
+        password: contrasena,   
+        rol: rol
+      };
+
+      const nuevoUsuario = await crearUsuario(datosAEnviar);
+
+      if (nuevoUsuario.errors) {
+        setError("Error del servidor: " + nuevoUsuario.errors[0].msg);
+        setLoading(false);
+        return;
+      }
+      if (nuevoUsuario.msg) {
+        setError("Error: " + nuevoUsuario.msg);
+        setLoading(false);
+        return;
+      }
 
       onSave(nuevoUsuario);
       resetForm();
@@ -109,10 +128,10 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
         <Form>
           <Form.Group className="mb-3">
             <Form.Label>Nombre</Form.Label>
-            <Form.Control 
+            <Form.Control
               type="text"
-              value={nombre} 
-              onChange={e => setNombre(e.target.value)} 
+              value={nombre}
+              onChange={e => setNombre(e.target.value)}
               placeholder="Ingrese el nombre (3-18 caracteres)"
               disabled={loading}
             />
@@ -120,10 +139,10 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
 
           <Form.Group className="mb-3">
             <Form.Label>Apellido</Form.Label>
-            <Form.Control 
+            <Form.Control
               type="text"
-              value={apellido} 
-              onChange={e => setApellido(e.target.value)} 
+              value={apellido}
+              onChange={e => setApellido(e.target.value)}
               placeholder="Ingrese el apellido (2-20 caracteres)"
               disabled={loading}
             />
@@ -131,10 +150,10 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
 
           <Form.Group className="mb-3">
             <Form.Label>Nombre de Usuario</Form.Label>
-            <Form.Control 
+            <Form.Control
               type="text"
-              value={usuario} 
-              onChange={e => setUsuario(e.target.value)} 
+              value={usuario}
+              onChange={e => setUsuario(e.target.value)}
               placeholder="Ej: Usuario123 (3-18 caracteres)"
               disabled={loading}
             />
@@ -142,10 +161,10 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
 
           <Form.Group className="mb-3">
             <Form.Label>Email</Form.Label>
-            <Form.Control 
+            <Form.Control
               type="email"
-              value={email} 
-              onChange={e => setEmail(e.target.value)} 
+              value={email}
+              onChange={e => setEmail(e.target.value)}
               placeholder="Ej: usuario@gmail.com"
               disabled={loading}
             />
@@ -153,10 +172,10 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
 
           <Form.Group className="mb-3">
             <Form.Label>Teléfono</Form.Label>
-            <Form.Control 
+            <Form.Control
               type="number"
-              value={telefono} 
-              onChange={e => setTelefono(e.target.value)} 
+              value={telefono}
+              onChange={e => setTelefono(e.target.value)}
               placeholder="Número de teléfono"
               disabled={loading}
             />
@@ -164,10 +183,10 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
 
           <Form.Group className="mb-3">
             <Form.Label>Domicilio</Form.Label>
-            <Form.Control 
+            <Form.Control
               type="text"
-              value={domicilio} 
-              onChange={e => setDomicilio(e.target.value)} 
+              value={domicilio}
+              onChange={e => setDomicilio(e.target.value)}
               placeholder="Ingrese su domicilio (5-40 caracteres)"
               disabled={loading}
             />
@@ -175,8 +194,8 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
 
           <Form.Group className="mb-3">
             <Form.Label>Provincia</Form.Label>
-            <Form.Select 
-              value={provincia} 
+            <Form.Select
+              value={provincia}
               onChange={e => setProvincia(e.target.value)}
               disabled={loading}
             >
@@ -190,10 +209,10 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
 
           <Form.Group className="mb-3">
             <Form.Label>Código Postal</Form.Label>
-            <Form.Control 
+            <Form.Control
               type="text"
-              value={cpostal} 
-              onChange={e => setCpostal(e.target.value)} 
+              value={cpostal}
+              onChange={e => setCpostal(e.target.value)}
               placeholder="Ingrese el código postal"
               disabled={loading}
             />
@@ -201,10 +220,10 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
 
           <Form.Group className="mb-3">
             <Form.Label>Contraseña</Form.Label>
-            <Form.Control 
+            <Form.Control
               type="password"
-              value={contrasena} 
-              onChange={e => setContrasena(e.target.value)} 
+              value={contrasena}
+              onChange={e => setContrasena(e.target.value)}
               placeholder="Ingrese una contraseña segura"
               disabled={loading}
             />
@@ -212,8 +231,8 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
 
           <Form.Group className="mb-3">
             <Form.Label>Rol</Form.Label>
-            <Form.Select 
-              value={rol} 
+            <Form.Select
+              value={rol}
               onChange={e => setRol(e.target.value)}
               disabled={loading}
             >
@@ -225,8 +244,8 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose} disabled={loading}>Cancelar</Button>
-        <Button 
-          variant="primary" 
+        <Button
+          variant="primary"
           onClick={handleSave}
           disabled={loading}
         >
@@ -293,25 +312,25 @@ export function ModalEditarUsuario({ show, onHide, usuario, onSave }) {
         <Form>
           <Form.Group className="mb-3">
             <Form.Label>Nombre</Form.Label>
-            <Form.Control 
-              value={nombre} 
-              onChange={e => setNombre(e.target.value)} 
+            <Form.Control
+              value={nombre}
+              onChange={e => setNombre(e.target.value)}
               disabled={loading}
             />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Correo</Form.Label>
-            <Form.Control 
+            <Form.Control
               type="email"
-              value={correo} 
-              onChange={e => setCorreo(e.target.value)} 
+              value={correo}
+              onChange={e => setCorreo(e.target.value)}
               disabled={loading}
             />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Rol</Form.Label>
-            <Form.Select 
-              value={rol} 
+            <Form.Select
+              value={rol}
               onChange={e => setRol(e.target.value)}
               disabled={loading}
             >
@@ -323,8 +342,8 @@ export function ModalEditarUsuario({ show, onHide, usuario, onSave }) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onHide} disabled={loading}>Cancelar</Button>
-        <Button 
-          variant="primary" 
+        <Button
+          variant="primary"
           onClick={handleSave}
           disabled={loading}
         >
@@ -340,15 +359,29 @@ export function ModalEliminarUsuario({ show, onHide, usuario, onDelete }) {
   const [error, setError] = useState('');
 
   const handleConfirmDelete = async () => {
+    const idReal = usuario?.uid || usuario?._id;
+
+    console.log("ID detectado para borrar:", idReal);
+    console.log("Objeto usuario completo:", usuario);
+
+    if (!idReal) {
+      setError('No se encontró el ID del usuario para eliminar');
+      return;
+    }
+
     setLoading(true);
     setError('');
 
     try {
-      await eliminarUsuario(usuario.uid);
+      const respuesta = await eliminarUsuario(idReal);
+      console.log("respuesta del servidor al borrar", respuesta)
+      
       onDelete(usuario);
+      onHide();
     } catch (err) {
       console.error('Error al eliminar usuario:', err);
       setError('Error al eliminar usuario: ' + err.message);
+      } finally {
       setLoading(false);
     }
   };
@@ -364,8 +397,8 @@ export function ModalEliminarUsuario({ show, onHide, usuario, onDelete }) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onHide} disabled={loading}>Cancelar</Button>
-        <Button 
-          variant="danger" 
+        <Button
+          variant="danger"
           onClick={handleConfirmDelete}
           disabled={loading}
         >
