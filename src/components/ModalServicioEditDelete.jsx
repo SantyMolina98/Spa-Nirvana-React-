@@ -138,6 +138,13 @@ export function ModalEliminarServicio({ show, onHide, servicio, onDelete }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  React.useEffect(() => {
+    if (show) {
+      setLoading(false);
+      setError('');
+    }
+  }, [show]);
+
   const handleConfirmDelete = async () => {
     setLoading(true);
     setError('');
@@ -152,6 +159,8 @@ export function ModalEliminarServicio({ show, onHide, servicio, onDelete }) {
     } catch (err) {
       console.error('Error al eliminar el servicio:', err);
       setError('Error al eliminar el servicio: ' + err.message);
+      setLoading(false);
+    } finally { 
       setLoading(false);
     }
   };
