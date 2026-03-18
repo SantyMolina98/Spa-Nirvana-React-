@@ -6,20 +6,20 @@ import { getCategorias } from '../helpers/CategoriaApi';
 export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }) {
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  const [precio, setPrecio] = useState(0);
-  const [duracionMin, setDuracionMin] = useState('');
-  const [duracionMax, setDuracionMax] = useState('');
+  const [precio, setPrecio] = useState('');
+  const [duracion, setDuracion] = useState('');
   const [categoriaId, setCategoriaId] = useState('');
   const [imagen, setImagen] = useState('');
+  
   const [touchedFields, setTouchedFields] = useState({
     nombre: false,
     descripcion: false,
     precio: false,
-    duracionMin: false,
-    duracionMax: false,
+    duracion: false,
     categoria: false,
     imagen: false,
   });
+  
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const [fieldErrors, setFieldErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -58,8 +58,7 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
   const precioNumber = Number(precio);
   const precioRangoValido = precio !== '' && precioNumber >= 30000 && precioNumber <= 1000000;
   const imagenTrimmed = imagen.trim();
-  const duracionMinNumber = Number(duracionMin);
-  const duracionMaxNumber = Number(duracionMax);
+  const duracionTrimmed = duracion.trim();
   const minCloudinaryPrefix = 'https://res.cloudinary.com/';
   const cloudinaryValida = imagenTrimmed.startsWith(minCloudinaryPrefix);
 
@@ -68,9 +67,8 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
   const resetForm = () => {
     setNombre('');
     setDescripcion('');
-    setPrecio(0);
-    setDuracionMin('');
-    setDuracionMax('');
+    setPrecio('');
+    setDuracion('');
     setCategoriaId('');
     setImagen('');
     setError('');
@@ -82,8 +80,7 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
       nombre: false,
       descripcion: false,
       precio: false,
-      duracionMin: false,
-      duracionMax: false,
+      duracion: false,
       categoria: false,
       imagen: false,
     });
@@ -95,7 +92,6 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
   }, [show, categoriaPreselec]);
 
   const handleClose = () => {
-    console.log('🟡 ModalAgregarServicio: cerrar modal');
     resetForm();
     onHide();
   };
@@ -106,8 +102,7 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
       nombre: true,
       descripcion: true,
       precio: true,
-      duracionMin: true,
-      duracionMax: true,
+      duracion: true,
       categoria: true,
       imagen: true,
     });
@@ -126,18 +121,9 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
     if (precio && !precioRangoValido) {
       nextFieldErrors.precio = 'El precio debe estar entre 30.000 y 1.000.000';
     }
-    if (!duracionMin) nextFieldErrors.duracionMin = 'Completar campo de Duración mínima';
-    if (!duracionMax) nextFieldErrors.duracionMax = 'Completar campo de Duración máxima';
-    if (!categoriaId.trim()) nextFieldErrors.categoria = 'Completar campo de ID de Categoría';
+    if (!duracionTrimmed) nextFieldErrors.duracion = 'Completar campo de Duración';
+    if (!categoriaId.trim()) nextFieldErrors.categoria = 'Seleccionar una Categoría';
     if (!imagenTrimmed) nextFieldErrors.imagen = 'Completar campo de URL de Imagen';
-
-    if (duracionMin && (duracionMinNumber < 20 || duracionMinNumber > 35)) {
-      nextFieldErrors.duracionMin = 'Duración mínima debe estar entre 20 y 35 minutos';
-    }
-
-    if (duracionMax && (duracionMaxNumber < 40 || duracionMaxNumber > 150)) {
-      nextFieldErrors.duracionMax = 'Duración máxima debe estar entre 40 y 150 minutos';
-    }
 
     if (imagenTrimmed && !cloudinaryValida) {
       nextFieldErrors.imagen = 'La URL debe comenzar con https://res.cloudinary.com/';
@@ -155,7 +141,7 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
     if (!categoriaFinal) {
       setFieldErrors((prev) => ({
         ...prev,
-        categoria: 'Completar campo de ID de Categoría',
+        categoria: 'Seleccionar una Categoría',
       }));
       return;
     }
@@ -168,28 +154,26 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
         nombre: nombreTrimmed,
         descripcion: descripcionTrimmed,
         precio: parseFloat(precioNumber),
-        duracion: `${duracionMinNumber}-${duracionMaxNumber}min`,
+        duracion: duracionTrimmed,
         categoria: categoriaFinal,
-        //img: imagen.trim(),
         img: imagenTrimmed,
         disponible,
         destacado
       };
-      console.log('🟡 ModalAgregarServicio: enviando a crearServicio', payload);
 
-      const nuevoServicio = await crearServicio(payload);
-
-      console.log('🟢 ModalAgregarServicio: servicio creado', nuevoServicio);
-
-      onSave(nuevoServicio);
+      const respuestaBackend = await crearServicio(payload);
+      const servicioReal = respuestaBackend.servicio || respuestaBackend.data || respuestaBackend;
+      const categoriaCompleta = listaCategorias.find(cat => cat._id === categoriaFinal);
+      const servicioFormateadoParaTabla = {
+        ...servicioReal,
+        categoria: categoriaCompleta || servicioReal.categoria
+      };
+      onSave(servicioFormateadoParaTabla);
       resetForm();
     
     } catch (err) {
-      console.error('Error al crear servicio:', err);
-      console.error('🔴 ModalAgregarServicio: fallo en crearServicio', err?.message || err);
       setError('Error al crear servicio: ' + err.message);
     } finally {
-      console.log('🟡 ModalAgregarServicio: fin de intento');
       setLoading(false);
     }
   };
@@ -251,97 +235,57 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
 
           <div className="row g-3">
             <Form.Group className="col-md-6 mb-3">
-              <Form.Label>Duración mínima (minutos)</Form.Label>
+              <Form.Label>Duración</Form.Label>
               <Form.Control
-                type="number"
-                min={20}
-                max={35}
-                value={duracionMin}
-                onBlur={() => setTouchedFields((prev) => ({ ...prev, duracionMin: true }))}
+                type="text"
+                value={duracion}
+                onBlur={() => setTouchedFields((prev) => ({ ...prev, duracion: true }))}
                 onChange={e => {
-                  setDuracionMin(e.target.value);
-                  if (fieldErrors.duracionMin) {
-                    setFieldErrors((prev) => ({ ...prev, duracionMin: '' }));
+                  setDuracion(e.target.value);
+                  if (fieldErrors.duracion) {
+                    setFieldErrors((prev) => ({ ...prev, duracion: '' }));
                   }
                 }}
-                placeholder="20 a 35"
-                isInvalid={shouldValidate('duracionMin') && !!fieldErrors.duracionMin}
-                isValid={shouldValidate('duracionMin') && !!duracionMin && !fieldErrors.duracionMin}
+                placeholder="Ej: 45-60 minutos"
+                isInvalid={shouldValidate('duracion') && !!fieldErrors.duracion}
+                isValid={shouldValidate('duracion') && !!duracionTrimmed && !fieldErrors.duracion}
                 disabled={loading}
               />
               <Form.Control.Feedback type="invalid" className="alerterror">
-                {fieldErrors.duracionMin || 'Completar campo de Duración mínima'}
+                {fieldErrors.duracion || 'Completar campo de Duración'}
               </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="col-md-6 mb-3">
-              <Form.Label>Duración máxima (minutos)</Form.Label>
-              <Form.Control
-                type="number"
-                min={40}
-                max={150}
-                value={duracionMax}
-                onBlur={() => setTouchedFields((prev) => ({ ...prev, duracionMax: true }))}
+              <Form.Label>Precio (AR$)</Form.Label>
+              <Form.Control 
+                type="number" 
+                step="0.01"
+                value={precio} 
+                min={30000}
+                max={1000000}
+                onBlur={() => setTouchedFields((prev) => ({ ...prev, precio: true }))}
                 onChange={e => {
-                  setDuracionMax(e.target.value);
-                  if (fieldErrors.duracionMax) {
-                    setFieldErrors((prev) => ({ ...prev, duracionMax: '' }));
+                  setPrecio(e.target.value);
+                  if (fieldErrors.precio) {
+                    setFieldErrors((prev) => ({ ...prev, precio: '' }));
                   }
-                }}
-                placeholder="40 a 150"
-                isInvalid={shouldValidate('duracionMax') && !!fieldErrors.duracionMax}
-                isValid={shouldValidate('duracionMax') && !!duracionMax && !fieldErrors.duracionMax}
+                }} 
+                placeholder="Ingrese el precio"
+                isInvalid={shouldValidate('precio') && !!fieldErrors.precio}
+                isValid={shouldValidate('precio') && precioRangoValido && !fieldErrors.precio}
                 disabled={loading}
               />
               <Form.Control.Feedback type="invalid" className="alerterror">
-                {fieldErrors.duracionMax || 'Completar campo de Duración máxima'}
+                {fieldErrors.precio || 'Completar campo de Precio'}
               </Form.Control.Feedback>
             </Form.Group>
           </div>
 
           <Form.Group className="mb-3">
-            <Form.Label>Precio (AR$)</Form.Label>
-            <Form.Control 
-              type="number" 
-              step="0.01"
-              value={precio} 
-              min={30000}
-              max={1000000}
-              onBlur={() => setTouchedFields((prev) => ({ ...prev, precio: true }))}
-              onChange={e => {
-                setPrecio(e.target.value);
-                if (fieldErrors.precio) {
-                  setFieldErrors((prev) => ({ ...prev, precio: '' }));
-                }
-              }} 
-              placeholder="Ingrese el precio"
-              isInvalid={shouldValidate('precio') && !!fieldErrors.precio}
-              isValid={shouldValidate('precio') && precioRangoValido && !fieldErrors.precio}
-              disabled={loading}
-            />
-            <Form.Control.Feedback type="invalid" className="alerterror">
-              {fieldErrors.precio || 'Completar campo de Precio'}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group className="mb-3">
             <Form.Label>Categoría</Form.Label>
             <Form.Select
               value={categoriaId}
-              onChange={e => setCategoriaId(e.target.value)}
-              disabled={loading || cargandoCategorias}
-            >
-            <option value="">
-                {cargandoCategorias ? 'Cargando categorías...' : 'Seleccione una categoría'}
-              </option>
-              
-              {listaCategorias.map((cat) => (
-                <option key={cat._id} value={cat._id}>
-                  {cat.nombre}
-                </option>
-              ))}
-            </Form.Select>
-            
               onBlur={() => setTouchedFields((prev) => ({ ...prev, categoria: true }))}
               onChange={e => {
                 setCategoriaId(e.target.value);
@@ -349,19 +293,27 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
                   setFieldErrors((prev) => ({ ...prev, categoria: '' }));
                 }
               }}
-              placeholder="Ingrese el ID de la categoría"
               isInvalid={shouldValidate('categoria') && !!fieldErrors.categoria}
               isValid={shouldValidate('categoria') && !!categoriaId.trim() && !fieldErrors.categoria}
-              disabled={loading}
-            />
-                
+              disabled={loading || cargandoCategorias}
+            >
+              <option value="">
+                {cargandoCategorias ? 'Cargando categorías...' : 'Seleccione una categoría'}
+              </option>
+              {listaCategorias.map((cat) => (
+                <option key={cat._id} value={cat._id}>
+                  {cat.nombre}
+                </option>
+              ))}
+            </Form.Select>
+            
             {categoriaPreselec && (
               <Form.Text className="text-muted">
                 Categoría seleccionada por defecto.
               </Form.Text>
             )}
             <Form.Control.Feedback type="invalid" className="alerterror">
-              {fieldErrors.categoria || 'Completar campo de ID de Categoría'}
+              {fieldErrors.categoria || 'Seleccionar una Categoría'}
             </Form.Control.Feedback>
           </Form.Group>
 
@@ -389,7 +341,6 @@ export function ModalAgregarServicio({ show, onHide, onSave, categoriaPreselec }
           <Form.Group className="mb-3" controlId="formBasicDestacado">
             <Form.Check 
               type="switch"
-              id="destacado-switch"
               label="¿Marcar como Servicio Destacado?"
               checked={destacado}
               onChange={(e) => setDestacado(e.target.checked)}

@@ -22,6 +22,7 @@ function Turnos() {
     turnos = [],
     addTurno,
     removeTurno,
+    clearTurnos,
     isAuthenticated,
     user,
   } = context || {};
@@ -657,6 +658,10 @@ function Turnos() {
         `Te esperamos en nuestro local en Gral Paz 576, SMT.\n` +
         `¡Muchas gracias!`,
     );
+
+    if (clearTurnos) {
+      clearTurnos();
+    }
   };
 
   return (

@@ -28,6 +28,9 @@ export function UserProvider({ children }) {
   const removeTurno = (id) => {
     setTurnos((prevTurnos) => prevTurnos.filter(turno => turno.id !== id));
   };
+  const clearTurnos = () => {
+    setTurnos([]);
+  };
 
   useEffect(() => {
     const storedUser = localStorage.getItem('spa_user');
@@ -103,7 +106,8 @@ export function UserProvider({ children }) {
       isAdmin: user && (user.rol === "ROL_ADMIN" || user.rol === "Admin"),
       turnos,
       addTurno,
-      removeTurno
+      removeTurno,
+      clearTurnos
     }}>
       {children}
     </UserContext.Provider>
