@@ -76,7 +76,7 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
     setError('');
 
     try {
-      const nuevoUsuario = await crearUsuario({
+      const respuestaBackend = await crearUsuario({
         nombre,
         apellido,
         usuario,
@@ -89,8 +89,20 @@ export function ModalAgregarUsuario({ show, onHide, onSave }) {
         rol
       });
 
-      onSave(nuevoUsuario);
+      // 1. Extraemos el usuario real (por si viene dentro de respuestaBackend.usuario)
+      const usuarioReal = respuestaBackend.usuario || respuestaBackend;
+
+      // 2. Normalizamos los datos para que coincidan con lo que espera tu tabla en Admin.jsx
+      const usuarioFormateado = {
+        ...usuarioReal,
+        uid: usuarioReal.uid || usuarioReal._id, // Transformamos el _id de Mongo en uid
+        correo: usuarioReal.correo || usuarioReal.email || email // Aseguramos que exista "correo"
+      };
+
+      // 3. Enviamos el usuario ya limpio y formateado al estado de React
+      onSave(usuarioFormateado);
       resetForm();
+      
     } catch (err) {
       console.error('Error al crear usuario:', err);
       setError('Error al crear usuario: ' + err.message);
