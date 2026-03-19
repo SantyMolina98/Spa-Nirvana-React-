@@ -10,7 +10,7 @@
   --color-fourthlogin: #f4e8cb;
   --color-fifthlogin: #f1eada;
   --color-sixthlogin: #eec58c;
-  --color-seventhlogin: #aa6d3b;
+  --color-seventhlogin: #c4a182;
   --color-eigthlogin: #db7165;
 }
 
@@ -66,9 +66,12 @@
 }
 
 .linkLogin:hover{
+  padding: 0.5em;
   text-decoration: none;
   font-weight: 600;
+  background-color: var(--color-seventhlogin);
   color: var(--color-fifthlogin);
+  border-radius: 1em;
   margin-left: 0;
 }
 

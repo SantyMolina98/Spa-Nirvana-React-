@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Form } from "react-bootstrap";
+import { Form, Alert } from "react-bootstrap";
 import { restablecerContrasena } from "../helpers/UsuariosApi.js";
 import "../styles/recuperar.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -10,20 +10,47 @@ const NuevaPassword = () => {
   const { token } = useParams();
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
+  const [mensaje, setMensaje] = useState("");
+  const [tipoMensaje, setTipoMensaje] = useState("success");
+  const [emptyFields, setEmptyFields] = useState({ password: false });
+  const [touchedFields, setTouchedFields] = useState({ password: false });
+
+  const passwordTrimmed = password.trim();
+  const isPasswordLengthValid = passwordTrimmed.length >= 6;
+  const passwordInvalid =
+    emptyFields.password ||
+    (touchedFields.password && passwordTrimmed !== "" && !isPasswordLengthValid);
+  const passwordValid =
+    touchedFields.password && passwordTrimmed !== "" && isPasswordLengthValid;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const nextEmptyFields = { password: passwordTrimmed === "" };
+    setEmptyFields(nextEmptyFields);
+    setTouchedFields({ password: true });
+    setMensaje("");
+
+    if (nextEmptyFields.password || !isPasswordLengthValid) {
+      return;
+    }
+
     try {
-      const resp = await restablecerContrasena(token, password);
+      const resp = await restablecerContrasena(token, passwordTrimmed);
 
       if (resp.mensaje === "Contraseña restablecida correctamente") {
-        alert("¡Contraseña actualizada! Ahora puedes iniciar sesión.");
-        navigate("/login");
+        setTipoMensaje("success");
+        setMensaje("Contrasena actualizada. Ahora puedes iniciar sesion.");
+        setTimeout(() => {
+          navigate("/login");
+        }, 1500);
       } else {
-        alert(resp.mensaje || "Hubo un error");
+        setTipoMensaje("danger");
+        setMensaje(resp.mensaje || "Hubo un error");
       }
     } catch (error) {
-      alert("El enlace es inválido o ha expirado.");
+      setTipoMensaje("danger");
+      setMensaje("El enlace es invalido o ha expirado.");
     }
   };
 
@@ -48,7 +75,13 @@ const NuevaPassword = () => {
         <p className="recuperar-subtitle">
           Crea una nueva contraseña segura para tu cuenta en Nirvana Spa.
         </p>
-        <Form onSubmit={handleSubmit} className="recuperar-form">
+        {mensaje && (
+          <Alert variant={tipoMensaje} className="alerta-estilizada">
+            {mensaje}
+          </Alert>
+        )}
+
+        <Form noValidate onSubmit={handleSubmit} className="recuperar-form">
           <Form.Group className="mb-4">
             <Form.Label className="recuperar-label">
               NUEVA CONTRASEÑA
@@ -60,12 +93,28 @@ const NuevaPassword = () => {
                 type="password"
                 placeholder="Mínimo 6 caracteres"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                isInvalid={passwordInvalid}
+                isValid={passwordValid}
+                onBlur={() => setTouchedFields((prev) => ({ ...prev, password: true }))}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  if (emptyFields.password) {
+                    setEmptyFields({ password: false });
+                  }
+                  if (mensaje) {
+                    setMensaje("");
+                  }
+                }}
                 minLength={6}
                 required
                 className="recuperar-input"
               />
             </div>
+            {passwordInvalid && (
+              <div className="alerterror d-block">
+                {emptyFields.password ? "Completar campo con su contraseña" : "Minimo 6 caracteres."}
+              </div>
+            )}
           </Form.Group>
 
           <button type="submit" className="btn-recuperar">

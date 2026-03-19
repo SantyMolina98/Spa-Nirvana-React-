@@ -170,3 +170,11 @@
   text-align: center;
   width: 100%;
 }
+
+.alerterror {
+  width: 100%;
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  color: #db7165;
+  line-height: 1.35;
+}
