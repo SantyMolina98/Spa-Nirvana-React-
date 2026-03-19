@@ -12,17 +12,16 @@ function Login() {
   const [password, setPassword] = useState('');
   const [emptyFields, setEmptyFields] = useState({ email: false, password: false });
   const [touchedFields, setTouchedFields] = useState({ email: false, password: false });
-  const [authError, setAuthError] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(false); 
 
   const isEmailFormatValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
   const isPasswordLengthValid = password.trim().length >= 6;
-  const emailInvalid = emptyFields.email || (touchedFields.email && email.trim() !== '' && !isEmailFormatValid) || authError;
-  const emailValid = touchedFields.email && email.trim() !== '' && isEmailFormatValid && !authError;
-  const passwordInvalid = emptyFields.password || (touchedFields.password && password.trim() !== '' && !isPasswordLengthValid) || authError;
-  const passwordValid = touchedFields.password && password.trim() !== '' && isPasswordLengthValid && !authError;
+  const emailInvalid = emptyFields.email || (touchedFields.email && email.trim() !== '' && !isEmailFormatValid);
+  const emailValid = touchedFields.email && email.trim() !== '' && isEmailFormatValid;
+  const passwordInvalid = emptyFields.password || (touchedFields.password && password.trim() !== '' && !isPasswordLengthValid);
+  const passwordValid = touchedFields.password && password.trim() !== '' && isPasswordLengthValid;
 
   const navigate = useNavigate();
   const { login } = useContext(UserContext); 
@@ -49,7 +48,6 @@ function Login() {
 
     setEmptyFields(nextEmptyFields);
     setTouchedFields({ email: true, password: true });
-    setAuthError(false);
 
     if (nextEmptyFields.email || nextEmptyFields.password || isPasswordTooShort) {
       setError(null);
@@ -58,7 +56,6 @@ function Login() {
 
     setLoading(true);
     setError(null);
-    setAuthError(false);
 
     try {
       const datos = {
@@ -81,7 +78,6 @@ function Login() {
 
     } catch (err) {
       console.error(err);
-      setAuthError(true);
       setError('Email y/o contraseña incorrectos. Ingrese nuevamente.');
     } finally {
       setLoading(false);
@@ -125,14 +121,15 @@ function Login() {
                     if (emptyFields.email) {
                       setEmptyFields((prev) => ({ ...prev, email: false }));
                     }
-                    if (authError) setAuthError(false);
                     if (error) setError(null);
                   }}
                 />
-                
-                <Form.Control.Feedback type="invalid" className='alerterror'>
-                  {emptyFields.email ? 'Completar campo con su email' : 'Ingrese un email valido'}
-                </Form.Control.Feedback>
+
+                {emailInvalid && (
+                  <Form.Control.Feedback type="invalid" className='alerterror d-block'>
+                    {emptyFields.email ? 'Completar campo con su email' : 'Ingrese un email valido'}
+                  </Form.Control.Feedback>
+                )}
               </Form.Group>
 
               <Form.Group className="mb-3 colorcard" controlId="formBasicPassword">
@@ -153,13 +150,14 @@ function Login() {
                     if (emptyFields.password) {
                       setEmptyFields((prev) => ({ ...prev, password: false }));
                     }
-                    if (authError) setAuthError(false);
                     if (error) setError(null);
                   }}
                 />
-                <Form.Control.Feedback type="invalid" className='alerterror'>
-                  {emptyFields.password ? 'Completar campo con su contraseña' : 'Email y/o contraseña incorrectos. Ingrese nuevamente.'}
-                </Form.Control.Feedback>
+                {passwordInvalid && (
+                  <Form.Control.Feedback type="invalid" className='alerterror d-block'>
+                    {emptyFields.password ? 'Completar campo con su contraseña' : 'Minimo 6 caracteres.'}
+                  </Form.Control.Feedback>
+                )}
                 <div className="text-center mt-3">
                     <Link to="/RecuperarCuenta" className="linkLogin colorcard">
                         ¿Olvidaste tu contraseña?
