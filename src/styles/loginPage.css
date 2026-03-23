@@ -68,7 +68,7 @@
 .linkLogin:hover{
   text-decoration: none;
   font-weight: 600;
-  color: var(--color-fifthlogin);
+  color: var(--color-principallogin);
   margin-left: 0;
 }
 

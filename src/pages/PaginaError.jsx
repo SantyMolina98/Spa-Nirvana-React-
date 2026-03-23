@@ -15,7 +15,7 @@ function PaginaError() {
              <p className="error_title center" >PAGE NOT FOUND</p>
              <div className="center">
               <Link to="/">
-                <input type="button" class="btn" value="Ir a Inicio" />
+                <input type="button" className="btn" value="Ir a Inicio" />
               </Link>
             </div>
         </div>   
