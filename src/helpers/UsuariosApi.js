@@ -68,19 +68,23 @@ export const getUsuarioById = async (id) => {
 
 //Crear un nuevo Usuario (Registro)
 export const crearUsuario = async (datos) => {
- 
-  try{
+  try {
     const respuesta = await fetch(url, {
       method: "POST",
       body: JSON.stringify(datos),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     });
+    
     const data = await respuesta.json();
+
+    if (!respuesta.ok) {
+      throw new Error(data.mensaje || "Error en la validación de datos"); 
+    }
 
     return data;
   } catch (error) {
     console.log(error);
-    throw new Error("No se pudo crear el usuario");
+    throw error; 
   }
 }
 
@@ -136,10 +140,15 @@ export const solicitarRecuperacion = async (email) => {
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     });
     const data = await respuesta.json();
+    if (!respuesta.ok) {
+      throw new Error(data.mensaje || "Error al solicitar recuperación");
+    }
+
     return data;
   } catch (error) {
     console.log(error);
-    throw new Error("Error al solicitar recuperación");
+ 
+    throw error; 
   }
 }
 
@@ -150,10 +159,14 @@ export const restablecerContrasena = async (token, newPassword) => {
       body: JSON.stringify({ password: newPassword }),
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     });
-    const data = await respuesta.json();
+    const data = await respuesta.json();  
+    if (!respuesta.ok) {
+      throw new Error(data.mensaje || "Error al restablecer contraseña");
+    }
+
     return data;
   } catch (error) {
     console.log(error);
-    throw new Error("Error al restablecer contraseña");
+    throw error;
   }
 }

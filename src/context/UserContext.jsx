@@ -87,7 +87,7 @@ export function UserProvider({ children }) {
         setUser(respuesta.usuario);
         return respuesta.usuario;
       } else {
-        return true;
+        throw new Error(respuesta.mensaje || "Error al registrar en la base de datos");
       }
     } catch (error) {
       console.error("Error en el registro:", error);
