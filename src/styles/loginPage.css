@@ -66,12 +66,9 @@
 }
 
 .linkLogin:hover{
-  padding: 0.5em;
   text-decoration: none;
   font-weight: 600;
-  background-color: var(--color-seventhlogin);
-  color: var(--color-fifthlogin);
-  border-radius: 1em;
+  color: var(--color-principallogin);
   margin-left: 0;
 }
 
