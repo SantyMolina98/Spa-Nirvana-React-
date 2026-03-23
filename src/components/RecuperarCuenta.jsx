@@ -9,21 +9,41 @@ import imagenMap from '../assets/imagenMap.js';
 const RecuperarCuenta = () => {
   const [email, setEmail] = useState("");
   const [mensaje, setMensaje] = useState("");
+  const [tipoMensaje, setTipoMensaje] = useState("success");
   const [debugLink, setDebugLink] = useState(null);
+  const [emptyFields, setEmptyFields] = useState({ email: false });
+  const [touchedFields, setTouchedFields] = useState({ email: false });
+
+  const emailTrimmed = email.trim();
+  const isEmailFormatValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailTrimmed);
+  const emailInvalid =
+    emptyFields.email ||
+    (touchedFields.email && emailTrimmed !== "" && !isEmailFormatValid);
+  const emailValid = touchedFields.email && emailTrimmed !== "" && isEmailFormatValid;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMensaje("");
     setDebugLink(null);
 
+    const nextEmptyFields = { email: emailTrimmed === "" };
+    setEmptyFields(nextEmptyFields);
+    setTouchedFields({ email: true });
+
+    if (nextEmptyFields.email || !isEmailFormatValid) {
+      return;
+    }
+
     try {
-      const resp = await solicitarRecuperacion(email);
+      const resp = await solicitarRecuperacion(emailTrimmed);
+      setTipoMensaje("success");
       setMensaje(resp.mensaje);
       if (resp.link) {
         setDebugLink(resp.link);
       }
     } catch (error) {
-      alert("Error al enviar la solicitud");
+      setTipoMensaje("danger");
+      setMensaje("Error al enviar la solicitud");
     }
   };
 
@@ -46,7 +66,7 @@ const RecuperarCuenta = () => {
           seguro.
         </p>
         {mensaje && (
-          <Alert variant="success" className="alerta-estilizada">
+          <Alert variant={tipoMensaje} className="alerta-estilizada">
             {mensaje}
           </Alert>
         )}
@@ -64,7 +84,7 @@ const RecuperarCuenta = () => {
           </div>
         ) : (
           !mensaje && (
-            <Form onSubmit={handleSubmit} className="recuperar-form">
+            <Form noValidate onSubmit={handleSubmit} className="recuperar-form">
               <Form.Group className="mb-4">
                 <Form.Label className="recuperar-label">
                   CORREO ELECTRÓNICO
@@ -75,11 +95,28 @@ const RecuperarCuenta = () => {
                     type="email"
                     placeholder="ejemplo@correo.com"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    isInvalid={emailInvalid}
+                    isValid={emailValid}
+                    onBlur={() => setTouchedFields((prev) => ({ ...prev, email: true }))}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (emptyFields.email) {
+                        setEmptyFields({ email: false });
+                      }
+                      if (mensaje) {
+                        setMensaje("");
+                        setDebugLink(null);
+                      }
+                    }}
                     required
                     className="recuperar-input"
                   />
                 </div>
+                {emailInvalid && (
+                  <div className="alerterror d-block">
+                    {emptyFields.email ? "Completar campo con su email" : "Ingrese un email valido"}
+                  </div>
+                )}
               </Form.Group>
 
               <button type="submit" className="btn-recuperar">
