@@ -68,6 +68,13 @@ export function UserProvider({ children }) {
 };
 
   const registro = async (datos) => {
+
+    const codpostalNum = Number(String(datos.cpostal).trim());
+
+    if (!Number.isInteger(codpostalNum) || codpostalNum < 1000) {
+      throw new Error("Código postal inválido");
+    }
+
     const datosB = {
       nombre: datos.nombre,
       apellido: datos.apellido,
@@ -76,7 +83,7 @@ export function UserProvider({ children }) {
       telefono: datos.telefono,
       domicilio: datos.domicilio,
       ciudad: datos.provincia,
-      codpostal: datos.cpostal,
+      codpostal: codpostalNum,
       password: datos.contrasena,
       rol: "Usuario"
     };
