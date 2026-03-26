@@ -28,28 +28,30 @@ function Registro() {
   const { registro } = useContext(UserContext);
 
   async function registrar(e) {
-    e.preventDefault();
-    const formReg = e.target;
-    setValidatedReg(true);
+  e.preventDefault();
+  const formReg = e.target;
+  setValidatedReg(true);
 
-    if (formReg.checkValidity() === false) {
-      e.stopPropagation();
-      return;
-    }
+  if (formReg.checkValidity() === false) {
+    e.stopPropagation();
+    return;
+  }
+
+  try {
+    await registro({
+      nombre,
+      apellido,
+      usuario,
+      email,
+      telefono,
+      domicilio,
+      provincia,
+      cpostal,
+      contrasena,
+    });
+
+    // Si el usuario se creó, intentamos el email sin romper el flujo
     try {
-      await registro({
-        nombre,
-        apellido,
-        usuario,
-        email,
-        telefono,
-        domicilio,
-        provincia,
-        cpostal,
-        contrasena,
-      });
-
-      //para emailjs
       const templateParams = {
         name: usuario,
         email: email,
@@ -59,16 +61,21 @@ function Registro() {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_BIENVENIDA_ID,
         templateParams,
-        EMAILJS_PUBLIC_KEY,
+        EMAILJS_PUBLIC_KEY
       );
 
       alert("¡Registro exitoso! Te enviamos un email de bienvenida.");
-      navigateReg("/");
-    } catch (err) {
-      console.error(err);
-      alert("No se pudo crear el usuario. Intente más tarde.");
+    } catch (emailErr) {
+      console.error("Usuario creado, pero falló email de bienvenida:", emailErr);
+      alert("¡Registro exitoso! No pudimos enviar el email de bienvenida.");
     }
+
+    navigateReg("/");
+  } catch (err) {
+    console.error("Error creando usuario:", err);
+    alert(err.message || "No se pudo crear el usuario. Intente más tarde.");
   }
+}
 
   return (
     <>
